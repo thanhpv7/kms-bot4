@@ -1,0 +1,103 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type PurchaseRequisition {
+	id: ID
+	created: String
+	modified: String
+	approvalDateTime: String
+	notes: String
+	orderDate: String
+	purchaseRequisitionNumber: String
+	redraftingDateTime: String
+	referenceDocument: String
+	rejectionDateTime: String
+	requiredDate: String
+	submissionDateTime: String
+	totalEstimationOrder: Float
+	transactionStatus: String
+	voidingDateTime: String
+	purchaseOrder: PurchaseOrder
+	supplier: Supplier
+	warehouse: Warehouse
+	purchaseRequisitionStockDetails: [PurchaseRequisitionStockDetail]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type PurchaseRequisitionAudit {
+	entity: PurchaseRequisition
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input PurchaseRequisitionInput {
+	id: ID
+	created: String
+	modified: String
+	approvalDateTime: String
+	notes: String
+	orderDate: String
+	purchaseRequisitionNumber: String
+	redraftingDateTime: String
+	referenceDocument: String
+	rejectionDateTime: String
+	requiredDate: String
+	submissionDateTime: String
+	totalEstimationOrder: Float
+	transactionStatus: String
+	voidingDateTime: String
+	purchaseOrder: PurchaseOrderInput
+	purchaseOrderId: ID
+	supplier: SupplierInput
+	supplierId: ID
+	warehouse: WarehouseInput
+	warehouseId: ID
+	purchaseRequisitionStockDetails: [PurchaseRequisitionStockDetailInput]
+	purchaseRequisitionStockDetailsIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countPurchaseRequisitions(where: [[Where!]!]): Int!
+	lastPurchaseRequisitions(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [PurchaseRequisition!]!
+	purchaseRequisitions(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [PurchaseRequisition!]!
+	purchaseRequisitionById(id: ID!): PurchaseRequisition
+	purchaseRequisitionAudits: [PurchaseRequisitionAudit!]!
+	purchaseRequisitionAuditsByEntityId(purchaseRequisitionId: ID!): [PurchaseRequisitionAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createPurchaseRequisition(purchaseRequisition: PurchaseRequisitionInput!, persistRelations: Boolean): PurchaseRequisition!
+	createAllPurchaseRequisition(purchaseRequisitions: [PurchaseRequisitionInput!]!): [PurchaseRequisition!]!
+	updatePurchaseRequisition(purchaseRequisition: PurchaseRequisitionInput!, persistRelations: Boolean): PurchaseRequisition!
+	updateAllPurchaseRequisition(purchaseRequisitions: [PurchaseRequisitionInput!]!): [PurchaseRequisition!]!
+	deletePurchaseRequisitionById(purchaseRequisitionId: ID!): ID!
+	deleteAllPurchaseRequisitionByIds(purchaseRequisitionIds: [ID!]!): [ID!]!
+	deletePurchaseRequisitionExcludingIds(purchaseRequisitionIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

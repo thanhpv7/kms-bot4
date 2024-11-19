@@ -1,0 +1,67 @@
+<!--
+@bot-written
+
+WARNING AND NOTICE
+Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+Full Software Licence as accepted by you before being granted access to this source code and other materials,
+the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+access, download, storage, and/or use of this source code.
+
+BOT WARNING
+This file is bot-written.
+Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+-->
+
+<!-- % protected region % [Add any initial HTML structure here] off begin -->
+<!-- % protected region % [Add any initial HTML structure here] end -->
+
+<!-- % protected region % [Customise your default title here] off begin -->
+<!-- % protected region % [Customise your default title here] end -->
+
+<!-- % protected region % [Add any final HTML structure here] off begin -->
+<div class="dashboard">
+	<div class="dashboard-heading">
+		<h2>Admin Dashboard</h2>
+		<p>Welcome to the admin section. Get started on the home page by going to a featured lesson or
+			straight to <a href='https://codebots.app/academy' target='_blank'>Codebots Academy</a></p>
+	</div>
+	<div class="dashboard-bot-version">
+		<p>Bot version: 2.5.0.0</p>
+	</div>
+	<div class='dashboard-cards'>
+		<div cb-card-group>
+			<div cb-card [id]="'graphiql-card'" [icon]="'icon-globe'" [href]="environment.API_URL + '/graphiql'">
+				<h4>View GraphiQL</h4>
+				<p>View the GraphiQL developer tool to write your API requests.</p>
+			</div>
+			<div cb-card [id]="'swagger-card'" [icon]="'icon-api'" [href]="environment.API_URL + '/swagger-ui.html'">
+				<h4>View OpenAPI</h4>
+				<p>View the app's Swagger docs and the structure of the API.</p>
+			</div>
+		</div>
+		<div cb-card-group>
+			<div cb-card [id]="'git-card'" [icon]="'icon-git-merge'" [href]="'https://gitlab.codebots.dev'">
+				<h4>View Git</h4>
+				<p>Access your source code by cloning from your git repository.</p>
+			</div>
+			<div cb-card [id]="'voyager-card'" [icon]="'icon-satellite'" [href]="environment.API_URL + '/voyager'">
+				<h4>View Voyager</h4>
+				<p>View the apps Voyager tool to visually explore your GraphQL API as an interactive graph.</p>
+			</div>
+		</div>
+		<div cb-card-group>
+			<div cb-card [id]="'academy-card'" [className]="'card--learn-more'" [href]="'https://codebots.app/academy'">
+				<h4>Want to learn more?</h4>
+				<p>Codebots Academy has a variety of lessons and courses that can help you build your
+					app.</p>
+				<div class="planet planet--primary"></div>
+				<div class="planet planet--secondary"></div>
+				<div class="planet--sub"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- % protected region % [Add any final HTML structure here] end -->

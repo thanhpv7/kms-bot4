@@ -1,0 +1,620 @@
+/*
+ * @bot-written
+ *
+ * WARNING AND NOTICE
+ * Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+ * Full Software Licence as accepted by you before being granted access to this source code and other materials,
+ * the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+ * commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+ * licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+ * including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+ * access, download, storage, and/or use of this source code.
+ *
+ * BOT WARNING
+ * This file is bot-written.
+ * Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+ */
+
+package kmsweb.services;
+
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.web.server.ResponseStatusException;
+import kmsweb.SpringTestConfiguration;
+import kmsweb.configs.security.helpers.AnonymousHelper;
+import kmsweb.entities.CoTreatingDoctorEntity;
+import kmsweb.repositories.CoTreatingDoctorRepository;
+import kmsweb.utils.CoTreatingDoctorFactory;
+import kmsweb.utils.DatabasePopulators.CoTreatingDoctorDatabasePopulator;
+import kmsweb.entities.DeliveryMedicalExaminationRecordEntity;
+import kmsweb.repositories.DeliveryMedicalExaminationRecordRepository;
+import kmsweb.utils.DeliveryMedicalExaminationRecordFactory;
+import kmsweb.utils.DatabasePopulators.DeliveryMedicalExaminationRecordDatabasePopulator;
+import kmsweb.entities.MedicalExaminationRecordEntity;
+import kmsweb.repositories.MedicalExaminationRecordRepository;
+import kmsweb.utils.MedicalExaminationRecordFactory;
+import kmsweb.utils.DatabasePopulators.MedicalExaminationRecordDatabasePopulator;
+import kmsweb.entities.PreoperativeRecordsEntity;
+import kmsweb.repositories.PreoperativeRecordsRepository;
+import kmsweb.utils.PreoperativeRecordsFactory;
+import kmsweb.utils.DatabasePopulators.PreoperativeRecordsDatabasePopulator;
+import kmsweb.entities.StaffEntity;
+import kmsweb.repositories.StaffRepository;
+import kmsweb.utils.StaffFactory;
+import kmsweb.utils.DatabasePopulators.StaffDatabasePopulator;
+import kmsweb.repositories.auditing.AuditingRepository;
+
+import javax.validation.Validator;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+// % protected region % [Add any additional imports here] off begin
+// % protected region % [Add any additional imports here] end
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringTestConfiguration.class)
+@ActiveProfiles("test")
+// % protected region % [Add any additional class annotations here] off begin
+// % protected region % [Add any additional class annotations here] end
+public class CoTreatingDoctorServiceIntegrationTest {
+
+	@Autowired
+	private CoTreatingDoctorRepository coTreatingDoctorRepository;
+
+	@Autowired
+	private AuditingRepository auditRepository;
+
+	@Autowired
+	private Validator validator;
+
+	// Not autowired as we instantiate this in beforeEach
+	private CoTreatingDoctorService coTreatingDoctorService;
+
+	private final CoTreatingDoctorFactory coTreatingDoctorFactory = new CoTreatingDoctorFactory();
+
+	@Autowired
+	private CoTreatingDoctorDatabasePopulator coTreatingDoctorDatabasePopulator;
+
+	@Autowired
+	private DeliveryMedicalExaminationRecordRepository deliveryMedicalExaminationRecordRepository;
+
+	@Autowired
+	private DeliveryMedicalExaminationRecordDatabasePopulator deliveryMedicalExaminationRecordDatabasePopulator;
+
+	private final DeliveryMedicalExaminationRecordFactory deliveryMedicalExaminationRecordFactory = new DeliveryMedicalExaminationRecordFactory();
+
+	@Autowired
+	private MedicalExaminationRecordRepository medicalExaminationRecordRepository;
+
+	@Autowired
+	private MedicalExaminationRecordDatabasePopulator medicalExaminationRecordDatabasePopulator;
+
+	private final MedicalExaminationRecordFactory medicalExaminationRecordFactory = new MedicalExaminationRecordFactory();
+
+	@Autowired
+	private PreoperativeRecordsRepository preoperativeRecordsRepository;
+
+	@Autowired
+	private PreoperativeRecordsDatabasePopulator preoperativeRecordsDatabasePopulator;
+
+	private final PreoperativeRecordsFactory preoperativeRecordsFactory = new PreoperativeRecordsFactory();
+
+	@Autowired
+	private StaffRepository staffRepository;
+
+	@Autowired
+	private StaffDatabasePopulator staffDatabasePopulator;
+
+	private final StaffFactory staffFactory = new StaffFactory();
+
+
+	// % protected region % [Add any additional class fields here] off begin
+	// % protected region % [Add any additional class fields here] end
+
+	/**
+	 * Handles the logic which is required before each test run.
+	 * The service is required for each test case, so we can instantiate it here instead of within each test case
+	 */
+	@BeforeEach
+	public void beforeEach() {
+		coTreatingDoctorService = new CoTreatingDoctorService(
+			deliveryMedicalExaminationRecordRepository,
+			medicalExaminationRecordRepository,
+			preoperativeRecordsRepository,
+			staffRepository,
+			validator,
+			auditRepository,
+			coTreatingDoctorRepository
+		);
+
+		// % protected region % [Add any additional logic to beforeEach here] off begin
+		// % protected region % [Add any additional logic to beforeEach here] end
+	}
+
+	@Test
+	public void updateOldDataWithNewCoTreatingDoctorEntityWithoutReferences_ShouldNotCauseChangesToEntity() throws Exception {
+		CoTreatingDoctorEntity coTreatingDoctorEntity = coTreatingDoctorFactory.getObject(false, false);
+
+		CoTreatingDoctorEntity updatedEntity = coTreatingDoctorService.updateOldData(coTreatingDoctorEntity);
+		Assertions.assertEquals(coTreatingDoctorEntity, updatedEntity);
+	}
+
+
+	@Test
+	public void updateOldDataWithExistingCoTreatingDoctorEntity_ShouldUpdateEntityToNewState() {
+		AnonymousHelper.runAnonymously(() -> {
+			CoTreatingDoctorEntity coTreatingDoctorEntity;
+			CoTreatingDoctorEntity entityWithUpdatedValues;
+
+			try {
+				coTreatingDoctorEntity = coTreatingDoctorFactory.getObject(false, false);
+				coTreatingDoctorDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity, true, true, false);
+				// we don't need to worry about populating the related entities for the entity with updated values.  This is because
+				// this entity is not being saved, so validation for required relations will not be run and does not impact the test run
+				entityWithUpdatedValues = coTreatingDoctorFactory.getObject(false, false);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				// No point continuing on with the test if creating the entities has failed, as the
+				// following code will either fail or not give us any meaningful information about
+				// the state of the application
+				return;
+			}
+
+			coTreatingDoctorEntity = coTreatingDoctorService.create(coTreatingDoctorEntity);
+
+			// Setting the id of the entity with updated attributes to equal the original entity we saved ensures
+			// that we will enter the update path of updateOldData
+			entityWithUpdatedValues.setId(coTreatingDoctorEntity.getId());
+
+			CoTreatingDoctorEntity updatedEntity = coTreatingDoctorService.updateOldData(entityWithUpdatedValues);
+			Assertions.assertEquals(entityWithUpdatedValues, updatedEntity);
+		});
+	}
+
+	@Test
+	public void updateOldDataWithCoTreatingDoctorEntityWithNonExistentId_ShouldThrowException() throws Exception {
+		CoTreatingDoctorEntity coTreatingDoctorEntity = coTreatingDoctorFactory.getObject(false, false);
+		coTreatingDoctorEntity.setId(UUID.randomUUID());
+
+		// As we haven't created an entity with the ID we have specified for this entity, we expect
+		// an exception to be thrown, as it will enter the `if (entity.getId() != null) {}` path and
+		// hopefully throw an exception
+		Assertions.assertThrows(ResponseStatusException.class, () -> {
+			coTreatingDoctorService.updateOldData(coTreatingDoctorEntity);
+		});
+	}
+
+	@Test
+	public void updateOldDataWhenRemovingCoTreatingDoctorEntityReferences_ShouldRemoveReferenceEntity() {
+		AnonymousHelper.runAnonymously(() -> {
+			CoTreatingDoctorEntity coTreatingDoctorEntity;
+			CoTreatingDoctorEntity updatedCoTreatingDoctorEntity;
+
+			PreoperativeRecordsEntity additionalAnesthesiologistEntity;
+
+			DeliveryMedicalExaminationRecordEntity additionalMidwifeEntity;
+
+			PreoperativeRecordsEntity additionalSurgeryNurseEntity;
+
+			PreoperativeRecordsEntity coTreatingAnesthesiologistEntity;
+
+			MedicalExaminationRecordEntity medicalExaminationRecordEntity;
+
+			StaffEntity staffEntity;
+
+			PreoperativeRecordsEntity coTreatingSurgeonEntity;
+
+			try {
+				/*
+					We create the references as part of creating the object by setting
+					includeReferences to true.  This cuts down the additional code from creating
+					reference entities, which could be extensive if there are multiple references
+				 */
+				coTreatingDoctorEntity = coTreatingDoctorFactory.getObject(true, false);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				// No point continuing on with the test if creating the entities has failed, as the
+				// following code will either fail or not give us any meaningful information about
+				// the state of the application
+				return;
+			}
+
+			/*
+				As this test is checking that removing a reference entity works, we need to add the
+				reference entities to the database
+			 */
+			additionalAnesthesiologistEntity = coTreatingDoctorEntity.getAdditionalAnesthesiologist();
+			try {
+				preoperativeRecordsDatabasePopulator.populateRelatedEntitiesInDatabase(additionalAnesthesiologistEntity, true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				return;
+			}
+			additionalAnesthesiologistEntity = preoperativeRecordsRepository.save(additionalAnesthesiologistEntity);
+			coTreatingDoctorEntity.setAdditionalAnesthesiologistId(additionalAnesthesiologistEntity.getId());
+
+			additionalMidwifeEntity = coTreatingDoctorEntity.getAdditionalMidwife();
+			try {
+				deliveryMedicalExaminationRecordDatabasePopulator.populateRelatedEntitiesInDatabase(additionalMidwifeEntity, true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				return;
+			}
+			additionalMidwifeEntity = deliveryMedicalExaminationRecordRepository.save(additionalMidwifeEntity);
+			coTreatingDoctorEntity.setAdditionalMidwifeId(additionalMidwifeEntity.getId());
+
+			additionalSurgeryNurseEntity = coTreatingDoctorEntity.getAdditionalSurgeryNurse();
+			try {
+				preoperativeRecordsDatabasePopulator.populateRelatedEntitiesInDatabase(additionalSurgeryNurseEntity, true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				return;
+			}
+			additionalSurgeryNurseEntity = preoperativeRecordsRepository.save(additionalSurgeryNurseEntity);
+			coTreatingDoctorEntity.setAdditionalSurgeryNurseId(additionalSurgeryNurseEntity.getId());
+
+			coTreatingAnesthesiologistEntity = coTreatingDoctorEntity.getCoTreatingAnesthesiologist();
+			try {
+				preoperativeRecordsDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingAnesthesiologistEntity, true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				return;
+			}
+			coTreatingAnesthesiologistEntity = preoperativeRecordsRepository.save(coTreatingAnesthesiologistEntity);
+			coTreatingDoctorEntity.setCoTreatingAnesthesiologistId(coTreatingAnesthesiologistEntity.getId());
+
+			medicalExaminationRecordEntity = coTreatingDoctorEntity.getMedicalExaminationRecord();
+			try {
+				medicalExaminationRecordDatabasePopulator.populateRelatedEntitiesInDatabase(medicalExaminationRecordEntity, true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				return;
+			}
+			medicalExaminationRecordEntity = medicalExaminationRecordRepository.save(medicalExaminationRecordEntity);
+			coTreatingDoctorEntity.setMedicalExaminationRecordId(medicalExaminationRecordEntity.getId());
+
+			staffEntity = coTreatingDoctorEntity.getStaff();
+			try {
+				staffDatabasePopulator.populateRelatedEntitiesInDatabase(staffEntity, true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				return;
+			}
+			staffEntity = staffRepository.save(staffEntity);
+			coTreatingDoctorEntity.setStaffId(staffEntity.getId());
+
+			coTreatingSurgeonEntity = coTreatingDoctorEntity.getCoTreatingSurgeon();
+			try {
+				preoperativeRecordsDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingSurgeonEntity, true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				return;
+			}
+			coTreatingSurgeonEntity = preoperativeRecordsRepository.save(coTreatingSurgeonEntity);
+			coTreatingDoctorEntity.setCoTreatingSurgeonId(coTreatingSurgeonEntity.getId());
+
+
+			coTreatingDoctorEntity = coTreatingDoctorService.create(coTreatingDoctorEntity);
+
+			// Before we move on, checking that the relations exist ensures that we are actually
+			// testing removal of reference entities
+			Assertions.assertNotNull(coTreatingDoctorEntity.getAdditionalAnesthesiologist());
+			coTreatingDoctorEntity.setAdditionalAnesthesiologistId(null);
+			coTreatingDoctorEntity.unsetAdditionalAnesthesiologist();
+
+			Assertions.assertNotNull(coTreatingDoctorEntity.getAdditionalMidwife());
+			coTreatingDoctorEntity.setAdditionalMidwifeId(null);
+			coTreatingDoctorEntity.unsetAdditionalMidwife();
+
+			Assertions.assertNotNull(coTreatingDoctorEntity.getAdditionalSurgeryNurse());
+			coTreatingDoctorEntity.setAdditionalSurgeryNurseId(null);
+			coTreatingDoctorEntity.unsetAdditionalSurgeryNurse();
+
+			Assertions.assertNotNull(coTreatingDoctorEntity.getCoTreatingAnesthesiologist());
+			coTreatingDoctorEntity.setCoTreatingAnesthesiologistId(null);
+			coTreatingDoctorEntity.unsetCoTreatingAnesthesiologist();
+
+			Assertions.assertNotNull(coTreatingDoctorEntity.getMedicalExaminationRecord());
+			coTreatingDoctorEntity.setMedicalExaminationRecordId(null);
+			coTreatingDoctorEntity.unsetMedicalExaminationRecord();
+
+			Assertions.assertNotNull(coTreatingDoctorEntity.getStaff());
+			coTreatingDoctorEntity.setStaffId(null);
+			coTreatingDoctorEntity.unsetStaff();
+
+			Assertions.assertNotNull(coTreatingDoctorEntity.getCoTreatingSurgeon());
+			coTreatingDoctorEntity.setCoTreatingSurgeonId(null);
+			coTreatingDoctorEntity.unsetCoTreatingSurgeon();
+
+
+			updatedCoTreatingDoctorEntity = coTreatingDoctorService.updateOldData(coTreatingDoctorEntity);
+
+			Assertions.assertNull(updatedCoTreatingDoctorEntity.getAdditionalAnesthesiologist());
+
+			Assertions.assertNull(updatedCoTreatingDoctorEntity.getAdditionalMidwife());
+
+			Assertions.assertNull(updatedCoTreatingDoctorEntity.getAdditionalSurgeryNurse());
+
+			Assertions.assertNull(updatedCoTreatingDoctorEntity.getCoTreatingAnesthesiologist());
+
+			Assertions.assertNull(updatedCoTreatingDoctorEntity.getMedicalExaminationRecord());
+
+			Assertions.assertNull(updatedCoTreatingDoctorEntity.getStaff());
+
+			Assertions.assertNull(updatedCoTreatingDoctorEntity.getCoTreatingSurgeon());
+
+		});
+	}
+
+	@Test
+	public void updateOldDataWithCoTreatingDoctorEntityReferenceIds_ShouldAddReferencesToEntity() {
+		AnonymousHelper.runAnonymously(() -> {
+			CoTreatingDoctorEntity coTreatingDoctorEntity;
+			CoTreatingDoctorEntity updatedCoTreatingDoctorEntity;
+
+			PreoperativeRecordsEntity additionalAnesthesiologistEntity;
+
+			DeliveryMedicalExaminationRecordEntity additionalMidwifeEntity;
+
+			PreoperativeRecordsEntity additionalSurgeryNurseEntity;
+
+			PreoperativeRecordsEntity coTreatingAnesthesiologistEntity;
+
+			MedicalExaminationRecordEntity medicalExaminationRecordEntity;
+
+			StaffEntity staffEntity;
+
+			PreoperativeRecordsEntity coTreatingSurgeonEntity;
+
+
+			try {
+				/*
+					We create the references as part of creating the object by setting
+					includeReferences to true.  This cuts down the additional code from creating
+					reference entities, which could be extensive if there are multiple references
+				 */
+				coTreatingDoctorEntity = coTreatingDoctorFactory.getObject(true, false);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				// No point continuing on with the test if creating the entities has failed, as the
+				// following code will either fail or not give us any meaningful information about
+				// the state of the application
+				return;
+			}
+
+			/*
+				Expected state of the entity prior to updateOldData when trying to add a reference
+				is that the reference id is set, but the reference entity is not set.  Therefore,
+				we need to remove the reference entity and set the reference id, as this will set up
+				the state we expect to see for this test.
+
+				We also need to populate the required relations for all related entities, as creating any entities
+				with required references will cause an error (and a subsequent test failure) if we do not
+			 */
+			try {
+				preoperativeRecordsDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity.getAdditionalAnesthesiologist(), true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Failed to populate the Additional Anesthesiologist relation for this test: " + e.getCause());
+				return;
+			}
+			// Don't need to worry about the possibility of the get() method here throwing an exception, because assuming the repository save method
+			// executes successfully, the get method will always produce an Optional object which contains the entity
+			additionalAnesthesiologistEntity = preoperativeRecordsRepository.findById(preoperativeRecordsRepository.save(coTreatingDoctorEntity.getAdditionalAnesthesiologist()).getId()).get();
+			coTreatingDoctorEntity.unsetAdditionalAnesthesiologist();
+			coTreatingDoctorEntity.setAdditionalAnesthesiologistId(additionalAnesthesiologistEntity.getId());
+
+			try {
+				deliveryMedicalExaminationRecordDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity.getAdditionalMidwife(), true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Failed to populate the Additional Midwife relation for this test: " + e.getCause());
+				return;
+			}
+			// Don't need to worry about the possibility of the get() method here throwing an exception, because assuming the repository save method
+			// executes successfully, the get method will always produce an Optional object which contains the entity
+			additionalMidwifeEntity = deliveryMedicalExaminationRecordRepository.findById(deliveryMedicalExaminationRecordRepository.save(coTreatingDoctorEntity.getAdditionalMidwife()).getId()).get();
+			coTreatingDoctorEntity.unsetAdditionalMidwife();
+			coTreatingDoctorEntity.setAdditionalMidwifeId(additionalMidwifeEntity.getId());
+
+			try {
+				preoperativeRecordsDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity.getAdditionalSurgeryNurse(), true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Failed to populate the Additional Surgery Nurse relation for this test: " + e.getCause());
+				return;
+			}
+			// Don't need to worry about the possibility of the get() method here throwing an exception, because assuming the repository save method
+			// executes successfully, the get method will always produce an Optional object which contains the entity
+			additionalSurgeryNurseEntity = preoperativeRecordsRepository.findById(preoperativeRecordsRepository.save(coTreatingDoctorEntity.getAdditionalSurgeryNurse()).getId()).get();
+			coTreatingDoctorEntity.unsetAdditionalSurgeryNurse();
+			coTreatingDoctorEntity.setAdditionalSurgeryNurseId(additionalSurgeryNurseEntity.getId());
+
+			try {
+				preoperativeRecordsDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity.getCoTreatingAnesthesiologist(), true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Failed to populate the Co Treating Anesthesiologist relation for this test: " + e.getCause());
+				return;
+			}
+			// Don't need to worry about the possibility of the get() method here throwing an exception, because assuming the repository save method
+			// executes successfully, the get method will always produce an Optional object which contains the entity
+			coTreatingAnesthesiologistEntity = preoperativeRecordsRepository.findById(preoperativeRecordsRepository.save(coTreatingDoctorEntity.getCoTreatingAnesthesiologist()).getId()).get();
+			coTreatingDoctorEntity.unsetCoTreatingAnesthesiologist();
+			coTreatingDoctorEntity.setCoTreatingAnesthesiologistId(coTreatingAnesthesiologistEntity.getId());
+
+			try {
+				medicalExaminationRecordDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity.getMedicalExaminationRecord(), true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Failed to populate the Medical Examination Record relation for this test: " + e.getCause());
+				return;
+			}
+			// Don't need to worry about the possibility of the get() method here throwing an exception, because assuming the repository save method
+			// executes successfully, the get method will always produce an Optional object which contains the entity
+			medicalExaminationRecordEntity = medicalExaminationRecordRepository.findById(medicalExaminationRecordRepository.save(coTreatingDoctorEntity.getMedicalExaminationRecord()).getId()).get();
+			coTreatingDoctorEntity.unsetMedicalExaminationRecord();
+			coTreatingDoctorEntity.setMedicalExaminationRecordId(medicalExaminationRecordEntity.getId());
+
+			try {
+				staffDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity.getStaff(), true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Failed to populate the Staff relation for this test: " + e.getCause());
+				return;
+			}
+			// Don't need to worry about the possibility of the get() method here throwing an exception, because assuming the repository save method
+			// executes successfully, the get method will always produce an Optional object which contains the entity
+			staffEntity = staffRepository.findById(staffRepository.save(coTreatingDoctorEntity.getStaff()).getId()).get();
+			coTreatingDoctorEntity.unsetStaff();
+			coTreatingDoctorEntity.setStaffId(staffEntity.getId());
+
+			try {
+				preoperativeRecordsDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity.getCoTreatingSurgeon(), true, true, true);
+			} catch (Exception e) {
+				Assertions.fail("Failed to populate the Co Treating Surgeon relation for this test: " + e.getCause());
+				return;
+			}
+			// Don't need to worry about the possibility of the get() method here throwing an exception, because assuming the repository save method
+			// executes successfully, the get method will always produce an Optional object which contains the entity
+			coTreatingSurgeonEntity = preoperativeRecordsRepository.findById(preoperativeRecordsRepository.save(coTreatingDoctorEntity.getCoTreatingSurgeon()).getId()).get();
+			coTreatingDoctorEntity.unsetCoTreatingSurgeon();
+			coTreatingDoctorEntity.setCoTreatingSurgeonId(coTreatingSurgeonEntity.getId());
+
+			// running updateOldData at this point will populate all of the related entities into the parent entity.  As we have already
+			// set all of the related entity ids, this should fetch all the entities which we created in the previous part of this test
+			updatedCoTreatingDoctorEntity = coTreatingDoctorService.updateOldData(coTreatingDoctorEntity);
+
+			/*
+				The process of saving the entities in 1:1 relations or the ones side of 1:M relations can lead to inconsistensies in the base entity
+				which is saved as part of the related entity.  This is because the reverse relation may be created with a reference to a different
+				entity if the reverse relation is required, as the base entity has not been created so can't be used.  We are only interested in the
+				related entity itself at the moment, so we need to unset the reverse relation to see if the entities are the same otherwise.
+			*/
+			additionalAnesthesiologistEntity.unsetAdditionalAnesthesiologists(false);
+			updatedCoTreatingDoctorEntity.getAdditionalAnesthesiologist().unsetAdditionalAnesthesiologists(false);
+			Assertions.assertEquals(additionalAnesthesiologistEntity, updatedCoTreatingDoctorEntity.getAdditionalAnesthesiologist());
+
+			additionalMidwifeEntity.unsetAdditionalMidwives(false);
+			updatedCoTreatingDoctorEntity.getAdditionalMidwife().unsetAdditionalMidwives(false);
+			Assertions.assertEquals(additionalMidwifeEntity, updatedCoTreatingDoctorEntity.getAdditionalMidwife());
+
+			additionalSurgeryNurseEntity.unsetAdditionalSurgeryNurses(false);
+			updatedCoTreatingDoctorEntity.getAdditionalSurgeryNurse().unsetAdditionalSurgeryNurses(false);
+			Assertions.assertEquals(additionalSurgeryNurseEntity, updatedCoTreatingDoctorEntity.getAdditionalSurgeryNurse());
+
+			coTreatingAnesthesiologistEntity.unsetCoTreatingAnesthesiologists(false);
+			updatedCoTreatingDoctorEntity.getCoTreatingAnesthesiologist().unsetCoTreatingAnesthesiologists(false);
+			Assertions.assertEquals(coTreatingAnesthesiologistEntity, updatedCoTreatingDoctorEntity.getCoTreatingAnesthesiologist());
+
+			medicalExaminationRecordEntity.unsetCoTreatingDoctors(false);
+			updatedCoTreatingDoctorEntity.getMedicalExaminationRecord().unsetCoTreatingDoctors(false);
+			Assertions.assertEquals(medicalExaminationRecordEntity, updatedCoTreatingDoctorEntity.getMedicalExaminationRecord());
+
+			staffEntity.unsetCoTreatingDoctors(false);
+			updatedCoTreatingDoctorEntity.getStaff().unsetCoTreatingDoctors(false);
+			Assertions.assertEquals(staffEntity, updatedCoTreatingDoctorEntity.getStaff());
+
+			coTreatingSurgeonEntity.unsetCoTreatingSurgeons(false);
+			updatedCoTreatingDoctorEntity.getCoTreatingSurgeon().unsetCoTreatingSurgeons(false);
+			Assertions.assertEquals(coTreatingSurgeonEntity, updatedCoTreatingDoctorEntity.getCoTreatingSurgeon());
+
+		});
+	}
+
+	@Test
+	public void whenCreateCoTreatingDoctorEntity_ThenEntityIsCreated() {
+		AnonymousHelper.runAnonymously(() -> {
+			CoTreatingDoctorEntity coTreatingDoctorEntity;
+			Optional<CoTreatingDoctorEntity> fetchedCoTreatingDoctorEntity;
+
+			try {
+				coTreatingDoctorEntity = coTreatingDoctorFactory.getObject(false, false);
+				coTreatingDoctorDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity, true, true, false);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				// No point continuing on with the test if creating the entities has failed, as the
+				// following code will either fail or not give us any meaningful information about
+				// the state of the application
+				return;
+			}
+
+			coTreatingDoctorEntity = coTreatingDoctorService.create(coTreatingDoctorEntity);
+
+			fetchedCoTreatingDoctorEntity = coTreatingDoctorService.findById(coTreatingDoctorEntity.getId());
+
+			Assertions.assertTrue(fetchedCoTreatingDoctorEntity.isPresent());
+			// We do this because the expected entity has the ids set, but an entity fetched from the database will have the related entity set,
+			// but not the id.  As we expect the entities to match, we need to populate the transient id fields in the entity
+			fetchedCoTreatingDoctorEntity.get().addRelationEntitiesToIdSet();
+			Assertions.assertEquals(coTreatingDoctorEntity, fetchedCoTreatingDoctorEntity.get());
+		});
+	}
+
+	@Test
+	public void whenUpdateCoTreatingDoctorEntity_ThenEntityIsUpdated() {
+		AnonymousHelper.runAnonymously(() -> {
+			CoTreatingDoctorEntity coTreatingDoctorEntity;
+			CoTreatingDoctorEntity updatedCoTreatingDoctorEntity;
+			Optional<CoTreatingDoctorEntity> fetchedCoTreatingDoctorEntity;
+
+			try {
+				coTreatingDoctorEntity = coTreatingDoctorFactory.getObject(false, false);
+				coTreatingDoctorDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity, true, true, false);
+				updatedCoTreatingDoctorEntity = coTreatingDoctorFactory.getObject(false, false);
+				coTreatingDoctorDatabasePopulator.populateRelatedEntitiesInDatabase(updatedCoTreatingDoctorEntity, true, true, false);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				// No point continuing on with the test if creating the entities has failed, as the
+				// following code will either fail or not give us any meaningful information about
+				// the state of the application
+				return;
+			}
+
+			coTreatingDoctorEntity = coTreatingDoctorService.create(coTreatingDoctorEntity);
+
+			updatedCoTreatingDoctorEntity.setId(coTreatingDoctorEntity.getId());
+			// The milliseconds of the created Datetime in this test can get slightly out of sync,
+			// as it is rounded when it is saved in the database.  This causes instability in this
+			// test if we don't set the created date of the updated entity before updating it
+			updatedCoTreatingDoctorEntity.setCreated(coTreatingDoctorEntity.getCreated());
+
+			updatedCoTreatingDoctorEntity = coTreatingDoctorService.update(updatedCoTreatingDoctorEntity);
+
+			fetchedCoTreatingDoctorEntity = coTreatingDoctorService.findById(coTreatingDoctorEntity.getId());
+
+			Assertions.assertTrue(fetchedCoTreatingDoctorEntity.isPresent());
+			// reasoning for running this method is the same as the reasoning in whenCreateCoTreatingDoctorEntity_ThenEntityIsCreated
+			fetchedCoTreatingDoctorEntity.get().addRelationEntitiesToIdSet();
+			Assertions.assertEquals(updatedCoTreatingDoctorEntity, fetchedCoTreatingDoctorEntity.get());
+		});
+	}
+
+	@Test
+	public void whenDeleteCoTreatingDoctorEntity_ThenEntityIsDeleted() {
+		AnonymousHelper.runAnonymously(() -> {
+			CoTreatingDoctorEntity coTreatingDoctorEntity;
+			Optional<CoTreatingDoctorEntity> fetchedCoTreatingDoctorEntity;
+
+			try {
+				coTreatingDoctorEntity = coTreatingDoctorFactory.getObject(false, false);
+				// With deletion test, we don't need to do anything else regarding relations once we have completed this step
+				// This is because we don't need to fetch an entity and check equality, as we are checking for deletion.  Therefore,
+				// the purpose of running this in this test is so that the serverside validation does not stop the entity creation
+				coTreatingDoctorDatabasePopulator.populateRelatedEntitiesInDatabase(coTreatingDoctorEntity, true, true, false);
+			} catch (Exception e) {
+				Assertions.fail("Factory failed to create the required entities for this test: " + e.getCause());
+				// No point continuing on with the test if creating the entities has failed, as the
+				// following code will either fail or not give us any meaningful information about
+				// the state of the application
+				return;
+			}
+
+			coTreatingDoctorEntity = coTreatingDoctorService.create(coTreatingDoctorEntity);
+
+			coTreatingDoctorService.deleteById(coTreatingDoctorEntity.getId());
+			fetchedCoTreatingDoctorEntity = coTreatingDoctorService.findById(coTreatingDoctorEntity.getId());
+
+			Assertions.assertTrue(fetchedCoTreatingDoctorEntity.isEmpty());
+		});
+	}
+
+	// % protected region % [Add any additional tests here] off begin
+	// % protected region % [Add any additional tests here] end
+}

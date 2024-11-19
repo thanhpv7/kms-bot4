@@ -1,0 +1,121 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BpjsPcarePesertaKegiatanKelompok {
+	id: ID
+	created: String
+	modified: String
+	cob: String
+	eduid: String
+	goldarah: String
+	hubungankeluarga: String
+	kdasuransi: String
+	kdprovider: String
+	kdprovidergigi: String
+	ketaktif: String
+	kodekelas: String
+	kodepeserta: String
+	nama: String
+	namakelas: String
+	namapeserta: String
+	nmasuransi: String
+	nmprovider: String
+	nmprovidergigi: String
+	noasuransi: String
+	nohp: String
+	noktp: String
+	nokartu: String
+	pstprb: String
+	pstprol: String
+	sex: String
+	tglakhirberlaku: String
+	tgllahir: String
+	tglmulaiaktif: String
+	tunggakan: String
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BpjsPcarePesertaKegiatanKelompokAudit {
+	entity: BpjsPcarePesertaKegiatanKelompok
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BpjsPcarePesertaKegiatanKelompokInput {
+	id: ID
+	created: String
+	modified: String
+	cob: String
+	eduid: String
+	goldarah: String
+	hubungankeluarga: String
+	kdasuransi: String
+	kdprovider: String
+	kdprovidergigi: String
+	ketaktif: String
+	kodekelas: String
+	kodepeserta: String
+	nama: String
+	namakelas: String
+	namapeserta: String
+	nmasuransi: String
+	nmprovider: String
+	nmprovidergigi: String
+	noasuransi: String
+	nohp: String
+	noktp: String
+	nokartu: String
+	pstprb: String
+	pstprol: String
+	sex: String
+	tglakhirberlaku: String
+	tgllahir: String
+	tglmulaiaktif: String
+	tunggakan: String
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBpjsPcarePesertaKegiatanKelompoks(where: [[Where!]!]): Int!
+	lastBpjsPcarePesertaKegiatanKelompoks(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BpjsPcarePesertaKegiatanKelompok!]!
+	bpjsPcarePesertaKegiatanKelompoks(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BpjsPcarePesertaKegiatanKelompok!]!
+	bpjsPcarePesertaKegiatanKelompokById(id: ID!): BpjsPcarePesertaKegiatanKelompok
+	bpjsPcarePesertaKegiatanKelompokAudits: [BpjsPcarePesertaKegiatanKelompokAudit!]!
+	bpjsPcarePesertaKegiatanKelompokAuditsByEntityId(bpjsPcarePesertaKegiatanKelompokId: ID!): [BpjsPcarePesertaKegiatanKelompokAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBpjsPcarePesertaKegiatanKelompok(bpjsPcarePesertaKegiatanKelompok: BpjsPcarePesertaKegiatanKelompokInput!, persistRelations: Boolean): BpjsPcarePesertaKegiatanKelompok!
+	createAllBpjsPcarePesertaKegiatanKelompok(bpjsPcarePesertaKegiatanKelompoks: [BpjsPcarePesertaKegiatanKelompokInput!]!): [BpjsPcarePesertaKegiatanKelompok!]!
+	updateBpjsPcarePesertaKegiatanKelompok(bpjsPcarePesertaKegiatanKelompok: BpjsPcarePesertaKegiatanKelompokInput!, persistRelations: Boolean): BpjsPcarePesertaKegiatanKelompok!
+	updateAllBpjsPcarePesertaKegiatanKelompok(bpjsPcarePesertaKegiatanKelompoks: [BpjsPcarePesertaKegiatanKelompokInput!]!): [BpjsPcarePesertaKegiatanKelompok!]!
+	deleteBpjsPcarePesertaKegiatanKelompokById(bpjsPcarePesertaKegiatanKelompokId: ID!): ID!
+	deleteAllBpjsPcarePesertaKegiatanKelompokByIds(bpjsPcarePesertaKegiatanKelompokIds: [ID!]!): [ID!]!
+	deleteBpjsPcarePesertaKegiatanKelompokExcludingIds(bpjsPcarePesertaKegiatanKelompokIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

@@ -1,0 +1,262 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type EntExamination {
+	id: ID
+	created: String
+	modified: String
+	epiglottisObjective: String
+	epiglottisSubjective: String
+	glottisObjective: String
+	glottisSubjective: String
+	leftAnteriorPillarObjective: String
+	leftAnteriorPillarSubjective: String
+	leftConchaObjective: String
+	leftConchaSubjective: String
+	leftCorniculateCartilageObjective: String
+	leftCorniculateCartilageSubjective: String
+	leftCuneiformCartilageObjective: String
+	leftCuneiformCartilageSubjective: String
+	leftEarCanalObjective: String
+	leftEarCanalSubjective: String
+	leftEardrumObjective: String
+	leftEardrumSubjective: String
+	leftEarlobeObjective: String
+	leftEarlobeSubjective: String
+	leftEthmoidSinusObjective: String
+	leftEthmoidSinusSubjective: String
+	leftExternalEarObjective: String
+	leftExternalEarSubjective: String
+	leftFrontalSinusObjective: String
+	leftFrontalSinusSubjective: String
+	leftInferiorTurbinateObjective: String
+	leftInferiorTurbinateSubjective: String
+	leftMaxillarySinusObjective: String
+	leftMaxillarySinusSubjective: String
+	leftMiddleTurbinateObjective: String
+	leftMiddleTurbinateSubjective: String
+	leftNasalCavityObjective: String
+	leftNasalCavitySubjective: String
+	leftPosteriorPillarObjective: String
+	leftPosteriorPillarSubjective: String
+	leftPosteriorWallObjective: String
+	leftPosteriorWallSubjective: String
+	leftSuperiorTurbinateObjective: String
+	leftSuperiorTurbinateSubjective: String
+	leftTonsilObjective: String
+	leftTonsilSubjective: String
+	leftVentricularFoldObjective: String
+	leftVentricularFoldSubjective: String
+	leftVocalFoldObjective: String
+	leftVocalFoldSubjective: String
+	lingualTonsilObjective: String
+	lingualTonsilSubjective: String
+	nasalBoneObjective: String
+	nasalBoneSubjective: String
+	rightAnteriorPillarObjective: String
+	rightAnteriorPillarSubjective: String
+	rightConchaObjective: String
+	rightConchaSubjective: String
+	rightCorniculateCartilageObjective: String
+	rightCorniculateCartilageSubjective: String
+	rightCuneiformCartilageObjective: String
+	rightCuneiformCartilageSubjective: String
+	rightEarCanalObjective: String
+	rightEarCanalSubjective: String
+	rightEardrumObjective: String
+	rightEardrumSubjective: String
+	rightEarlobeObjective: String
+	rightEarlobeSubjective: String
+	rightEthmoidSinusObjective: String
+	rightEthmoidSinusSubjective: String
+	rightExternalEarObjective: String
+	rightExternalEarSubjective: String
+	rightFrontalSinusObjective: String
+	rightFrontalSinusSubjective: String
+	rightInferiorTurbinateObjective: String
+	rightInferiorTurbinateSubjective: String
+	rightMaxillarySinusObjective: String
+	rightMaxillarySinusSubjective: String
+	rightMiddleTurbinateObjective: String
+	rightMiddleTurbinateSubjective: String
+	rightNasalCavityObjective: String
+	rightNasalCavitySubjective: String
+	rightPosteriorObjective: String
+	rightPosteriorPillarObjective: String
+	rightPosteriorPillarSubjective: String
+	rightPosteriorSubjective: String
+	rightSuperiorTurbinateObjective: String
+	rightSuperiorTurbinateSubjective: String
+	rightTonsilObjective: String
+	rightTonsilSubjective: String
+	rightVentricularFoldObjective: String
+	rightVentricularFoldSubjective: String
+	rightVocalFoldObjective: String
+	rightVocalFoldSubjective: String
+	softPalateObjective: String
+	softPalateSubjective: String
+	tracheaObjective: String
+	tracheaSubjective: String
+	upperTongueObjective: String
+	upperTongueSubjective: String
+	uvulaObjective: String
+	uvulaSubjective: String
+	medicalExaminationRecord: MedicalExaminationRecord
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type EntExaminationAudit {
+	entity: EntExamination
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input EntExaminationInput {
+	id: ID
+	created: String
+	modified: String
+	epiglottisObjective: String
+	epiglottisSubjective: String
+	glottisObjective: String
+	glottisSubjective: String
+	leftAnteriorPillarObjective: String
+	leftAnteriorPillarSubjective: String
+	leftConchaObjective: String
+	leftConchaSubjective: String
+	leftCorniculateCartilageObjective: String
+	leftCorniculateCartilageSubjective: String
+	leftCuneiformCartilageObjective: String
+	leftCuneiformCartilageSubjective: String
+	leftEarCanalObjective: String
+	leftEarCanalSubjective: String
+	leftEardrumObjective: String
+	leftEardrumSubjective: String
+	leftEarlobeObjective: String
+	leftEarlobeSubjective: String
+	leftEthmoidSinusObjective: String
+	leftEthmoidSinusSubjective: String
+	leftExternalEarObjective: String
+	leftExternalEarSubjective: String
+	leftFrontalSinusObjective: String
+	leftFrontalSinusSubjective: String
+	leftInferiorTurbinateObjective: String
+	leftInferiorTurbinateSubjective: String
+	leftMaxillarySinusObjective: String
+	leftMaxillarySinusSubjective: String
+	leftMiddleTurbinateObjective: String
+	leftMiddleTurbinateSubjective: String
+	leftNasalCavityObjective: String
+	leftNasalCavitySubjective: String
+	leftPosteriorPillarObjective: String
+	leftPosteriorPillarSubjective: String
+	leftPosteriorWallObjective: String
+	leftPosteriorWallSubjective: String
+	leftSuperiorTurbinateObjective: String
+	leftSuperiorTurbinateSubjective: String
+	leftTonsilObjective: String
+	leftTonsilSubjective: String
+	leftVentricularFoldObjective: String
+	leftVentricularFoldSubjective: String
+	leftVocalFoldObjective: String
+	leftVocalFoldSubjective: String
+	lingualTonsilObjective: String
+	lingualTonsilSubjective: String
+	nasalBoneObjective: String
+	nasalBoneSubjective: String
+	rightAnteriorPillarObjective: String
+	rightAnteriorPillarSubjective: String
+	rightConchaObjective: String
+	rightConchaSubjective: String
+	rightCorniculateCartilageObjective: String
+	rightCorniculateCartilageSubjective: String
+	rightCuneiformCartilageObjective: String
+	rightCuneiformCartilageSubjective: String
+	rightEarCanalObjective: String
+	rightEarCanalSubjective: String
+	rightEardrumObjective: String
+	rightEardrumSubjective: String
+	rightEarlobeObjective: String
+	rightEarlobeSubjective: String
+	rightEthmoidSinusObjective: String
+	rightEthmoidSinusSubjective: String
+	rightExternalEarObjective: String
+	rightExternalEarSubjective: String
+	rightFrontalSinusObjective: String
+	rightFrontalSinusSubjective: String
+	rightInferiorTurbinateObjective: String
+	rightInferiorTurbinateSubjective: String
+	rightMaxillarySinusObjective: String
+	rightMaxillarySinusSubjective: String
+	rightMiddleTurbinateObjective: String
+	rightMiddleTurbinateSubjective: String
+	rightNasalCavityObjective: String
+	rightNasalCavitySubjective: String
+	rightPosteriorObjective: String
+	rightPosteriorPillarObjective: String
+	rightPosteriorPillarSubjective: String
+	rightPosteriorSubjective: String
+	rightSuperiorTurbinateObjective: String
+	rightSuperiorTurbinateSubjective: String
+	rightTonsilObjective: String
+	rightTonsilSubjective: String
+	rightVentricularFoldObjective: String
+	rightVentricularFoldSubjective: String
+	rightVocalFoldObjective: String
+	rightVocalFoldSubjective: String
+	softPalateObjective: String
+	softPalateSubjective: String
+	tracheaObjective: String
+	tracheaSubjective: String
+	upperTongueObjective: String
+	upperTongueSubjective: String
+	uvulaObjective: String
+	uvulaSubjective: String
+	medicalExaminationRecord: MedicalExaminationRecordInput
+	medicalExaminationRecordId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countEntExaminations(where: [[Where!]!]): Int!
+	lastEntExaminations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [EntExamination!]!
+	entExaminations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [EntExamination!]!
+	entExaminationById(id: ID!): EntExamination
+	entExaminationAudits: [EntExaminationAudit!]!
+	entExaminationAuditsByEntityId(entExaminationId: ID!): [EntExaminationAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createEntExamination(entExamination: EntExaminationInput!, persistRelations: Boolean): EntExamination!
+	createAllEntExamination(entExaminations: [EntExaminationInput!]!): [EntExamination!]!
+	updateEntExamination(entExamination: EntExaminationInput!, persistRelations: Boolean): EntExamination!
+	updateAllEntExamination(entExaminations: [EntExaminationInput!]!): [EntExamination!]!
+	deleteEntExaminationById(entExaminationId: ID!): ID!
+	deleteAllEntExaminationByIds(entExaminationIds: [ID!]!): [ID!]!
+	deleteEntExaminationExcludingIds(entExaminationIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

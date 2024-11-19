@@ -1,0 +1,261 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type Registration {
+	id: ID
+	created: String
+	modified: String
+	actualInDate: String
+	admissionDiagnosis: String
+	bookedTreatmentClass: String
+	cito: Boolean
+	deathCertificateNo: String
+	dismissalDate: String
+	dismissalReferral: Boolean
+	dismissalReferralDetail: String
+	dismissalReferralType: String
+	dismissalReferringNotes: String
+	dismissalType: String
+	duration: Int
+	instruction: String
+	isUnknownPatient: Boolean
+	mcuPackage: String
+	notes: String
+	oneDayCare: Boolean
+	otherReferredFacility: String
+	otherReferredStaff: String
+	parentRegistrationNumber: String
+	patientIsReferredBack: Boolean
+	printLabel: [File!]
+	printWristband: [File!]
+	purpose: String
+	queueNo: Int
+	referral: Boolean
+	referralNotes: String
+	referralNumber: String
+	referralType: String
+	registrationNumber: String
+	registrationStatus: String
+	scheduledDate: String
+	shift: String
+	supportingDocument: [File!]
+	timeOfDeath: String
+	treatmentClass: String
+	uploadedDateTime: String
+	visitStatus: String
+	isAnAppointment: Boolean
+	kodepoli: String
+	admissionICD10: DiagnosesAndProcedures
+	admissionICD9CM: DiagnosesAndProcedures
+	dismissalReferringFacility: HealthFacility
+	dismissalReferringStaff: Staff
+	referringUnit: Service
+	referringFacility: HealthFacility
+	diagnosticStaffExaminationSummary: DiagnosticStaffExaminationSummary
+	bedFacility: BedFacility
+	examinationItems: [ExaminationItem]
+	patientVisit: PatientVisit
+	service: Service
+	staff: Staff
+	requestedBy: Staff
+	bpjsPRBDetail: BpjsPRBDetail
+	bpjsPcareRegistrations: BpjsPcareRegistrations
+	bpjsSEP: BpjsSEP
+	bedReserves: [BedReserve]
+	diagnosticExaminationResults: [DiagnosticExaminationResults]
+	fluidBalanceDetails: [FluidBalanceDetail]
+	informedConsents: [InformedConsent]
+	invoiceItems: [InvoiceItem]
+	medicalCertificateDischargeResume: MedicalCertificateDischargeResume
+	medicalCertificateBirth: MedicalCertificateBirth
+	medicalCertificateHospitalization: MedicalCertificateHospitalization
+	medicalCertificateMedicalAttendance: MedicalCertificateMedicalAttendance
+	medicalCertificateMentalHealth: MedicalCertificateMentalHealth
+	medicalCertificatePhysicalHealth: MedicalCertificatePhysicalHealth
+	medicalCertificateRestrictedWork: MedicalCertificateRestrictedWork
+	medicalCertificateSickLeave: MedicalCertificateSickLeave
+	medicalExaminationRecord: MedicalExaminationRecord
+	medicalFees: [MedicalFee]
+	medicationHeaders: [MedicationHeader]
+	pcareExamination: PcareExamination
+	patientVitalInformations: [PatientVitalInformation]
+	prescriptionHeaders: [PrescriptionHeader]
+	sep: Sep
+	sampleCollectionInformations: [SampleCollectionInformation]
+	vaccinationOrders: [VaccinationOrder]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type RegistrationAudit {
+	entity: Registration
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input RegistrationInput {
+	id: ID
+	created: String
+	modified: String
+	actualInDate: String
+	admissionDiagnosis: String
+	bookedTreatmentClass: String
+	cito: Boolean
+	deathCertificateNo: String
+	dismissalDate: String
+	dismissalReferral: Boolean
+	dismissalReferralDetail: String
+	dismissalReferralType: String
+	dismissalReferringNotes: String
+	dismissalType: String
+	duration: Int
+	instruction: String
+	isUnknownPatient: Boolean
+	mcuPackage: String
+	notes: String
+	oneDayCare: Boolean
+	otherReferredFacility: String
+	otherReferredStaff: String
+	parentRegistrationNumber: String
+	patientIsReferredBack: Boolean
+	purpose: String
+	queueNo: Int
+	referral: Boolean
+	referralNotes: String
+	referralNumber: String
+	referralType: String
+	registrationNumber: String
+	registrationStatus: String
+	scheduledDate: String
+	shift: String
+	timeOfDeath: String
+	treatmentClass: String
+	uploadedDateTime: String
+	visitStatus: String
+	isAnAppointment: Boolean
+	kodepoli: String
+	printLabel: [FileInput!]
+	printWristband: [FileInput!]
+	supportingDocument: [FileInput!]
+	admissionICD10: DiagnosesAndProceduresInput
+	admissionICD10Id: ID
+	admissionICD9CM: DiagnosesAndProceduresInput
+	admissionICD9CMId: ID
+	dismissalReferringFacility: HealthFacilityInput
+	dismissalReferringFacilityId: ID
+	dismissalReferringStaff: StaffInput
+	dismissalReferringStaffId: ID
+	referringUnit: ServiceInput
+	referringUnitId: ID
+	referringFacility: HealthFacilityInput
+	referringFacilityId: ID
+	diagnosticStaffExaminationSummary: DiagnosticStaffExaminationSummaryInput
+	diagnosticStaffExaminationSummaryId: ID
+	bedFacility: BedFacilityInput
+	bedFacilityId: ID
+	examinationItems: [ExaminationItemInput]
+	examinationItemsIds: [ID!]
+	patientVisit: PatientVisitInput
+	patientVisitId: ID
+	service: ServiceInput
+	serviceId: ID
+	staff: StaffInput
+	staffId: ID
+	requestedBy: StaffInput
+	requestedById: ID
+	bpjsPRBDetail: BpjsPRBDetailInput
+	bpjsPRBDetailId: ID
+	bpjsPcareRegistrations: BpjsPcareRegistrationsInput
+	bpjsPcareRegistrationsId: ID
+	bpjsSEP: BpjsSEPInput
+	bpjsSEPId: ID
+	bedReserves: [BedReserveInput]
+	bedReservesIds: [ID!]
+	diagnosticExaminationResults: [DiagnosticExaminationResultsInput]
+	diagnosticExaminationResultsIds: [ID!]
+	fluidBalanceDetails: [FluidBalanceDetailInput]
+	fluidBalanceDetailsIds: [ID!]
+	informedConsents: [InformedConsentInput]
+	informedConsentsIds: [ID!]
+	invoiceItems: [InvoiceItemInput]
+	invoiceItemsIds: [ID!]
+	medicalCertificateDischargeResume: MedicalCertificateDischargeResumeInput
+	medicalCertificateDischargeResumeId: ID
+	medicalCertificateBirth: MedicalCertificateBirthInput
+	medicalCertificateBirthId: ID
+	medicalCertificateHospitalization: MedicalCertificateHospitalizationInput
+	medicalCertificateHospitalizationId: ID
+	medicalCertificateMedicalAttendance: MedicalCertificateMedicalAttendanceInput
+	medicalCertificateMedicalAttendanceId: ID
+	medicalCertificateMentalHealth: MedicalCertificateMentalHealthInput
+	medicalCertificateMentalHealthId: ID
+	medicalCertificatePhysicalHealth: MedicalCertificatePhysicalHealthInput
+	medicalCertificatePhysicalHealthId: ID
+	medicalCertificateRestrictedWork: MedicalCertificateRestrictedWorkInput
+	medicalCertificateRestrictedWorkId: ID
+	medicalCertificateSickLeave: MedicalCertificateSickLeaveInput
+	medicalCertificateSickLeaveId: ID
+	medicalExaminationRecord: MedicalExaminationRecordInput
+	medicalExaminationRecordId: ID
+	medicalFees: [MedicalFeeInput]
+	medicalFeesIds: [ID!]
+	medicationHeaders: [MedicationHeaderInput]
+	medicationHeadersIds: [ID!]
+	pcareExamination: PcareExaminationInput
+	pcareExaminationId: ID
+	patientVitalInformations: [PatientVitalInformationInput]
+	patientVitalInformationsIds: [ID!]
+	prescriptionHeaders: [PrescriptionHeaderInput]
+	prescriptionHeadersIds: [ID!]
+	sep: SepInput
+	sepId: ID
+	sampleCollectionInformations: [SampleCollectionInformationInput]
+	sampleCollectionInformationsIds: [ID!]
+	vaccinationOrders: [VaccinationOrderInput]
+	vaccinationOrdersIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countRegistrations(where: [[Where!]!]): Int!
+	lastRegistrations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [Registration!]!
+	registrations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [Registration!]!
+	registrationById(id: ID!): Registration
+	registrationAudits: [RegistrationAudit!]!
+	registrationAuditsByEntityId(registrationId: ID!): [RegistrationAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createRegistration(registration: RegistrationInput!, persistRelations: Boolean): Registration!
+	createAllRegistration(registrations: [RegistrationInput!]!): [Registration!]!
+	updateRegistration(registration: RegistrationInput!, persistRelations: Boolean): Registration!
+	updateAllRegistration(registrations: [RegistrationInput!]!): [Registration!]!
+	deleteRegistrationById(registrationId: ID!): ID!
+	deleteAllRegistrationByIds(registrationIds: [ID!]!): [ID!]!
+	deleteRegistrationExcludingIds(registrationIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

@@ -1,0 +1,126 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type PatientEmploymentDetail {
+	id: ID
+	created: String
+	modified: String
+	bureauNo: String
+	company: String
+	costCenter: String
+	department: String
+	dependantID: String
+	dependantType: String
+	designatedWorkPlace: String
+	district: String
+	employeeID: String
+	employeeType: String
+	employmentStartDate: String
+	forwardingAddress: String
+	industryNo: String
+	legalDIsability: String
+	legalDisabilityNotes: String
+	medicalStaffCode: String
+	name: String
+	occupationalType: String
+	onsiteStatus: String
+	passportCountry: String
+	passportNo: String
+	position: String
+	postalAddress: String
+	relationship: String
+	sponsor: String
+	universalID: String
+	workerInsurance: String
+	workerInsuranceNo: String
+	patientGeneralInfo: PatientGeneralInfo
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type PatientEmploymentDetailAudit {
+	entity: PatientEmploymentDetail
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input PatientEmploymentDetailInput {
+	id: ID
+	created: String
+	modified: String
+	bureauNo: String
+	company: String
+	costCenter: String
+	department: String
+	dependantID: String
+	dependantType: String
+	designatedWorkPlace: String
+	district: String
+	employeeID: String
+	employeeType: String
+	employmentStartDate: String
+	forwardingAddress: String
+	industryNo: String
+	legalDIsability: String
+	legalDisabilityNotes: String
+	medicalStaffCode: String
+	name: String
+	occupationalType: String
+	onsiteStatus: String
+	passportCountry: String
+	passportNo: String
+	position: String
+	postalAddress: String
+	relationship: String
+	sponsor: String
+	universalID: String
+	workerInsurance: String
+	workerInsuranceNo: String
+	patientGeneralInfo: PatientGeneralInfoInput
+	patientGeneralInfoId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countPatientEmploymentDetails(where: [[Where!]!]): Int!
+	lastPatientEmploymentDetails(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [PatientEmploymentDetail!]!
+	patientEmploymentDetails(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [PatientEmploymentDetail!]!
+	patientEmploymentDetailById(id: ID!): PatientEmploymentDetail
+	patientEmploymentDetailAudits: [PatientEmploymentDetailAudit!]!
+	patientEmploymentDetailAuditsByEntityId(patientEmploymentDetailId: ID!): [PatientEmploymentDetailAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createPatientEmploymentDetail(patientEmploymentDetail: PatientEmploymentDetailInput!, persistRelations: Boolean): PatientEmploymentDetail!
+	createAllPatientEmploymentDetail(patientEmploymentDetails: [PatientEmploymentDetailInput!]!): [PatientEmploymentDetail!]!
+	updatePatientEmploymentDetail(patientEmploymentDetail: PatientEmploymentDetailInput!, persistRelations: Boolean): PatientEmploymentDetail!
+	updateAllPatientEmploymentDetail(patientEmploymentDetails: [PatientEmploymentDetailInput!]!): [PatientEmploymentDetail!]!
+	deletePatientEmploymentDetailById(patientEmploymentDetailId: ID!): ID!
+	deleteAllPatientEmploymentDetailByIds(patientEmploymentDetailIds: [ID!]!): [ID!]!
+	deletePatientEmploymentDetailExcludingIds(patientEmploymentDetailIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

@@ -1,0 +1,90 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type DiagnosticStaffExaminationSummary {
+	id: ID
+	created: String
+	modified: String
+	additionalNotes: String
+	conclusion: String
+	examinationLocation: String
+	medicalTranscriber: String
+	referingUnit: String
+	referringRoom: String
+	responsibleDoctor: String
+	staff: Staff
+	diagnosisExaminationRecord: DiagnosisExaminationRecord
+	registration: Registration
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type DiagnosticStaffExaminationSummaryAudit {
+	entity: DiagnosticStaffExaminationSummary
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input DiagnosticStaffExaminationSummaryInput {
+	id: ID
+	created: String
+	modified: String
+	additionalNotes: String
+	conclusion: String
+	examinationLocation: String
+	medicalTranscriber: String
+	referingUnit: String
+	referringRoom: String
+	responsibleDoctor: String
+	staff: StaffInput
+	staffId: ID
+	diagnosisExaminationRecord: DiagnosisExaminationRecordInput
+	diagnosisExaminationRecordId: ID
+	registration: RegistrationInput
+	registrationId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countDiagnosticStaffExaminationSummarys(where: [[Where!]!]): Int!
+	lastDiagnosticStaffExaminationSummarys(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [DiagnosticStaffExaminationSummary!]!
+	diagnosticStaffExaminationSummarys(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [DiagnosticStaffExaminationSummary!]!
+	diagnosticStaffExaminationSummaryById(id: ID!): DiagnosticStaffExaminationSummary
+	diagnosticStaffExaminationSummaryAudits: [DiagnosticStaffExaminationSummaryAudit!]!
+	diagnosticStaffExaminationSummaryAuditsByEntityId(diagnosticStaffExaminationSummaryId: ID!): [DiagnosticStaffExaminationSummaryAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createDiagnosticStaffExaminationSummary(diagnosticStaffExaminationSummary: DiagnosticStaffExaminationSummaryInput!, persistRelations: Boolean): DiagnosticStaffExaminationSummary!
+	createAllDiagnosticStaffExaminationSummary(diagnosticStaffExaminationSummarys: [DiagnosticStaffExaminationSummaryInput!]!): [DiagnosticStaffExaminationSummary!]!
+	updateDiagnosticStaffExaminationSummary(diagnosticStaffExaminationSummary: DiagnosticStaffExaminationSummaryInput!, persistRelations: Boolean): DiagnosticStaffExaminationSummary!
+	updateAllDiagnosticStaffExaminationSummary(diagnosticStaffExaminationSummarys: [DiagnosticStaffExaminationSummaryInput!]!): [DiagnosticStaffExaminationSummary!]!
+	deleteDiagnosticStaffExaminationSummaryById(diagnosticStaffExaminationSummaryId: ID!): ID!
+	deleteAllDiagnosticStaffExaminationSummaryByIds(diagnosticStaffExaminationSummaryIds: [ID!]!): [ID!]!
+	deleteDiagnosticStaffExaminationSummaryExcludingIds(diagnosticStaffExaminationSummaryIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

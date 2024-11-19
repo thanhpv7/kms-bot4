@@ -1,0 +1,153 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BpjsPcareRiwayatKunjungan {
+	id: ID
+	created: String
+	modified: String
+	asuransi: String
+	beratbadan: String
+	catatan: String
+	diagnosa: String
+	diagnosa2: String
+	diagnosa3: String
+	diastole: String
+	dokter: String
+	goldarah: String
+	heartrate: String
+	hubungankeluarga: String
+	jeniskelas: String
+	jeniskunjungan: String
+	jenispeserta: String
+	keluhan: String
+	kesadaran: String
+	kodeppkgigi: String
+	kodeppkpeserta: String
+	nama: String
+	nohp: String
+	noktp: String
+	nokartu: String
+	nokunjungan: String
+	pemeriksaanfisiklain: String
+	poli: String
+	polirujukinternal: String
+	polirujuklanjut: String
+	progprolanis: String
+	providerasalrujuk: String
+	providerpelayanan: String
+	providerrujuklanjut: String
+	respiratoryrate: String
+	rujukbalik: String
+	sex: String
+	sistole: String
+	statuspulang: String
+	tglakhirberlaku: String
+	tgllahir: String
+	tglmulaiaktif: String
+	tglpulang: String
+	tglkunjungan: String
+	tinggibadan: String
+	tingkatpelayanan: String
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BpjsPcareRiwayatKunjunganAudit {
+	entity: BpjsPcareRiwayatKunjungan
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BpjsPcareRiwayatKunjunganInput {
+	id: ID
+	created: String
+	modified: String
+	asuransi: String
+	beratbadan: String
+	catatan: String
+	diagnosa: String
+	diagnosa2: String
+	diagnosa3: String
+	diastole: String
+	dokter: String
+	goldarah: String
+	heartrate: String
+	hubungankeluarga: String
+	jeniskelas: String
+	jeniskunjungan: String
+	jenispeserta: String
+	keluhan: String
+	kesadaran: String
+	kodeppkgigi: String
+	kodeppkpeserta: String
+	nama: String
+	nohp: String
+	noktp: String
+	nokartu: String
+	nokunjungan: String
+	pemeriksaanfisiklain: String
+	poli: String
+	polirujukinternal: String
+	polirujuklanjut: String
+	progprolanis: String
+	providerasalrujuk: String
+	providerpelayanan: String
+	providerrujuklanjut: String
+	respiratoryrate: String
+	rujukbalik: String
+	sex: String
+	sistole: String
+	statuspulang: String
+	tglakhirberlaku: String
+	tgllahir: String
+	tglmulaiaktif: String
+	tglpulang: String
+	tglkunjungan: String
+	tinggibadan: String
+	tingkatpelayanan: String
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBpjsPcareRiwayatKunjungans(where: [[Where!]!]): Int!
+	lastBpjsPcareRiwayatKunjungans(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BpjsPcareRiwayatKunjungan!]!
+	bpjsPcareRiwayatKunjungans(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BpjsPcareRiwayatKunjungan!]!
+	bpjsPcareRiwayatKunjunganById(id: ID!): BpjsPcareRiwayatKunjungan
+	bpjsPcareRiwayatKunjunganAudits: [BpjsPcareRiwayatKunjunganAudit!]!
+	bpjsPcareRiwayatKunjunganAuditsByEntityId(bpjsPcareRiwayatKunjunganId: ID!): [BpjsPcareRiwayatKunjunganAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBpjsPcareRiwayatKunjungan(bpjsPcareRiwayatKunjungan: BpjsPcareRiwayatKunjunganInput!, persistRelations: Boolean): BpjsPcareRiwayatKunjungan!
+	createAllBpjsPcareRiwayatKunjungan(bpjsPcareRiwayatKunjungans: [BpjsPcareRiwayatKunjunganInput!]!): [BpjsPcareRiwayatKunjungan!]!
+	updateBpjsPcareRiwayatKunjungan(bpjsPcareRiwayatKunjungan: BpjsPcareRiwayatKunjunganInput!, persistRelations: Boolean): BpjsPcareRiwayatKunjungan!
+	updateAllBpjsPcareRiwayatKunjungan(bpjsPcareRiwayatKunjungans: [BpjsPcareRiwayatKunjunganInput!]!): [BpjsPcareRiwayatKunjungan!]!
+	deleteBpjsPcareRiwayatKunjunganById(bpjsPcareRiwayatKunjunganId: ID!): ID!
+	deleteAllBpjsPcareRiwayatKunjunganByIds(bpjsPcareRiwayatKunjunganIds: [ID!]!): [ID!]!
+	deleteBpjsPcareRiwayatKunjunganExcludingIds(bpjsPcareRiwayatKunjunganIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

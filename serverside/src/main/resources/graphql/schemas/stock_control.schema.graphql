@@ -1,0 +1,92 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type StockControl {
+	id: ID
+	created: String
+	modified: String
+	availableQty: Float
+	averageCost: Float
+	inTransitQty: Float
+	maxLevel: Float
+	minLevel: Float
+	onHandQty: Float
+	onReservedQty: Float
+	uoi: String
+	location: Location
+	stockCatalogue: StockCatalogue
+	warehouse: Warehouse
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type StockControlAudit {
+	entity: StockControl
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input StockControlInput {
+	id: ID
+	created: String
+	modified: String
+	availableQty: Float
+	averageCost: Float
+	inTransitQty: Float
+	maxLevel: Float
+	minLevel: Float
+	onHandQty: Float
+	onReservedQty: Float
+	uoi: String
+	location: LocationInput
+	locationId: ID
+	stockCatalogue: StockCatalogueInput
+	stockCatalogueId: ID
+	warehouse: WarehouseInput
+	warehouseId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countStockControls(where: [[Where!]!]): Int!
+	lastStockControls(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [StockControl!]!
+	stockControls(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [StockControl!]!
+	stockControlById(id: ID!): StockControl
+	stockControlAudits: [StockControlAudit!]!
+	stockControlAuditsByEntityId(stockControlId: ID!): [StockControlAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createStockControl(stockControl: StockControlInput!, persistRelations: Boolean): StockControl!
+	createAllStockControl(stockControls: [StockControlInput!]!): [StockControl!]!
+	updateStockControl(stockControl: StockControlInput!, persistRelations: Boolean): StockControl!
+	updateAllStockControl(stockControls: [StockControlInput!]!): [StockControl!]!
+	deleteStockControlById(stockControlId: ID!): ID!
+	deleteAllStockControlByIds(stockControlIds: [ID!]!): [ID!]!
+	deleteStockControlExcludingIds(stockControlIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

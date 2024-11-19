@@ -1,0 +1,406 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BodyChartExamination {
+	id: ID
+	created: String
+	modified: String
+	bc01Objective: String
+	bc01Subjective: String
+	bc02Objective: String
+	bc02Subjective: String
+	bc03Objective: String
+	bc03Subjective: String
+	bc04Objective: String
+	bc04Subjective: String
+	bc05Objective: String
+	bc05Subjective: String
+	bc06Objective: String
+	bc06Subjective: String
+	bc07Objective: String
+	bc07Subjective: String
+	bc08Objective: String
+	bc08Subjective: String
+	bc09Objective: String
+	bc09Subjective: String
+	bc10Objective: String
+	bc10Subjective: String
+	bc11Objective: String
+	bc11Subjective: String
+	bc12Objective: String
+	bc12Subjective: String
+	bc13Objective: String
+	bc13Subjective: String
+	bc14Objective: String
+	bc14Subjective: String
+	bc15Objective: String
+	bc15Subjective: String
+	bc16Objective: String
+	bc16Subjective: String
+	bc17Objective: String
+	bc17Subjective: String
+	bc18Objective: String
+	bc18Subjective: String
+	bc19Objective: String
+	bc19Subjective: String
+	bc20Objective: String
+	bc20Subjective: String
+	bc21Objective: String
+	bc21Subjective: String
+	bc22Objective: String
+	bc22Subjective: String
+	bc23Objective: String
+	bc23Subjective: String
+	bc24Objective: String
+	bc24Subjective: String
+	bc25Objective: String
+	bc25Subjective: String
+	bc26Objective: String
+	bc26Subjective: String
+	bc27Objective: String
+	bc27Subjective: String
+	bc28Objective: String
+	bc28Subjective: String
+	bc29Objective: String
+	bc29Subjective: String
+	bc30Objective: String
+	bc30Subjective: String
+	bc31Objective: String
+	bc31Subjective: String
+	bc32Objective: String
+	bc32Subjective: String
+	bc33Objective: String
+	bc33Subjective: String
+	bc34Objective: String
+	bc34Subjective: String
+	bc35Objective: String
+	bc35Subjective: String
+	bc36Objective: String
+	bc36Subjective: String
+	bc37Objective: String
+	bc37Subjective: String
+	bc38Objective: String
+	bc38Subjective: String
+	bc39Objective: String
+	bc39Subjective: String
+	bc40Objective: String
+	bc40Subjective: String
+	bc41Objective: String
+	bc41Subjective: String
+	bc42Objective: String
+	bc42Subjective: String
+	bc43Objective: String
+	bc43Subjective: String
+	bc44Objective: String
+	bc44Subjective: String
+	bc45Objective: String
+	bc45Subjective: String
+	bc46Objective: String
+	bc46Subjective: String
+	bc47Objective: String
+	bc47Subjective: String
+	bc48Objective: String
+	bc48Subjective: String
+	bc49Objective: String
+	bc49Subjective: String
+	bc50Objective: String
+	bc50Subjective: String
+	bc51Objective: String
+	bc51Subjective: String
+	bc52Objective: String
+	bc52Subjective: String
+	bc53Objective: String
+	bc53Subjective: String
+	bc54Objective: String
+	bc54Subjective: String
+	bc55Objective: String
+	bc55Subjective: String
+	bc56Objective: String
+	bc56Subjective: String
+	bc57Objective: String
+	bc57Subjective: String
+	bc58Objective: String
+	bc58Subjective: String
+	bc59Objective: String
+	bc59Subjective: String
+	bc60Objective: String
+	bc60Subjective: String
+	bc61Objective: String
+	bc61Subjective: String
+	bc62Objective: String
+	bc62Subjective: String
+	bc63Objective: String
+	bc63Subjective: String
+	bc64Objective: String
+	bc64Subjective: String
+	bc65Objective: String
+	bc65Subjective: String
+	bc66Objective: String
+	bc66Subjective: String
+	bc67Objective: String
+	bc67Subjective: String
+	bc68Objective: String
+	bc68Subjective: String
+	bc69Objective: String
+	bc69Subjective: String
+	bc70Objective: String
+	bc70Subjective: String
+	bc71Objective: String
+	bc71Subjective: String
+	bc72Objective: String
+	bc72Subjective: String
+	bc73Objective: String
+	bc73Subjective: String
+	bc74Objective: String
+	bc74Subjective: String
+	bc75Objective: String
+	bc75Subjective: String
+	bc76Objective: String
+	bc76Subjective: String
+	bc77Objective: String
+	bc77Subjective: String
+	bc78Objective: String
+	bc78Subjective: String
+	bc79Objective: String
+	bc79Subjective: String
+	bc80Objective: String
+	bc80Subjective: String
+	bc81Objective: String
+	bc81Subjective: String
+	bc82Objective: String
+	bc82Subjective: String
+	bc83Objective: String
+	bc83Subjective: String
+	bc84Objective: String
+	bc84Subjective: String
+	medicalExaminationRecord: MedicalExaminationRecord
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BodyChartExaminationAudit {
+	entity: BodyChartExamination
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BodyChartExaminationInput {
+	id: ID
+	created: String
+	modified: String
+	bc01Objective: String
+	bc01Subjective: String
+	bc02Objective: String
+	bc02Subjective: String
+	bc03Objective: String
+	bc03Subjective: String
+	bc04Objective: String
+	bc04Subjective: String
+	bc05Objective: String
+	bc05Subjective: String
+	bc06Objective: String
+	bc06Subjective: String
+	bc07Objective: String
+	bc07Subjective: String
+	bc08Objective: String
+	bc08Subjective: String
+	bc09Objective: String
+	bc09Subjective: String
+	bc10Objective: String
+	bc10Subjective: String
+	bc11Objective: String
+	bc11Subjective: String
+	bc12Objective: String
+	bc12Subjective: String
+	bc13Objective: String
+	bc13Subjective: String
+	bc14Objective: String
+	bc14Subjective: String
+	bc15Objective: String
+	bc15Subjective: String
+	bc16Objective: String
+	bc16Subjective: String
+	bc17Objective: String
+	bc17Subjective: String
+	bc18Objective: String
+	bc18Subjective: String
+	bc19Objective: String
+	bc19Subjective: String
+	bc20Objective: String
+	bc20Subjective: String
+	bc21Objective: String
+	bc21Subjective: String
+	bc22Objective: String
+	bc22Subjective: String
+	bc23Objective: String
+	bc23Subjective: String
+	bc24Objective: String
+	bc24Subjective: String
+	bc25Objective: String
+	bc25Subjective: String
+	bc26Objective: String
+	bc26Subjective: String
+	bc27Objective: String
+	bc27Subjective: String
+	bc28Objective: String
+	bc28Subjective: String
+	bc29Objective: String
+	bc29Subjective: String
+	bc30Objective: String
+	bc30Subjective: String
+	bc31Objective: String
+	bc31Subjective: String
+	bc32Objective: String
+	bc32Subjective: String
+	bc33Objective: String
+	bc33Subjective: String
+	bc34Objective: String
+	bc34Subjective: String
+	bc35Objective: String
+	bc35Subjective: String
+	bc36Objective: String
+	bc36Subjective: String
+	bc37Objective: String
+	bc37Subjective: String
+	bc38Objective: String
+	bc38Subjective: String
+	bc39Objective: String
+	bc39Subjective: String
+	bc40Objective: String
+	bc40Subjective: String
+	bc41Objective: String
+	bc41Subjective: String
+	bc42Objective: String
+	bc42Subjective: String
+	bc43Objective: String
+	bc43Subjective: String
+	bc44Objective: String
+	bc44Subjective: String
+	bc45Objective: String
+	bc45Subjective: String
+	bc46Objective: String
+	bc46Subjective: String
+	bc47Objective: String
+	bc47Subjective: String
+	bc48Objective: String
+	bc48Subjective: String
+	bc49Objective: String
+	bc49Subjective: String
+	bc50Objective: String
+	bc50Subjective: String
+	bc51Objective: String
+	bc51Subjective: String
+	bc52Objective: String
+	bc52Subjective: String
+	bc53Objective: String
+	bc53Subjective: String
+	bc54Objective: String
+	bc54Subjective: String
+	bc55Objective: String
+	bc55Subjective: String
+	bc56Objective: String
+	bc56Subjective: String
+	bc57Objective: String
+	bc57Subjective: String
+	bc58Objective: String
+	bc58Subjective: String
+	bc59Objective: String
+	bc59Subjective: String
+	bc60Objective: String
+	bc60Subjective: String
+	bc61Objective: String
+	bc61Subjective: String
+	bc62Objective: String
+	bc62Subjective: String
+	bc63Objective: String
+	bc63Subjective: String
+	bc64Objective: String
+	bc64Subjective: String
+	bc65Objective: String
+	bc65Subjective: String
+	bc66Objective: String
+	bc66Subjective: String
+	bc67Objective: String
+	bc67Subjective: String
+	bc68Objective: String
+	bc68Subjective: String
+	bc69Objective: String
+	bc69Subjective: String
+	bc70Objective: String
+	bc70Subjective: String
+	bc71Objective: String
+	bc71Subjective: String
+	bc72Objective: String
+	bc72Subjective: String
+	bc73Objective: String
+	bc73Subjective: String
+	bc74Objective: String
+	bc74Subjective: String
+	bc75Objective: String
+	bc75Subjective: String
+	bc76Objective: String
+	bc76Subjective: String
+	bc77Objective: String
+	bc77Subjective: String
+	bc78Objective: String
+	bc78Subjective: String
+	bc79Objective: String
+	bc79Subjective: String
+	bc80Objective: String
+	bc80Subjective: String
+	bc81Objective: String
+	bc81Subjective: String
+	bc82Objective: String
+	bc82Subjective: String
+	bc83Objective: String
+	bc83Subjective: String
+	bc84Objective: String
+	bc84Subjective: String
+	medicalExaminationRecord: MedicalExaminationRecordInput
+	medicalExaminationRecordId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBodyChartExaminations(where: [[Where!]!]): Int!
+	lastBodyChartExaminations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BodyChartExamination!]!
+	bodyChartExaminations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BodyChartExamination!]!
+	bodyChartExaminationById(id: ID!): BodyChartExamination
+	bodyChartExaminationAudits: [BodyChartExaminationAudit!]!
+	bodyChartExaminationAuditsByEntityId(bodyChartExaminationId: ID!): [BodyChartExaminationAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBodyChartExamination(bodyChartExamination: BodyChartExaminationInput!, persistRelations: Boolean): BodyChartExamination!
+	createAllBodyChartExamination(bodyChartExaminations: [BodyChartExaminationInput!]!): [BodyChartExamination!]!
+	updateBodyChartExamination(bodyChartExamination: BodyChartExaminationInput!, persistRelations: Boolean): BodyChartExamination!
+	updateAllBodyChartExamination(bodyChartExaminations: [BodyChartExaminationInput!]!): [BodyChartExamination!]!
+	deleteBodyChartExaminationById(bodyChartExaminationId: ID!): ID!
+	deleteAllBodyChartExaminationByIds(bodyChartExaminationIds: [ID!]!): [ID!]!
+	deleteBodyChartExaminationExcludingIds(bodyChartExaminationIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

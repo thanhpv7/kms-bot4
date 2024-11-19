@@ -1,0 +1,315 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type MedicalExaminationRecord {
+	id: ID
+	created: String
+	modified: String
+	accidentalSubType: String
+	accidentalType: String
+	additionLeftEye: String
+	additionRightEye: String
+	additionalNotes: String
+	bmi: Float
+	bpStandingDiastole: Int
+	bpStandingSystole: Int
+	colorBlindness: String
+	complication: String
+	condition: String
+	consciousness: String
+	contraseptiveMethod: String
+	correctionLeftEye: String
+	correctionRightEye: String
+	decayed: String
+	dentalProcedure: String
+	diastema: Boolean
+	diastemaNotes: String
+	diastole: Int
+	examinationSubCase: String
+	eyePositionLeftEye: String
+	eyePositionRightEye: String
+	familyPlanning: Boolean
+	familyPlanningCase: String
+	filled: String
+	gcsEyes: String
+	gcsMotor: String
+	gcsVerbal: String
+	hearingLossCategory: String
+	hearingLossNotes: String
+	hearingTestMethod: String
+	hearingTestNotes: String
+	height: Float
+	heightScale: String
+	intraocularPressureLeftEye: String
+	intraocularPressureRightEye: String
+	missing: String
+	muscleBalanceLeftEye: String
+	muscleBalanceRightEye: String
+	nutritionStatus: String
+	objective: String
+	occlusion: String
+	ocularFunduscopyLeftEye: String
+	ocularFunduscopyRightEye: String
+	otherDentalNotes: String
+	oxygenSaturation: Float
+	painScale: Int
+	painScaleUsed: String
+	palatum: String
+	photographType: String
+	plan: String
+	previousContraceptiveMethod: String
+	psychiatryCase: String
+	pulse: Int
+	pulseRegularity: String
+	pulseStrength: String
+	purpose: String
+	respiratory: Float
+	riskFallScale: Int
+	riskFallScaleUsed: String
+	rontgenPhotographType: String
+	serviceCase: String
+	sideEffects: String
+	subjective: String
+	systole: Int
+	temperature: Float
+	temperatureScale: String
+	therapy: String
+	toothAnomaly: Boolean
+	toothAnomalyNotes: String
+	torusMandibularis: String
+	torusPalatinus: String
+	totalGCSScore: Float
+	totalPhotograph: String
+	totalRontgenPhotograph: String
+	visitType: String
+	visualAcuityLeftEye: String
+	visualAcuityRightEye: String
+	visualFieldLeftEye: String
+	visualFieldRightEye: String
+	waistCircumference: Float
+	waistCircumferenceUnit: String
+	weight: Float
+	weightScale: String
+	doctor: Staff
+	inpatientMedicalExaminationRecord: InpatientMedicalExaminationRecord
+	registration: Registration
+	medicalTranscriber: Staff
+	nurse: Staff
+	amendmentDetails: [AmendmentDetail]
+	birthHistory: BirthHistory
+	bodyChartExamination: BodyChartExamination
+	coTreatingDoctors: [CoTreatingDoctor]
+	dailyCareCPPTs: [DailyCareCPPT]
+	deliveryMedicalExaminationRecord: DeliveryMedicalExaminationRecord
+	diagnosisExaminationRecords: [DiagnosisExaminationRecord]
+	diagnosisNandas: [DiagnosisNanda]
+	entExamination: EntExamination
+	emergencyMedicationExaminationRecord: EmergencyMedicalExaminationRecord
+	formulirKonselingTesHiv: FormulirKonselingTesHiv
+	hemodialysisExamination: HemodialysisExamination
+	medicalExaminationRecordDischargeSummary: MedicalExaminationRecordDischargeSummary
+	medicalRecordInitialChecklist: MedicalRecordInitialChecklist
+	medicalRecordNextVerificationChecklist: MedicalRecordNextVerificationChecklist
+	nurseVitalSignMeasurement: NurseVitalSignMeasurement
+	obstetricAndGynecologyHistory: ObstetricAndGynecologyHistory
+	odontogramExamination: OdontogramExamination
+	operatingTheaterMedicalExaminationRecord: OperatingTheaterMedicalExaminationRecord
+	ophthalmologyExamination: OphthalmologyExamination
+	roomTransfers: [RoomTransfer]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type MedicalExaminationRecordAudit {
+	entity: MedicalExaminationRecord
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input MedicalExaminationRecordInput {
+	id: ID
+	created: String
+	modified: String
+	accidentalSubType: String
+	accidentalType: String
+	additionLeftEye: String
+	additionRightEye: String
+	additionalNotes: String
+	bmi: Float
+	bpStandingDiastole: Int
+	bpStandingSystole: Int
+	colorBlindness: String
+	complication: String
+	condition: String
+	consciousness: String
+	contraseptiveMethod: String
+	correctionLeftEye: String
+	correctionRightEye: String
+	decayed: String
+	dentalProcedure: String
+	diastema: Boolean
+	diastemaNotes: String
+	diastole: Int
+	examinationSubCase: String
+	eyePositionLeftEye: String
+	eyePositionRightEye: String
+	familyPlanning: Boolean
+	familyPlanningCase: String
+	filled: String
+	gcsEyes: String
+	gcsMotor: String
+	gcsVerbal: String
+	hearingLossCategory: String
+	hearingLossNotes: String
+	hearingTestMethod: String
+	hearingTestNotes: String
+	height: Float
+	heightScale: String
+	intraocularPressureLeftEye: String
+	intraocularPressureRightEye: String
+	missing: String
+	muscleBalanceLeftEye: String
+	muscleBalanceRightEye: String
+	nutritionStatus: String
+	objective: String
+	occlusion: String
+	ocularFunduscopyLeftEye: String
+	ocularFunduscopyRightEye: String
+	otherDentalNotes: String
+	oxygenSaturation: Float
+	painScale: Int
+	painScaleUsed: String
+	palatum: String
+	photographType: String
+	plan: String
+	previousContraceptiveMethod: String
+	psychiatryCase: String
+	pulse: Int
+	pulseRegularity: String
+	pulseStrength: String
+	purpose: String
+	respiratory: Float
+	riskFallScale: Int
+	riskFallScaleUsed: String
+	rontgenPhotographType: String
+	serviceCase: String
+	sideEffects: String
+	subjective: String
+	systole: Int
+	temperature: Float
+	temperatureScale: String
+	therapy: String
+	toothAnomaly: Boolean
+	toothAnomalyNotes: String
+	torusMandibularis: String
+	torusPalatinus: String
+	totalGCSScore: Float
+	totalPhotograph: String
+	totalRontgenPhotograph: String
+	visitType: String
+	visualAcuityLeftEye: String
+	visualAcuityRightEye: String
+	visualFieldLeftEye: String
+	visualFieldRightEye: String
+	waistCircumference: Float
+	waistCircumferenceUnit: String
+	weight: Float
+	weightScale: String
+	doctor: StaffInput
+	doctorId: ID
+	inpatientMedicalExaminationRecord: InpatientMedicalExaminationRecordInput
+	inpatientMedicalExaminationRecordId: ID
+	registration: RegistrationInput
+	registrationId: ID
+	medicalTranscriber: StaffInput
+	medicalTranscriberId: ID
+	nurse: StaffInput
+	nurseId: ID
+	amendmentDetails: [AmendmentDetailInput]
+	amendmentDetailsIds: [ID!]
+	birthHistory: BirthHistoryInput
+	birthHistoryId: ID
+	bodyChartExamination: BodyChartExaminationInput
+	bodyChartExaminationId: ID
+	coTreatingDoctors: [CoTreatingDoctorInput]
+	coTreatingDoctorsIds: [ID!]
+	dailyCareCPPTs: [DailyCareCPPTInput]
+	dailyCareCPPTsIds: [ID!]
+	deliveryMedicalExaminationRecord: DeliveryMedicalExaminationRecordInput
+	deliveryMedicalExaminationRecordId: ID
+	diagnosisExaminationRecords: [DiagnosisExaminationRecordInput]
+	diagnosisExaminationRecordsIds: [ID!]
+	diagnosisNandas: [DiagnosisNandaInput]
+	diagnosisNandasIds: [ID!]
+	entExamination: EntExaminationInput
+	entExaminationId: ID
+	emergencyMedicationExaminationRecord: EmergencyMedicalExaminationRecordInput
+	emergencyMedicationExaminationRecordId: ID
+	formulirKonselingTesHiv: FormulirKonselingTesHivInput
+	formulirKonselingTesHivId: ID
+	hemodialysisExamination: HemodialysisExaminationInput
+	hemodialysisExaminationId: ID
+	medicalExaminationRecordDischargeSummary: MedicalExaminationRecordDischargeSummaryInput
+	medicalExaminationRecordDischargeSummaryId: ID
+	medicalRecordInitialChecklist: MedicalRecordInitialChecklistInput
+	medicalRecordInitialChecklistId: ID
+	medicalRecordNextVerificationChecklist: MedicalRecordNextVerificationChecklistInput
+	medicalRecordNextVerificationChecklistId: ID
+	nurseVitalSignMeasurement: NurseVitalSignMeasurementInput
+	nurseVitalSignMeasurementId: ID
+	obstetricAndGynecologyHistory: ObstetricAndGynecologyHistoryInput
+	obstetricAndGynecologyHistoryId: ID
+	odontogramExamination: OdontogramExaminationInput
+	odontogramExaminationId: ID
+	operatingTheaterMedicalExaminationRecord: OperatingTheaterMedicalExaminationRecordInput
+	operatingTheaterMedicalExaminationRecordId: ID
+	ophthalmologyExamination: OphthalmologyExaminationInput
+	ophthalmologyExaminationId: ID
+	roomTransfers: [RoomTransferInput]
+	roomTransfersIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countMedicalExaminationRecords(where: [[Where!]!]): Int!
+	lastMedicalExaminationRecords(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [MedicalExaminationRecord!]!
+	medicalExaminationRecords(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [MedicalExaminationRecord!]!
+	medicalExaminationRecordById(id: ID!): MedicalExaminationRecord
+	medicalExaminationRecordAudits: [MedicalExaminationRecordAudit!]!
+	medicalExaminationRecordAuditsByEntityId(medicalExaminationRecordId: ID!): [MedicalExaminationRecordAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createMedicalExaminationRecord(medicalExaminationRecord: MedicalExaminationRecordInput!, persistRelations: Boolean): MedicalExaminationRecord!
+	createAllMedicalExaminationRecord(medicalExaminationRecords: [MedicalExaminationRecordInput!]!): [MedicalExaminationRecord!]!
+	updateMedicalExaminationRecord(medicalExaminationRecord: MedicalExaminationRecordInput!, persistRelations: Boolean): MedicalExaminationRecord!
+	updateAllMedicalExaminationRecord(medicalExaminationRecords: [MedicalExaminationRecordInput!]!): [MedicalExaminationRecord!]!
+	deleteMedicalExaminationRecordById(medicalExaminationRecordId: ID!): ID!
+	deleteAllMedicalExaminationRecordByIds(medicalExaminationRecordIds: [ID!]!): [ID!]!
+	deleteMedicalExaminationRecordExcludingIds(medicalExaminationRecordIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

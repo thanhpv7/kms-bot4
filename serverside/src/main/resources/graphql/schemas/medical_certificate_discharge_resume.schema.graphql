@@ -1,0 +1,91 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type MedicalCertificateDischargeResume {
+	id: ID
+	created: String
+	modified: String
+	action: String
+	admissionDateTime: String
+	condition: String
+	dischargeDateTime: String
+	mainDiagnosis: String
+	notes: String
+	dischargeICD10: DiagnosesAndProcedures
+	dischargeICD9CM: DiagnosesAndProcedures
+	registration: Registration
+	medicalStaff: Staff
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type MedicalCertificateDischargeResumeAudit {
+	entity: MedicalCertificateDischargeResume
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input MedicalCertificateDischargeResumeInput {
+	id: ID
+	created: String
+	modified: String
+	action: String
+	admissionDateTime: String
+	condition: String
+	dischargeDateTime: String
+	mainDiagnosis: String
+	notes: String
+	dischargeICD10: DiagnosesAndProceduresInput
+	dischargeICD10Id: ID
+	dischargeICD9CM: DiagnosesAndProceduresInput
+	dischargeICD9CMId: ID
+	registration: RegistrationInput
+	registrationId: ID
+	medicalStaff: StaffInput
+	medicalStaffId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countMedicalCertificateDischargeResumes(where: [[Where!]!]): Int!
+	lastMedicalCertificateDischargeResumes(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [MedicalCertificateDischargeResume!]!
+	medicalCertificateDischargeResumes(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [MedicalCertificateDischargeResume!]!
+	medicalCertificateDischargeResumeById(id: ID!): MedicalCertificateDischargeResume
+	medicalCertificateDischargeResumeAudits: [MedicalCertificateDischargeResumeAudit!]!
+	medicalCertificateDischargeResumeAuditsByEntityId(medicalCertificateDischargeResumeId: ID!): [MedicalCertificateDischargeResumeAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createMedicalCertificateDischargeResume(medicalCertificateDischargeResume: MedicalCertificateDischargeResumeInput!, persistRelations: Boolean): MedicalCertificateDischargeResume!
+	createAllMedicalCertificateDischargeResume(medicalCertificateDischargeResumes: [MedicalCertificateDischargeResumeInput!]!): [MedicalCertificateDischargeResume!]!
+	updateMedicalCertificateDischargeResume(medicalCertificateDischargeResume: MedicalCertificateDischargeResumeInput!, persistRelations: Boolean): MedicalCertificateDischargeResume!
+	updateAllMedicalCertificateDischargeResume(medicalCertificateDischargeResumes: [MedicalCertificateDischargeResumeInput!]!): [MedicalCertificateDischargeResume!]!
+	deleteMedicalCertificateDischargeResumeById(medicalCertificateDischargeResumeId: ID!): ID!
+	deleteAllMedicalCertificateDischargeResumeByIds(medicalCertificateDischargeResumeIds: [ID!]!): [ID!]!
+	deleteMedicalCertificateDischargeResumeExcludingIds(medicalCertificateDischargeResumeIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

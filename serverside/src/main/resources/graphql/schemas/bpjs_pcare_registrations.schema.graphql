@@ -1,0 +1,105 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BpjsPcareRegistrations {
+	id: ID
+	created: String
+	modified: String
+	beratbadan: String
+	diastole: String
+	heartrate: String
+	kdpoli: String
+	kdproviderpeserta: String
+	kdtkp: String
+	keluhan: String
+	kunjsakit: String
+	lingkarperut: String
+	nokartu: String
+	resprate: String
+	rujukbalik: String
+	rujukinternal: String
+	sistole: String
+	tgldaftar: String
+	tinggibadan: String
+	patientVisit: PatientVisit
+	registration: Registration
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BpjsPcareRegistrationsAudit {
+	entity: BpjsPcareRegistrations
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BpjsPcareRegistrationsInput {
+	id: ID
+	created: String
+	modified: String
+	beratbadan: String
+	diastole: String
+	heartrate: String
+	kdpoli: String
+	kdproviderpeserta: String
+	kdtkp: String
+	keluhan: String
+	kunjsakit: String
+	lingkarperut: String
+	nokartu: String
+	resprate: String
+	rujukbalik: String
+	rujukinternal: String
+	sistole: String
+	tgldaftar: String
+	tinggibadan: String
+	patientVisit: PatientVisitInput
+	patientVisitId: ID
+	registration: RegistrationInput
+	registrationId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBpjsPcareRegistrationss(where: [[Where!]!]): Int!
+	lastBpjsPcareRegistrationss(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BpjsPcareRegistrations!]!
+	bpjsPcareRegistrationss(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BpjsPcareRegistrations!]!
+	bpjsPcareRegistrationsById(id: ID!): BpjsPcareRegistrations
+	bpjsPcareRegistrationsAudits: [BpjsPcareRegistrationsAudit!]!
+	bpjsPcareRegistrationsAuditsByEntityId(bpjsPcareRegistrationsId: ID!): [BpjsPcareRegistrationsAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBpjsPcareRegistrations(bpjsPcareRegistrations: BpjsPcareRegistrationsInput!, persistRelations: Boolean): BpjsPcareRegistrations!
+	createAllBpjsPcareRegistrations(bpjsPcareRegistrationss: [BpjsPcareRegistrationsInput!]!): [BpjsPcareRegistrations!]!
+	updateBpjsPcareRegistrations(bpjsPcareRegistrations: BpjsPcareRegistrationsInput!, persistRelations: Boolean): BpjsPcareRegistrations!
+	updateAllBpjsPcareRegistrations(bpjsPcareRegistrationss: [BpjsPcareRegistrationsInput!]!): [BpjsPcareRegistrations!]!
+	deleteBpjsPcareRegistrationsById(bpjsPcareRegistrationsId: ID!): ID!
+	deleteAllBpjsPcareRegistrationsByIds(bpjsPcareRegistrationsIds: [ID!]!): [ID!]!
+	deleteBpjsPcareRegistrationsExcludingIds(bpjsPcareRegistrationsIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

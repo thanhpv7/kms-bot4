@@ -1,0 +1,262 @@
+/*
+ * @bot-written
+ *
+ * WARNING AND NOTICE
+ * Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+ * Full Software Licence as accepted by you before being granted access to this source code and other materials,
+ * the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+ * commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+ * licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+ * including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+ * access, download, storage, and/or use of this source code.
+ *
+ * BOT WARNING
+ * This file is bot-written.
+ * Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+ */
+package kmsweb.entities;
+
+import lombok.*;
+import javax.validation.constraints.NotNull;
+
+
+// % protected region % [Import any additional imports here] off begin
+// % protected region % [Import any additional imports here] end
+
+@Data
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
+@ToString(callSuper = true, onlyExplicitlyIncluded = true)
+public class CatalogueUOMEntity extends AbstractEntity {
+
+	public CatalogueUOMEntity() {
+		initialiseReferences();
+	}
+
+	private void initialiseReferences() {
+
+
+		var StockCatalogueOneMany = new EntityReference();
+			StockCatalogueOneMany.entityName = "StockCatalogue";
+			StockCatalogueOneMany.oppositeName = "StockCatalogue";
+			StockCatalogueOneMany.name = "CatalogueUOMs";
+			StockCatalogueOneMany.optional = true;
+			StockCatalogueOneMany.type = "One";
+			StockCatalogueOneMany.oppositeType = "Many";
+
+		References.add(StockCatalogueOneMany);
+
+		var UnitOfMeasurementOneOne = new EntityReference();
+			UnitOfMeasurementOneOne.entityName = "UnitOfMeasurement";
+			UnitOfMeasurementOneOne.oppositeName = "CatalogueUOM";
+			UnitOfMeasurementOneOne.name = "UnitOfMeasurement";
+			UnitOfMeasurementOneOne.optional = true;
+			UnitOfMeasurementOneOne.type = "One";
+			UnitOfMeasurementOneOne.oppositeType = "One";
+
+		References.add(UnitOfMeasurementOneOne);
+	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Attributes
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// % protected region % [Modify attribute annotation for Unit Name here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Unit Name here] end
+	private String unitName;
+
+	// % protected region % [Modify attribute annotation for Conversion here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Conversion here] end
+	private String conversion;
+
+	// % protected region % [Modify attribute annotation for Default Transaction here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Default Transaction here] end
+	private Boolean defaultTransaction;
+
+	// % protected region % [Modify attribute annotation for Default Stock Card here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Default Stock Card here] end
+	private Boolean defaultStockCard;
+
+	// % protected region % [Modify attribute annotation for Default Purchasing here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Default Purchasing here] end
+	private Boolean defaultPurchasing;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Outgoing one-to-one
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	private UnitOfMeasurementEntity unitOfMeasurement;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Incoming one-to-one
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Outgoing one-to-many
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Incoming one-to-many
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	private StockCatalogueEntity stockCatalogue;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Outgoing many-to-many
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Incoming many-to-many
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// % protected region % [Add any additional class fields here] off begin
+	// % protected region % [Add any additional class fields here] end
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Outgoing reference methods
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Similar to {@link this#setUnitOfMeasurement(UnitOfMeasurementEntity, boolean)} but
+	 * default to true for reverse add.
+	 *
+	 * @param entity the given CatalogueUOMEntity to be set to this entity
+	 */
+	public void setUnitOfMeasurement(@NonNull UnitOfMeasurementEntity entity) {
+		setUnitOfMeasurement(entity, true);
+	}
+
+	/**
+	 * Set or update unitOfMeasurement with the given UnitOfMeasurementEntity.
+	 *
+	 * @param entity the CatalogueUOMEntity to be set or updated
+	 * @param reverseAdd whether this entity should be set or updated to the given entity
+	 */
+	public void setUnitOfMeasurement(@NonNull UnitOfMeasurementEntity entity, boolean reverseAdd) {
+		// % protected region % [Add any additional logic here before the main logic for setUnitOfMeasurement here] off begin
+		// % protected region % [Add any additional logic here before the main logic for setUnitOfMeasurement here] end
+
+		if (sameAsFormer(this.unitOfMeasurement, entity)) {
+			return;
+		}
+
+		if (this.unitOfMeasurement != null) {
+			this.unitOfMeasurement.unsetCatalogueUOM();
+		}
+
+		this.unitOfMeasurement = entity;
+
+		if (reverseAdd) {
+			this.unitOfMeasurement.setCatalogueUOM(this, false);
+		}
+
+		// % protected region % [Add any additional logic here after the main logic for setUnitOfMeasurement outgoingOneToOne here] off begin
+		// % protected region % [Add any additional logic here after the main logic for setUnitOfMeasurement outgoingOneToOne here] end
+	}
+
+	/**
+	 * Similar to {@link this#unsetUnitOfMeasurement(boolean)} but default to true.
+	 */
+	public void unsetUnitOfMeasurement() {
+		this.unsetUnitOfMeasurement(true);
+	}
+
+	/**
+	 * Remove the UnitOfMeasurementEntity in Unit Of Measurement from this entity.
+	 *
+	 * @param reverse whether this entity should be removed from the given entity
+	 */
+	public void unsetUnitOfMeasurement(boolean reverse) {
+		if (reverse && this.unitOfMeasurement != null) {
+			this.unitOfMeasurement.unsetCatalogueUOM(false);
+		}
+		this.unitOfMeasurement = null;
+	}
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Incoming references methods
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Similar to {@link this#setStockCatalogue(StockCatalogueEntity, boolean)} but
+	 * default to true for reverse add.
+	 *
+	 * @param entity the given StockCatalogueEntity to be set to this entity
+	 */
+	public void setStockCatalogue(@NonNull StockCatalogueEntity entity) {
+		setStockCatalogue(entity, true);
+	}
+
+	/**
+	 * Set or update the stockCatalogue in this entity with single StockCatalogueEntity.
+	 *
+	 * @param entity the given StockCatalogueEntity to be set or updated to stockCatalogue
+	 * @param reverseAdd whether this entity should be set or updated to the given entity
+	 */
+	public void setStockCatalogue(@NonNull StockCatalogueEntity entity, boolean reverseAdd) {
+		// % protected region % [Add any additional logic here before the main logic for setStockCatalogue here] off begin
+		// % protected region % [Add any additional logic here before the main logic for setStockCatalogue here] end
+
+		if (sameAsFormer(this.stockCatalogue, entity)) {
+			return;
+		}
+
+		if (this.stockCatalogue != null) {
+			this.stockCatalogue.removeCatalogueUOMs(this, false);
+		}
+		this.stockCatalogue = entity;
+		if (reverseAdd) {
+			this.stockCatalogue.addCatalogueUOMs(this, false);
+		}
+
+		// % protected region % [Add any additional logic here after the main logic for setStockCatalogue incomingOneToMany here] off begin
+		// % protected region % [Add any additional logic here after the main logic for setStockCatalogue incomingOneToMany here] end
+	}
+
+	/**
+	 * Similar to {@link this#unsetStockCatalogue(boolean)} but default to true.
+	 */
+	public void unsetStockCatalogue() {
+		this.unsetStockCatalogue(true);
+	}
+
+	/**
+	 * Remove Stock Catalogue in this entity.
+	 *
+	 * @param reverse whether this entity should be removed from the given entity
+	 */
+	public void unsetStockCatalogue(boolean reverse) {
+		if (reverse && this.stockCatalogue != null) {
+			this.stockCatalogue.removeCatalogueUOMs(this, false);
+		}
+		this.stockCatalogue = null;
+	}
+
+	// % protected region % [Add any additional class methods  here] off begin
+	// % protected region % [Add any additional class methods  here] end
+}

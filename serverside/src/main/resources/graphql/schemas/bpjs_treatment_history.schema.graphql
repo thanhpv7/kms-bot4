@@ -1,0 +1,89 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BpjsTreatmentHistory {
+	id: ID
+	created: String
+	modified: String
+	bpjsCardNo: String
+	diagnose: String
+	dismissalDate: String
+	healthFacility: String
+	name: String
+	polyclinic: String
+	referralNo: String
+	sepDate: String
+	sepNo: String
+	treatmentClass: String
+	treatmentType: String
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BpjsTreatmentHistoryAudit {
+	entity: BpjsTreatmentHistory
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BpjsTreatmentHistoryInput {
+	id: ID
+	created: String
+	modified: String
+	bpjsCardNo: String
+	diagnose: String
+	dismissalDate: String
+	healthFacility: String
+	name: String
+	polyclinic: String
+	referralNo: String
+	sepDate: String
+	sepNo: String
+	treatmentClass: String
+	treatmentType: String
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBpjsTreatmentHistorys(where: [[Where!]!]): Int!
+	lastBpjsTreatmentHistorys(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BpjsTreatmentHistory!]!
+	bpjsTreatmentHistorys(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BpjsTreatmentHistory!]!
+	bpjsTreatmentHistoryById(id: ID!): BpjsTreatmentHistory
+	bpjsTreatmentHistoryAudits: [BpjsTreatmentHistoryAudit!]!
+	bpjsTreatmentHistoryAuditsByEntityId(bpjsTreatmentHistoryId: ID!): [BpjsTreatmentHistoryAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBpjsTreatmentHistory(bpjsTreatmentHistory: BpjsTreatmentHistoryInput!, persistRelations: Boolean): BpjsTreatmentHistory!
+	createAllBpjsTreatmentHistory(bpjsTreatmentHistorys: [BpjsTreatmentHistoryInput!]!): [BpjsTreatmentHistory!]!
+	updateBpjsTreatmentHistory(bpjsTreatmentHistory: BpjsTreatmentHistoryInput!, persistRelations: Boolean): BpjsTreatmentHistory!
+	updateAllBpjsTreatmentHistory(bpjsTreatmentHistorys: [BpjsTreatmentHistoryInput!]!): [BpjsTreatmentHistory!]!
+	deleteBpjsTreatmentHistoryById(bpjsTreatmentHistoryId: ID!): ID!
+	deleteAllBpjsTreatmentHistoryByIds(bpjsTreatmentHistoryIds: [ID!]!): [ID!]!
+	deleteBpjsTreatmentHistoryExcludingIds(bpjsTreatmentHistoryIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

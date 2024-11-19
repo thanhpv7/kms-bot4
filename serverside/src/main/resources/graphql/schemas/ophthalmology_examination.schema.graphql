@@ -1,0 +1,102 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type OphthalmologyExamination {
+	id: ID
+	created: String
+	modified: String
+	leftEyelidObjective: String
+	leftEyelidSubjective: String
+	leftIrisObjective: String
+	leftIrisSubjective: String
+	leftPupilObjective: String
+	leftPupilSubjective: String
+	leftScleraObjective: String
+	leftScleraSubjective: String
+	rightEyelidObjective: String
+	rightEyelidSubjective: String
+	rightIrisObjective: String
+	rightIrisSubjective: String
+	rightPupilObjective: String
+	rightPupilSubjective: String
+	rightScleraObjective: String
+	rightScleraSubjective: String
+	medicalExaminationRecord: MedicalExaminationRecord
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type OphthalmologyExaminationAudit {
+	entity: OphthalmologyExamination
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input OphthalmologyExaminationInput {
+	id: ID
+	created: String
+	modified: String
+	leftEyelidObjective: String
+	leftEyelidSubjective: String
+	leftIrisObjective: String
+	leftIrisSubjective: String
+	leftPupilObjective: String
+	leftPupilSubjective: String
+	leftScleraObjective: String
+	leftScleraSubjective: String
+	rightEyelidObjective: String
+	rightEyelidSubjective: String
+	rightIrisObjective: String
+	rightIrisSubjective: String
+	rightPupilObjective: String
+	rightPupilSubjective: String
+	rightScleraObjective: String
+	rightScleraSubjective: String
+	medicalExaminationRecord: MedicalExaminationRecordInput
+	medicalExaminationRecordId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countOphthalmologyExaminations(where: [[Where!]!]): Int!
+	lastOphthalmologyExaminations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [OphthalmologyExamination!]!
+	ophthalmologyExaminations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [OphthalmologyExamination!]!
+	ophthalmologyExaminationById(id: ID!): OphthalmologyExamination
+	ophthalmologyExaminationAudits: [OphthalmologyExaminationAudit!]!
+	ophthalmologyExaminationAuditsByEntityId(ophthalmologyExaminationId: ID!): [OphthalmologyExaminationAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createOphthalmologyExamination(ophthalmologyExamination: OphthalmologyExaminationInput!, persistRelations: Boolean): OphthalmologyExamination!
+	createAllOphthalmologyExamination(ophthalmologyExaminations: [OphthalmologyExaminationInput!]!): [OphthalmologyExamination!]!
+	updateOphthalmologyExamination(ophthalmologyExamination: OphthalmologyExaminationInput!, persistRelations: Boolean): OphthalmologyExamination!
+	updateAllOphthalmologyExamination(ophthalmologyExaminations: [OphthalmologyExaminationInput!]!): [OphthalmologyExamination!]!
+	deleteOphthalmologyExaminationById(ophthalmologyExaminationId: ID!): ID!
+	deleteAllOphthalmologyExaminationByIds(ophthalmologyExaminationIds: [ID!]!): [ID!]!
+	deleteOphthalmologyExaminationExcludingIds(ophthalmologyExaminationIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

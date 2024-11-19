@@ -1,0 +1,81 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type MedicalCertificateSickLeave {
+	id: ID
+	created: String
+	modified: String
+	endDate: String
+	notes: String
+	period: Int
+	startDate: String
+	registration: Registration
+	medicalStaff: Staff
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type MedicalCertificateSickLeaveAudit {
+	entity: MedicalCertificateSickLeave
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input MedicalCertificateSickLeaveInput {
+	id: ID
+	created: String
+	modified: String
+	endDate: String
+	notes: String
+	period: Int
+	startDate: String
+	registration: RegistrationInput
+	registrationId: ID
+	medicalStaff: StaffInput
+	medicalStaffId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countMedicalCertificateSickLeaves(where: [[Where!]!]): Int!
+	lastMedicalCertificateSickLeaves(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [MedicalCertificateSickLeave!]!
+	medicalCertificateSickLeaves(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [MedicalCertificateSickLeave!]!
+	medicalCertificateSickLeaveById(id: ID!): MedicalCertificateSickLeave
+	medicalCertificateSickLeaveAudits: [MedicalCertificateSickLeaveAudit!]!
+	medicalCertificateSickLeaveAuditsByEntityId(medicalCertificateSickLeaveId: ID!): [MedicalCertificateSickLeaveAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createMedicalCertificateSickLeave(medicalCertificateSickLeave: MedicalCertificateSickLeaveInput!, persistRelations: Boolean): MedicalCertificateSickLeave!
+	createAllMedicalCertificateSickLeave(medicalCertificateSickLeaves: [MedicalCertificateSickLeaveInput!]!): [MedicalCertificateSickLeave!]!
+	updateMedicalCertificateSickLeave(medicalCertificateSickLeave: MedicalCertificateSickLeaveInput!, persistRelations: Boolean): MedicalCertificateSickLeave!
+	updateAllMedicalCertificateSickLeave(medicalCertificateSickLeaves: [MedicalCertificateSickLeaveInput!]!): [MedicalCertificateSickLeave!]!
+	deleteMedicalCertificateSickLeaveById(medicalCertificateSickLeaveId: ID!): ID!
+	deleteAllMedicalCertificateSickLeaveByIds(medicalCertificateSickLeaveIds: [ID!]!): [ID!]!
+	deleteMedicalCertificateSickLeaveExcludingIds(medicalCertificateSickLeaveIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

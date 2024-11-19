@@ -1,0 +1,83 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type TariffFormula {
+	id: ID
+	created: String
+	modified: String
+	classification: String
+	multiplier: Float
+	rounding: Int
+	roundingMethod: String
+	tariffType: String
+	baseSchema: TariffSchema
+	tariffSchema: TariffSchema
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type TariffFormulaAudit {
+	entity: TariffFormula
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input TariffFormulaInput {
+	id: ID
+	created: String
+	modified: String
+	classification: String
+	multiplier: Float
+	rounding: Int
+	roundingMethod: String
+	tariffType: String
+	baseSchema: TariffSchemaInput
+	baseSchemaId: ID
+	tariffSchema: TariffSchemaInput
+	tariffSchemaId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countTariffFormulas(where: [[Where!]!]): Int!
+	lastTariffFormulas(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [TariffFormula!]!
+	tariffFormulas(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [TariffFormula!]!
+	tariffFormulaById(id: ID!): TariffFormula
+	tariffFormulaAudits: [TariffFormulaAudit!]!
+	tariffFormulaAuditsByEntityId(tariffFormulaId: ID!): [TariffFormulaAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createTariffFormula(tariffFormula: TariffFormulaInput!, persistRelations: Boolean): TariffFormula!
+	createAllTariffFormula(tariffFormulas: [TariffFormulaInput!]!): [TariffFormula!]!
+	updateTariffFormula(tariffFormula: TariffFormulaInput!, persistRelations: Boolean): TariffFormula!
+	updateAllTariffFormula(tariffFormulas: [TariffFormulaInput!]!): [TariffFormula!]!
+	deleteTariffFormulaById(tariffFormulaId: ID!): ID!
+	deleteAllTariffFormulaByIds(tariffFormulaIds: [ID!]!): [ID!]!
+	deleteTariffFormulaExcludingIds(tariffFormulaIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

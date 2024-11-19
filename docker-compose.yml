@@ -1,0 +1,105 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+# % protected region % [Customise your compose file here] off begin
+version: '3.4'
+services:
+  db:
+    image: postgres:11
+    environment:
+      POSTGRES_DB: codebots
+      POSTGRES_USER: codebots
+      POSTGRES_PASSWORD: bots
+    networks:
+      - bridge
+    ports:
+      - 54320:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  pgAdmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: codebots@example.com
+      PGADMIN_DEFAULT_PASSWORD: bots
+      PGADMIN_LISTEN_PORT: 9090
+    networks:
+      - bridge
+    ports:
+      - 9090:9090
+    depends_on:
+      - db
+  client:
+    image: node:12-alpine
+    working_dir: /usr/src/app
+    command:  sh -c "
+      yarn;
+      yarn ng serve --host 0.0.0.0 --disableHostCheck;
+      tail -f /dev/null"
+    ports:
+      - 8000:4200
+      - 4200:4200
+    volumes:
+      - ./clientside:/usr/src/app/
+      - node_modules:/usr/src/app/node_modules
+    depends_on:
+      - server
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "http://localhost:4200" ]
+      interval: 60s
+      timeout: 2s
+      retries: 12
+      start_period: 60s
+  server:
+    image: gradle:6.6.1-jdk11
+    working_dir: /usr/src/app/
+    command: bash -c "
+      gradle bootRun;
+      tail -f /dev/null"
+    environment:
+      DATA_SOURCE_URL: jdbc:postgresql://db:5432/codebots
+      DATA_SOURCE_USERNAME: codebots
+      DATA_SOURCE_PASSWORD: bots
+      SPRING_PROFILES_ACTIVE: dev
+      GRADLE_USER_HOME: /gradle_home
+      profile: dev
+    networks:
+      - bridge
+    depends_on:
+      - db
+    volumes:
+      - ./serverside:/usr/src/app
+      - gradle_cache:/usr/src/app/.gradle
+      - gradle_home:/gradle_home
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/api-docs"]
+      interval: 60s
+      timeout: 2s
+      retries: 12
+      start_period: 60s
+
+networks:
+  bridge:
+
+volumes:
+  node_modules:
+  gradle_home:
+  gradle_cache:
+  postgres-data:
+
+# % protected region % [Customise your compose file here] end

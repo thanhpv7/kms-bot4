@@ -1,0 +1,113 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type NhisClaim {
+	id: ID
+	created: String
+	modified: String
+	batchNumber: String
+	cardSerialNumber: String
+	claimCheckCode: String
+	claimID: String
+	dateOfBirth: String
+	dependant: Boolean
+	firstVisitAdmission: String
+	formNo: String
+	fourthVisit: String
+	gender: String
+	hospitalRecordNo: String
+	includesPharmacy: Boolean
+	memberNo: String
+	otherNames: String
+	physicianCode: String
+	physicianName: String
+	refInvoiceNo: String
+	secondVisitDischarge: String
+	surname: String
+	systemClaimID: String
+	thirdVisit: String
+	typeOfAttendance: String
+	unbundled: Boolean
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type NhisClaimAudit {
+	entity: NhisClaim
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input NhisClaimInput {
+	id: ID
+	created: String
+	modified: String
+	batchNumber: String
+	cardSerialNumber: String
+	claimCheckCode: String
+	claimID: String
+	dateOfBirth: String
+	dependant: Boolean
+	firstVisitAdmission: String
+	formNo: String
+	fourthVisit: String
+	gender: String
+	hospitalRecordNo: String
+	includesPharmacy: Boolean
+	memberNo: String
+	otherNames: String
+	physicianCode: String
+	physicianName: String
+	refInvoiceNo: String
+	secondVisitDischarge: String
+	surname: String
+	systemClaimID: String
+	thirdVisit: String
+	typeOfAttendance: String
+	unbundled: Boolean
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countNhisClaims(where: [[Where!]!]): Int!
+	lastNhisClaims(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [NhisClaim!]!
+	nhisClaims(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [NhisClaim!]!
+	nhisClaimById(id: ID!): NhisClaim
+	nhisClaimAudits: [NhisClaimAudit!]!
+	nhisClaimAuditsByEntityId(nhisClaimId: ID!): [NhisClaimAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createNhisClaim(nhisClaim: NhisClaimInput!, persistRelations: Boolean): NhisClaim!
+	createAllNhisClaim(nhisClaims: [NhisClaimInput!]!): [NhisClaim!]!
+	updateNhisClaim(nhisClaim: NhisClaimInput!, persistRelations: Boolean): NhisClaim!
+	updateAllNhisClaim(nhisClaims: [NhisClaimInput!]!): [NhisClaim!]!
+	deleteNhisClaimById(nhisClaimId: ID!): ID!
+	deleteAllNhisClaimByIds(nhisClaimIds: [ID!]!): [ID!]!
+	deleteNhisClaimExcludingIds(nhisClaimIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

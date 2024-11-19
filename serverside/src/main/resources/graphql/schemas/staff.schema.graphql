@@ -1,0 +1,358 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type Staff {
+	id: ID
+	created: String
+	modified: String
+	bloodType: String
+	certification: String
+	country: String
+	dateOfBirth: String
+	defaultServiceNumber: String
+	district: String
+	education: String
+	employeeID: String
+	extNo: String
+	firstName: String
+	gender: String
+	homePhoneNo: String
+	lastName: String
+	letterOfReg: String
+	licenseNo: String
+	maritalStatus: String
+	mobilePhoneNo: String
+	nationality: String
+	officePhoneNumber: String
+	otherNotes: String
+	placeOfBirth: String
+	postcode: String
+	regency: String
+	religion: String
+	rhesus: String
+	specialization: String
+	staffNumber: String
+	staffPicture: [File!]
+	staffType: String
+	state: String
+	taxIdentificationNo: String
+	title: String
+	training: String
+	village: String
+	address: String
+	email: String
+	administrationUser: AdministrationUser
+	cashierUser: CashierUser
+	claimUser: ClaimUser
+	diagnosticSupportUser: DiagnosticSupportUser
+	doctorUser: DoctorUser
+	facilityUser: FacilityUser
+	managementUser: ManagementUser
+	medicalRecordUser: MedicalRecordUser
+	medicalTranscriberUser: MedicalTranscriberUser
+	nurseUser: NurseUser
+	pharmacyUser: PharmacyUser
+	purchasingUser: PurchasingUser
+	registrationUser: RegistrationUser
+	systemAdminUser: SystemAdminUser
+	warehouseUser: WarehouseUser
+	accompanyingConsents: [InformedConsent]
+	administrator: Administrator
+	amendmentDetails: [AmendmentDetail]
+	anesthesiaMedicalTranscriber: [PreoperativeRecords]
+	anesthesiologist: [PreoperativeRecords]
+	anesthesiologyNurse: [PreoperativeRecords]
+	bpjsDoctorMapping: BpjsDoctorMapping
+	cashierStaff: [CashReceipt]
+	coTreatingDoctors: [CoTreatingDoctor]
+	dailyCareCPPTsCreatedByStaff: [DailyCareCPPT]
+	dailyCareCPPTsDoctorInCharge: [DailyCareCPPT]
+	dailyCareCPPTsMedicalTranscriber: [DailyCareCPPT]
+	deliveryProgresses: [DeliveryProgress]
+	diagnosticStaffExaminationSummaries: [DiagnosticStaffExaminationSummary]
+	dismissalReferringStaff: [Registration]
+	doctorSchedules: [DoctorSchedule]
+	doctorOnExamination: [MedicalExaminationRecord]
+	fluidBalanceDetails: [FluidBalanceDetail]
+	hemodialysisMonitorings: [HemodialysisMonitoring]
+	hospitalBranchInformations: [HospitalBranchInformation]
+	informingConsents: [InformedConsent]
+	invoices: [Invoice]
+	mcuPackageItems: [McuPackageItem]
+	medicalCertificateDischargeResumes: [MedicalCertificateDischargeResume]
+	medicalCertificateBirths: [MedicalCertificateBirth]
+	medicalCertificateHospitalizations: [MedicalCertificateHospitalization]
+	medicalExaminationRecordDischargeSummarys: [MedicalExaminationRecordDischargeSummary]
+	medicalRecordTranscriber: [MedicalExaminationRecord]
+	medicalStaffOfMedicalAttendancesCertificate: [MedicalCertificateMedicalAttendance]
+	medicalStaffOfMentalHealths: [MedicalCertificateMentalHealth]
+	medicalStaffOfPhysicalHealths: [MedicalCertificatePhysicalHealth]
+	medicalStaffOfRestrictedWorksCertificate: [MedicalCertificateRestrictedWork]
+	medicalStaffOfSickLeavesCertificate: [MedicalCertificateSickLeave]
+	medicationAdministeredHisotries: [MedicationAdministeredHistory]
+	medicationHeaders: [MedicationHeader]
+	midwives: [DeliveryMedicalExaminationRecord]
+	nurse: [MedicalExaminationRecord]
+	nursingDetailSurgicalNursing: [OperatingTheaterMedicalExaminationRecord]
+	nursingDetailsAnesthesiaNursing: [OperatingTheaterMedicalExaminationRecord]
+	pcareDokter: PcareDokter
+	patientConsents: [PatientConsent]
+	patientVitalInformations: [PatientVitalInformation]
+	pediatricianInCharge: [NewbornDetail]
+	prescriptionHeaders: [PrescriptionHeader]
+	processWorkflowLogs: [ProcessWorkflow]
+	registrations: [Registration]
+	requestedBy: [Registration]
+	roomTransfers: [RoomTransfer]
+	sampleCollectionStaffs: [SampleCollectionItems]
+	sampleDeliveryStaffs: [SampleCollectionItems]
+	sampleProcessingStaffs: [SampleCollectionItems]
+	service: Service
+	services: [Service]
+	surgeon: [PreoperativeRecords]
+	surgicalMedicalTranscriber: [PreoperativeRecords]
+	surgicalNurse: [PreoperativeRecords]
+	transferOrderStockDetails: [TransferOrderStockDetail]
+	vaccinationOrders: [VaccinationOrder]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type StaffAudit {
+	entity: Staff
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input StaffInput {
+	id: ID
+	created: String
+	modified: String
+	bloodType: String
+	certification: String
+	country: String
+	dateOfBirth: String
+	defaultServiceNumber: String
+	district: String
+	education: String
+	employeeID: String
+	extNo: String
+	firstName: String
+	gender: String
+	homePhoneNo: String
+	lastName: String
+	letterOfReg: String
+	licenseNo: String
+	maritalStatus: String
+	mobilePhoneNo: String
+	nationality: String
+	officePhoneNumber: String
+	otherNotes: String
+	placeOfBirth: String
+	postcode: String
+	regency: String
+	religion: String
+	rhesus: String
+	specialization: String
+	staffNumber: String
+	staffType: String
+	state: String
+	taxIdentificationNo: String
+	title: String
+	training: String
+	village: String
+	address: String
+	email: String
+	staffPicture: [FileInput!]
+	administrationUser: AdministrationUserInput
+	administrationUserId: ID
+	cashierUser: CashierUserInput
+	cashierUserId: ID
+	claimUser: ClaimUserInput
+	claimUserId: ID
+	diagnosticSupportUser: DiagnosticSupportUserInput
+	diagnosticSupportUserId: ID
+	doctorUser: DoctorUserInput
+	doctorUserId: ID
+	facilityUser: FacilityUserInput
+	facilityUserId: ID
+	managementUser: ManagementUserInput
+	managementUserId: ID
+	medicalRecordUser: MedicalRecordUserInput
+	medicalRecordUserId: ID
+	medicalTranscriberUser: MedicalTranscriberUserInput
+	medicalTranscriberUserId: ID
+	nurseUser: NurseUserInput
+	nurseUserId: ID
+	pharmacyUser: PharmacyUserInput
+	pharmacyUserId: ID
+	purchasingUser: PurchasingUserInput
+	purchasingUserId: ID
+	registrationUser: RegistrationUserInput
+	registrationUserId: ID
+	systemAdminUser: SystemAdminUserInput
+	systemAdminUserId: ID
+	warehouseUser: WarehouseUserInput
+	warehouseUserId: ID
+	accompanyingConsents: [InformedConsentInput]
+	accompanyingConsentsIds: [ID!]
+	administrator: AdministratorInput
+	administratorId: ID
+	amendmentDetails: [AmendmentDetailInput]
+	amendmentDetailsIds: [ID!]
+	anesthesiaMedicalTranscriber: [PreoperativeRecordsInput]
+	anesthesiaMedicalTranscriberIds: [ID!]
+	anesthesiologist: [PreoperativeRecordsInput]
+	anesthesiologistIds: [ID!]
+	anesthesiologyNurse: [PreoperativeRecordsInput]
+	anesthesiologyNurseIds: [ID!]
+	bpjsDoctorMapping: BpjsDoctorMappingInput
+	bpjsDoctorMappingId: ID
+	cashierStaff: [CashReceiptInput]
+	cashierStaffIds: [ID!]
+	coTreatingDoctors: [CoTreatingDoctorInput]
+	coTreatingDoctorsIds: [ID!]
+	dailyCareCPPTsCreatedByStaff: [DailyCareCPPTInput]
+	dailyCareCPPTsCreatedByStaffIds: [ID!]
+	dailyCareCPPTsDoctorInCharge: [DailyCareCPPTInput]
+	dailyCareCPPTsDoctorInChargeIds: [ID!]
+	dailyCareCPPTsMedicalTranscriber: [DailyCareCPPTInput]
+	dailyCareCPPTsMedicalTranscriberIds: [ID!]
+	deliveryProgresses: [DeliveryProgressInput]
+	deliveryProgressesIds: [ID!]
+	diagnosticStaffExaminationSummaries: [DiagnosticStaffExaminationSummaryInput]
+	diagnosticStaffExaminationSummariesIds: [ID!]
+	dismissalReferringStaff: [RegistrationInput]
+	dismissalReferringStaffIds: [ID!]
+	doctorSchedules: [DoctorScheduleInput]
+	doctorSchedulesIds: [ID!]
+	doctorOnExamination: [MedicalExaminationRecordInput]
+	doctorOnExaminationIds: [ID!]
+	fluidBalanceDetails: [FluidBalanceDetailInput]
+	fluidBalanceDetailsIds: [ID!]
+	hemodialysisMonitorings: [HemodialysisMonitoringInput]
+	hemodialysisMonitoringsIds: [ID!]
+	hospitalBranchInformations: [HospitalBranchInformationInput]
+	hospitalBranchInformationsIds: [ID!]
+	informingConsents: [InformedConsentInput]
+	informingConsentsIds: [ID!]
+	invoices: [InvoiceInput]
+	invoicesIds: [ID!]
+	mcuPackageItems: [McuPackageItemInput]
+	mcuPackageItemsIds: [ID!]
+	medicalCertificateDischargeResumes: [MedicalCertificateDischargeResumeInput]
+	medicalCertificateDischargeResumesIds: [ID!]
+	medicalCertificateBirths: [MedicalCertificateBirthInput]
+	medicalCertificateBirthsIds: [ID!]
+	medicalCertificateHospitalizations: [MedicalCertificateHospitalizationInput]
+	medicalCertificateHospitalizationsIds: [ID!]
+	medicalExaminationRecordDischargeSummarys: [MedicalExaminationRecordDischargeSummaryInput]
+	medicalExaminationRecordDischargeSummarysIds: [ID!]
+	medicalRecordTranscriber: [MedicalExaminationRecordInput]
+	medicalRecordTranscriberIds: [ID!]
+	medicalStaffOfMedicalAttendancesCertificate: [MedicalCertificateMedicalAttendanceInput]
+	medicalStaffOfMedicalAttendancesCertificateIds: [ID!]
+	medicalStaffOfMentalHealths: [MedicalCertificateMentalHealthInput]
+	medicalStaffOfMentalHealthsIds: [ID!]
+	medicalStaffOfPhysicalHealths: [MedicalCertificatePhysicalHealthInput]
+	medicalStaffOfPhysicalHealthsIds: [ID!]
+	medicalStaffOfRestrictedWorksCertificate: [MedicalCertificateRestrictedWorkInput]
+	medicalStaffOfRestrictedWorksCertificateIds: [ID!]
+	medicalStaffOfSickLeavesCertificate: [MedicalCertificateSickLeaveInput]
+	medicalStaffOfSickLeavesCertificateIds: [ID!]
+	medicationAdministeredHisotries: [MedicationAdministeredHistoryInput]
+	medicationAdministeredHisotriesIds: [ID!]
+	medicationHeaders: [MedicationHeaderInput]
+	medicationHeadersIds: [ID!]
+	midwives: [DeliveryMedicalExaminationRecordInput]
+	midwivesIds: [ID!]
+	nurse: [MedicalExaminationRecordInput]
+	nurseIds: [ID!]
+	nursingDetailSurgicalNursing: [OperatingTheaterMedicalExaminationRecordInput]
+	nursingDetailSurgicalNursingIds: [ID!]
+	nursingDetailsAnesthesiaNursing: [OperatingTheaterMedicalExaminationRecordInput]
+	nursingDetailsAnesthesiaNursingIds: [ID!]
+	pcareDokter: PcareDokterInput
+	pcareDokterId: ID
+	patientConsents: [PatientConsentInput]
+	patientConsentsIds: [ID!]
+	patientVitalInformations: [PatientVitalInformationInput]
+	patientVitalInformationsIds: [ID!]
+	pediatricianInCharge: [NewbornDetailInput]
+	pediatricianInChargeIds: [ID!]
+	prescriptionHeaders: [PrescriptionHeaderInput]
+	prescriptionHeadersIds: [ID!]
+	processWorkflowLogs: [ProcessWorkflowInput]
+	processWorkflowLogsIds: [ID!]
+	registrations: [RegistrationInput]
+	registrationsIds: [ID!]
+	requestedBy: [RegistrationInput]
+	requestedByIds: [ID!]
+	roomTransfers: [RoomTransferInput]
+	roomTransfersIds: [ID!]
+	sampleCollectionStaffs: [SampleCollectionItemsInput]
+	sampleCollectionStaffsIds: [ID!]
+	sampleDeliveryStaffs: [SampleCollectionItemsInput]
+	sampleDeliveryStaffsIds: [ID!]
+	sampleProcessingStaffs: [SampleCollectionItemsInput]
+	sampleProcessingStaffsIds: [ID!]
+	service: ServiceInput
+	serviceId: ID
+	services: [ServiceInput]
+	servicesIds: [ID!]
+	surgeon: [PreoperativeRecordsInput]
+	surgeonIds: [ID!]
+	surgicalMedicalTranscriber: [PreoperativeRecordsInput]
+	surgicalMedicalTranscriberIds: [ID!]
+	surgicalNurse: [PreoperativeRecordsInput]
+	surgicalNurseIds: [ID!]
+	transferOrderStockDetails: [TransferOrderStockDetailInput]
+	transferOrderStockDetailsIds: [ID!]
+	vaccinationOrders: [VaccinationOrderInput]
+	vaccinationOrdersIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countStaffs(where: [[Where!]!]): Int!
+	lastStaffs(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [Staff!]!
+	staffs(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [Staff!]!
+	staffById(id: ID!): Staff
+	staffAudits: [StaffAudit!]!
+	staffAuditsByEntityId(staffId: ID!): [StaffAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createStaff(staff: StaffInput!, persistRelations: Boolean): Staff!
+	createAllStaff(staffs: [StaffInput!]!): [Staff!]!
+	updateStaff(staff: StaffInput!, persistRelations: Boolean): Staff!
+	updateAllStaff(staffs: [StaffInput!]!): [Staff!]!
+	deleteStaffById(staffId: ID!): ID!
+	deleteAllStaffByIds(staffIds: [ID!]!): [ID!]!
+	deleteStaffExcludingIds(staffIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

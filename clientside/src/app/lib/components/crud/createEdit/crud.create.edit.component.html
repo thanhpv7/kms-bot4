@@ -1,0 +1,222 @@
+<!--
+@bot-written
+
+WARNING AND NOTICE
+Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+Full Software Licence as accepted by you before being granted access to this source code and other materials,
+the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+access, download, storage, and/or use of this source code.
+
+BOT WARNING
+This file is bot-written.
+Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+-->
+
+<section
+	[class.crud__view]="model['id'] && isDisabled"
+	[class.crud__edit]="model['id'] && !isDisabled"
+	[class.crud__create]="!model['id']">
+	<section class="crud__header" *ngIf="showHeader">
+		<!-- % protected region % [Customise the CRUD header here] off begin -->
+		<button cb-button [classes]="'crud__return'"
+						[buttonStyle]="buttonStyle.TEXT"
+						[iconClasses]="'chevron-left'"
+						[iconPos]="iconPos.LEFT"
+						(click)="onCancelClicked()">
+			Return to list
+		</button>
+		<button cb-button [classes]="'sidebar__btn'" *ngIf="model['id']" (click)="onViewHistory()">View History</button>
+		<!-- % protected region % [Customise the CRUD header here] end -->
+	</section>
+	<div cb-sidebar *ngIf="displayViewHistory" [audits]="audits" [model]="model"
+			 (close)="displayViewHistory = false"></div>
+	<section class="crud__form-container">
+		<!-- No group -->
+		<!-- This is added regardless of any groups in the component.  If there is no attributes without a group then this will be empty and will not be shown -->
+		<ng-template [ngTemplateOutlet]="mainBody"
+								 [ngTemplateOutletContext]="{ group: modelPropertiesWithNoGroup, model: model }"></ng-template>
+		<!-- Groups -->
+		<!-- % protected region % [Customise the Groups template here] off begin -->
+		<ng-container *ngIf="(modelPropertiesWithGroup | keys).length > 0">
+			<section *ngFor="let group of (modelPropertiesWithGroup | values); let index = index" class="form-container__section" [attr.data-group-index]="index">
+				<h6>{{ group.displayName }}</h6>
+				<ng-template [ngTemplateOutlet]="mainBody"
+						[ngTemplateOutletContext]="{ group: group, model: group.model ? group.model : model }"></ng-template>
+			</section>
+		</ng-container>
+		<!-- % protected region % [Customise the Groups template here] end -->
+		<ng-template #mainBody let-group="group" let-model="model">
+			<section [formGroup]="group.form ? group.form : modelFormGroup" class="crud__form-container">
+				<ng-container *ngFor="let prop of group.combined">
+					<ng-container *ngIf="prop.isProp && !prop.hideElement">
+						<!-- % protected region % [Override the default field presentation here] off begin -->
+						<ng-container [ngSwitch]="prop.elementType">
+							<cb-textfield
+								*ngSwitchDefault
+								[label]="prop.displayName"
+								[inputType]="prop.isSensitive ? textFieldType.PASSWORD : getInputType(prop.elementType)"
+								[placeholder]="prop.isSensitive  ? 'Unchanged' : ''"
+								[name]="prop.displayName"
+								[formControlName]="prop.name"
+								[id]="prop.name">
+							</cb-textfield>
+							<div
+								cb-file-upload
+								*ngSwitchCase="elementType.FILE"
+								[label]="prop.displayName"
+								[formControlName]="prop.name"
+								[model]="model"
+								[id]="prop.name"
+								[fileField]="prop.name">
+							</div>
+							<cb-textarea
+								*ngSwitchCase="elementType.TEXTAREA"
+								[label]="prop.displayName"
+								[name]="prop.displayName"
+								[formControlName]="prop.name"
+								[id]="prop.name">
+							</cb-textarea>
+							<cb-datepicker
+								*ngSwitchCase="elementType.DATE"
+								[label]="prop.displayName"
+								[name]="prop.displayName"
+								[type]="'calendar'"
+								[formControlName]="prop.name"
+								[id]="prop.name">
+							</cb-datepicker>
+							<cb-datepicker
+								*ngSwitchCase="elementType.TIME"
+								[label]="prop.displayName"
+								[name]="prop.displayName"
+								[type]="'timer'"
+								[formControlName]="prop.name"
+								[id]="prop.name">
+							</cb-datepicker>
+							<cb-datepicker
+								*ngSwitchCase="elementType.DATETIME"
+								[label]="prop.displayName"
+								[name]="prop.displayName"
+								[type]="'both'"
+								[formControlName]="prop.name"
+								[id]="prop.name">
+							</cb-datepicker>
+							<cb-dropdown
+								*ngSwitchCase="elementType.ENUM"
+								[options]="prop.enumLiterals"
+								[name]="prop.displayName"
+								[labelField]="'value'"
+								[valueField]="'value'"
+								[label]="prop.displayName"
+								[id]="prop.name"
+								[formControlName]="prop.name">
+							</cb-dropdown>
+							<cb-dropdown
+								*ngSwitchCase="elementType.DROPDOWN"
+								[options]="prop.options"
+								[name]="prop.displayName"
+								[labelField]="prop.labelField"
+								[valueField]="prop.valueField"
+								[label]="prop.displayName"
+								[id]="prop.name"
+								[formControlName]="prop.name">
+							</cb-dropdown>
+							<cb-checkbox
+								*ngSwitchCase="elementType.CHECKBOX"
+								[id]="prop.name"
+								[name]="prop.displayName"
+								[label]="prop.displayName"
+								[formControlName]="prop.name">
+							</cb-checkbox>
+							<cb-radio-button-group
+								*ngSwitchCase="elementType.RADIO_GROUP"
+								[options]="prop.enumLiterals"
+								[name]="prop.displayName"
+								[labelField]="'value'"
+								[valueField]="'value'"
+								[label]="prop.displayName"
+								[id]="prop.name"
+								[formControlName]="prop.name">
+							</cb-radio-button-group>
+						</ng-container>
+						<!-- % protected region % [Override the default field presentation here] end -->
+					</ng-container>
+					<!-- % protected region % [Override the default field ref elements here] off begin -->
+					<ng-container *ngIf="!(prop.isProp || prop.hideElement)">
+						<ng-container [ngSwitch]="prop.type">
+							<cb-dropdown
+								*ngSwitchCase="modelRelationType.ONE"
+								[labelField]="prop.displayName"
+								[valueField]="'id'"
+								[options$]="prop.collection"
+								[searchable]="true"
+								[label]="prop.label"
+								[typeAhead]="prop.searchFunction"
+								[id]="prop.name"
+								[name]="prop.label"
+								[formControlName]="prop.name">
+							</cb-dropdown>
+							<cb-dropdown
+								*ngSwitchCase="modelRelationType.MANY"
+								[labelField]="prop.displayName"
+								[valueField]="'id'"
+								[options$]="prop.collection"
+								[searchable]="true"
+								[multiple]="true"
+								[name]="prop.label"
+								[label]="prop.label"
+								[typeAhead]="prop.searchFunction"
+								[id]="prop.name"
+								[formControlName]="prop.name">
+							</cb-dropdown>
+						</ng-container>
+					</ng-container>
+					<!-- % protected region % [Override the default field ref elements here] end -->
+				</ng-container>
+			</section>
+			<button cb-button *ngIf="group.form && !isDisabled"
+					[classes]="'btn__remove-entity'"
+					[buttonStyle]="buttonStyle.SOLID"
+					[buttonAccentColour]="buttonAccentColour.PRIMARY"
+					[buttonSize]="buttonSize.SMALL"
+					(click)="onMultiEntityAction(group.displayName, group.id)">
+				Remove {{group.displayName}} from Model
+			</button>
+		</ng-template>
+	</section>
+	<!-- % protected region % [Override the default action button elements here] off begin -->
+	<section *ngIf="showActionButtons">
+		<section cb-button-group *ngIf="addMultiEntityButtonNames && !isDisabled">
+			<ng-container *ngFor="let button of addMultiEntityButtonNames">
+				<button cb-button
+						[classes]="'btn__add-entity'"
+						[buttonStyle]="buttonStyle.SOLID"
+						[buttonAccentColour]="buttonAccentColour.PRIMARY"
+						[buttonSize]="buttonSize.SMALL"
+						[isDisabled]="singleEntityRelationAdded(button.name, button.many)"
+						(click)="onMultiEntityAction(button.name, null)">
+					Add New {{button.name}} to Model
+				</button>
+			</ng-container>
+		</section>
+		<ng-container *ngFor="let group of actionButtonGroups">
+			<section cb-button-group>
+				<ng-container *ngFor="let element of group.elements">
+					<ng-container [ngSwitch]='element.type'>
+						<button *ngIf="((element.doHide | typeof) === 'function' && !element.doHide.call(null)) || (!element.doHide)" cb-button
+									[classes]="element.className"
+									[buttonStyle]="element.buttonStyle"
+									[iconPos]="element.iconPos"
+									[iconClasses]="element.iconClasses"
+									[buttonAccentColour]="element.buttonAccentColour"
+									[buttonSize]="element.buttonSize"
+									(click)="element.callback.apply($event)">{{ element.label }}</button>
+					</ng-container>
+				</ng-container>
+			</section>
+		</ng-container>
+	</section>
+	<!-- % protected region % [Override the default action button elements here] end -->
+</section>

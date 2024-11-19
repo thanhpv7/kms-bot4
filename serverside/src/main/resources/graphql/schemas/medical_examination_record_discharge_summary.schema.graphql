@@ -1,0 +1,158 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type MedicalExaminationRecordDischargeSummary {
+	id: ID
+	created: String
+	modified: String
+	accidentalSubType: String
+	accidentalType: String
+	additionalNotes: String
+	bmi: Float
+	bpStandingDiastole: Int
+	bpStandingSystole: Int
+	conditionUponDischarge: String
+	consciousness: String
+	diastole: Int
+	dischargeReason: String
+	dischargeSummary: String
+	escortedBy: String
+	examinationSubCase: String
+	gcsEyes: String
+	gcsMotor: String
+	gcsVerbal: String
+	height: Float
+	heightScale: String
+	nutritionStatus: String
+	objective: String
+	oxygenSaturation: Float
+	painScale: Int
+	painScaleUsed: String
+	plan: String
+	pulse: Int
+	pulseRegularity: String
+	pulseStrength: String
+	purpose: String
+	respiratory: Float
+	riskFallScale: Int
+	riskFallScaleUsed: String
+	serviceCase: String
+	subjective: String
+	systole: Int
+	temperature: Float
+	temperatureScale: String
+	totalGCSScore: Float
+	waistCircumference: Float
+	waistCircumferenceUnit: String
+	weight: Float
+	weightScale: String
+	medicalExaminationRecord: MedicalExaminationRecord
+	dischargingDoctor: Staff
+	diagnosisExaminationRecords: [DiagnosisExaminationRecord]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type MedicalExaminationRecordDischargeSummaryAudit {
+	entity: MedicalExaminationRecordDischargeSummary
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input MedicalExaminationRecordDischargeSummaryInput {
+	id: ID
+	created: String
+	modified: String
+	accidentalSubType: String
+	accidentalType: String
+	additionalNotes: String
+	bmi: Float
+	bpStandingDiastole: Int
+	bpStandingSystole: Int
+	conditionUponDischarge: String
+	consciousness: String
+	diastole: Int
+	dischargeReason: String
+	dischargeSummary: String
+	escortedBy: String
+	examinationSubCase: String
+	gcsEyes: String
+	gcsMotor: String
+	gcsVerbal: String
+	height: Float
+	heightScale: String
+	nutritionStatus: String
+	objective: String
+	oxygenSaturation: Float
+	painScale: Int
+	painScaleUsed: String
+	plan: String
+	pulse: Int
+	pulseRegularity: String
+	pulseStrength: String
+	purpose: String
+	respiratory: Float
+	riskFallScale: Int
+	riskFallScaleUsed: String
+	serviceCase: String
+	subjective: String
+	systole: Int
+	temperature: Float
+	temperatureScale: String
+	totalGCSScore: Float
+	waistCircumference: Float
+	waistCircumferenceUnit: String
+	weight: Float
+	weightScale: String
+	medicalExaminationRecord: MedicalExaminationRecordInput
+	medicalExaminationRecordId: ID
+	dischargingDoctor: StaffInput
+	dischargingDoctorId: ID
+	diagnosisExaminationRecords: [DiagnosisExaminationRecordInput]
+	diagnosisExaminationRecordsIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countMedicalExaminationRecordDischargeSummarys(where: [[Where!]!]): Int!
+	lastMedicalExaminationRecordDischargeSummarys(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [MedicalExaminationRecordDischargeSummary!]!
+	medicalExaminationRecordDischargeSummarys(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [MedicalExaminationRecordDischargeSummary!]!
+	medicalExaminationRecordDischargeSummaryById(id: ID!): MedicalExaminationRecordDischargeSummary
+	medicalExaminationRecordDischargeSummaryAudits: [MedicalExaminationRecordDischargeSummaryAudit!]!
+	medicalExaminationRecordDischargeSummaryAuditsByEntityId(medicalExaminationRecordDischargeSummaryId: ID!): [MedicalExaminationRecordDischargeSummaryAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createMedicalExaminationRecordDischargeSummary(medicalExaminationRecordDischargeSummary: MedicalExaminationRecordDischargeSummaryInput!, persistRelations: Boolean): MedicalExaminationRecordDischargeSummary!
+	createAllMedicalExaminationRecordDischargeSummary(medicalExaminationRecordDischargeSummarys: [MedicalExaminationRecordDischargeSummaryInput!]!): [MedicalExaminationRecordDischargeSummary!]!
+	updateMedicalExaminationRecordDischargeSummary(medicalExaminationRecordDischargeSummary: MedicalExaminationRecordDischargeSummaryInput!, persistRelations: Boolean): MedicalExaminationRecordDischargeSummary!
+	updateAllMedicalExaminationRecordDischargeSummary(medicalExaminationRecordDischargeSummarys: [MedicalExaminationRecordDischargeSummaryInput!]!): [MedicalExaminationRecordDischargeSummary!]!
+	deleteMedicalExaminationRecordDischargeSummaryById(medicalExaminationRecordDischargeSummaryId: ID!): ID!
+	deleteAllMedicalExaminationRecordDischargeSummaryByIds(medicalExaminationRecordDischargeSummaryIds: [ID!]!): [ID!]!
+	deleteMedicalExaminationRecordDischargeSummaryExcludingIds(medicalExaminationRecordDischargeSummaryIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

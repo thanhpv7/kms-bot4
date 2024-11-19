@@ -1,0 +1,78 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type MerchantSurchargeAndFee {
+	id: ID
+	created: String
+	modified: String
+	bankName: String
+	cardType: String
+	fee: String
+	surcharge: Float
+	merchant: Merchant
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type MerchantSurchargeAndFeeAudit {
+	entity: MerchantSurchargeAndFee
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input MerchantSurchargeAndFeeInput {
+	id: ID
+	created: String
+	modified: String
+	bankName: String
+	cardType: String
+	fee: String
+	surcharge: Float
+	merchant: MerchantInput
+	merchantId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countMerchantSurchargeAndFees(where: [[Where!]!]): Int!
+	lastMerchantSurchargeAndFees(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [MerchantSurchargeAndFee!]!
+	merchantSurchargeAndFees(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [MerchantSurchargeAndFee!]!
+	merchantSurchargeAndFeeById(id: ID!): MerchantSurchargeAndFee
+	merchantSurchargeAndFeeAudits: [MerchantSurchargeAndFeeAudit!]!
+	merchantSurchargeAndFeeAuditsByEntityId(merchantSurchargeAndFeeId: ID!): [MerchantSurchargeAndFeeAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createMerchantSurchargeAndFee(merchantSurchargeAndFee: MerchantSurchargeAndFeeInput!, persistRelations: Boolean): MerchantSurchargeAndFee!
+	createAllMerchantSurchargeAndFee(merchantSurchargeAndFees: [MerchantSurchargeAndFeeInput!]!): [MerchantSurchargeAndFee!]!
+	updateMerchantSurchargeAndFee(merchantSurchargeAndFee: MerchantSurchargeAndFeeInput!, persistRelations: Boolean): MerchantSurchargeAndFee!
+	updateAllMerchantSurchargeAndFee(merchantSurchargeAndFees: [MerchantSurchargeAndFeeInput!]!): [MerchantSurchargeAndFee!]!
+	deleteMerchantSurchargeAndFeeById(merchantSurchargeAndFeeId: ID!): ID!
+	deleteAllMerchantSurchargeAndFeeByIds(merchantSurchargeAndFeeIds: [ID!]!): [ID!]!
+	deleteMerchantSurchargeAndFeeExcludingIds(merchantSurchargeAndFeeIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

@@ -1,0 +1,95 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type InternalOrderStockDetail {
+	id: ID
+	created: String
+	modified: String
+	inventoryRoundingValue: Float
+	itemNotes: String
+	itemNumber: Int
+	quantityFulfilled: Float
+	quantityIssued: Float
+	quantityOrdered: Float
+	quantityReceived: Float
+	sourceAvailableQuantity: Float
+	sourceMinLevel: Float
+	transactionStatus: String
+	uom: String
+	internalOrder: InternalOrder
+	stockCatalogue: StockCatalogue
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type InternalOrderStockDetailAudit {
+	entity: InternalOrderStockDetail
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input InternalOrderStockDetailInput {
+	id: ID
+	created: String
+	modified: String
+	inventoryRoundingValue: Float
+	itemNotes: String
+	itemNumber: Int
+	quantityFulfilled: Float
+	quantityIssued: Float
+	quantityOrdered: Float
+	quantityReceived: Float
+	sourceAvailableQuantity: Float
+	sourceMinLevel: Float
+	transactionStatus: String
+	uom: String
+	internalOrder: InternalOrderInput
+	internalOrderId: ID
+	stockCatalogue: StockCatalogueInput
+	stockCatalogueId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countInternalOrderStockDetails(where: [[Where!]!]): Int!
+	lastInternalOrderStockDetails(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [InternalOrderStockDetail!]!
+	internalOrderStockDetails(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [InternalOrderStockDetail!]!
+	internalOrderStockDetailById(id: ID!): InternalOrderStockDetail
+	internalOrderStockDetailAudits: [InternalOrderStockDetailAudit!]!
+	internalOrderStockDetailAuditsByEntityId(internalOrderStockDetailId: ID!): [InternalOrderStockDetailAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createInternalOrderStockDetail(internalOrderStockDetail: InternalOrderStockDetailInput!, persistRelations: Boolean): InternalOrderStockDetail!
+	createAllInternalOrderStockDetail(internalOrderStockDetails: [InternalOrderStockDetailInput!]!): [InternalOrderStockDetail!]!
+	updateInternalOrderStockDetail(internalOrderStockDetail: InternalOrderStockDetailInput!, persistRelations: Boolean): InternalOrderStockDetail!
+	updateAllInternalOrderStockDetail(internalOrderStockDetails: [InternalOrderStockDetailInput!]!): [InternalOrderStockDetail!]!
+	deleteInternalOrderStockDetailById(internalOrderStockDetailId: ID!): ID!
+	deleteAllInternalOrderStockDetailByIds(internalOrderStockDetailIds: [ID!]!): [ID!]!
+	deleteInternalOrderStockDetailExcludingIds(internalOrderStockDetailIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

@@ -1,0 +1,74 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BpjsDismissalCondition {
+	id: ID
+	created: String
+	modified: String
+	conditionCode: String
+	conditionName: String
+	bpjsClaimSubmission: BpjsClaimSubmission
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BpjsDismissalConditionAudit {
+	entity: BpjsDismissalCondition
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BpjsDismissalConditionInput {
+	id: ID
+	created: String
+	modified: String
+	conditionCode: String
+	conditionName: String
+	bpjsClaimSubmission: BpjsClaimSubmissionInput
+	bpjsClaimSubmissionId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBpjsDismissalConditions(where: [[Where!]!]): Int!
+	lastBpjsDismissalConditions(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BpjsDismissalCondition!]!
+	bpjsDismissalConditions(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BpjsDismissalCondition!]!
+	bpjsDismissalConditionById(id: ID!): BpjsDismissalCondition
+	bpjsDismissalConditionAudits: [BpjsDismissalConditionAudit!]!
+	bpjsDismissalConditionAuditsByEntityId(bpjsDismissalConditionId: ID!): [BpjsDismissalConditionAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBpjsDismissalCondition(bpjsDismissalCondition: BpjsDismissalConditionInput!, persistRelations: Boolean): BpjsDismissalCondition!
+	createAllBpjsDismissalCondition(bpjsDismissalConditions: [BpjsDismissalConditionInput!]!): [BpjsDismissalCondition!]!
+	updateBpjsDismissalCondition(bpjsDismissalCondition: BpjsDismissalConditionInput!, persistRelations: Boolean): BpjsDismissalCondition!
+	updateAllBpjsDismissalCondition(bpjsDismissalConditions: [BpjsDismissalConditionInput!]!): [BpjsDismissalCondition!]!
+	deleteBpjsDismissalConditionById(bpjsDismissalConditionId: ID!): ID!
+	deleteAllBpjsDismissalConditionByIds(bpjsDismissalConditionIds: [ID!]!): [ID!]!
+	deleteBpjsDismissalConditionExcludingIds(bpjsDismissalConditionIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

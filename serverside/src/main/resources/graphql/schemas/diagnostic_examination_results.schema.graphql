@@ -1,0 +1,91 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type DiagnosticExaminationResults {
+	id: ID
+	created: String
+	modified: String
+	high: Float
+	low: Float
+	outsideRange: Boolean
+	result: String
+	sampleNo: String
+	sampleType: String
+	unit: String
+	repeated: Boolean
+	status: String
+	examinationItem: ExaminationItem
+	registration: Registration
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type DiagnosticExaminationResultsAudit {
+	entity: DiagnosticExaminationResults
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input DiagnosticExaminationResultsInput {
+	id: ID
+	created: String
+	modified: String
+	high: Float
+	low: Float
+	outsideRange: Boolean
+	result: String
+	sampleNo: String
+	sampleType: String
+	unit: String
+	repeated: Boolean
+	status: String
+	examinationItem: ExaminationItemInput
+	examinationItemId: ID
+	registration: RegistrationInput
+	registrationId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countDiagnosticExaminationResultss(where: [[Where!]!]): Int!
+	lastDiagnosticExaminationResultss(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [DiagnosticExaminationResults!]!
+	diagnosticExaminationResultss(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [DiagnosticExaminationResults!]!
+	diagnosticExaminationResultsById(id: ID!): DiagnosticExaminationResults
+	diagnosticExaminationResultsAudits: [DiagnosticExaminationResultsAudit!]!
+	diagnosticExaminationResultsAuditsByEntityId(diagnosticExaminationResultsId: ID!): [DiagnosticExaminationResultsAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createDiagnosticExaminationResults(diagnosticExaminationResults: DiagnosticExaminationResultsInput!, persistRelations: Boolean): DiagnosticExaminationResults!
+	createAllDiagnosticExaminationResults(diagnosticExaminationResultss: [DiagnosticExaminationResultsInput!]!): [DiagnosticExaminationResults!]!
+	updateDiagnosticExaminationResults(diagnosticExaminationResults: DiagnosticExaminationResultsInput!, persistRelations: Boolean): DiagnosticExaminationResults!
+	updateAllDiagnosticExaminationResults(diagnosticExaminationResultss: [DiagnosticExaminationResultsInput!]!): [DiagnosticExaminationResults!]!
+	deleteDiagnosticExaminationResultsById(diagnosticExaminationResultsId: ID!): ID!
+	deleteAllDiagnosticExaminationResultsByIds(diagnosticExaminationResultsIds: [ID!]!): [ID!]!
+	deleteDiagnosticExaminationResultsExcludingIds(diagnosticExaminationResultsIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

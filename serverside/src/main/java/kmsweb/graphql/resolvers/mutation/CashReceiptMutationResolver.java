@@ -1,0 +1,239 @@
+/*
+ * @bot-written
+ *
+ * WARNING AND NOTICE
+ * Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+ * Full Software Licence as accepted by you before being granted access to this source code and other materials,
+ * the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+ * commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+ * licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+ * including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+ * access, download, storage, and/or use of this source code.
+ *
+ * BOT WARNING
+ * This file is bot-written.
+ * Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+ */
+
+package kmsweb.graphql.resolvers.mutation;
+
+import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+import kmsweb.entities.CashReceiptEntity;
+import kmsweb.services.CashReceiptService;
+import com.google.common.collect.Lists;
+import lombok.extern.slf4j.Slf4j;
+import lombok.NonNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Component;
+import kmsweb.services.MerchantService;
+import kmsweb.entities.MerchantEntity;
+import kmsweb.services.PatientGeneralInfoService;
+import kmsweb.entities.PatientGeneralInfoEntity;
+import kmsweb.services.RetailPharmacyInvoiceService;
+import kmsweb.entities.RetailPharmacyInvoiceEntity;
+import kmsweb.services.StaffService;
+import kmsweb.entities.StaffEntity;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+// % protected region % [Import any additional imports here] off begin
+// % protected region % [Import any additional imports here] end
+
+@Slf4j
+@Component
+public class CashReceiptMutationResolver implements GraphQLMutationResolver {
+
+	private final CashReceiptService cashReceiptService;
+
+	private final MerchantService merchantService;
+
+	private final PatientGeneralInfoService patientGeneralInfoService;
+
+	private final RetailPharmacyInvoiceService retailPharmacyInvoiceService;
+
+	private final StaffService staffService;
+
+
+	// % protected region % [Add any additional class fields here] off begin
+	// % protected region % [Add any additional class fields here] end
+
+	@Autowired
+	public CashReceiptMutationResolver(
+			// % protected region % [Add any additional constructor parameters here] off begin
+			// % protected region % [Add any additional constructor parameters here] end
+			MerchantService merchantService,
+			PatientGeneralInfoService patientGeneralInfoService,
+			RetailPharmacyInvoiceService retailPharmacyInvoiceService,
+			StaffService staffService,
+			CashReceiptService cashReceiptService
+	) {
+		// % protected region % [Add any additional constructor logic before the main body here] off begin
+		// % protected region % [Add any additional constructor logic before the main body here] end
+
+		this.cashReceiptService = cashReceiptService;
+
+		this.merchantService = merchantService;
+
+		this.patientGeneralInfoService = patientGeneralInfoService;
+
+		this.retailPharmacyInvoiceService = retailPharmacyInvoiceService;
+
+		this.staffService = staffService;
+
+		// % protected region % [Add any additional constructor logic after the main body here] off begin
+		// % protected region % [Add any additional constructor logic after the main body here] end
+	}
+
+	/**
+	 * Persist the given entity into the database.
+	 *
+	 * @param rawEntity the entity before persistence
+	 * @return the entity after persistence
+	 */
+	@PreAuthorize("hasPermission('CashReceiptEntity', 'create')")
+	public CashReceiptEntity createCashReceipt(@NonNull CashReceiptEntity rawEntity, Boolean persistRelations) {
+		// % protected region % [Add any additional logic for create before creating the new entity here] off begin
+		// % protected region % [Add any additional logic for create before creating the new entity here] end
+		if (persistRelations == null) {
+			persistRelations = false;
+		}
+
+		if (rawEntity.getMerchant() != null) {
+			rawEntity.setMerchant(merchantService.updateOldData(rawEntity.getMerchant()));
+		}
+
+		if (rawEntity.getRetailPharmacyInvoice() != null) {
+			rawEntity.setRetailPharmacyInvoice(retailPharmacyInvoiceService.updateOldData(rawEntity.getRetailPharmacyInvoice()));
+		}
+
+		if (rawEntity.getCashierStaff() != null) {
+			rawEntity.setCashierStaff(staffService.updateOldData(rawEntity.getCashierStaff()));
+		}
+
+		if (rawEntity.getPatient() != null) {
+			rawEntity.setPatient(patientGeneralInfoService.updateOldData(rawEntity.getPatient()));
+		}
+
+		CashReceiptEntity newEntity = cashReceiptService.create(rawEntity, persistRelations);
+
+		// % protected region % [Add any additional logic for create before returning the newly created entity here] off begin
+		// % protected region % [Add any additional logic for create before returning the newly created entity here] end
+
+		return newEntity;
+	}
+
+	/**
+	 * Similar to {@link CashReceiptMutationResolver#createCashReceipt(CashReceiptEntity, Boolean)}
+	 * but with multiple entities at once.
+	 */
+	@PreAuthorize("hasPermission('CashReceiptEntity', 'create')")
+	public List<CashReceiptEntity> createAllCashReceipt(@NonNull List<CashReceiptEntity> rawEntities) {
+		List<CashReceiptEntity> newEntities = Lists.newArrayList(cashReceiptService.createAll(rawEntities));
+
+		// % protected region % [Add any additional logic for update before returning the created entities here] off begin
+		// % protected region % [Add any additional logic for update before returning the created entities here] end
+
+		return newEntities;
+	}
+
+	/**
+	 * Persist the given entity into the database.
+	 *
+	 * @param rawEntity the entity before persistence
+	 * @return the entity after persistence
+	 */
+	@PreAuthorize("hasPermission('CashReceiptEntity', 'update')")
+	public CashReceiptEntity updateCashReceipt(@NonNull CashReceiptEntity rawEntity, Boolean persistRelations) {
+		if (persistRelations == null) {
+			persistRelations = false;
+		}
+
+		if (rawEntity.getMerchant() != null) {
+			rawEntity.setMerchant(merchantService.updateOldData(rawEntity.getMerchant()));
+		}
+
+		if (rawEntity.getRetailPharmacyInvoice() != null) {
+			rawEntity.setRetailPharmacyInvoice(retailPharmacyInvoiceService.updateOldData(rawEntity.getRetailPharmacyInvoice()));
+		}
+
+		if (rawEntity.getCashierStaff() != null) {
+			rawEntity.setCashierStaff(staffService.updateOldData(rawEntity.getCashierStaff()));
+		}
+
+		if (rawEntity.getPatient() != null) {
+			rawEntity.setPatient(patientGeneralInfoService.updateOldData(rawEntity.getPatient()));
+		}
+
+		CashReceiptEntity entityFromDb = cashReceiptService.findById(rawEntity.getId()).orElseThrow();
+		rawEntity.setCreatedBy(entityFromDb.getCreatedBy());
+		CashReceiptEntity newEntity = cashReceiptService.update(rawEntity, persistRelations);
+
+		// % protected region % [Add any additional logic for create before returning the newly updated entity here] off begin
+		// % protected region % [Add any additional logic for create before returning the newly updated entity here] end
+
+		return newEntity;
+	}
+
+	/**
+	 * Similar to {@link CashReceiptMutationResolver#updateCashReceipt(CashReceiptEntity, Boolean)}
+	 * but with multiple entities at once.
+	 */
+	@PreAuthorize("hasPermission('CashReceiptEntity', 'update')")
+	public List<CashReceiptEntity> updateAllCashReceipt(@NonNull List<CashReceiptEntity> rawEntities) {
+		List<CashReceiptEntity> newEntities = Lists.newArrayList(cashReceiptService.updateAll(rawEntities));
+
+		// % protected region % [Add any additional logic for update before returning the updated entities here] off begin
+		// % protected region % [Add any additional logic for update before returning the updated entities here] end
+
+		return newEntities;
+	}
+
+	/**
+	 * Delete the entity with the ID from the database.
+	 *
+	 * @param id the ID of the entity to be deleted
+	 * @return the ID of the deleted entity
+	 */
+	@PreAuthorize("hasPermission('CashReceiptEntity', 'delete')")
+	public String deleteCashReceiptById(@NonNull String id) {
+		cashReceiptService.deleteById(UUID.fromString(id));
+
+		// % protected region % [Add any additional logic for update before returning the deleted entity ID here] off begin
+		// % protected region % [Add any additional logic for update before returning the deleted entity ID here] end
+
+		return id;
+	}
+
+	/**
+	 * Similar to {@link CashReceiptMutationResolver#deleteCashReceiptById(String)}
+	 * but with multiple entities at once.
+	 */
+	@PreAuthorize("hasPermission('CashReceiptEntity', 'delete')")
+	public List<String> deleteAllCashReceiptByIds(@NonNull List<String> ids) {
+		cashReceiptService.deleteAllByIds(ids.stream().map(UUID::fromString).collect(Collectors.toList()));
+
+		// % protected region % [Add any additional logic for update before returning the deleted entity IDs here] off begin
+		// % protected region % [Add any additional logic for update before returning the deleted entity IDs here] end
+
+		return ids;
+	}
+
+	@PreAuthorize("hasPermission('CashReceiptEntity', 'delete')")
+	public List<String> deleteCashReceiptExcludingIds(@NonNull List<String> ids) {
+		cashReceiptService.deleteAllExcludingIds(ids.stream().map(UUID::fromString).collect(Collectors.toList()));
+
+		// % protected region % [Add any additional logic for update before returning the deleted IDs after deletion excluding IDs ] off begin
+		// % protected region % [Add any additional logic for update before returning the deleted IDs after deletion excluding IDs ] end
+
+		return ids;
+	}
+
+
+	// % protected region % [Import any additional class methods here] off begin
+	// % protected region % [Import any additional class methods here] end
+}

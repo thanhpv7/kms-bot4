@@ -1,0 +1,145 @@
+/*
+ * @bot-written
+ *
+ * WARNING AND NOTICE
+ * Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+ * Full Software Licence as accepted by you before being granted access to this source code and other materials,
+ * the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+ * commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+ * licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+ * including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+ * access, download, storage, and/or use of this source code.
+ *
+ * BOT WARNING
+ * This file is bot-written.
+ * Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+ */
+package kmsweb.cucumber.pom.pages.admin.crud.edit;
+
+import com.google.inject.Inject;
+import kmsweb.cucumber.utils.*;
+import kmsweb.entities.AbstractEntity;
+import kmsweb.entities.EmergencyMedicalExaminationRecordEntity;
+
+import cucumber.runtime.java.guice.ScenarioScoped;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import lombok.NonNull;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.interactions.Actions;
+import java.util.*;
+
+// % protected region % [Add any additional imports here] off begin
+// % protected region % [Add any additional imports here] end
+
+/**
+ * Emergency Medical Examination RecordPage is a Page POM that is associated with the admin/entities/emergency-medical-examination-record url.
+ *
+ */
+@Slf4j
+@ScenarioScoped
+public class AdminEntitiesEmergencyMedicalExaminationRecordCrudEditPage extends CrudEdit {
+
+	// % protected region % [Add any additional fields here] off begin
+	// % protected region % [Add any additional fields here] end
+
+
+	@FindBy(how = How.XPATH, using = "//*[@id='surgicalOrNonSurgical-field']")
+	private WebElement surgicalOrNonSurgicalField;
+	@FindBy(how = How.XPATH, using = "//*[@id='caseSpecification-field']")
+	private WebElement caseSpecificationField;
+	@FindBy(how = How.XPATH, using = "//*[@id='accidentType-field']")
+	private WebElement accidentTypeField;
+	@FindBy(how = How.XPATH, using = "//*[@id='accidentCause-field']")
+	private WebElement accidentCauseField;
+	@FindBy(how = How.XPATH, using = "//*[@id='emergencyLevel-field']")
+	private WebElement emergencyLevelField;
+	// TODO default handling dataAttribute dateTimeOfInstructionsField;
+	@FindBy(how = How.XPATH, using = "//*[@id='dateTimeOfInstructions-field']")
+	private WebElement dateTimeOfInstructionsField;
+	@FindBy(how = How.XPATH, using = "//*[@id='isDoctorTakingOver-field']")
+	private WebElement isDoctorTakingOverField;
+	// TODO default handling dataAttribute dateTimeOfDrugAdministrationField;
+	@FindBy(how = How.XPATH, using = "//*[@id='dateTimeOfDrugAdministration-field']")
+	private WebElement dateTimeOfDrugAdministrationField;
+	@FindBy(how = How.XPATH, using = "//*[@id='isAutopay-field']")
+	private WebElement isAutopayField;
+	// TODO default handling dataAttribute responseTimeField;
+	@FindBy(how = How.XPATH, using = "//*[@id='responseTime-field']")
+	private WebElement responseTimeField;
+	
+
+	// Outgoing one-to-one
+
+	// Incoming one-to-one
+	@FindBy(how = How.XPATH, using = "//ng-select[@id='medicalExaminationRecordId-field']")
+	private WebElement medicalExaminationRecordField;
+
+	// Outgoing one-to-many
+
+	// Incoming one-to-many
+
+	// Outgoing many-to-many
+
+	// Incoming many-to-many
+
+	// % protected region % [Add any additional class fields here] off begin
+	// % protected region % [Add any additional class fields here] end
+
+	@Inject
+	public AdminEntitiesEmergencyMedicalExaminationRecordCrudEditPage(
+			// % protected region % [Add any additional constructor parameters here] off begin
+			// % protected region % [Add any additional constructor parameters here] end
+			@NonNull WebDriver webDriver,
+			@NonNull Properties properties
+	) {
+		super(
+			// % protected region % [Add any additional constructor arguments here] off begin
+			// % protected region % [Add any additional constructor arguments here] end
+			webDriver,
+			properties,
+			"admin/entities/emergency-medical-examination-record/create"
+		);
+
+		// % protected region % [Add any additional constructor logic here] off begin
+		// % protected region % [Add any additional constructor logic here] end
+
+		log.trace("Initialised {}", this.getClass().getSimpleName());
+	}
+
+	@Override
+	protected void fillInEntityInformation(AbstractEntity abstractEntity)
+	{
+		var entity = (EmergencyMedicalExaminationRecordEntity) abstractEntity;
+		surgicalOrNonSurgicalField.sendKeys(entity.getSurgicalOrNonSurgical());
+		caseSpecificationField.sendKeys(entity.getCaseSpecification());
+		accidentTypeField.sendKeys(entity.getAccidentType());
+		accidentCauseField.sendKeys(entity.getAccidentCause());
+		emergencyLevelField.sendKeys(entity.getEmergencyLevel());
+		// TODO default handling for dataAttribute dateTimeOfInstructionsField
+		dateTimeOfInstructionsField.sendKeys(entity.getDateTimeOfInstructions().toString());
+
+		if (entity.getIsDoctorTakingOver()) {
+			isDoctorTakingOverField.click();
+		}
+		// TODO default handling for dataAttribute dateTimeOfDrugAdministrationField
+		dateTimeOfDrugAdministrationField.sendKeys(entity.getDateTimeOfDrugAdministration().toString());
+
+		if (entity.getIsAutopay()) {
+			isAutopayField.click();
+		}
+		// TODO default handling for dataAttribute responseTimeField
+		responseTimeField.sendKeys(entity.getResponseTime().toString());
+
+
+		saveButton.click();
+	}
+	
+	// % protected region % [Add any additional methods here] off begin
+	// % protected region % [Add any additional methods here] end
+}

@@ -1,0 +1,96 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type InventoryAdjusmentBatch {
+	id: ID
+	created: String
+	modified: String
+	batchItemNotes: String
+	batchNo: String
+	batchQtyUoi: Float
+	batchQtyUomTransaction: Float
+	expirationDate: String
+	itemLineNumber: Int
+	transactionDate: String
+	transactionNumber: String
+	uoi: String
+	uomTransaction: String
+	inventoryAdjustmentItem: InventoryAdjustmentItem
+	stockCatalogue: StockCatalogue
+	warehouse: Warehouse
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type InventoryAdjusmentBatchAudit {
+	entity: InventoryAdjusmentBatch
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input InventoryAdjusmentBatchInput {
+	id: ID
+	created: String
+	modified: String
+	batchItemNotes: String
+	batchNo: String
+	batchQtyUoi: Float
+	batchQtyUomTransaction: Float
+	expirationDate: String
+	itemLineNumber: Int
+	transactionDate: String
+	transactionNumber: String
+	uoi: String
+	uomTransaction: String
+	inventoryAdjustmentItem: InventoryAdjustmentItemInput
+	inventoryAdjustmentItemId: ID
+	stockCatalogue: StockCatalogueInput
+	stockCatalogueId: ID
+	warehouse: WarehouseInput
+	warehouseId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countInventoryAdjusmentBatchs(where: [[Where!]!]): Int!
+	lastInventoryAdjusmentBatchs(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [InventoryAdjusmentBatch!]!
+	inventoryAdjusmentBatchs(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [InventoryAdjusmentBatch!]!
+	inventoryAdjusmentBatchById(id: ID!): InventoryAdjusmentBatch
+	inventoryAdjusmentBatchAudits: [InventoryAdjusmentBatchAudit!]!
+	inventoryAdjusmentBatchAuditsByEntityId(inventoryAdjusmentBatchId: ID!): [InventoryAdjusmentBatchAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createInventoryAdjusmentBatch(inventoryAdjusmentBatch: InventoryAdjusmentBatchInput!, persistRelations: Boolean): InventoryAdjusmentBatch!
+	createAllInventoryAdjusmentBatch(inventoryAdjusmentBatchs: [InventoryAdjusmentBatchInput!]!): [InventoryAdjusmentBatch!]!
+	updateInventoryAdjusmentBatch(inventoryAdjusmentBatch: InventoryAdjusmentBatchInput!, persistRelations: Boolean): InventoryAdjusmentBatch!
+	updateAllInventoryAdjusmentBatch(inventoryAdjusmentBatchs: [InventoryAdjusmentBatchInput!]!): [InventoryAdjusmentBatch!]!
+	deleteInventoryAdjusmentBatchById(inventoryAdjusmentBatchId: ID!): ID!
+	deleteAllInventoryAdjusmentBatchByIds(inventoryAdjusmentBatchIds: [ID!]!): [ID!]!
+	deleteInventoryAdjusmentBatchExcludingIds(inventoryAdjusmentBatchIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

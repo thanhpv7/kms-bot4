@@ -1,0 +1,93 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BpjsPatientReferral {
+	id: ID
+	created: String
+	modified: String
+	noSEP: String
+	notes: String
+	referalDatePlan: String
+	referralDate: String
+	referralNo: String
+	referredType: String
+	treatmentType: String
+	bpjsDiagnose: BpjsDiagnose
+	bpjsHealthFacility: BpjsHealthFacility
+	bpjsServiceMapping: BpjsServiceMapping
+	patientPaymentBPJS: PatientPaymentBPJS
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BpjsPatientReferralAudit {
+	entity: BpjsPatientReferral
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BpjsPatientReferralInput {
+	id: ID
+	created: String
+	modified: String
+	noSEP: String
+	notes: String
+	referalDatePlan: String
+	referralDate: String
+	referralNo: String
+	referredType: String
+	treatmentType: String
+	bpjsDiagnose: BpjsDiagnoseInput
+	bpjsDiagnoseId: ID
+	bpjsHealthFacility: BpjsHealthFacilityInput
+	bpjsHealthFacilityId: ID
+	bpjsServiceMapping: BpjsServiceMappingInput
+	bpjsServiceMappingId: ID
+	patientPaymentBPJS: PatientPaymentBPJSInput
+	patientPaymentBPJSId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBpjsPatientReferrals(where: [[Where!]!]): Int!
+	lastBpjsPatientReferrals(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BpjsPatientReferral!]!
+	bpjsPatientReferrals(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BpjsPatientReferral!]!
+	bpjsPatientReferralById(id: ID!): BpjsPatientReferral
+	bpjsPatientReferralAudits: [BpjsPatientReferralAudit!]!
+	bpjsPatientReferralAuditsByEntityId(bpjsPatientReferralId: ID!): [BpjsPatientReferralAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBpjsPatientReferral(bpjsPatientReferral: BpjsPatientReferralInput!, persistRelations: Boolean): BpjsPatientReferral!
+	createAllBpjsPatientReferral(bpjsPatientReferrals: [BpjsPatientReferralInput!]!): [BpjsPatientReferral!]!
+	updateBpjsPatientReferral(bpjsPatientReferral: BpjsPatientReferralInput!, persistRelations: Boolean): BpjsPatientReferral!
+	updateAllBpjsPatientReferral(bpjsPatientReferrals: [BpjsPatientReferralInput!]!): [BpjsPatientReferral!]!
+	deleteBpjsPatientReferralById(bpjsPatientReferralId: ID!): ID!
+	deleteAllBpjsPatientReferralByIds(bpjsPatientReferralIds: [ID!]!): [ID!]!
+	deleteBpjsPatientReferralExcludingIds(bpjsPatientReferralIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

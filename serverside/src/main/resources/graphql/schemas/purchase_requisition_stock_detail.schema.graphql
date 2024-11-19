@@ -1,0 +1,100 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type PurchaseRequisitionStockDetail {
+	id: ID
+	created: String
+	modified: String
+	itemNotes: String
+	itemStatus: String
+	maxLevel: Float
+	quantityOrdered: Float
+	quantityReceived: Float
+	quantityRequested: Float
+	quantityReturned: Float
+	remainingQuantity: Float
+	soh: Float
+	totalPrice: Float
+	uop: String
+	unitPrice: Float
+	purchaseRequisition: PurchaseRequisition
+	stockCatalogue: StockCatalogue
+	purchaseOrderStockDetails: [PurchaseOrderStockDetail]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type PurchaseRequisitionStockDetailAudit {
+	entity: PurchaseRequisitionStockDetail
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input PurchaseRequisitionStockDetailInput {
+	id: ID
+	created: String
+	modified: String
+	itemNotes: String
+	itemStatus: String
+	maxLevel: Float
+	quantityOrdered: Float
+	quantityReceived: Float
+	quantityRequested: Float
+	quantityReturned: Float
+	remainingQuantity: Float
+	soh: Float
+	totalPrice: Float
+	uop: String
+	unitPrice: Float
+	purchaseRequisition: PurchaseRequisitionInput
+	purchaseRequisitionId: ID
+	stockCatalogue: StockCatalogueInput
+	stockCatalogueId: ID
+	purchaseOrderStockDetails: [PurchaseOrderStockDetailInput]
+	purchaseOrderStockDetailsIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countPurchaseRequisitionStockDetails(where: [[Where!]!]): Int!
+	lastPurchaseRequisitionStockDetails(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [PurchaseRequisitionStockDetail!]!
+	purchaseRequisitionStockDetails(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [PurchaseRequisitionStockDetail!]!
+	purchaseRequisitionStockDetailById(id: ID!): PurchaseRequisitionStockDetail
+	purchaseRequisitionStockDetailAudits: [PurchaseRequisitionStockDetailAudit!]!
+	purchaseRequisitionStockDetailAuditsByEntityId(purchaseRequisitionStockDetailId: ID!): [PurchaseRequisitionStockDetailAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createPurchaseRequisitionStockDetail(purchaseRequisitionStockDetail: PurchaseRequisitionStockDetailInput!, persistRelations: Boolean): PurchaseRequisitionStockDetail!
+	createAllPurchaseRequisitionStockDetail(purchaseRequisitionStockDetails: [PurchaseRequisitionStockDetailInput!]!): [PurchaseRequisitionStockDetail!]!
+	updatePurchaseRequisitionStockDetail(purchaseRequisitionStockDetail: PurchaseRequisitionStockDetailInput!, persistRelations: Boolean): PurchaseRequisitionStockDetail!
+	updateAllPurchaseRequisitionStockDetail(purchaseRequisitionStockDetails: [PurchaseRequisitionStockDetailInput!]!): [PurchaseRequisitionStockDetail!]!
+	deletePurchaseRequisitionStockDetailById(purchaseRequisitionStockDetailId: ID!): ID!
+	deleteAllPurchaseRequisitionStockDetailByIds(purchaseRequisitionStockDetailIds: [ID!]!): [ID!]!
+	deletePurchaseRequisitionStockDetailExcludingIds(purchaseRequisitionStockDetailIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

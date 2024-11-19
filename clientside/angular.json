@@ -1,0 +1,135 @@
+{
+	"@bot-written": "@bot-written  WARNING AND NOTICE Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the Full Software Licence as accepted by you before being granted access to this source code and other materials, the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through licence termination and further legal action, and be required to indemnify Codebots for any loss or damage, including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any access, download, storage, and/or use of this source code.  BOT WARNING This file is bot-written. Any changes out side of \"protected regions\" will be lost next time the bot makes any changes.",
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"clientside": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "",
+			"sourceRoot": "src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:browser",
+					"options": {
+						"aot": true,
+						"outputPath": "../serverside/src/main/resources/static",
+						"index": "src/index.html",
+						"main": "src/main.ts",
+						"polyfills": "src/polyfills.ts",
+						"tsConfig": "tsconfig.app.json",
+						"assets": [
+							// % protected region % [Add any additional assets here] off begin
+							// % protected region % [Add any additional assets here] end
+							"src/favicon.ico",
+							"src/assets"
+						],
+						"styles": [
+							// % protected region % [Add any additional styles here] off begin
+							// % protected region % [Add any additional styles here] end
+							"src/styles.scss",
+							"node_modules/@ng-select/ng-select/themes/default.theme.css",
+							"node_modules/ng-pick-datetime/assets/style/picker.min.css"
+						],
+						"scripts": [
+							// % protected region % [Add additional scripts here] off begin
+							// % protected region % [Add additional scripts here] end
+						],
+						"preserveSymlinks": true
+					},
+					"configurations": {
+						"production": {
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.prod.ts"
+								}
+							],
+							// % protected region % [Override production build configurations here] off begin
+							"optimization": true,
+							"outputHashing": "all",
+							"sourceMap": false,
+							"namedChunks": false,
+							"aot": true,
+							"extractLicenses": true,
+							"vendorChunk": false,
+							"buildOptimizer": true,
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "15mb",
+									"maximumError": "30mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "6kb",
+									"maximumError": "10kb"
+								}
+							]
+							// % protected region % [Override production build configurations here] end
+						}
+					}
+				},
+				"serve": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"options": {
+						"browserTarget": "clientside:build"
+					},
+					"configurations": {
+						"production": {
+							"browserTarget": "clientside:build:production"
+						}
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"options": {
+						"browserTarget": "clientside:build"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "src/test.ts",
+						"polyfills": "src/polyfills.ts",
+						"tsConfig": "tsconfig.spec.json",
+						"karmaConfig": "karma.conf.js",
+						"styles": [
+							"src/styles.scss",
+							"node_modules/@ng-select/ng-select/themes/default.theme.css",
+							"node_modules/ng-pick-datetime/assets/style/picker.min.css"
+						],
+						"scripts": [],
+						"assets": [
+							"src/favicon.ico",
+							"src/assets"
+						],
+						"preserveSymlinks": true
+					}
+				},
+				"lint": {
+					"builder": "@angular-devkit/build-angular:tslint",
+					"options": {
+						"tsConfig": [
+							"tsconfig.app.json",
+							"tsconfig.spec.json"
+						],
+						"exclude": [
+							"**/node_modules/**"
+						]
+					}
+				}
+			}
+		}
+	},
+	"cli": {
+		"analytics": false
+	},
+	"defaultProject": "clientside"
+}

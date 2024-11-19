@@ -1,0 +1,104 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type HospitalGroupInformation {
+	id: ID
+	created: String
+	modified: String
+	address: String
+	city: String
+	contactPerson: String
+	contactPersonEmail: String
+	contactPersonPhoneNumber: String
+	email: String
+	fax: String
+	hospitalGroupCode: String
+	hospitalGroupCorporationName: String
+	hospitalGroupCorporationStatus: String
+	hospitalGroupDirector: String
+	hospitalGroupName: String
+	operationalLicenseNo: String
+	phoneNumber: String
+	postcode: String
+	website: String
+	
+	hospitalBranchInformations: [HospitalBranchInformation]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type HospitalGroupInformationAudit {
+	entity: HospitalGroupInformation
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input HospitalGroupInformationInput {
+	id: ID
+	created: String
+	modified: String
+	address: String
+	city: String
+	contactPerson: String
+	contactPersonEmail: String
+	contactPersonPhoneNumber: String
+	email: String
+	fax: String
+	hospitalGroupCode: String
+	hospitalGroupCorporationName: String
+	hospitalGroupCorporationStatus: String
+	hospitalGroupDirector: String
+	hospitalGroupName: String
+	operationalLicenseNo: String
+	phoneNumber: String
+	postcode: String
+	website: String
+	
+	hospitalBranchInformations: [HospitalBranchInformationInput]
+	hospitalBranchInformationsIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countHospitalGroupInformations(where: [[Where!]!]): Int!
+	lastHospitalGroupInformations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [HospitalGroupInformation!]!
+	hospitalGroupInformations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [HospitalGroupInformation!]!
+	hospitalGroupInformationById(id: ID!): HospitalGroupInformation
+	hospitalGroupInformationAudits: [HospitalGroupInformationAudit!]!
+	hospitalGroupInformationAuditsByEntityId(hospitalGroupInformationId: ID!): [HospitalGroupInformationAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createHospitalGroupInformation(hospitalGroupInformation: HospitalGroupInformationInput!, persistRelations: Boolean): HospitalGroupInformation!
+	createAllHospitalGroupInformation(hospitalGroupInformations: [HospitalGroupInformationInput!]!): [HospitalGroupInformation!]!
+	updateHospitalGroupInformation(hospitalGroupInformation: HospitalGroupInformationInput!, persistRelations: Boolean): HospitalGroupInformation!
+	updateAllHospitalGroupInformation(hospitalGroupInformations: [HospitalGroupInformationInput!]!): [HospitalGroupInformation!]!
+	deleteHospitalGroupInformationById(hospitalGroupInformationId: ID!): ID!
+	deleteAllHospitalGroupInformationByIds(hospitalGroupInformationIds: [ID!]!): [ID!]!
+	deleteHospitalGroupInformationExcludingIds(hospitalGroupInformationIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

@@ -1,0 +1,84 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type RoomTransfer {
+	id: ID
+	created: String
+	modified: String
+	endDateTime: String
+	startDateTime: String
+	transferringStaffName: String
+	treatmentClass: String
+	bedFacility: BedFacility
+	medicalExaminationRecord: MedicalExaminationRecord
+	transferringStaff: Staff
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type RoomTransferAudit {
+	entity: RoomTransfer
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input RoomTransferInput {
+	id: ID
+	created: String
+	modified: String
+	endDateTime: String
+	startDateTime: String
+	transferringStaffName: String
+	treatmentClass: String
+	bedFacility: BedFacilityInput
+	bedFacilityId: ID
+	medicalExaminationRecord: MedicalExaminationRecordInput
+	medicalExaminationRecordId: ID
+	transferringStaff: StaffInput
+	transferringStaffId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countRoomTransfers(where: [[Where!]!]): Int!
+	lastRoomTransfers(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [RoomTransfer!]!
+	roomTransfers(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [RoomTransfer!]!
+	roomTransferById(id: ID!): RoomTransfer
+	roomTransferAudits: [RoomTransferAudit!]!
+	roomTransferAuditsByEntityId(roomTransferId: ID!): [RoomTransferAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createRoomTransfer(roomTransfer: RoomTransferInput!, persistRelations: Boolean): RoomTransfer!
+	createAllRoomTransfer(roomTransfers: [RoomTransferInput!]!): [RoomTransfer!]!
+	updateRoomTransfer(roomTransfer: RoomTransferInput!, persistRelations: Boolean): RoomTransfer!
+	updateAllRoomTransfer(roomTransfers: [RoomTransferInput!]!): [RoomTransfer!]!
+	deleteRoomTransferById(roomTransferId: ID!): ID!
+	deleteAllRoomTransferByIds(roomTransferIds: [ID!]!): [ID!]!
+	deleteRoomTransferExcludingIds(roomTransferIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

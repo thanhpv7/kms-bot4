@@ -1,0 +1,150 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type MedicalRecordNextVerificationChecklist {
+	id: ID
+	created: String
+	modified: String
+	drAdmissionDiagnosis: Boolean
+	drDismissalDateAndTime: Boolean
+	drDismissalDiagnosis: Boolean
+	drDismissalType: Boolean
+	drObservationDoctorNotes: Boolean
+	drObservationDoctorNotesNA: Boolean
+	drObservationNursingNotes: Boolean
+	drObservationNursingNotesNA: Boolean
+	drObservationProgressNotes: Boolean
+	drObservationProgressNotesNA: Boolean
+	dsInterpretation: Boolean
+	dsResponsibleStaff: Boolean
+	inpDailyCareDoctorNotes: Boolean
+	inpDailyCareDoctorNotesNA: Boolean
+	inpDailyCareNursingNotes: Boolean
+	inpDailyCareNursingNotesNA: Boolean
+	inpDailyCareProgressNotes: Boolean
+	inpDailyCareProgressNotesNA: Boolean
+	inpDismissalCondition: Boolean
+	inpDismissalDateAndTime: Boolean
+	inpDismissalDiagnosis: Boolean
+	inpDismissalType: Boolean
+	inpVitalSign: Boolean
+	notes: String
+	otDismissalDateAndTime: Boolean
+	otDismissalType: Boolean
+	otIntraOperativeNotesAnaesthesiology: Boolean
+	otIntraOperativeNotesSurgery: Boolean
+	otPostOperativeDiagnosis: Boolean
+	otPostOperativeNotesAnaesthesiology: Boolean
+	otPostOperativeNotesSurgery: Boolean
+	otPreOperativeDiagnosis: Boolean
+	otPreOperativeNotesAnaesthesiology: Boolean
+	otPreOperativeNotesSurgery: Boolean
+	outAnamnesis: Boolean
+	outDiagnosis: Boolean
+	outDismissalDateAndTime: Boolean
+	outDismissalType: Boolean
+	outPhysicalExamination: Boolean
+	outVitalSign: Boolean
+	medicalExaminationRecord: MedicalExaminationRecord
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type MedicalRecordNextVerificationChecklistAudit {
+	entity: MedicalRecordNextVerificationChecklist
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input MedicalRecordNextVerificationChecklistInput {
+	id: ID
+	created: String
+	modified: String
+	drAdmissionDiagnosis: Boolean
+	drDismissalDateAndTime: Boolean
+	drDismissalDiagnosis: Boolean
+	drDismissalType: Boolean
+	drObservationDoctorNotes: Boolean
+	drObservationDoctorNotesNA: Boolean
+	drObservationNursingNotes: Boolean
+	drObservationNursingNotesNA: Boolean
+	drObservationProgressNotes: Boolean
+	drObservationProgressNotesNA: Boolean
+	dsInterpretation: Boolean
+	dsResponsibleStaff: Boolean
+	inpDailyCareDoctorNotes: Boolean
+	inpDailyCareDoctorNotesNA: Boolean
+	inpDailyCareNursingNotes: Boolean
+	inpDailyCareNursingNotesNA: Boolean
+	inpDailyCareProgressNotes: Boolean
+	inpDailyCareProgressNotesNA: Boolean
+	inpDismissalCondition: Boolean
+	inpDismissalDateAndTime: Boolean
+	inpDismissalDiagnosis: Boolean
+	inpDismissalType: Boolean
+	inpVitalSign: Boolean
+	notes: String
+	otDismissalDateAndTime: Boolean
+	otDismissalType: Boolean
+	otIntraOperativeNotesAnaesthesiology: Boolean
+	otIntraOperativeNotesSurgery: Boolean
+	otPostOperativeDiagnosis: Boolean
+	otPostOperativeNotesAnaesthesiology: Boolean
+	otPostOperativeNotesSurgery: Boolean
+	otPreOperativeDiagnosis: Boolean
+	otPreOperativeNotesAnaesthesiology: Boolean
+	otPreOperativeNotesSurgery: Boolean
+	outAnamnesis: Boolean
+	outDiagnosis: Boolean
+	outDismissalDateAndTime: Boolean
+	outDismissalType: Boolean
+	outPhysicalExamination: Boolean
+	outVitalSign: Boolean
+	medicalExaminationRecord: MedicalExaminationRecordInput
+	medicalExaminationRecordId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countMedicalRecordNextVerificationChecklists(where: [[Where!]!]): Int!
+	lastMedicalRecordNextVerificationChecklists(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [MedicalRecordNextVerificationChecklist!]!
+	medicalRecordNextVerificationChecklists(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [MedicalRecordNextVerificationChecklist!]!
+	medicalRecordNextVerificationChecklistById(id: ID!): MedicalRecordNextVerificationChecklist
+	medicalRecordNextVerificationChecklistAudits: [MedicalRecordNextVerificationChecklistAudit!]!
+	medicalRecordNextVerificationChecklistAuditsByEntityId(medicalRecordNextVerificationChecklistId: ID!): [MedicalRecordNextVerificationChecklistAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createMedicalRecordNextVerificationChecklist(medicalRecordNextVerificationChecklist: MedicalRecordNextVerificationChecklistInput!, persistRelations: Boolean): MedicalRecordNextVerificationChecklist!
+	createAllMedicalRecordNextVerificationChecklist(medicalRecordNextVerificationChecklists: [MedicalRecordNextVerificationChecklistInput!]!): [MedicalRecordNextVerificationChecklist!]!
+	updateMedicalRecordNextVerificationChecklist(medicalRecordNextVerificationChecklist: MedicalRecordNextVerificationChecklistInput!, persistRelations: Boolean): MedicalRecordNextVerificationChecklist!
+	updateAllMedicalRecordNextVerificationChecklist(medicalRecordNextVerificationChecklists: [MedicalRecordNextVerificationChecklistInput!]!): [MedicalRecordNextVerificationChecklist!]!
+	deleteMedicalRecordNextVerificationChecklistById(medicalRecordNextVerificationChecklistId: ID!): ID!
+	deleteAllMedicalRecordNextVerificationChecklistByIds(medicalRecordNextVerificationChecklistIds: [ID!]!): [ID!]!
+	deleteMedicalRecordNextVerificationChecklistExcludingIds(medicalRecordNextVerificationChecklistIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

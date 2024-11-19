@@ -1,0 +1,82 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type CompoundPrescriptionItem {
+	id: ID
+	created: String
+	modified: String
+	dose: Int
+	notes: String
+	requestedQuantity: Float
+	compoundPrescriptionDetail: CompoundPrescriptionDetail
+	stockCatalogue: StockCatalogue
+	unit: UnitOfMeasurement
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type CompoundPrescriptionItemAudit {
+	entity: CompoundPrescriptionItem
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input CompoundPrescriptionItemInput {
+	id: ID
+	created: String
+	modified: String
+	dose: Int
+	notes: String
+	requestedQuantity: Float
+	compoundPrescriptionDetail: CompoundPrescriptionDetailInput
+	compoundPrescriptionDetailId: ID
+	stockCatalogue: StockCatalogueInput
+	stockCatalogueId: ID
+	unit: UnitOfMeasurementInput
+	unitId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countCompoundPrescriptionItems(where: [[Where!]!]): Int!
+	lastCompoundPrescriptionItems(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [CompoundPrescriptionItem!]!
+	compoundPrescriptionItems(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [CompoundPrescriptionItem!]!
+	compoundPrescriptionItemById(id: ID!): CompoundPrescriptionItem
+	compoundPrescriptionItemAudits: [CompoundPrescriptionItemAudit!]!
+	compoundPrescriptionItemAuditsByEntityId(compoundPrescriptionItemId: ID!): [CompoundPrescriptionItemAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createCompoundPrescriptionItem(compoundPrescriptionItem: CompoundPrescriptionItemInput!, persistRelations: Boolean): CompoundPrescriptionItem!
+	createAllCompoundPrescriptionItem(compoundPrescriptionItems: [CompoundPrescriptionItemInput!]!): [CompoundPrescriptionItem!]!
+	updateCompoundPrescriptionItem(compoundPrescriptionItem: CompoundPrescriptionItemInput!, persistRelations: Boolean): CompoundPrescriptionItem!
+	updateAllCompoundPrescriptionItem(compoundPrescriptionItems: [CompoundPrescriptionItemInput!]!): [CompoundPrescriptionItem!]!
+	deleteCompoundPrescriptionItemById(compoundPrescriptionItemId: ID!): ID!
+	deleteAllCompoundPrescriptionItemByIds(compoundPrescriptionItemIds: [ID!]!): [ID!]!
+	deleteCompoundPrescriptionItemExcludingIds(compoundPrescriptionItemIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

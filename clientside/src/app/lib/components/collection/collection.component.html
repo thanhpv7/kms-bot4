@@ -1,0 +1,350 @@
+<!--
+@bot-written
+
+WARNING AND NOTICE
+Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+Full Software Licence as accepted by you before being granted access to this source code and other materials,
+the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+access, download, storage, and/or use of this source code.
+
+BOT WARNING
+This file is bot-written.
+Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+-->
+
+<ng-container *ngIf="isDisplaying">
+	<section class="collection-component">
+		<!--Menu section-->
+		<section *ngIf="!hideMenu" aria-label="collection menu" class="collection__menu">
+			<!-- % protected region % [Customise global search and filter controls here] off begin -->
+			<form cb-search *ngIf="!hideSearchBar" [placeholder]="'Search'" [className]="'search search__collection'" [buttonVisible]="false" (search)="onSearch($event)"></form>
+			<section class="collection__actions">
+				<button cb-button *ngIf="filterQuestions.length > 0"
+								[classes]="'filter'"
+								[buttonStyle]="buttonStyle.OUTLINE"
+								[iconClasses]="'filter'"
+								(click)="displayFilter = !displayFilter"
+								[iconPos]="iconPos.TOP"
+								[isDisabled]="isDisabled">
+					Filter
+				</button>
+				<ng-container *ngIf="allowViewToggle">
+					<button *ngIf='!isGrid' cb-button
+									[classes]="'icon-grid grid'"
+									(click)="isGrid = true"
+									[buttonStyle]="buttonStyle.OUTLINE"
+									[iconPos]="iconPos.TOP"
+									[isDisabled]="isDisabled"
+									[isDisplaying]="allowViewToggle || isGrid">
+						Grid
+					</button>
+					<button *ngIf='isGrid' cb-button
+									[classes]="'icon-list list'"
+									(click)="isGrid = false"
+									[buttonStyle]="buttonStyle.OUTLINE"
+									[isDisabled]="isDisabled"
+									[iconPos]="iconPos.TOP"
+									[isDisplaying]="allowViewToggle || !isGrid">
+								List
+					</button>
+				</ng-container>
+				<div class="collection-list">
+					<button cb-button *ngFor="let action of collectionActions"
+							[iconClasses]="action.icon"
+							[iconPos]="action.iconPos"
+							[buttonStyle]="action.buttonStyle ? action.buttonStyle : buttonStyle.SOLID"
+							[buttonAccentColour]="action.buttonColour? action.buttonColour : buttonAccentColour.PRIMARY"
+							(click)="onCollectionActionClicked(action)"
+							[isDisabled]="action.disableOption ? action.disableOption(null) : isDisabled">
+						{{action.label}}
+					</button>
+				</div>
+			</section>
+			<!-- % protected region % [Customise global search and filter controls here] end -->
+		</section>
+		<!--Filter section-->
+		<!-- % protected region % [Customise the collection filter element here] off begin -->
+		<section aria-label="collection__filter" class="collection__filters" *ngIf="displayFilter">
+			<cb-collection-filter (filterEmitter)="onFilter($event)" [filterQuestions]="filterQuestions"></cb-collection-filter>
+		</section>
+		<!-- % protected region % [Customise the collection filter element here] end -->
+		<!--Select option-->
+		<section aria-label="select options" class="collection__select-options" [class.hide]="selectedModelCount() === 0 && actionTemplate === null">
+			<ng-container [ngSwitch]="actionTemplate">
+				<ng-container *ngSwitchCase="'import'" >
+					<div class="import__action">
+						<!-- % protected region % [update the DOM for the import element here] off begin -->
+						<div class="import__action-options">
+							<input type="file"
+									accept="{{importAcceptedFileTypes}}"
+									id="import-file-upload"
+									(change)="emitImportAction($event)"
+									[disabled]="false"
+									[required]="true">
+							<button cb-button
+									[classes]="'crud__options-import-example'"
+									[buttonStyle]="buttonStyle.TEXT"
+									id="import-csv-example-btn"
+									(click)="emitDownloadCsvExample()">
+								Download Example CSV
+							</button>
+						</div>
+						<p class="import-help-text" >
+							Adding an ID to any entity in your CSV will cause the server to update the entity with that ID
+						</p>
+						<!-- % protected region % [update the DOM for the import element here] end -->
+					</div>
+				</ng-container>
+				<!-- % protected region % [Add any additional components to the switch statment here] off begin -->
+				<!-- % protected region % [Add any additional components to the switch statment here] end -->
+				<ng-container *ngSwitchDefault>
+					<ng-container *ngIf="selectedModelCount() > 0">
+						<section class="collection__selection-actions">
+							<cb-button-group>
+								<!-- % protected region % [Override the global multiple item buttons here] off begin -->
+								<button cb-button *ngFor="let action of multipleItemsActions"
+										(click)="onMultipleItemsActionClicked(action.label)"
+										[iconClasses]="action.icon"
+										[iconPos]="action.iconPos"
+										[isDisabled]="isDisabled"
+										[buttonStyle]="buttonStyle.TEXT">
+									{{action.label}}
+								</button>
+								<!-- % protected region % [Override the global multiple item buttons here] end -->
+							</cb-button-group>
+						</section>
+			<!-- % protected region % [Override the default selection count and cancel button here] off begin -->
+						<p class="crud__selection-count"><span class="selection-count">{{ selectedModelCount() }}</span> selected</p>
+						<button cb-button *ngIf="selectedModelCount() != modelCount && selectedModelCount() > 0"
+								[classes]="'crud__selection-cancel'"
+								(click)="onClickSelectAll()"
+								[buttonStyle]="buttonStyle.TEXT"
+								id="select-all-btn">
+							Select All {{ modelCount }} Items
+						</button>
+					</ng-container>
+				</ng-container>
+			</ng-container>
+			<button cb-button
+					[class]="'crud__selection-cancel'"
+					(click)="onSelectAllCancel()"
+					[buttonStyle]="buttonStyle.TEXT"
+					id="cancel-btn">
+				Cancel
+			</button>
+			<!-- % protected region % [Override the default selection count and cancel button here] end -->
+		</section>
+		<!--For list view-->
+		<ng-container *ngIf="!isGrid; else gridView" >
+			<section aria-label="collection list" class="collection__list collection__list--expandable">
+				<table>
+					<thead>
+					<tr class="list__header">
+						<!-- % protected region % [Override the default list header here] off begin -->
+						<th *ngIf="!hideCheckbox" class="select-box">
+							<cb-checkbox class="crud__list-select-all input-label-checkbox"
+													[id]="'select-all'"
+													[className]="'collection__list--select-all'"
+													[displayType]="inputComponentDisplayType.INLINE"
+													[ngModel]="models && currentPageSelectedCount() === models.length && models.length !== 0"
+													(check)="onSelectAllChange($event)"
+													[label]="'Select All'"
+													[isDisabled]="isDisabled">
+							</cb-checkbox>
+						</th>
+						<th *ngFor="let opt of headerOptions"
+								[id]="opt.name"
+								scope="col"
+								[class.sortable]="opt.sortable"
+								(click)="opt.sortable ? onHeaderClicked(opt): null">{{ opt.displayName }}</th>
+						<th *ngIf="itemActions && itemActions.length > 0" scope="col" class="list__header--actions">Options</th>
+						<!-- % protected region % [Override the default list header here] end -->
+					</tr>
+					</thead>
+					<tbody>
+						<!-- % protected region % [Override the collection item loop definition here] off begin -->
+						<ng-container *ngFor="let model of models; index as i">
+							<tr class="collection__item" [attr.data-id]="model.id">
+							<!-- % protected region % [Override the collection item loop definition here] end -->
+								<td *ngIf="!hideCheckbox">
+									<cb-checkbox class="input-label-checkbox"
+															[id]="model.id"
+															[ngModel]="isCheckboxActive(model.id)"
+															[label]="'select-item'"
+															[labelVisible]="false"
+															(check)="$event ? onModelSelected(model) : onModelDeselected(model)">
+									</cb-checkbox>
+								</td>
+
+								<!-- % protected region % [Override the presentation of the collection item values here] off begin -->
+								<td *ngFor="let opt of headerOptions">
+									<span *ngIf="opt.type == modelPropertyType.OBSERVABLE; else value">
+										{{ getValue(opt, model) | async }}
+									</span>
+									<ng-template #value>
+										<span>{{ getValue(opt, model)}}</span>
+									</ng-template>
+								</td>
+								<!-- % protected region % [Override the presentation of the collection item values here] end -->
+
+								<td *ngIf="itemActions && itemActions.length > 0" class="list__items--actions">
+									<section class="collection__edit-actions">
+										<cb-button-group>
+											<!-- % protected region % [Override the default global presentation of the action buttons here] off begin -->
+											<ng-container *ngFor="let action of itemActions">
+												<button cb-button
+														(click)="onItemActionClicked(action.label, model)"
+														[iconClasses]="action.icon"
+														[iconPos]="action.iconPos"
+														[buttonStyle]="buttonStyle.TEXT"
+														[isDisabled]="action.disableOption ? action.disableOption(model) : isDisabled">
+													{{action.label}}
+												</button>
+											</ng-container>
+											<button cb-button *ngIf="enableExpands"
+													(click)="toggleExpandedEntity(i)"
+													[iconClasses]="(i === expandedIndex) ? 'chevron-up' : 'chevron-down'"
+													[iconPos]="'icon-top'"
+													[buttonStyle]="buttonStyle.TEXT"
+													[isDisabled]="isDisabled">
+												Expand
+											</button>
+											<!-- % protected region % [Override the default global presentation of the action buttons here] end -->
+										</cb-button-group>
+									</section>
+								</td>
+							</tr>
+							<tr class="collection__expand" *ngIf="enableExpands">
+								<!-- % protected region % [Override the contents of the expand accordion here] off begin -->
+									<!-- The table has a column for selection and one for actions, so expand needs to be as wide as these columns plus the columns for the attributes -->
+									<td class="expand__row" colSpan="{{headerOptions.length + 2}}">
+										<div class="crud-expand" [ngClass]="{'active': i === expandedIndex}">
+											<!-- Outer looped div here doesn't need any styles/classes as it is only used for grouping elements so they are aligned in flex box -->
+											<div *ngFor="let expandArray of groupEntityExpands(3)">
+												<div class="crud-expand__attr" id="{{header.name}}" *ngFor="let header of expandArray">
+													<h6 class="expand-attr__header">
+														<b>{{header.displayName}}:</b>
+													</h6>
+													<p class="expand-attr__value" *ngIf="header.type == modelPropertyType.OBSERVABLE; else value">
+														{{ getValue(header, model) | async }}
+													</p>
+													<ng-template #value>
+														<p class="expand-attr__value">
+															{{ getValue(header, model)}}
+														</p>
+													</ng-template>
+												</div>
+											</div>
+										</div>
+									</td>
+								<!-- % protected region % [Override the contents of the expand accordion here] end -->
+							</tr>
+							<!-- % protected region % [Add any additional rows here] off begin -->
+							<!-- % protected region % [Add any additional rows here] end -->
+						</ng-container>
+					</tbody>
+				</table>
+			</section>
+		</ng-container>
+		<ng-template #gridView>
+			<section aria-label="collection grid" class="collection__grid">
+				<ng-container *ngFor="let model of models">
+					<div class="collection__item">
+						<div class="grid-item__header">
+							<cb-checkbox *ngIf="!hideCheckbox"
+													 [id]="model.id"
+													 [labelVisible]="false"
+													 [label]="'select-item'"
+													 class="input-label-checkbox"
+													 [ngModel]="models && selectedModels.size === models.length || selectedModels.has(model)"
+													 (check)="$event ? onModelSelected(model) : onModelDeselected(model)">
+							</cb-checkbox>
+							<!-- % protected region % [Override the label here] off begin -->
+							<p>Content</p>
+							<!-- % protected region % [Override the label here] end -->
+							<button cb-button [labelVisible]='false' [iconClasses]="'chevron-down'" [iconName]="'chevron-down'" [buttonStyle]="buttonStyle.TEXT"></button>
+						</div>
+						<div class="grid-item__content">
+							<!-- % protected region % [Customise the default collection view grid item content here] off begin -->
+							<div *ngFor="let opt of headerOptions">
+									<p class="item-content__label">{{ opt.displayName }}</p>
+									<p class="item-content__value" *ngIf="opt.type == modelPropertyType.OBSERVABLE; else value">
+										{{ getValue(opt, model) | async }}
+									</p>
+									<ng-template #value>
+										<p class="item-content__value">{{ getValue(opt, model)}}</p>
+									</ng-template>
+							</div>
+							<!-- % protected region % [Customise the default collection view grid item content here] end -->
+						</div>
+						<section class="grid-item__footer">
+							<!-- % protected region % [Customise the default collection view grid item footer here] off begin -->
+							<button cb-button *ngFor="let action of itemActions"
+									[iconPos]="iconPos.TOP"
+									[buttonStyle]="buttonStyle.TEXT"
+									(click)="onItemActionClicked(action.label, model)"
+									[iconClasses]="action.icon"
+									[isDisabled]="isDisabled">
+								{{action.label}}
+							</button>
+							<!-- % protected region % [Customise the default collection view grid item footer here] end -->
+						</section>
+					</div>
+				</ng-container>
+			</section>
+		</ng-template>
+		<!-- LOAD SECTION -->
+		<section class="collection__load" *ngIf="(paginationType | as:loadingType) === loadingType.CONTINUOUS || (paginationType | typeof) === 'string' && !(isLastPage && pageIndex === 0)">
+			<button cb-button [classes]="'btn--text'">{{ (paginationType | typeof) === 'string' ? paginationType : 'Load More...'}}</button>
+		</section>
+		<nav aria-label="pagination"
+			*ngIf="(paginationType | as:loadingType) === loadingType.PAGINATION && !(isLastPage && pageIndex === 0)">
+			<ul class="collection__pagination">
+				<!-- % protected region % [Override the pagination button list here] off begin -->
+				<li>
+					<button cb-button
+									[iconClasses]="'chevrons-left'"
+									[iconPos]="iconPos.LEFT"
+									[buttonStyle]="buttonStyle.TEXT"
+									(click)="onFirstPage()"
+									[isDisabled]="pageIndex === 0">First
+					</button>
+				</li>
+				<li>
+					<button cb-button
+									[iconClasses]="'chevron-left'"
+									[iconPos]="iconPos.LEFT"
+									[buttonStyle]="buttonStyle.TEXT"
+									(click)="onPreviousPage()"
+									[isDisabled]="pageIndex === 0">Previous
+					</button>
+				</li>
+				<li><span class="pagination__page-number">{{ pageIndex + 1 }}</span></li>
+				<li>
+					<button cb-button
+									[iconClasses]="'chevron-right'"
+									[iconPos]="iconPos.RIGHT"
+									[buttonStyle]="buttonStyle.TEXT"
+									(click)="onNextPage()"
+									[isDisabled]="isLastPage">Next
+					</button>
+				</li>
+				<li>
+					<button cb-button
+									[iconClasses]="'chevrons-right'"
+									[iconPos]="iconPos.RIGHT"
+									[buttonStyle]="buttonStyle.TEXT"
+									(click)="onLastPage()"
+									[isDisabled]="isLastPage">Last
+					</button>
+				</li>
+				<!-- % protected region % [Override the pagination button list here] end -->
+			</ul>
+		</nav>
+	</section>
+	<!-- % protected region % [Add additional elements to the collection container here] off begin -->
+	<!-- % protected region % [Add additional elements to the collection container here] end -->
+</ng-container>

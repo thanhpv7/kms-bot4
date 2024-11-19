@@ -1,0 +1,139 @@
+/*
+ * @bot-written
+ *
+ * WARNING AND NOTICE
+ * Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+ * Full Software Licence as accepted by you before being granted access to this source code and other materials,
+ * the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+ * commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+ * licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+ * including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+ * access, download, storage, and/or use of this source code.
+ *
+ * BOT WARNING
+ * This file is bot-written.
+ * Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+ */
+
+package kmsweb.dtos;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import kmsweb.entities.*;
+import lombok.*;
+import java.util.*;
+import java.time.*;
+
+// % protected region % [Import any additional imports here] off begin
+// % protected region % [Import any additional imports here] end
+
+@Data
+@Schema(description = "The Dto for HemodialysisExaminationEntity")
+@EqualsAndHashCode(callSuper = false)
+public class HemodialysisExaminationEntityDto extends AbstractEntityDto {
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Attributes
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	private OffsetDateTime firstDialysis;
+
+	private String dialysisFrequency;
+
+	private String dialysisNo;
+
+	private String hemodialysisType;
+
+	private String condition;
+
+	private String vascularAccess;
+
+	private String heparinization;
+
+	private String heparinizationInitialDose;
+
+	private String heparinizationFollowUpDose;
+
+	private String dialyzer;
+
+	private String dialyzerType;
+
+	private String dialysisFluid;
+
+	private Double dryWeight;
+
+	private String dryWeightUnit;
+
+	private Double weightUponArrival;
+
+	private String weightUponArrivalUnit;
+
+	private Double weightDuringPreviousHemodialysis;
+
+	private String weightDuringPreviousHemodialysisUnit;
+
+	private Boolean antiHIV;
+
+	private Boolean hbsag;
+
+	private Boolean antiHCV;
+
+	private OffsetDateTime hemodialysisStartTime;
+
+	private OffsetDateTime hemodialysisEndTime;
+
+	private String target;
+
+	private String primingVolume;
+
+	private String remainingPriming;
+
+	private String complication;
+
+	private String hemodialysisDetails;
+
+	private Double weightUponDismissal;
+
+	private String weightUponDismissalUnit;
+
+	private Double priming;
+
+	private Double blood;
+
+	private Double ivLine;
+
+	private Double oral;
+
+	private Double washOut;
+
+	private Double totalFluidIntake;
+
+	private Double urine;
+
+	private Double others;
+
+	private Double totalFluidOutput;
+
+	private Double fluidBalance;
+
+	private String postHemodialysisEvaluation;
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Outgoing references
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	private Set<HemodialysisMonitoringEntity> hemodialysisMonitorings = new HashSet<>();
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//
+	// Incoming references
+	//
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	private MedicalExaminationRecordEntity medicalExaminationRecord;
+
+	// % protected region % [Add any additional class fields here] off begin
+	// % protected region % [Add any additional class fields here] end
+}

@@ -1,0 +1,143 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BpjsPcareKunjunganRujukan {
+	id: ID
+	created: String
+	modified: String
+	alamat: String
+	alamatkc: String
+	alamatkr: String
+	alasantacc: String
+	catatan: String
+	faxkc: String
+	faxkr: String
+	infodenda: String
+	kddati: String
+	kddiag1: String
+	kddiag2: String
+	kddiag3: String
+	kddokter: String
+	kdkc: String
+	kdkr: String
+	kdppk: String
+	kdpoli: String
+	kdprop: String
+	ketpisa: String
+	nmdati: String
+	nmdiag1: String
+	nmdiag2: String
+	nmdiag3: String
+	nmdokter: String
+	nmkc: String
+	nmkr: String
+	nmppk: String
+	nmpoli: String
+	nmpst: String
+	nmtacc: String
+	norujukan: String
+	nokapst: String
+	pisa: String
+	sex: String
+	telpkc: String
+	telpkr: String
+	tglkunjungan: String
+	tgllahir: String
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BpjsPcareKunjunganRujukanAudit {
+	entity: BpjsPcareKunjunganRujukan
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BpjsPcareKunjunganRujukanInput {
+	id: ID
+	created: String
+	modified: String
+	alamat: String
+	alamatkc: String
+	alamatkr: String
+	alasantacc: String
+	catatan: String
+	faxkc: String
+	faxkr: String
+	infodenda: String
+	kddati: String
+	kddiag1: String
+	kddiag2: String
+	kddiag3: String
+	kddokter: String
+	kdkc: String
+	kdkr: String
+	kdppk: String
+	kdpoli: String
+	kdprop: String
+	ketpisa: String
+	nmdati: String
+	nmdiag1: String
+	nmdiag2: String
+	nmdiag3: String
+	nmdokter: String
+	nmkc: String
+	nmkr: String
+	nmppk: String
+	nmpoli: String
+	nmpst: String
+	nmtacc: String
+	norujukan: String
+	nokapst: String
+	pisa: String
+	sex: String
+	telpkc: String
+	telpkr: String
+	tglkunjungan: String
+	tgllahir: String
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBpjsPcareKunjunganRujukans(where: [[Where!]!]): Int!
+	lastBpjsPcareKunjunganRujukans(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BpjsPcareKunjunganRujukan!]!
+	bpjsPcareKunjunganRujukans(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BpjsPcareKunjunganRujukan!]!
+	bpjsPcareKunjunganRujukanById(id: ID!): BpjsPcareKunjunganRujukan
+	bpjsPcareKunjunganRujukanAudits: [BpjsPcareKunjunganRujukanAudit!]!
+	bpjsPcareKunjunganRujukanAuditsByEntityId(bpjsPcareKunjunganRujukanId: ID!): [BpjsPcareKunjunganRujukanAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBpjsPcareKunjunganRujukan(bpjsPcareKunjunganRujukan: BpjsPcareKunjunganRujukanInput!, persistRelations: Boolean): BpjsPcareKunjunganRujukan!
+	createAllBpjsPcareKunjunganRujukan(bpjsPcareKunjunganRujukans: [BpjsPcareKunjunganRujukanInput!]!): [BpjsPcareKunjunganRujukan!]!
+	updateBpjsPcareKunjunganRujukan(bpjsPcareKunjunganRujukan: BpjsPcareKunjunganRujukanInput!, persistRelations: Boolean): BpjsPcareKunjunganRujukan!
+	updateAllBpjsPcareKunjunganRujukan(bpjsPcareKunjunganRujukans: [BpjsPcareKunjunganRujukanInput!]!): [BpjsPcareKunjunganRujukan!]!
+	deleteBpjsPcareKunjunganRujukanById(bpjsPcareKunjunganRujukanId: ID!): ID!
+	deleteAllBpjsPcareKunjunganRujukanByIds(bpjsPcareKunjunganRujukanIds: [ID!]!): [ID!]!
+	deleteBpjsPcareKunjunganRujukanExcludingIds(bpjsPcareKunjunganRujukanIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

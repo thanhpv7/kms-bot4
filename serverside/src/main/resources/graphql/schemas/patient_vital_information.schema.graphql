@@ -1,0 +1,129 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type PatientVitalInformation {
+	id: ID
+	created: String
+	modified: String
+	bmi: Float
+	consciousness: String
+	diastole: Float
+	gcsEyes: String
+	gcsMotor: String
+	gcsVerbal: String
+	height: Float
+	heightScale: String
+	notes: String
+	nutritionStatus: String
+	oxygenSaturation: Float
+	painScale: Float
+	painScaleUsed: String
+	pulse: Float
+	pulseRhythm: String
+	recordDateTime: String
+	respiratory: String
+	riskFallScale: Float
+	riskFallScaleUsed: String
+	strength: String
+	systole: Float
+	temperature: Float
+	temperatureScale: String
+	totalGcsScore: Float
+	waistCircumference: Float
+	waistCircumferenceUnit: String
+	weight: Float
+	weightScale: String
+	registration: Registration
+	staff: Staff
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type PatientVitalInformationAudit {
+	entity: PatientVitalInformation
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input PatientVitalInformationInput {
+	id: ID
+	created: String
+	modified: String
+	bmi: Float
+	consciousness: String
+	diastole: Float
+	gcsEyes: String
+	gcsMotor: String
+	gcsVerbal: String
+	height: Float
+	heightScale: String
+	notes: String
+	nutritionStatus: String
+	oxygenSaturation: Float
+	painScale: Float
+	painScaleUsed: String
+	pulse: Float
+	pulseRhythm: String
+	recordDateTime: String
+	respiratory: String
+	riskFallScale: Float
+	riskFallScaleUsed: String
+	strength: String
+	systole: Float
+	temperature: Float
+	temperatureScale: String
+	totalGcsScore: Float
+	waistCircumference: Float
+	waistCircumferenceUnit: String
+	weight: Float
+	weightScale: String
+	registration: RegistrationInput
+	registrationId: ID
+	staff: StaffInput
+	staffId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countPatientVitalInformations(where: [[Where!]!]): Int!
+	lastPatientVitalInformations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [PatientVitalInformation!]!
+	patientVitalInformations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [PatientVitalInformation!]!
+	patientVitalInformationById(id: ID!): PatientVitalInformation
+	patientVitalInformationAudits: [PatientVitalInformationAudit!]!
+	patientVitalInformationAuditsByEntityId(patientVitalInformationId: ID!): [PatientVitalInformationAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createPatientVitalInformation(patientVitalInformation: PatientVitalInformationInput!, persistRelations: Boolean): PatientVitalInformation!
+	createAllPatientVitalInformation(patientVitalInformations: [PatientVitalInformationInput!]!): [PatientVitalInformation!]!
+	updatePatientVitalInformation(patientVitalInformation: PatientVitalInformationInput!, persistRelations: Boolean): PatientVitalInformation!
+	updateAllPatientVitalInformation(patientVitalInformations: [PatientVitalInformationInput!]!): [PatientVitalInformation!]!
+	deletePatientVitalInformationById(patientVitalInformationId: ID!): ID!
+	deleteAllPatientVitalInformationByIds(patientVitalInformationIds: [ID!]!): [ID!]!
+	deletePatientVitalInformationExcludingIds(patientVitalInformationIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

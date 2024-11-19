@@ -1,0 +1,84 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type VaccinationOrderDetail {
+	id: ID
+	created: String
+	modified: String
+	quantity: Int
+	vaccinationDate: String
+	vaccinationDetail: String
+	vaccinationType: String
+	stockCatalogue: StockCatalogue
+	vaccinationOrder: VaccinationOrder
+	warehouse: Warehouse
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type VaccinationOrderDetailAudit {
+	entity: VaccinationOrderDetail
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input VaccinationOrderDetailInput {
+	id: ID
+	created: String
+	modified: String
+	quantity: Int
+	vaccinationDate: String
+	vaccinationDetail: String
+	vaccinationType: String
+	stockCatalogue: StockCatalogueInput
+	stockCatalogueId: ID
+	vaccinationOrder: VaccinationOrderInput
+	vaccinationOrderId: ID
+	warehouse: WarehouseInput
+	warehouseId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countVaccinationOrderDetails(where: [[Where!]!]): Int!
+	lastVaccinationOrderDetails(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [VaccinationOrderDetail!]!
+	vaccinationOrderDetails(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [VaccinationOrderDetail!]!
+	vaccinationOrderDetailById(id: ID!): VaccinationOrderDetail
+	vaccinationOrderDetailAudits: [VaccinationOrderDetailAudit!]!
+	vaccinationOrderDetailAuditsByEntityId(vaccinationOrderDetailId: ID!): [VaccinationOrderDetailAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createVaccinationOrderDetail(vaccinationOrderDetail: VaccinationOrderDetailInput!, persistRelations: Boolean): VaccinationOrderDetail!
+	createAllVaccinationOrderDetail(vaccinationOrderDetails: [VaccinationOrderDetailInput!]!): [VaccinationOrderDetail!]!
+	updateVaccinationOrderDetail(vaccinationOrderDetail: VaccinationOrderDetailInput!, persistRelations: Boolean): VaccinationOrderDetail!
+	updateAllVaccinationOrderDetail(vaccinationOrderDetails: [VaccinationOrderDetailInput!]!): [VaccinationOrderDetail!]!
+	deleteVaccinationOrderDetailById(vaccinationOrderDetailId: ID!): ID!
+	deleteAllVaccinationOrderDetailByIds(vaccinationOrderDetailIds: [ID!]!): [ID!]!
+	deleteVaccinationOrderDetailExcludingIds(vaccinationOrderDetailIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

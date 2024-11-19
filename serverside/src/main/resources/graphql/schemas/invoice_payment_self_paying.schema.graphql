@@ -1,0 +1,78 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type InvoicePaymentSelfPaying {
+	id: ID
+	created: String
+	modified: String
+	sponsorAddress: String
+	sponsorName: String
+	sponsorPhoneNo: String
+	sponsorship: String
+	invoice: Invoice
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type InvoicePaymentSelfPayingAudit {
+	entity: InvoicePaymentSelfPaying
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input InvoicePaymentSelfPayingInput {
+	id: ID
+	created: String
+	modified: String
+	sponsorAddress: String
+	sponsorName: String
+	sponsorPhoneNo: String
+	sponsorship: String
+	invoice: InvoiceInput
+	invoiceId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countInvoicePaymentSelfPayings(where: [[Where!]!]): Int!
+	lastInvoicePaymentSelfPayings(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [InvoicePaymentSelfPaying!]!
+	invoicePaymentSelfPayings(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [InvoicePaymentSelfPaying!]!
+	invoicePaymentSelfPayingById(id: ID!): InvoicePaymentSelfPaying
+	invoicePaymentSelfPayingAudits: [InvoicePaymentSelfPayingAudit!]!
+	invoicePaymentSelfPayingAuditsByEntityId(invoicePaymentSelfPayingId: ID!): [InvoicePaymentSelfPayingAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createInvoicePaymentSelfPaying(invoicePaymentSelfPaying: InvoicePaymentSelfPayingInput!, persistRelations: Boolean): InvoicePaymentSelfPaying!
+	createAllInvoicePaymentSelfPaying(invoicePaymentSelfPayings: [InvoicePaymentSelfPayingInput!]!): [InvoicePaymentSelfPaying!]!
+	updateInvoicePaymentSelfPaying(invoicePaymentSelfPaying: InvoicePaymentSelfPayingInput!, persistRelations: Boolean): InvoicePaymentSelfPaying!
+	updateAllInvoicePaymentSelfPaying(invoicePaymentSelfPayings: [InvoicePaymentSelfPayingInput!]!): [InvoicePaymentSelfPaying!]!
+	deleteInvoicePaymentSelfPayingById(invoicePaymentSelfPayingId: ID!): ID!
+	deleteAllInvoicePaymentSelfPayingByIds(invoicePaymentSelfPayingIds: [ID!]!): [ID!]!
+	deleteInvoicePaymentSelfPayingExcludingIds(invoicePaymentSelfPayingIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

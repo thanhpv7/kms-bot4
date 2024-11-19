@@ -1,0 +1,127 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type MedicationCompound {
+	id: ID
+	created: String
+	modified: String
+	administeredQty: Float
+	approvalStatus: String
+	compoundCode: String
+	compoundName: String
+	consumptionMethod: String
+	dosageFrequency: Float
+	dosageQty: Float
+	dose: Float
+	externalCompoundName: String
+	frequency: String
+	instruction: String
+	inventoryRoundingValue: Float
+	isDtd: Boolean
+	issuedQty: Float
+	notes: String
+	outstandingQty: Float
+	requestedQty: Float
+	returnedQty: Float
+	takenHomeQty: Float
+	totalAdministeredQuantity: Int
+	totalIssuedQuantity: Float
+	totalPrice: Float
+	totalReturnedQuantity: Int
+	totalTakenHomeQuantity: Int
+	medicationHeader: MedicationHeader
+	unitOfMeasurement: UnitOfMeasurement
+	medicationAdministeredHistories: [MedicationAdministeredHistory]
+	medicationItems: [MedicationItem]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type MedicationCompoundAudit {
+	entity: MedicationCompound
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input MedicationCompoundInput {
+	id: ID
+	created: String
+	modified: String
+	administeredQty: Float
+	approvalStatus: String
+	compoundCode: String
+	compoundName: String
+	consumptionMethod: String
+	dosageFrequency: Float
+	dosageQty: Float
+	dose: Float
+	externalCompoundName: String
+	frequency: String
+	instruction: String
+	inventoryRoundingValue: Float
+	isDtd: Boolean
+	issuedQty: Float
+	notes: String
+	outstandingQty: Float
+	requestedQty: Float
+	returnedQty: Float
+	takenHomeQty: Float
+	totalAdministeredQuantity: Int
+	totalIssuedQuantity: Float
+	totalPrice: Float
+	totalReturnedQuantity: Int
+	totalTakenHomeQuantity: Int
+	medicationHeader: MedicationHeaderInput
+	medicationHeaderId: ID
+	unitOfMeasurement: UnitOfMeasurementInput
+	unitOfMeasurementId: ID
+	medicationAdministeredHistories: [MedicationAdministeredHistoryInput]
+	medicationAdministeredHistoriesIds: [ID!]
+	medicationItems: [MedicationItemInput]
+	medicationItemsIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countMedicationCompounds(where: [[Where!]!]): Int!
+	lastMedicationCompounds(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [MedicationCompound!]!
+	medicationCompounds(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [MedicationCompound!]!
+	medicationCompoundById(id: ID!): MedicationCompound
+	medicationCompoundAudits: [MedicationCompoundAudit!]!
+	medicationCompoundAuditsByEntityId(medicationCompoundId: ID!): [MedicationCompoundAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createMedicationCompound(medicationCompound: MedicationCompoundInput!, persistRelations: Boolean): MedicationCompound!
+	createAllMedicationCompound(medicationCompounds: [MedicationCompoundInput!]!): [MedicationCompound!]!
+	updateMedicationCompound(medicationCompound: MedicationCompoundInput!, persistRelations: Boolean): MedicationCompound!
+	updateAllMedicationCompound(medicationCompounds: [MedicationCompoundInput!]!): [MedicationCompound!]!
+	deleteMedicationCompoundById(medicationCompoundId: ID!): ID!
+	deleteAllMedicationCompoundByIds(medicationCompoundIds: [ID!]!): [ID!]!
+	deleteMedicationCompoundExcludingIds(medicationCompoundIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

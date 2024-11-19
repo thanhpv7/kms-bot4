@@ -1,0 +1,138 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type Supplier {
+	id: ID
+	created: String
+	modified: String
+	adress: String
+	city: String
+	country: String
+	email: String
+	fax: String
+	lastPurchaseDate: String
+	lastPurchaseOrderNumber: String
+	leadTimeMaximum: Float
+	leadTimeMeasurement: String
+	leadTimeMinimum: Float
+	notes: String
+	otherPhoneNumber: String
+	phoneNumber: String
+	postalCode: String
+	purchaseOrderHold: Boolean
+	purchaseOrderHoldReason: String
+	shippingMethod: String
+	stateProvince: String
+	supplierName: String
+	supplierNumber: String
+	supplyStockGroup: String
+	taxID: String
+	vatIncluded: Boolean
+	website: String
+	
+	goodsReceiveNotes: [GoodsReceiveNote]
+	purchaseOrders: [PurchaseOrder]
+	purchaseRequisitions: [PurchaseRequisition]
+	returnSuppliers: [ReturnSupplier]
+	suplierContactDetails: [SupplierContactDetail]
+	supplierBankAccounts: [SupplierBankAccount]
+	supplierProductDetails: [SupplierProductDetail]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type SupplierAudit {
+	entity: Supplier
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input SupplierInput {
+	id: ID
+	created: String
+	modified: String
+	adress: String
+	city: String
+	country: String
+	email: String
+	fax: String
+	lastPurchaseDate: String
+	lastPurchaseOrderNumber: String
+	leadTimeMaximum: Float
+	leadTimeMeasurement: String
+	leadTimeMinimum: Float
+	notes: String
+	otherPhoneNumber: String
+	phoneNumber: String
+	postalCode: String
+	purchaseOrderHold: Boolean
+	purchaseOrderHoldReason: String
+	shippingMethod: String
+	stateProvince: String
+	supplierName: String
+	supplierNumber: String
+	supplyStockGroup: String
+	taxID: String
+	vatIncluded: Boolean
+	website: String
+	
+	goodsReceiveNotes: [GoodsReceiveNoteInput]
+	goodsReceiveNotesIds: [ID!]
+	purchaseOrders: [PurchaseOrderInput]
+	purchaseOrdersIds: [ID!]
+	purchaseRequisitions: [PurchaseRequisitionInput]
+	purchaseRequisitionsIds: [ID!]
+	returnSuppliers: [ReturnSupplierInput]
+	returnSuppliersIds: [ID!]
+	suplierContactDetails: [SupplierContactDetailInput]
+	suplierContactDetailsIds: [ID!]
+	supplierBankAccounts: [SupplierBankAccountInput]
+	supplierBankAccountsIds: [ID!]
+	supplierProductDetails: [SupplierProductDetailInput]
+	supplierProductDetailsIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countSuppliers(where: [[Where!]!]): Int!
+	lastSuppliers(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [Supplier!]!
+	suppliers(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [Supplier!]!
+	supplierById(id: ID!): Supplier
+	supplierAudits: [SupplierAudit!]!
+	supplierAuditsByEntityId(supplierId: ID!): [SupplierAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createSupplier(supplier: SupplierInput!, persistRelations: Boolean): Supplier!
+	createAllSupplier(suppliers: [SupplierInput!]!): [Supplier!]!
+	updateSupplier(supplier: SupplierInput!, persistRelations: Boolean): Supplier!
+	updateAllSupplier(suppliers: [SupplierInput!]!): [Supplier!]!
+	deleteSupplierById(supplierId: ID!): ID!
+	deleteAllSupplierByIds(supplierIds: [ID!]!): [ID!]!
+	deleteSupplierExcludingIds(supplierIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

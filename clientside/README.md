@@ -1,0 +1,35 @@
+<!--
+@bot-written
+
+WARNING AND NOTICE
+Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+Full Software Licence as accepted by you before being granted access to this source code and other materials,
+the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+access, download, storage, and/or use of this source code.
+
+BOT WARNING
+This file is bot-written.
+Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+-->
+
+# Client-side for kmsweb
+
+<!-- % protected region % [Add to your readme here] off begin -->
+<!-- % protected region % [Add to your readme here] end -->
+
+## Bot Version
+
+Built with version 2.5.0.0 of SpringBot using [Codebots](https://codebots.com/).
+
+## Documentation
+
+For information on how to generate client-side documentation for your application, please review [Angular Docs with CompoDoc](https://codebots.com/library/techies/angular-docs-with-compodoc).
+
+Documentation on how to use Codebots as well as develop this application can be found on the [Library](https://codebots.com/library).
+
+## Release Notes
+
+Release notes are available on [Codebots](https://codebots.com/library/release-notes).

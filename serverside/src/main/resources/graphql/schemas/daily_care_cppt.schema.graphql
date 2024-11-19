@@ -1,0 +1,107 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type DailyCareCPPT {
+	id: ID
+	created: String
+	modified: String
+	cpptDateTime: String
+	canceledBy: String
+	canceledDate: String
+	diagnose: String
+	instruction: String
+	objective: String
+	plan: String
+	status: String
+	subjective: String
+	verifiedBy: String
+	verifiedDate: String
+	icd10: DiagnosesAndProcedures
+	icd9CM: DiagnosesAndProcedures
+	createdByStaff: Staff
+	doctorInCharge: Staff
+	medicalTranscriber: Staff
+	medicalExaminationRecord: MedicalExaminationRecord
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type DailyCareCPPTAudit {
+	entity: DailyCareCPPT
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input DailyCareCPPTInput {
+	id: ID
+	created: String
+	modified: String
+	cpptDateTime: String
+	canceledBy: String
+	canceledDate: String
+	diagnose: String
+	instruction: String
+	objective: String
+	plan: String
+	status: String
+	subjective: String
+	verifiedBy: String
+	verifiedDate: String
+	icd10: DiagnosesAndProceduresInput
+	icd10Id: ID
+	icd9CM: DiagnosesAndProceduresInput
+	icd9CMId: ID
+	createdByStaff: StaffInput
+	createdByStaffId: ID
+	doctorInCharge: StaffInput
+	doctorInChargeId: ID
+	medicalTranscriber: StaffInput
+	medicalTranscriberId: ID
+	medicalExaminationRecord: MedicalExaminationRecordInput
+	medicalExaminationRecordId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countDailyCareCPPTs(where: [[Where!]!]): Int!
+	lastDailyCareCPPTs(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [DailyCareCPPT!]!
+	dailyCareCPPTs(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [DailyCareCPPT!]!
+	dailyCareCPPTById(id: ID!): DailyCareCPPT
+	dailyCareCPPTAudits: [DailyCareCPPTAudit!]!
+	dailyCareCPPTAuditsByEntityId(dailyCareCPPTId: ID!): [DailyCareCPPTAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createDailyCareCPPT(dailyCareCPPT: DailyCareCPPTInput!, persistRelations: Boolean): DailyCareCPPT!
+	createAllDailyCareCPPT(dailyCareCPPTs: [DailyCareCPPTInput!]!): [DailyCareCPPT!]!
+	updateDailyCareCPPT(dailyCareCPPT: DailyCareCPPTInput!, persistRelations: Boolean): DailyCareCPPT!
+	updateAllDailyCareCPPT(dailyCareCPPTs: [DailyCareCPPTInput!]!): [DailyCareCPPT!]!
+	deleteDailyCareCPPTById(dailyCareCPPTId: ID!): ID!
+	deleteAllDailyCareCPPTByIds(dailyCareCPPTIds: [ID!]!): [ID!]!
+	deleteDailyCareCPPTExcludingIds(dailyCareCPPTIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

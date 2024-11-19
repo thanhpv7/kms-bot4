@@ -1,0 +1,101 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BpjsClaimData {
+	id: ID
+	created: String
+	modified: String
+	approval: String
+	bpjsCardNo: String
+	dismissalDate: String
+	fpkNo: String
+	grouperTariff: String
+	hospitalTariff: String
+	inacbgCode: String
+	inacbgName: String
+	name: String
+	patientID: String
+	polyclinic: String
+	sepDate: String
+	sepNo: String
+	status: String
+	submittedTariff: String
+	topUp: String
+	treatmentClass: String
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BpjsClaimDataAudit {
+	entity: BpjsClaimData
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BpjsClaimDataInput {
+	id: ID
+	created: String
+	modified: String
+	approval: String
+	bpjsCardNo: String
+	dismissalDate: String
+	fpkNo: String
+	grouperTariff: String
+	hospitalTariff: String
+	inacbgCode: String
+	inacbgName: String
+	name: String
+	patientID: String
+	polyclinic: String
+	sepDate: String
+	sepNo: String
+	status: String
+	submittedTariff: String
+	topUp: String
+	treatmentClass: String
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBpjsClaimDatas(where: [[Where!]!]): Int!
+	lastBpjsClaimDatas(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BpjsClaimData!]!
+	bpjsClaimDatas(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BpjsClaimData!]!
+	bpjsClaimDataById(id: ID!): BpjsClaimData
+	bpjsClaimDataAudits: [BpjsClaimDataAudit!]!
+	bpjsClaimDataAuditsByEntityId(bpjsClaimDataId: ID!): [BpjsClaimDataAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBpjsClaimData(bpjsClaimData: BpjsClaimDataInput!, persistRelations: Boolean): BpjsClaimData!
+	createAllBpjsClaimData(bpjsClaimDatas: [BpjsClaimDataInput!]!): [BpjsClaimData!]!
+	updateBpjsClaimData(bpjsClaimData: BpjsClaimDataInput!, persistRelations: Boolean): BpjsClaimData!
+	updateAllBpjsClaimData(bpjsClaimDatas: [BpjsClaimDataInput!]!): [BpjsClaimData!]!
+	deleteBpjsClaimDataById(bpjsClaimDataId: ID!): ID!
+	deleteAllBpjsClaimDataByIds(bpjsClaimDataIds: [ID!]!): [ID!]!
+	deleteBpjsClaimDataExcludingIds(bpjsClaimDataIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

@@ -1,0 +1,81 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type MedicalCertificatePhysicalHealth {
+	id: ID
+	created: String
+	modified: String
+	examinationDateTime: String
+	examinationResult: Boolean
+	notes: String
+	purpose: String
+	registration: Registration
+	medicalStaff: Staff
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type MedicalCertificatePhysicalHealthAudit {
+	entity: MedicalCertificatePhysicalHealth
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input MedicalCertificatePhysicalHealthInput {
+	id: ID
+	created: String
+	modified: String
+	examinationDateTime: String
+	examinationResult: Boolean
+	notes: String
+	purpose: String
+	registration: RegistrationInput
+	registrationId: ID
+	medicalStaff: StaffInput
+	medicalStaffId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countMedicalCertificatePhysicalHealths(where: [[Where!]!]): Int!
+	lastMedicalCertificatePhysicalHealths(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [MedicalCertificatePhysicalHealth!]!
+	medicalCertificatePhysicalHealths(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [MedicalCertificatePhysicalHealth!]!
+	medicalCertificatePhysicalHealthById(id: ID!): MedicalCertificatePhysicalHealth
+	medicalCertificatePhysicalHealthAudits: [MedicalCertificatePhysicalHealthAudit!]!
+	medicalCertificatePhysicalHealthAuditsByEntityId(medicalCertificatePhysicalHealthId: ID!): [MedicalCertificatePhysicalHealthAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createMedicalCertificatePhysicalHealth(medicalCertificatePhysicalHealth: MedicalCertificatePhysicalHealthInput!, persistRelations: Boolean): MedicalCertificatePhysicalHealth!
+	createAllMedicalCertificatePhysicalHealth(medicalCertificatePhysicalHealths: [MedicalCertificatePhysicalHealthInput!]!): [MedicalCertificatePhysicalHealth!]!
+	updateMedicalCertificatePhysicalHealth(medicalCertificatePhysicalHealth: MedicalCertificatePhysicalHealthInput!, persistRelations: Boolean): MedicalCertificatePhysicalHealth!
+	updateAllMedicalCertificatePhysicalHealth(medicalCertificatePhysicalHealths: [MedicalCertificatePhysicalHealthInput!]!): [MedicalCertificatePhysicalHealth!]!
+	deleteMedicalCertificatePhysicalHealthById(medicalCertificatePhysicalHealthId: ID!): ID!
+	deleteAllMedicalCertificatePhysicalHealthByIds(medicalCertificatePhysicalHealthIds: [ID!]!): [ID!]!
+	deleteMedicalCertificatePhysicalHealthExcludingIds(medicalCertificatePhysicalHealthIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

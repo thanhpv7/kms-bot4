@@ -1,0 +1,170 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type Warehouse {
+	id: ID
+	created: String
+	modified: String
+	address: String
+	contactPerson: String
+	description: String
+	email: String
+	ext: String
+	mobilePhoneNumber: String
+	phoneNumber: String
+	revenueCenter: String
+	warehouseName: String
+	warehouseNumber: String
+	
+	batchStockBalancesWarehouse: [BatchStockBalance]
+	batchStockBalances: [BatchStockBalancePerDate]
+	batchStockTransactionDetails: [BatchStockTransactionDetail]
+	destinationWarehouses: [TransferOrder]
+	goodsReceiveNoteBatchs: [GoodsReceiveNoteBatch]
+	goodsReceiveNotes: [GoodsReceiveNote]
+	internalOrders: [InternalOrder]
+	inventoryAdjusmentBatchs: [InventoryAdjusmentBatch]
+	inventoryAdjustments: [InventoryAdjustment]
+	inventoryBatchCorrections: [InventoryBatchCorrection]
+	locations: [Location]
+	medicalFees: [MedicalFee]
+	medicationHeaders: [MedicationHeader]
+	prescriptionHeaders: [PrescriptionHeader]
+	purchaseOrders: [PurchaseOrder]
+	purchaseRequisitions: [PurchaseRequisition]
+	retailPharmacies: [RetailPharmacy]
+	returnSuppliers: [ReturnSupplier]
+	sourceWarehouses: [TransferOrder]
+	stockCatalogues: [StockCatalogue]
+	stockControls: [StockControl]
+	stockTransactionDetails: [StockTransactionDetail]
+	stockTransactionPerDateTypes: [StockTransactionPerDateType]
+	stockTransactionPerDates: [StockTransactionPerDate]
+	vaccinationOrderDetails: [VaccinationOrderDetail]
+	warehouseInitialStockS: [WarehouseInitialStock]
+	warehouseInventories: [WarehouseInventory]
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type WarehouseAudit {
+	entity: Warehouse
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input WarehouseInput {
+	id: ID
+	created: String
+	modified: String
+	address: String
+	contactPerson: String
+	description: String
+	email: String
+	ext: String
+	mobilePhoneNumber: String
+	phoneNumber: String
+	revenueCenter: String
+	warehouseName: String
+	warehouseNumber: String
+	
+	batchStockBalancesWarehouse: [BatchStockBalanceInput]
+	batchStockBalancesWarehouseIds: [ID!]
+	batchStockBalances: [BatchStockBalancePerDateInput]
+	batchStockBalancesIds: [ID!]
+	batchStockTransactionDetails: [BatchStockTransactionDetailInput]
+	batchStockTransactionDetailsIds: [ID!]
+	destinationWarehouses: [TransferOrderInput]
+	destinationWarehousesIds: [ID!]
+	goodsReceiveNoteBatchs: [GoodsReceiveNoteBatchInput]
+	goodsReceiveNoteBatchsIds: [ID!]
+	goodsReceiveNotes: [GoodsReceiveNoteInput]
+	goodsReceiveNotesIds: [ID!]
+	internalOrders: [InternalOrderInput]
+	internalOrdersIds: [ID!]
+	inventoryAdjusmentBatchs: [InventoryAdjusmentBatchInput]
+	inventoryAdjusmentBatchsIds: [ID!]
+	inventoryAdjustments: [InventoryAdjustmentInput]
+	inventoryAdjustmentsIds: [ID!]
+	inventoryBatchCorrections: [InventoryBatchCorrectionInput]
+	inventoryBatchCorrectionsIds: [ID!]
+	locations: [LocationInput]
+	locationsIds: [ID!]
+	medicalFees: [MedicalFeeInput]
+	medicalFeesIds: [ID!]
+	medicationHeaders: [MedicationHeaderInput]
+	medicationHeadersIds: [ID!]
+	prescriptionHeaders: [PrescriptionHeaderInput]
+	prescriptionHeadersIds: [ID!]
+	purchaseOrders: [PurchaseOrderInput]
+	purchaseOrdersIds: [ID!]
+	purchaseRequisitions: [PurchaseRequisitionInput]
+	purchaseRequisitionsIds: [ID!]
+	retailPharmacies: [RetailPharmacyInput]
+	retailPharmaciesIds: [ID!]
+	returnSuppliers: [ReturnSupplierInput]
+	returnSuppliersIds: [ID!]
+	sourceWarehouses: [TransferOrderInput]
+	sourceWarehousesIds: [ID!]
+	stockCatalogues: [StockCatalogueInput]
+	stockCataloguesIds: [ID!]
+	stockControls: [StockControlInput]
+	stockControlsIds: [ID!]
+	stockTransactionDetails: [StockTransactionDetailInput]
+	stockTransactionDetailsIds: [ID!]
+	stockTransactionPerDateTypes: [StockTransactionPerDateTypeInput]
+	stockTransactionPerDateTypesIds: [ID!]
+	stockTransactionPerDates: [StockTransactionPerDateInput]
+	stockTransactionPerDatesIds: [ID!]
+	vaccinationOrderDetails: [VaccinationOrderDetailInput]
+	vaccinationOrderDetailsIds: [ID!]
+	warehouseInitialStockS: [WarehouseInitialStockInput]
+	warehouseInitialStockSIds: [ID!]
+	warehouseInventories: [WarehouseInventoryInput]
+	warehouseInventoriesIds: [ID!]
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countWarehouses(where: [[Where!]!]): Int!
+	lastWarehouses(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [Warehouse!]!
+	warehouses(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [Warehouse!]!
+	warehouseById(id: ID!): Warehouse
+	warehouseAudits: [WarehouseAudit!]!
+	warehouseAuditsByEntityId(warehouseId: ID!): [WarehouseAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createWarehouse(warehouse: WarehouseInput!, persistRelations: Boolean): Warehouse!
+	createAllWarehouse(warehouses: [WarehouseInput!]!): [Warehouse!]!
+	updateWarehouse(warehouse: WarehouseInput!, persistRelations: Boolean): Warehouse!
+	updateAllWarehouse(warehouses: [WarehouseInput!]!): [Warehouse!]!
+	deleteWarehouseById(warehouseId: ID!): ID!
+	deleteAllWarehouseByIds(warehouseIds: [ID!]!): [ID!]!
+	deleteWarehouseExcludingIds(warehouseIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

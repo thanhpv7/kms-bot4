@@ -1,0 +1,142 @@
+{
+	"@bot-written": "@bot-written  WARNING AND NOTICE Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the Full Software Licence as accepted by you before being granted access to this source code and other materials, the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through licence termination and further legal action, and be required to indemnify Codebots for any loss or damage, including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any access, download, storage, and/or use of this source code.  BOT WARNING This file is bot-written. Any changes out side of \"protected regions\" will be lost next time the bot makes any changes.",
+	"extends": "tslint:recommended",
+	"rulesDirectory": [
+		"codelyzer"
+	],
+	"rules": {
+		"align": {
+		"options": [
+			"parameters",
+			"statements"
+		]
+		},
+			"indent": [
+				true,
+				"tabs",
+				2
+			],
+		"array-type": false,
+		"arrow-return-shorthand": true,
+		"arrow-parens": false,
+		"curly": true,
+			"deprecation": {
+				"severity": "warn"
+			},
+			"import-blacklist": [
+				true,
+				"rxjs/Rx"
+		],
+		"eofline": true,
+		"interface-name": false,
+		"import-spacing": true,
+		"max-classes-per-file": false,
+		"max-line-length": [
+			true,
+			{
+				"limit": 160,
+				"ignore-pattern": "^import |^export {(.*?)}|class [a-zA-Z]+ implements |// "
+			}
+		],
+		"member-access": false,
+		"member-ordering": [
+			true,
+			{
+				"order": [
+					"static-field",
+					"instance-field",
+					"static-method",
+					"instance-method"
+				]
+			}
+		],
+		"no-consecutive-blank-lines": false,
+		"no-console": [
+			true,
+			"debug",
+			"info",
+			"time",
+			"timeEnd",
+			"trace"
+		],
+		"no-empty": false,
+		"no-inferrable-types": [
+			true,
+			"ignore-params"
+		],
+		"no-non-null-assertion": true,
+		"no-redundant-jsdoc": true,
+		"no-switch-case-fall-through": true,
+		"no-var-requires": false,
+		"object-literal-key-quotes": [
+			true,
+			"as-needed"
+		],
+		"object-literal-sort-keys": false,
+		"ordered-imports": false,
+		"quotemark": [
+			true,
+			"single"
+		],
+		"trailing-comma": false,
+		"no-output-on-prefix": true,
+		"no-input-rename": true,
+		"no-output-rename": true,
+		"use-pipe-transform-interface": true,
+		"component-class-suffix": true,
+		"no-trailing-whitespace": [true, "ignore-comments"],
+		"prefer-const": false,
+		"semicolon": {
+			"options": [
+				"always"
+			]
+		},
+		"space-before-function-paren": {
+			"options": {
+				"anonymous": "never",
+				"asyncArrow": "always",
+				"constructor": "never",
+				"method": "never",
+				"named": "never"
+			}
+		},
+		"one-line": false,
+		"typedef-whitespace": {
+			"options": [
+				{
+				"call-signature": "nospace",
+				"index-signature": "nospace",
+				"parameter": "nospace",
+				"property-declaration": "nospace",
+				"variable-declaration": "nospace"
+				},
+				{
+				"call-signature": "onespace",
+				"index-signature": "onespace",
+				"parameter": "onespace",
+				"property-declaration": "onespace",
+				"variable-declaration": "onespace"
+				}
+			]
+		},
+		"no-empty-interface": false,
+		"directive-class-suffix": false,
+		"variable-name": {
+			"options": [
+				"ban-keywords",
+				"check-format",
+				"allow-pascal-case"
+			]
+		},
+		"whitespace": {
+			"options": [
+				"check-branch",
+				"check-decl",
+				"check-operator",
+				"check-separator",
+				"check-type",
+				"check-typecast"
+			]
+		}
+	}
+}

@@ -1,0 +1,235 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type HospitalBranchInformation {
+	id: ID
+	created: String
+	modified: String
+	accreditationDate: String
+	accreditationLevel: String
+	accreditationType: String
+	address: String
+	authorizedBy: String
+	bedPerinatology: String
+	buildingSize: String
+	city: String
+	classI: String
+	contactPerson: String
+	contactPersonEmail: String
+	contactPersonPhoneNumber: String
+	dateOfRegistration: String
+	dentist: String
+	doctorSpA: String
+	doctorSpAn: String
+	doctorSpB: String
+	doctorSpJp: String
+	doctorSpKj: String
+	doctorSpM: String
+	doctorSpOG: String
+	doctorSpP: String
+	doctorSpPD: String
+	doctorSpPK: String
+	doctorSpRad: String
+	doctorSpRm: String
+	doctorSpS: String
+	doctorSpTHT: String
+	email: String
+	emergencyRoom: String
+	fax: String
+	generalPractice: String
+	hcu: String
+	healthFacilityLevel: String
+	hospitalBranchCorporationName: String
+	hospitalBranchCorporationStatus: String
+	hospitalClass: String
+	hospitalCode: String
+	hospitalCorporationName: String
+	hospitalDirectorName: String
+	hospitalName: String
+	hospitalType: String
+	iccu: String
+	icu: String
+	iiClass: String
+	iiiAClass: String
+	iiiBClass: String
+	isBPJSFacility: Boolean
+	isolationRoom: String
+	landSize: String
+	leftLogo: [File!]
+	mainClass: String
+	maternityRoom: String
+	midwife: String
+	nicu: String
+	nonMedicalStaff: String
+	nurse: String
+	operatingRoom: String
+	otherMedicalStaff: String
+	otherSpecialistDoctor: String
+	picu: String
+	permitDate: String
+	permitNumber: String
+	permitType: String
+	pharmacist: String
+	phoneNumber: String
+	postcode: String
+	rightLogo: [File!]
+	satuSehatIntegration: Boolean
+	specialClass: String
+	specialistDentist: String
+	subSpecialistDoctor: String
+	suiteClass: String
+	taxIdentification: String
+	timezone: String
+	vipAClass: String
+	vipBClass: String
+	vipCClass: String
+	vvipClass: String
+	validUntil: String
+	website: String
+	hospitalGroup: HospitalGroupInformation
+	staff: Staff
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type HospitalBranchInformationAudit {
+	entity: HospitalBranchInformation
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input HospitalBranchInformationInput {
+	id: ID
+	created: String
+	modified: String
+	accreditationDate: String
+	accreditationLevel: String
+	accreditationType: String
+	address: String
+	authorizedBy: String
+	bedPerinatology: String
+	buildingSize: String
+	city: String
+	classI: String
+	contactPerson: String
+	contactPersonEmail: String
+	contactPersonPhoneNumber: String
+	dateOfRegistration: String
+	dentist: String
+	doctorSpA: String
+	doctorSpAn: String
+	doctorSpB: String
+	doctorSpJp: String
+	doctorSpKj: String
+	doctorSpM: String
+	doctorSpOG: String
+	doctorSpP: String
+	doctorSpPD: String
+	doctorSpPK: String
+	doctorSpRad: String
+	doctorSpRm: String
+	doctorSpS: String
+	doctorSpTHT: String
+	email: String
+	emergencyRoom: String
+	fax: String
+	generalPractice: String
+	hcu: String
+	healthFacilityLevel: String
+	hospitalBranchCorporationName: String
+	hospitalBranchCorporationStatus: String
+	hospitalClass: String
+	hospitalCode: String
+	hospitalCorporationName: String
+	hospitalDirectorName: String
+	hospitalName: String
+	hospitalType: String
+	iccu: String
+	icu: String
+	iiClass: String
+	iiiAClass: String
+	iiiBClass: String
+	isBPJSFacility: Boolean
+	isolationRoom: String
+	landSize: String
+	mainClass: String
+	maternityRoom: String
+	midwife: String
+	nicu: String
+	nonMedicalStaff: String
+	nurse: String
+	operatingRoom: String
+	otherMedicalStaff: String
+	otherSpecialistDoctor: String
+	picu: String
+	permitDate: String
+	permitNumber: String
+	permitType: String
+	pharmacist: String
+	phoneNumber: String
+	postcode: String
+	satuSehatIntegration: Boolean
+	specialClass: String
+	specialistDentist: String
+	subSpecialistDoctor: String
+	suiteClass: String
+	taxIdentification: String
+	timezone: String
+	vipAClass: String
+	vipBClass: String
+	vipCClass: String
+	vvipClass: String
+	validUntil: String
+	website: String
+	leftLogo: [FileInput!]
+	rightLogo: [FileInput!]
+	hospitalGroup: HospitalGroupInformationInput
+	hospitalGroupId: ID
+	staff: StaffInput
+	staffId: ID
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countHospitalBranchInformations(where: [[Where!]!]): Int!
+	lastHospitalBranchInformations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [HospitalBranchInformation!]!
+	hospitalBranchInformations(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [HospitalBranchInformation!]!
+	hospitalBranchInformationById(id: ID!): HospitalBranchInformation
+	hospitalBranchInformationAudits: [HospitalBranchInformationAudit!]!
+	hospitalBranchInformationAuditsByEntityId(hospitalBranchInformationId: ID!): [HospitalBranchInformationAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createHospitalBranchInformation(hospitalBranchInformation: HospitalBranchInformationInput!, persistRelations: Boolean): HospitalBranchInformation!
+	createAllHospitalBranchInformation(hospitalBranchInformations: [HospitalBranchInformationInput!]!): [HospitalBranchInformation!]!
+	updateHospitalBranchInformation(hospitalBranchInformation: HospitalBranchInformationInput!, persistRelations: Boolean): HospitalBranchInformation!
+	updateAllHospitalBranchInformation(hospitalBranchInformations: [HospitalBranchInformationInput!]!): [HospitalBranchInformation!]!
+	deleteHospitalBranchInformationById(hospitalBranchInformationId: ID!): ID!
+	deleteAllHospitalBranchInformationByIds(hospitalBranchInformationIds: [ID!]!): [ID!]!
+	deleteHospitalBranchInformationExcludingIds(hospitalBranchInformationIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end

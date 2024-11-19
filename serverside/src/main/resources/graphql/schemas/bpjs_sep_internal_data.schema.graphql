@@ -1,0 +1,95 @@
+###
+# @bot-written
+#
+# WARNING AND NOTICE
+# Any access, download, storage, and/or use of this source code is subject to the terms and conditions of the
+# Full Software Licence as accepted by you before being granted access to this source code and other materials,
+# the terms of which can be accessed on the Codebots website at https://codebots.com/full-software-licence. Any
+# commercial use in contravention of the terms of the Full Software Licence may be pursued by Codebots through
+# licence termination and further legal action, and be required to indemnify Codebots for any loss or damage,
+# including interest and costs. You are deemed to have accepted the terms of the Full Software Licence on any
+# access, download, storage, and/or use of this source code.
+#
+# BOT WARNING
+# This file is bot-written.
+# Any changes out side of "protected regions" will be lost next time the bot makes any changes.
+###
+
+type BpjsSEPInternalData {
+	id: ID
+	created: String
+	modified: String
+	bpjsCardNo: String
+	diagnosticSupport: String
+	doctor: String
+	internalReferralDate: String
+	isInternal: String
+	letterNo: String
+	refSEPNo: String
+	referredPolyclinic: String
+	referringDiagnose: String
+	referringPolyclinic: String
+	referringPolyclinicCode: String
+	sepDate: String
+	sepHealthFacility: String
+	sepNo: String
+	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] end
+}
+
+type BpjsSEPInternalDataAudit {
+	entity: BpjsSEPInternalData
+	timestamp: String
+	type: AuditQueryType
+	authorId: ID
+	authorFirstName: String
+	authorLastName: String
+}
+
+input BpjsSEPInternalDataInput {
+	id: ID
+	created: String
+	modified: String
+	bpjsCardNo: String
+	diagnosticSupport: String
+	doctor: String
+	internalReferralDate: String
+	isInternal: String
+	letterNo: String
+	refSEPNo: String
+	referredPolyclinic: String
+	referringDiagnose: String
+	referringPolyclinic: String
+	referringPolyclinicCode: String
+	sepDate: String
+	sepHealthFacility: String
+	sepNo: String
+	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] end
+}
+
+extend type Query {
+	countBpjsSEPInternalDatas(where: [[Where!]!]): Int!
+	lastBpjsSEPInternalDatas(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!]! = [], where: [[Where!]!] = []): [BpjsSEPInternalData!]!
+	bpjsSEPInternalDatas(pageIndex: Int = 0, pageSize: Int = 10, orderBy: [OrderBy!] = [], where: [[Where!]!] = []): [BpjsSEPInternalData!]!
+	bpjsSEPInternalDataById(id: ID!): BpjsSEPInternalData
+	bpjsSEPInternalDataAudits: [BpjsSEPInternalDataAudit!]!
+	bpjsSEPInternalDataAuditsByEntityId(bpjsSEPInternalDataId: ID!): [BpjsSEPInternalDataAudit!]!
+	# % protected region % [Add any additional query definition here] off begin
+	# % protected region % [Add any additional query definition here] end
+}
+
+extend type Mutation {
+	createBpjsSEPInternalData(bpjsSEPInternalData: BpjsSEPInternalDataInput!, persistRelations: Boolean): BpjsSEPInternalData!
+	createAllBpjsSEPInternalData(bpjsSEPInternalDatas: [BpjsSEPInternalDataInput!]!): [BpjsSEPInternalData!]!
+	updateBpjsSEPInternalData(bpjsSEPInternalData: BpjsSEPInternalDataInput!, persistRelations: Boolean): BpjsSEPInternalData!
+	updateAllBpjsSEPInternalData(bpjsSEPInternalDatas: [BpjsSEPInternalDataInput!]!): [BpjsSEPInternalData!]!
+	deleteBpjsSEPInternalDataById(bpjsSEPInternalDataId: ID!): ID!
+	deleteAllBpjsSEPInternalDataByIds(bpjsSEPInternalDataIds: [ID!]!): [ID!]!
+	deleteBpjsSEPInternalDataExcludingIds(bpjsSEPInternalDataIds: [ID!]!): [ID!]!
+	# % protected region % [Add any additional mutation definition here] off begin
+	# % protected region % [Add any additional mutation definition here] end
+}
+
+# % protected region % [Add additional schema definition here] off begin
+# % protected region % [Add additional schema definition here] end
