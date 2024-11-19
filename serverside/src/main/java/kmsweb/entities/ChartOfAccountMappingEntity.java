@@ -234,7 +234,6 @@ public class ChartOfAccountMappingEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<ChartOfAccountEntity> chartOfAccountRelation = Optional.ofNullable(this.chartOfAccount);
 		chartOfAccountRelation.ifPresent(entity -> this.chartOfAccountId = entity.getId());
 

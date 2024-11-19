@@ -100,7 +100,6 @@ public class NhisClaimInvestigationDetailEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Date here] off begin
-
 	@CsvCustomBindByName(column = "DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date")
@@ -169,7 +168,6 @@ public class NhisClaimInvestigationDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

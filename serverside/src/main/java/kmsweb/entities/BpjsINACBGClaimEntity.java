@@ -456,7 +456,6 @@ public class BpjsINACBGClaimEntity extends AbstractEntity {
 	private String treatmentClass;
 
 	// % protected region % [Modify attribute annotation for Admission Date here] off begin
-
 	@CsvCustomBindByName(column = "ADMISSION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "admission_date")
@@ -467,7 +466,6 @@ public class BpjsINACBGClaimEntity extends AbstractEntity {
 	private OffsetDateTime admissionDate;
 
 	// % protected region % [Modify attribute annotation for Dismissal Date here] off begin
-
 	@CsvCustomBindByName(column = "DISMISSAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "dismissal_date")
@@ -577,7 +575,6 @@ public class BpjsINACBGClaimEntity extends AbstractEntity {
 	private String staffName;
 
 	// % protected region % [Modify attribute annotation for Date Grouping here] off begin
-
 	@CsvCustomBindByName(column = "DATE_GROUPING", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date_grouping")
@@ -741,7 +738,6 @@ public class BpjsINACBGClaimEntity extends AbstractEntity {
 	private Double totalTariff;
 
 	// % protected region % [Modify attribute annotation for Visit Date here] off begin
-
 	@CsvCustomBindByName(column = "VISIT_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "visit_date")
@@ -1126,7 +1122,6 @@ public class BpjsINACBGClaimEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

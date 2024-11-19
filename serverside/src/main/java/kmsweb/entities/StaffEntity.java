@@ -556,7 +556,6 @@ public class StaffEntity extends AbstractEntity {
 	private String lastName;
 
 	// % protected region % [Modify attribute annotation for Date of Birth here] off begin
-
 	@CsvCustomBindByName(column = "DATE_OF_BIRTH", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date_of_birth")
@@ -10047,7 +10046,6 @@ public class StaffEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<AdministrationUserEntity> administrationUserRelation = Optional.ofNullable(this.administrationUser);
 		administrationUserRelation.ifPresent(entity -> this.administrationUserId = entity.getId());
 

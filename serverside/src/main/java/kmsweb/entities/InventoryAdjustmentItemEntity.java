@@ -634,7 +634,6 @@ public class InventoryAdjustmentItemEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<InventoryAdjustmentEntity> inventoryAdjustmentRelation = Optional.ofNullable(this.inventoryAdjustment);
 		inventoryAdjustmentRelation.ifPresent(entity -> this.inventoryAdjustmentId = entity.getId());
 

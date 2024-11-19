@@ -155,7 +155,6 @@ public class ProcessWorkflowEntity extends AbstractEntity {
 	private String referenceID;
 
 	// % protected region % [Modify attribute annotation for Process Date Time here] off begin
-
 	@CsvCustomBindByName(column = "PROCESS_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "process_date_time")
@@ -281,7 +280,6 @@ public class ProcessWorkflowEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<StaffEntity> staffRelation = Optional.ofNullable(this.staff);
 		staffRelation.ifPresent(entity -> this.staffId = entity.getId());
 

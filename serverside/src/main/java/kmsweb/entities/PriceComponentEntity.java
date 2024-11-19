@@ -649,7 +649,6 @@ public class PriceComponentEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.invoiceItemComponentsIds = new HashSet<>();
 		for (InvoiceItemComponentEntity invoiceItemComponents: this.invoiceItemComponents) {
 			this.invoiceItemComponentsIds.add(invoiceItemComponents.getId());

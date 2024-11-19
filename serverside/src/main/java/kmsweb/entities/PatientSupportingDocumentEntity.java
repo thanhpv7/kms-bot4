@@ -259,7 +259,6 @@ public class PatientSupportingDocumentEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<PatientGeneralInfoEntity> patientGeneralInformationRelation = Optional.ofNullable(this.patientGeneralInformation);
 		patientGeneralInformationRelation.ifPresent(entity -> this.patientGeneralInformationId = entity.getId());
 

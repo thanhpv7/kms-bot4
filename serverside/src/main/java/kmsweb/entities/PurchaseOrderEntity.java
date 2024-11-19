@@ -249,7 +249,6 @@ public class PurchaseOrderEntity extends AbstractEntity {
 	private String supplyStockGroup;
 
 	// % protected region % [Modify attribute annotation for Order Date here] off begin
-
 	@CsvCustomBindByName(column = "ORDER_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "order_date")
@@ -260,7 +259,6 @@ public class PurchaseOrderEntity extends AbstractEntity {
 	private OffsetDateTime orderDate;
 
 	// % protected region % [Modify attribute annotation for Expected Date here] off begin
-
 	@CsvCustomBindByName(column = "EXPECTED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "expected_date")
@@ -1115,7 +1113,6 @@ public class PurchaseOrderEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<GoodsReceiveNoteEntity> goodsReceiveNoteRelation = Optional.ofNullable(this.goodsReceiveNote);
 		goodsReceiveNoteRelation.ifPresent(entity -> this.goodsReceiveNoteId = entity.getId());
 

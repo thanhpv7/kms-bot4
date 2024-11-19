@@ -3606,7 +3606,6 @@ public class MedicalExaminationRecordEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<StaffEntity> doctorRelation = Optional.ofNullable(this.doctor);
 		doctorRelation.ifPresent(entity -> this.doctorId = entity.getId());
 

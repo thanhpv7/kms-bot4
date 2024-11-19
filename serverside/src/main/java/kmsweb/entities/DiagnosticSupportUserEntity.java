@@ -209,7 +209,6 @@ public class DiagnosticSupportUserEntity extends UserEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<StaffEntity> staffRelation = Optional.ofNullable(this.staff);
 		staffRelation.ifPresent(entity -> this.staffId = entity.getId());
 

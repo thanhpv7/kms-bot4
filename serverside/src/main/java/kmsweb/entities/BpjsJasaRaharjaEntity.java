@@ -138,7 +138,6 @@ public class BpjsJasaRaharjaEntity extends AbstractEntity {
 	private String guaranteeLetterNo;
 
 	// % protected region % [Modify attribute annotation for Incident Date here] off begin
-
 	@CsvCustomBindByName(column = "INCIDENT_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "incident_date")
@@ -167,7 +166,6 @@ public class BpjsJasaRaharjaEntity extends AbstractEntity {
 	private String noSEPSuplesi;
 
 	// % protected region % [Modify attribute annotation for Tanggal SEP Suplesi here] off begin
-
 	@CsvCustomBindByName(column = "TANGGAL_SEP_SUPLESI", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "tanggal_sep_suplesi")
@@ -293,7 +291,6 @@ public class BpjsJasaRaharjaEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<PatientPaymentBPJSEntity> patientPaymentBPJSRelation = Optional.ofNullable(this.patientPaymentBPJS);
 		patientPaymentBPJSRelation.ifPresent(entity -> this.patientPaymentBPJSId = entity.getId());
 

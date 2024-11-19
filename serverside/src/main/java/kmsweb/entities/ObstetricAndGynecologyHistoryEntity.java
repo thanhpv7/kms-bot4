@@ -230,7 +230,6 @@ public class ObstetricAndGynecologyHistoryEntity extends AbstractEntity {
 	private String ageOfFirstSexualContact;
 
 	// % protected region % [Modify attribute annotation for Start Date here] off begin
-
 	@CsvCustomBindByName(column = "START_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "start_date")
@@ -241,7 +240,6 @@ public class ObstetricAndGynecologyHistoryEntity extends AbstractEntity {
 	private OffsetDateTime startDate;
 
 	// % protected region % [Modify attribute annotation for End Date here] off begin
-
 	@CsvCustomBindByName(column = "END_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "end_date")
@@ -252,7 +250,6 @@ public class ObstetricAndGynecologyHistoryEntity extends AbstractEntity {
 	private OffsetDateTime endDate;
 
 	// % protected region % [Modify attribute annotation for Approximate Birth Date here] off begin
-
 	@CsvCustomBindByName(column = "APPROXIMATE_BIRTH_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "approximate_birth_date")
@@ -353,7 +350,6 @@ public class ObstetricAndGynecologyHistoryEntity extends AbstractEntity {
 	private String occupationOfHusbandOrWife;
 
 	// % protected region % [Modify attribute annotation for Rupture Of Membrane here] off begin
-
 	@CsvCustomBindByName(column = "RUPTURE_OF_MEMBRANE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "rupture_of_membrane")
@@ -480,7 +476,6 @@ public class ObstetricAndGynecologyHistoryEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<MedicalExaminationRecordEntity> medicalExaminationRecordRelation = Optional.ofNullable(this.medicalExaminationRecord);
 		medicalExaminationRecordRelation.ifPresent(entity -> this.medicalExaminationRecordId = entity.getId());
 

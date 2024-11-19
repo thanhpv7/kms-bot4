@@ -415,7 +415,6 @@ public class SupplierEntity extends AbstractEntity {
 	private Double leadTimeMaximum;
 
 	// % protected region % [Modify attribute annotation for Last Purchase Date here] off begin
-
 	@CsvCustomBindByName(column = "LAST_PURCHASE_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "last_purchase_date")
@@ -1506,7 +1505,6 @@ public class SupplierEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.goodsReceiveNotesIds = new HashSet<>();
 		for (GoodsReceiveNoteEntity goodsReceiveNotes: this.goodsReceiveNotes) {
 			this.goodsReceiveNotesIds.add(goodsReceiveNotes.getId());

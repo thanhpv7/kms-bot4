@@ -125,7 +125,6 @@ public class MedicalCertificateRestrictedWorkEntity extends AbstractEntity {
 	private Integer period;
 
 	// % protected region % [Modify attribute annotation for Start Date here] off begin
-
 	@CsvCustomBindByName(column = "START_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "start_date")
@@ -136,7 +135,6 @@ public class MedicalCertificateRestrictedWorkEntity extends AbstractEntity {
 	private OffsetDateTime startDate;
 
 	// % protected region % [Modify attribute annotation for End Date here] off begin
-
 	@CsvCustomBindByName(column = "END_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "end_date")
@@ -339,7 +337,6 @@ public class MedicalCertificateRestrictedWorkEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<RegistrationEntity> registrationRelation = Optional.ofNullable(this.registration);
 		registrationRelation.ifPresent(entity -> this.registrationId = entity.getId());
 

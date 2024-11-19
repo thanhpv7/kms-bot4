@@ -265,7 +265,6 @@ public class NhisClaimEntity extends AbstractEntity {
 	private String gender;
 
 	// % protected region % [Modify attribute annotation for Date Of Birth here] off begin
-
 	@CsvCustomBindByName(column = "DATE_OF_BIRTH", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date_of_birth")
@@ -339,7 +338,6 @@ public class NhisClaimEntity extends AbstractEntity {
 	private String typeOfAttendance;
 
 	// % protected region % [Modify attribute annotation for First Visit Admission here] off begin
-
 	@CsvCustomBindByName(column = "FIRST_VISIT_ADMISSION", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "first_visit_admission")
@@ -350,7 +348,6 @@ public class NhisClaimEntity extends AbstractEntity {
 	private OffsetDateTime firstVisitAdmission;
 
 	// % protected region % [Modify attribute annotation for Second Visit Discharge here] off begin
-
 	@CsvCustomBindByName(column = "SECOND_VISIT_DISCHARGE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "second_visit_discharge")
@@ -361,7 +358,6 @@ public class NhisClaimEntity extends AbstractEntity {
 	private OffsetDateTime secondVisitDischarge;
 
 	// % protected region % [Modify attribute annotation for Third Visit here] off begin
-
 	@CsvCustomBindByName(column = "THIRD_VISIT", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "third_visit")
@@ -372,7 +368,6 @@ public class NhisClaimEntity extends AbstractEntity {
 	private OffsetDateTime thirdVisit;
 
 	// % protected region % [Modify attribute annotation for Fourth Visit here] off begin
-
 	@CsvCustomBindByName(column = "FOURTH_VISIT", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "fourth_visit")
@@ -450,7 +445,6 @@ public class NhisClaimEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

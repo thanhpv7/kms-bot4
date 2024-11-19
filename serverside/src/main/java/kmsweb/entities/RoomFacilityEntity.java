@@ -862,7 +862,6 @@ public class RoomFacilityEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.bedFacilitiesIds = new HashSet<>();
 		for (BedFacilityEntity bedFacilities: this.bedFacilities) {
 			this.bedFacilitiesIds.add(bedFacilities.getId());

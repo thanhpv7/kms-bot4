@@ -169,7 +169,6 @@ public class StockTransactionDetailEntity extends AbstractEntity {
 	private String transactionNumber;
 
 	// % protected region % [Modify attribute annotation for Transaction Date here] off begin
-
 	@CsvCustomBindByName(column = "TRANSACTION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "transaction_date")
@@ -537,7 +536,6 @@ public class StockTransactionDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<StockCatalogueEntity> stockCatalogueRelation = Optional.ofNullable(this.stockCatalogue);
 		stockCatalogueRelation.ifPresent(entity -> this.stockCatalogueId = entity.getId());
 

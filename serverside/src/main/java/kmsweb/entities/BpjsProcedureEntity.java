@@ -609,7 +609,6 @@ public class BpjsProcedureEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.additionalProcedureIds = new HashSet<>();
 		for (BpjsSpecialReferralEntity additionalProcedure: this.additionalProcedure) {
 			this.additionalProcedureIds.add(additionalProcedure.getId());

@@ -669,7 +669,6 @@ public class HealthFacilityEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.dismissalReferringFacilityIds = new HashSet<>();
 		for (RegistrationEntity dismissalReferringFacility: this.dismissalReferringFacility) {
 			this.dismissalReferringFacilityIds.add(dismissalReferringFacility.getId());

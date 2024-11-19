@@ -759,7 +759,6 @@ public class BpjsHealthFacilityEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.bpjsClaimSubmissionsIds = new HashSet<>();
 		for (BpjsClaimSubmissionEntity bpjsClaimSubmissions: this.bpjsClaimSubmissions) {
 			this.bpjsClaimSubmissionsIds.add(bpjsClaimSubmissions.getId());

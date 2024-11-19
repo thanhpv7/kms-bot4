@@ -154,7 +154,6 @@ export class AuthenticationService {
 	// % protected region % [Override the default method signature for login here] end
 
 		// % protected region % [Customise login here] off begin
-
 		return this.httpClient.post(`${environment.API_URL}/auth/login`, body.toString(), {
 			observe: 'response',
 			headers: new HttpHeaders({
@@ -175,7 +174,6 @@ export class AuthenticationService {
 	logout() {
 
 		// % protected region % [Customise logout here] off begin
-
 		this.httpClient.post(`${environment.API_URL}/auth/logout`, {}, {}).subscribe(
 			response => {
 				this.onLogout();
@@ -206,7 +204,6 @@ export class AuthenticationService {
 	resetPassword(username: string, token: string, password: string): Observable<LoginHttpResponse> {
 
 		// % protected region % [Customise resetPassword here] off begin
-
 		return this.httpClient.post(`${environment.API_URL}/api/authorization/reset-password`, {
 			username: username,
 			token: token,
@@ -257,7 +254,6 @@ export class AuthenticationService {
 	private onLogout() {
 
 		// % protected region % [Customise onLogout here] off begin
-
 		this.clean();
 		this.store.dispatch(new LogOutAction());
 		this.store.dispatch(new NavigateRoutingAction(['/login']));
@@ -272,7 +268,6 @@ export class AuthenticationService {
 	// % protected region % [Override the default method signature for afterAuthenticated here] end
 
 		// % protected region % [Customise afterAuthenticated here] off begin
-
 		const roles = response.body.groups;
 		localStorage.setItem('roles', JSON.stringify(roles));
 		this.internalRoles = Set(roles);

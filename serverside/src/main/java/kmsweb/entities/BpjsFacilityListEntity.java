@@ -233,7 +233,6 @@ public class BpjsFacilityListEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<BpjsHealthFacilityEntity> bpjsHealthFacilityRelation = Optional.ofNullable(this.bpjsHealthFacility);
 		bpjsHealthFacilityRelation.ifPresent(entity -> this.bpjsHealthFacilityId = entity.getId());
 

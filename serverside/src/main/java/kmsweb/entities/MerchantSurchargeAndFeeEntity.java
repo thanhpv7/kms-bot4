@@ -259,7 +259,6 @@ public class MerchantSurchargeAndFeeEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<MerchantEntity> merchantRelation = Optional.ofNullable(this.merchant);
 		merchantRelation.ifPresent(entity -> this.merchantId = entity.getId());
 

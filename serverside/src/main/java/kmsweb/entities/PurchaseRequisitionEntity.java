@@ -193,7 +193,6 @@ public class PurchaseRequisitionEntity extends AbstractEntity {
 	private String notes;
 
 	// % protected region % [Modify attribute annotation for Order Date here] off begin
-
 	@CsvCustomBindByName(column = "ORDER_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "order_date")
@@ -204,7 +203,6 @@ public class PurchaseRequisitionEntity extends AbstractEntity {
 	private OffsetDateTime orderDate;
 
 	// % protected region % [Modify attribute annotation for Required Date here] off begin
-
 	@CsvCustomBindByName(column = "REQUIRED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "required_date")
@@ -224,7 +222,6 @@ public class PurchaseRequisitionEntity extends AbstractEntity {
 	private Double totalEstimationOrder;
 
 	// % protected region % [Modify attribute annotation for Redrafting Date Time here] off begin
-
 	@CsvCustomBindByName(column = "REDRAFTING_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "redrafting_date_time")
@@ -235,7 +232,6 @@ public class PurchaseRequisitionEntity extends AbstractEntity {
 	private OffsetDateTime redraftingDateTime;
 
 	// % protected region % [Modify attribute annotation for Submission Date Time here] off begin
-
 	@CsvCustomBindByName(column = "SUBMISSION_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "submission_date_time")
@@ -246,7 +242,6 @@ public class PurchaseRequisitionEntity extends AbstractEntity {
 	private OffsetDateTime submissionDateTime;
 
 	// % protected region % [Modify attribute annotation for Approval Date Time here] off begin
-
 	@CsvCustomBindByName(column = "APPROVAL_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "approval_date_time")
@@ -257,7 +252,6 @@ public class PurchaseRequisitionEntity extends AbstractEntity {
 	private OffsetDateTime approvalDateTime;
 
 	// % protected region % [Modify attribute annotation for Rejection Date Time here] off begin
-
 	@CsvCustomBindByName(column = "REJECTION_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "rejection_date_time")
@@ -268,7 +262,6 @@ public class PurchaseRequisitionEntity extends AbstractEntity {
 	private OffsetDateTime rejectionDateTime;
 
 	// % protected region % [Modify attribute annotation for Voiding Date Time here] off begin
-
 	@CsvCustomBindByName(column = "VOIDING_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "voiding_date_time")
@@ -671,7 +664,6 @@ public class PurchaseRequisitionEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<PurchaseOrderEntity> purchaseOrderRelation = Optional.ofNullable(this.purchaseOrder);
 		purchaseOrderRelation.ifPresent(entity -> this.purchaseOrderId = entity.getId());
 

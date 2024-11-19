@@ -249,7 +249,6 @@ public class BpjsDismissalMappingEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<BpjsClaimSubmissionEntity> bpjsClaimSubmissionRelation = Optional.ofNullable(this.bpjsClaimSubmission);
 		bpjsClaimSubmissionRelation.ifPresent(entity -> this.bpjsClaimSubmissionId = entity.getId());
 

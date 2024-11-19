@@ -217,7 +217,6 @@ public class PrescriptionHeaderEntity extends AbstractEntity {
 	private String originalPrescriptionNumber;
 
 	// % protected region % [Modify attribute annotation for Prescription Date here] off begin
-
 	@CsvCustomBindByName(column = "PRESCRIPTION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "prescription_date")
@@ -1068,7 +1067,6 @@ public class PrescriptionHeaderEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<InvoiceEntity> invoiceRelation = Optional.ofNullable(this.invoice);
 		invoiceRelation.ifPresent(entity -> this.invoiceId = entity.getId());
 

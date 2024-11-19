@@ -474,7 +474,6 @@ public class MerchantEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.cashReceiptsIds = new HashSet<>();
 		for (CashReceiptEntity cashReceipts: this.cashReceipts) {
 			this.cashReceiptsIds.add(cashReceipts.getId());

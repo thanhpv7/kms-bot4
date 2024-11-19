@@ -421,7 +421,6 @@ public class BpjsPRBEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<BpjsDiagnosePRBEntity> bpjsDiagnosePRBRelation = Optional.ofNullable(this.bpjsDiagnosePRB);
 		bpjsDiagnosePRBRelation.ifPresent(entity -> this.bpjsDiagnosePRBId = entity.getId());
 

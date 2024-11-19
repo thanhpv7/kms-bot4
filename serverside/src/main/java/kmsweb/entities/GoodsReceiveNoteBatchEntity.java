@@ -162,7 +162,6 @@ public class GoodsReceiveNoteBatchEntity extends AbstractEntity {
 	private String transactionNumber;
 
 	// % protected region % [Modify attribute annotation for Transaction Date here] off begin
-
 	@CsvCustomBindByName(column = "TRANSACTION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "transaction_date")
@@ -182,7 +181,6 @@ public class GoodsReceiveNoteBatchEntity extends AbstractEntity {
 	private String batchNumber;
 
 	// % protected region % [Modify attribute annotation for Expiration Date here] off begin
-
 	@CsvCustomBindByName(column = "EXPIRATION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "expiration_date")
@@ -487,7 +485,6 @@ public class GoodsReceiveNoteBatchEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<GoodsReceiveNoteItemEntity> goodsReceiveNoteItemRelation = Optional.ofNullable(this.goodsReceiveNoteItem);
 		goodsReceiveNoteItemRelation.ifPresent(entity -> this.goodsReceiveNoteItemId = entity.getId());
 

@@ -256,7 +256,6 @@ public class InvoiceEntity extends AbstractEntity {
 	private InvoiceTypeEnum invoiceType;
 
 	// % protected region % [Modify attribute annotation for Invoice Date here] off begin
-
 	@CsvCustomBindByName(column = "INVOICE_DATE", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Invoice Date must not be empty")
 	@Column(name = "invoice_date")
@@ -267,7 +266,6 @@ public class InvoiceEntity extends AbstractEntity {
 	private OffsetDateTime invoiceDate;
 
 	// % protected region % [Modify attribute annotation for Cancel Date here] off begin
-
 	@CsvCustomBindByName(column = "CANCEL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "cancel_date")
@@ -307,7 +305,6 @@ public class InvoiceEntity extends AbstractEntity {
 	private String patientPaymentType;
 
 	// % protected region % [Modify attribute annotation for Verification Date here] off begin
-
 	@CsvCustomBindByName(column = "VERIFICATION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "verification_date")
@@ -363,7 +360,6 @@ public class InvoiceEntity extends AbstractEntity {
 	private String treatmentClass;
 
 	// % protected region % [Modify attribute annotation for Admission Date here] off begin
-
 	@CsvCustomBindByName(column = "ADMISSION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "admission_date")
@@ -374,7 +370,6 @@ public class InvoiceEntity extends AbstractEntity {
 	private OffsetDateTime admissionDate;
 
 	// % protected region % [Modify attribute annotation for Discharged Date here] off begin
-
 	@CsvCustomBindByName(column = "DISCHARGED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "discharged_date")
@@ -1481,7 +1476,6 @@ public class InvoiceEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<MedicationHeaderEntity> medicationHeaderRelation = Optional.ofNullable(this.medicationHeader);
 		medicationHeaderRelation.ifPresent(entity -> this.medicationHeaderId = entity.getId());
 

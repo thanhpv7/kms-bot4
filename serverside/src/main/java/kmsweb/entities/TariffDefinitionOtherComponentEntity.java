@@ -291,7 +291,6 @@ public class TariffDefinitionOtherComponentEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<PriceComponentEntity> priceComponentRelation = Optional.ofNullable(this.priceComponent);
 		priceComponentRelation.ifPresent(entity -> this.priceComponentId = entity.getId());
 

@@ -116,7 +116,6 @@ public class MedicalCertificateMentalHealthEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Examination Date Time here] off begin
-
 	@CsvCustomBindByName(column = "EXAMINATION_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "examination_date_time")
@@ -337,7 +336,6 @@ public class MedicalCertificateMentalHealthEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<RegistrationEntity> registrationRelation = Optional.ofNullable(this.registration);
 		registrationRelation.ifPresent(entity -> this.registrationId = entity.getId());
 

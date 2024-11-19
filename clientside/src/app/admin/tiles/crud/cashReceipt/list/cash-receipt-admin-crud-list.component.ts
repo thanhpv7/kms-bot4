@@ -26,8 +26,8 @@ import {Action, HeaderOption, LoadingType, CollectionComponent} from 'src/app/li
 import * as modelAction from 'src/app/models/cashReceipt/cash_receipt.model.action';
 import {CashReceiptModelState} from 'src/app/models/cashReceipt/cash_receipt.model.state';
 import {AuthenticationService} from 'src/app/lib/services/authentication/authentication.service';
-import {ReceiptTypeEnum, receiptTypeEnumArray} from 'src/app/enums/receipt-type.enum';
 import {CashChangeTypeEnum, cashChangeTypeEnumArray} from 'src/app/enums/cash-change-type.enum';
+import {ReceiptTypeEnum, receiptTypeEnumArray} from 'src/app/enums/receipt-type.enum';
 import {CashReceiptModel} from 'src/app/models/cashReceipt/cash_receipt.model';
 import {
 	getCashReceiptCollectionModels,

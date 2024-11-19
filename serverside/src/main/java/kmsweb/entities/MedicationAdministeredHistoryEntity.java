@@ -128,7 +128,6 @@ public class MedicationAdministeredHistoryEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for DateTime here] off begin
-
 	@CsvCustomBindByName(column = "DATETIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "datetime")
@@ -433,7 +432,6 @@ public class MedicationAdministeredHistoryEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<MedicationItemEntity> medicationItemRelation = Optional.ofNullable(this.medicationItem);
 		medicationItemRelation.ifPresent(entity -> this.medicationItemId = entity.getId());
 

@@ -338,7 +338,6 @@ public class McuPackageEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.mcuPackageItemsIds = new HashSet<>();
 		for (McuPackageItemEntity mcuPackageItems: this.mcuPackageItems) {
 			this.mcuPackageItemsIds.add(mcuPackageItems.getId());

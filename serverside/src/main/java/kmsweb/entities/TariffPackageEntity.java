@@ -662,7 +662,6 @@ public class TariffPackageEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.serviceItemAssignmentsIds = new HashSet<>();
 		for (ServiceItemAssignmentEntity serviceItemAssignments: this.serviceItemAssignments) {
 			this.serviceItemAssignmentsIds.add(serviceItemAssignments.getId());

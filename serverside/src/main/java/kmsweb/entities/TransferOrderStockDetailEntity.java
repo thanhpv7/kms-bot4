@@ -272,7 +272,6 @@ public class TransferOrderStockDetailEntity extends AbstractEntity {
 	private Double quantityFulfilled;
 
 	// % protected region % [Modify attribute annotation for Order Date Time here] off begin
-
 	@CsvCustomBindByName(column = "ORDER_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "order_date_time")
@@ -550,7 +549,6 @@ public class TransferOrderStockDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<StaffEntity> staffRelation = Optional.ofNullable(this.staff);
 		staffRelation.ifPresent(entity -> this.staffId = entity.getId());
 

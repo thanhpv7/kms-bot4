@@ -165,7 +165,6 @@ public class JournalEntity extends AbstractEntity {
 	private String journalNumber;
 
 	// % protected region % [Modify attribute annotation for Transaction Date here] off begin
-
 	@CsvCustomBindByName(column = "TRANSACTION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "transaction_date")
@@ -239,7 +238,6 @@ public class JournalEntity extends AbstractEntity {
 	private String postingStatus;
 
 	// % protected region % [Modify attribute annotation for Posting Date Time here] off begin
-
 	@CsvCustomBindByName(column = "POSTING_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "posting_date_time")
@@ -353,7 +351,6 @@ public class JournalEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

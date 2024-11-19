@@ -880,7 +880,6 @@ public class MedicationItemEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<MedicationCompoundEntity> medicationCompoundRelation = Optional.ofNullable(this.medicationCompound);
 		medicationCompoundRelation.ifPresent(entity -> this.medicationCompoundId = entity.getId());
 

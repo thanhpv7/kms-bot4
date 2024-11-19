@@ -492,7 +492,6 @@ public class SampleCollectionInformationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<DiagnosisExaminationRecordEntity> diagnosisExaminationRecordRelation = Optional.ofNullable(this.diagnosisExaminationRecord);
 		diagnosisExaminationRecordRelation.ifPresent(entity -> this.diagnosisExaminationRecordId = entity.getId());
 

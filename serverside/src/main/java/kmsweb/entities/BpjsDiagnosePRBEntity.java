@@ -385,7 +385,6 @@ public class BpjsDiagnosePRBEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.bpjsPRBsIds = new HashSet<>();
 		for (BpjsPRBEntity bpjsPRBs: this.bpjsPRBs) {
 			this.bpjsPRBsIds.add(bpjsPRBs.getId());

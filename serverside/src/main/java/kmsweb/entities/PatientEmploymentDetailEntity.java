@@ -370,7 +370,6 @@ public class PatientEmploymentDetailEntity extends AbstractEntity {
 	private String industryNo;
 
 	// % protected region % [Modify attribute annotation for Employment Start Date here] off begin
-
 	@CsvCustomBindByName(column = "EMPLOYMENT_START_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "employment_start_date")
@@ -578,7 +577,6 @@ public class PatientEmploymentDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<PatientGeneralInfoEntity> patientGeneralInfoRelation = Optional.ofNullable(this.patientGeneralInfo);
 		patientGeneralInfoRelation.ifPresent(entity -> this.patientGeneralInfoId = entity.getId());
 

@@ -138,7 +138,6 @@ public class BatchStockBalanceEntity extends AbstractEntity {
 	private String batchNo;
 
 	// % protected region % [Modify attribute annotation for Expiration Date here] off begin
-
 	@CsvCustomBindByName(column = "EXPIRATION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "expiration_date")
@@ -349,7 +348,6 @@ public class BatchStockBalanceEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<StockCatalogueEntity> stockCatalogueRelation = Optional.ofNullable(this.stockCatalogue);
 		stockCatalogueRelation.ifPresent(entity -> this.stockCatalogueId = entity.getId());
 

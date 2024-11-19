@@ -161,7 +161,6 @@ public class IntraoperativeRecordsEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Start Date Time here] off begin
-
 	@CsvCustomBindByName(column = "START_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "start_date_time")
@@ -172,7 +171,6 @@ public class IntraoperativeRecordsEntity extends AbstractEntity {
 	private OffsetDateTime startDateTime;
 
 	// % protected region % [Modify attribute annotation for End Date Time here] off begin
-
 	@CsvCustomBindByName(column = "END_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "end_date_time")
@@ -183,7 +181,6 @@ public class IntraoperativeRecordsEntity extends AbstractEntity {
 	private OffsetDateTime endDateTime;
 
 	// % protected region % [Modify attribute annotation for Surgery Start Date Time here] off begin
-
 	@CsvCustomBindByName(column = "SURGERY_START_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "surgery_start_date_time")
@@ -194,7 +191,6 @@ public class IntraoperativeRecordsEntity extends AbstractEntity {
 	private OffsetDateTime surgeryStartDateTime;
 
 	// % protected region % [Modify attribute annotation for Surgery End Date Time here] off begin
-
 	@CsvCustomBindByName(column = "SURGERY_END_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "surgery_end_date_time")
@@ -232,7 +228,6 @@ public class IntraoperativeRecordsEntity extends AbstractEntity {
 	private String instrumentsUsed;
 
 	// % protected region % [Modify attribute annotation for Anesthesia Start Date Time here] off begin
-
 	@CsvCustomBindByName(column = "ANESTHESIA_START_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "anesthesia_start_date_time")
@@ -288,7 +283,6 @@ public class IntraoperativeRecordsEntity extends AbstractEntity {
 	private String anesthesiaNotes;
 
 	// % protected region % [Modify attribute annotation for Anesthesia End Date Time here] off begin
-
 	@CsvCustomBindByName(column = "ANESTHESIA_END_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "anesthesia_end_date_time")
@@ -625,7 +619,6 @@ public class IntraoperativeRecordsEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<OperatingTheaterMedicalExaminationRecordEntity> operatingTheaterMedicalExaminationRecordRelation = Optional.ofNullable(this.operatingTheaterMedicalExaminationRecord);
 		operatingTheaterMedicalExaminationRecordRelation.ifPresent(entity -> this.operatingTheaterMedicalExaminationRecordId = entity.getId());
 

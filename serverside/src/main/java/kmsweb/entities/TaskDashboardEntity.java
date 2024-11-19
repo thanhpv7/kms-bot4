@@ -213,7 +213,6 @@ public class TaskDashboardEntity extends AbstractEntity {
 	private String kodepoli;
 
 	// % protected region % [Modify attribute annotation for Insert Date here] off begin
-
 	@CsvCustomBindByName(column = "INSERT_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "insert_date")
@@ -224,7 +223,6 @@ public class TaskDashboardEntity extends AbstractEntity {
 	private OffsetDateTime insertDate;
 
 	// % protected region % [Modify attribute annotation for tanggal here] off begin
-
 	@CsvCustomBindByName(column = "TANGGAL", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "tanggal")
@@ -392,7 +390,6 @@ public class TaskDashboardEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

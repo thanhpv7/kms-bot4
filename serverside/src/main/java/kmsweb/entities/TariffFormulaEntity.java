@@ -347,7 +347,6 @@ public class TariffFormulaEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<TariffSchemaEntity> baseSchemaRelation = Optional.ofNullable(this.baseSchema);
 		baseSchemaRelation.ifPresent(entity -> this.baseSchemaId = entity.getId());
 

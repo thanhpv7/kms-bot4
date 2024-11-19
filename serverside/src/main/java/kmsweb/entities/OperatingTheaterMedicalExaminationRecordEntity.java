@@ -998,7 +998,6 @@ public class OperatingTheaterMedicalExaminationRecordEntity extends AbstractEnti
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<DiagnosisNandaEntity> nursingAnesthesiaDetailRelation = Optional.ofNullable(this.nursingAnesthesiaDetail);
 		nursingAnesthesiaDetailRelation.ifPresent(entity -> this.nursingAnesthesiaDetailId = entity.getId());
 

@@ -260,7 +260,6 @@ public class PatientGeneralInfoEntity extends AbstractEntity {
 	private String placeOfBirth;
 
 	// % protected region % [Modify attribute annotation for Date of Birth here] off begin
-
 	@CsvCustomBindByName(column = "DATE_OF_BIRTH", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Date of Birth must not be empty")
 	@Column(name = "date_of_birth")
@@ -2392,7 +2391,6 @@ public class PatientGeneralInfoEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		this.bpjsClaimSubmissionsIds = new HashSet<>();
 		for (BpjsClaimSubmissionEntity bpjsClaimSubmissions: this.bpjsClaimSubmissions) {
 			this.bpjsClaimSubmissionsIds.add(bpjsClaimSubmissions.getId());

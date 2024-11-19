@@ -512,7 +512,6 @@ public class CompoundPrescriptionDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<UnitOfMeasurementEntity> consumptionUnitRelation = Optional.ofNullable(this.consumptionUnit);
 		consumptionUnitRelation.ifPresent(entity -> this.consumptionUnitId = entity.getId());
 

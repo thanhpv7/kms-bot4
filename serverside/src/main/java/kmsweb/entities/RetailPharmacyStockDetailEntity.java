@@ -395,7 +395,6 @@ public class RetailPharmacyStockDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<RetailPharmacyEntity> retailPharmacyRelation = Optional.ofNullable(this.retailPharmacy);
 		retailPharmacyRelation.ifPresent(entity -> this.retailPharmacyId = entity.getId());
 

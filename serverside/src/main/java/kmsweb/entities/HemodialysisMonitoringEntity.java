@@ -156,7 +156,6 @@ public class HemodialysisMonitoringEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for DateTime here] off begin
-
 	@CsvCustomBindByName(column = "DATETIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "datetime")
@@ -466,7 +465,6 @@ public class HemodialysisMonitoringEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<HemodialysisExaminationEntity> hemodialysisExaminationRelation = Optional.ofNullable(this.hemodialysisExamination);
 		hemodialysisExaminationRelation.ifPresent(entity -> this.hemodialysisExaminationId = entity.getId());
 

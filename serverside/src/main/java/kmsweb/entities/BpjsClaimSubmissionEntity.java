@@ -184,7 +184,6 @@ public class BpjsClaimSubmissionEntity extends AbstractEntity {
 	private String sepNo;
 
 	// % protected region % [Modify attribute annotation for Admission Date here] off begin
-
 	@CsvCustomBindByName(column = "ADMISSION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "admission_date")
@@ -195,7 +194,6 @@ public class BpjsClaimSubmissionEntity extends AbstractEntity {
 	private OffsetDateTime admissionDate;
 
 	// % protected region % [Modify attribute annotation for Dismissal Date here] off begin
-
 	@CsvCustomBindByName(column = "DISMISSAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "dismissal_date")
@@ -233,7 +231,6 @@ public class BpjsClaimSubmissionEntity extends AbstractEntity {
 	private String followUpPlan;
 
 	// % protected region % [Modify attribute annotation for Control Date here] off begin
-
 	@CsvCustomBindByName(column = "CONTROL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "control_date")
@@ -1222,7 +1219,6 @@ public class BpjsClaimSubmissionEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<BpjsDiagnoseEntity> bpjsDiagnoseRelation = Optional.ofNullable(this.bpjsDiagnose);
 		bpjsDiagnoseRelation.ifPresent(entity -> this.bpjsDiagnoseId = entity.getId());
 

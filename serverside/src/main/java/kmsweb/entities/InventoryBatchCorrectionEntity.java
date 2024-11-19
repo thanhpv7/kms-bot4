@@ -154,7 +154,6 @@ public class InventoryBatchCorrectionEntity extends AbstractEntity {
 	private String approvalStatus;
 
 	// % protected region % [Modify attribute annotation for Transaction Date here] off begin
-
 	@CsvCustomBindByName(column = "TRANSACTION_DATE", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Transaction Date must not be empty")
 	@Column(name = "transaction_date")
@@ -193,7 +192,6 @@ public class InventoryBatchCorrectionEntity extends AbstractEntity {
 	private String notes;
 
 	// % protected region % [Modify attribute annotation for Void Date here] off begin
-
 	@CsvCustomBindByName(column = "VOID_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "void_date")
@@ -472,7 +470,6 @@ public class InventoryBatchCorrectionEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<WarehouseEntity> warehouseRelation = Optional.ofNullable(this.warehouse);
 		warehouseRelation.ifPresent(entity -> this.warehouseId = entity.getId());
 

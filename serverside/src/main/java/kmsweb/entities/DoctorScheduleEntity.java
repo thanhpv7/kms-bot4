@@ -168,7 +168,6 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Start Date Time here] off begin
-
 	@CsvCustomBindByName(column = "START_DATE_TIME", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Start Date Time must not be empty")
 	@Column(name = "start_date_time")
@@ -179,7 +178,6 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	private OffsetDateTime startDateTime;
 
 	// % protected region % [Modify attribute annotation for End Date Time here] off begin
-
 	@CsvCustomBindByName(column = "END_DATE_TIME", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "End Date Time must not be empty")
 	@Column(name = "end_date_time")
@@ -298,7 +296,6 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	private String training;
 
 	// % protected region % [Modify attribute annotation for Dismissal Date here] off begin
-
 	@CsvCustomBindByName(column = "DISMISSAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "dismissal_date")
@@ -509,7 +506,6 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<ServiceEntity> serviceRelation = Optional.ofNullable(this.service);
 		serviceRelation.ifPresent(entity -> this.serviceId = entity.getId());
 

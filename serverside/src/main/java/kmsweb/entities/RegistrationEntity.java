@@ -403,7 +403,6 @@ public class RegistrationEntity extends AbstractEntity {
 	private String registrationNumber;
 
 	// % protected region % [Modify attribute annotation for Scheduled Date here] off begin
-
 	@CsvCustomBindByName(column = "SCHEDULED_DATE", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Scheduled Date must not be empty")
 	@Column(name = "scheduled_date")
@@ -414,7 +413,6 @@ public class RegistrationEntity extends AbstractEntity {
 	private OffsetDateTime scheduledDate;
 
 	// % protected region % [Modify attribute annotation for Actual In Date here] off begin
-
 	@CsvCustomBindByName(column = "ACTUAL_IN_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "actual_in_date")
@@ -425,7 +423,6 @@ public class RegistrationEntity extends AbstractEntity {
 	private OffsetDateTime actualInDate;
 
 	// % protected region % [Modify attribute annotation for Dismissal Date here] off begin
-
 	@CsvCustomBindByName(column = "DISMISSAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "dismissal_date")
@@ -562,7 +559,6 @@ public class RegistrationEntity extends AbstractEntity {
 	private String admissionDiagnosis;
 
 	// % protected region % [Modify attribute annotation for Uploaded Date Time here] off begin
-
 	@CsvCustomBindByName(column = "UPLOADED_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "uploaded_date_time")
@@ -636,7 +632,6 @@ public class RegistrationEntity extends AbstractEntity {
 	private String deathCertificateNo;
 
 	// % protected region % [Modify attribute annotation for Time Of Death here] off begin
-
 	@CsvCustomBindByName(column = "TIME_OF_DEATH", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "time_of_death")
@@ -4367,7 +4362,6 @@ public class RegistrationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<DiagnosesAndProceduresEntity> admissionICD10Relation = Optional.ofNullable(this.admissionICD10);
 		admissionICD10Relation.ifPresent(entity -> this.admissionICD10Id = entity.getId());
 

@@ -220,7 +220,6 @@ public class ServiceFacilityCategoryEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<ServiceEntity> serviceRelation = Optional.ofNullable(this.service);
 		serviceRelation.ifPresent(entity -> this.serviceId = entity.getId());
 

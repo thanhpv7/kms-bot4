@@ -332,7 +332,6 @@ export class AdminComponent
 
 		// % protected region % [Customise or remove the default navigation bar links for entities] end
 		// % protected region % [Customise or remove the default navigation bar links for users] off begin
-
 		let userSubLinks = [
 			new Link('Administration User', [], 'icon-book', '/admin/users/administration-user'),
 			new Link('Administrator', [], 'icon-book', '/admin/users/administrator'),

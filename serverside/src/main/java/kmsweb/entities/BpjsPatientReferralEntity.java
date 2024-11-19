@@ -163,7 +163,6 @@ public class BpjsPatientReferralEntity extends AbstractEntity {
 	private String referredType;
 
 	// % protected region % [Modify attribute annotation for Referral Date here] off begin
-
 	@CsvCustomBindByName(column = "REFERRAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "referral_date")
@@ -174,7 +173,6 @@ public class BpjsPatientReferralEntity extends AbstractEntity {
 	private OffsetDateTime referralDate;
 
 	// % protected region % [Modify attribute annotation for Referal Date Plan here] off begin
-
 	@CsvCustomBindByName(column = "REFERAL_DATE_PLAN", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "referal_date_plan")
@@ -519,7 +517,6 @@ public class BpjsPatientReferralEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<BpjsDiagnoseEntity> bpjsDiagnoseRelation = Optional.ofNullable(this.bpjsDiagnose);
 		bpjsDiagnoseRelation.ifPresent(entity -> this.bpjsDiagnoseId = entity.getId());
 

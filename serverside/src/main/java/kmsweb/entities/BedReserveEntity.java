@@ -291,7 +291,6 @@ public class BedReserveEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<BedFacilityEntity> bedFacilityRelation = Optional.ofNullable(this.bedFacility);
 		bedFacilityRelation.ifPresent(entity -> this.bedFacilityId = entity.getId());
 

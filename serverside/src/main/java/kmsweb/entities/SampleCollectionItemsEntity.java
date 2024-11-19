@@ -202,7 +202,6 @@ public class SampleCollectionItemsEntity extends AbstractEntity {
 	private String transport;
 
 	// % protected region % [Modify attribute annotation for Sample Collection Date Time here] off begin
-
 	@CsvCustomBindByName(column = "SAMPLE_COLLECTION_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "sample_collection_date_time")
@@ -213,7 +212,6 @@ public class SampleCollectionItemsEntity extends AbstractEntity {
 	private OffsetDateTime sampleCollectionDateTime;
 
 	// % protected region % [Modify attribute annotation for Sample Processing Date Time here] off begin
-
 	@CsvCustomBindByName(column = "SAMPLE_PROCESSING_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "sample_processing_date_time")
@@ -224,7 +222,6 @@ public class SampleCollectionItemsEntity extends AbstractEntity {
 	private OffsetDateTime sampleProcessingDateTime;
 
 	// % protected region % [Modify attribute annotation for Sample Delivery Date Time here] off begin
-
 	@CsvCustomBindByName(column = "SAMPLE_DELIVERY_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "sample_delivery_date_time")
@@ -560,7 +557,6 @@ public class SampleCollectionItemsEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<SampleCollectionInformationEntity> sampleCollectionInformationRelation = Optional.ofNullable(this.sampleCollectionInformation);
 		sampleCollectionInformationRelation.ifPresent(entity -> this.sampleCollectionInformationId = entity.getId());
 

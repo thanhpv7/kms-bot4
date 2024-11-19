@@ -168,7 +168,6 @@ public class PatientConsentEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Consent Date Time here] off begin
-
 	@CsvCustomBindByName(column = "CONSENT_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "consent_date_time")
@@ -507,7 +506,6 @@ public class PatientConsentEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<PatientGeneralInfoEntity> patientGeneralInfoRelation = Optional.ofNullable(this.patientGeneralInfo);
 		patientGeneralInfoRelation.ifPresent(entity -> this.patientGeneralInfoId = entity.getId());
 

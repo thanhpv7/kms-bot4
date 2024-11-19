@@ -465,7 +465,6 @@ public class HospitalBranchInformationEntity extends AbstractEntity {
 	private String hospitalDirectorName;
 
 	// % protected region % [Modify attribute annotation for Date of Registration here] off begin
-
 	@CsvCustomBindByName(column = "DATE_OF_REGISTRATION", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date_of_registration")
@@ -611,7 +610,6 @@ public class HospitalBranchInformationEntity extends AbstractEntity {
 	private String permitNumber;
 
 	// % protected region % [Modify attribute annotation for Permit Date here] off begin
-
 	@CsvCustomBindByName(column = "PERMIT_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "permit_date")
@@ -640,7 +638,6 @@ public class HospitalBranchInformationEntity extends AbstractEntity {
 	private String permitType;
 
 	// % protected region % [Modify attribute annotation for Valid Until here] off begin
-
 	@CsvCustomBindByName(column = "VALID_UNTIL", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "valid_until")
@@ -687,7 +684,6 @@ public class HospitalBranchInformationEntity extends AbstractEntity {
 	private String accreditationLevel;
 
 	// % protected region % [Modify attribute annotation for Accreditation Date here] off begin
-
 	@CsvCustomBindByName(column = "ACCREDITATION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "accreditation_date")
@@ -1369,7 +1365,6 @@ public class HospitalBranchInformationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<HospitalGroupInformationEntity> hospitalGroupRelation = Optional.ofNullable(this.hospitalGroup);
 		hospitalGroupRelation.ifPresent(entity -> this.hospitalGroupId = entity.getId());
 

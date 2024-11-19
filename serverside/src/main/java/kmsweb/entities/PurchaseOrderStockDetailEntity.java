@@ -679,7 +679,6 @@ public class PurchaseOrderStockDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<PurchaseOrderEntity> purchaseOrderRelation = Optional.ofNullable(this.purchaseOrder);
 		purchaseOrderRelation.ifPresent(entity -> this.purchaseOrderId = entity.getId());
 

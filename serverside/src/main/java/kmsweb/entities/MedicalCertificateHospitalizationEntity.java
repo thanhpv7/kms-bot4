@@ -112,7 +112,6 @@ public class MedicalCertificateHospitalizationEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Admission Date Time here] off begin
-
 	@CsvCustomBindByName(column = "ADMISSION_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "admission_date_time")
@@ -123,7 +122,6 @@ public class MedicalCertificateHospitalizationEntity extends AbstractEntity {
 	private OffsetDateTime admissionDateTime;
 
 	// % protected region % [Modify attribute annotation for Discharge Date Time here] off begin
-
 	@CsvCustomBindByName(column = "DISCHARGE_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "discharge_date_time")
@@ -326,7 +324,6 @@ public class MedicalCertificateHospitalizationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
-
 		Optional<RegistrationEntity> registrationRelation = Optional.ofNullable(this.registration);
 		registrationRelation.ifPresent(entity -> this.registrationId = entity.getId());
 
