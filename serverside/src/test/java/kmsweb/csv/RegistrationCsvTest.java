@@ -194,6 +194,8 @@ public class RegistrationCsvTest {
 		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getOtherReferredFacility())));
 
 		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getOtherReferredStaff())));
+
+		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getDoctorScheduleDetailId())));
 	}
 
 	@Test

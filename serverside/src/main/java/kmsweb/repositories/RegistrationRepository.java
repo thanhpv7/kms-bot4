@@ -293,6 +293,13 @@ public interface RegistrationRepository extends AbstractRepository<RegistrationE
 	 * @return a list of entities that have the given attribute Other Referred Staff
 	 */
 	List<RegistrationEntity> findByOtherReferredStaff(@NotNull String otherReferredStaff);
+	/**
+	 * Return an entity or a list of entities that have the given attribute Doctor Schedule Detail Id.
+	 *
+	 * @param doctorScheduleDetailId the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Doctor Schedule Detail Id
+	 */
+	List<RegistrationEntity> findByDoctorScheduleDetailId(@NotNull String doctorScheduleDetailId);
 
 	@Transactional
 	void deleteAllByIdIn(@NotNull Iterable<UUID> ids);

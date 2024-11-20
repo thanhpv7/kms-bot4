@@ -111,6 +111,8 @@ public class RegistrationEntityDto extends AbstractEntityDto {
 
 	private String otherReferredStaff;
 
+	private String doctorScheduleDetailId;
+
 	private Set<FileEntity> supportingDocument = new HashSet<>();
 
 	private Set<FileEntity> printWristband = new HashSet<>();

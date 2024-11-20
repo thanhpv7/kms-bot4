@@ -254,6 +254,12 @@ public class RegistrationFactory implements FactoryBean<RegistrationEntity> {
 				.get();
 		newEntity.setOtherReferredStaff(randomStringForOtherReferredStaff);
 		// % protected region % [Add customisation for Other Referred Staff here] end
+		// % protected region % [Add customisation for Doctor Schedule Detail Id here] off begin
+		String randomStringForDoctorScheduleDetailId = mockNeat
+				.strings()
+				.get();
+		newEntity.setDoctorScheduleDetailId(randomStringForDoctorScheduleDetailId);
+		// % protected region % [Add customisation for Doctor Schedule Detail Id here] end
 
 		// % protected region % [Apply any additional logic for registrationWithNoRef after the main body here] off begin
 		// % protected region % [Apply any additional logic for registrationWithNoRef after the main body here] end

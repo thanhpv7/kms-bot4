@@ -81,6 +81,7 @@ public class RegistrationSerializer extends AbstractSerializer<RegistrationEntit
 		writeBooleanField(gen, "isUnknownPatient", value.getIsUnknownPatient());
 		writeStringField(gen, "otherReferredFacility", value.getOtherReferredFacility());
 		writeStringField(gen, "otherReferredStaff", value.getOtherReferredStaff());
+		writeStringField(gen, "doctorScheduleDetailId", value.getDoctorScheduleDetailId());
 
 		// % protected region % [Modify the json before writing the object here] off begin
 		// % protected region % [Modify the json before writing the object here] end
