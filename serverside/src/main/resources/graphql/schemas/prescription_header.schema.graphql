@@ -41,7 +41,8 @@ type PrescriptionHeader {
 	invoiceItems: [InvoiceItem]
 	prescriptionCompounds: [PrescriptionCompound]
 	prescriptionItems: [PrescriptionItem]
-	# % protected region % [Add any additional field definition here] off begin
+	# % protected region % [Add any additional field definition here] on begin
+	active: Boolean
 	# % protected region % [Add any additional field definition here] end
 }
 
@@ -87,7 +88,8 @@ input PrescriptionHeaderInput {
 	prescriptionCompoundsIds: [ID!]
 	prescriptionItems: [PrescriptionItemInput]
 	prescriptionItemsIds: [ID!]
-	# % protected region % [Add any additional field definition for input type here] off begin
+	# % protected region % [Add any additional field definition for input type here] on begin
+	active: Boolean
 	# % protected region % [Add any additional field definition for input type here] end
 }
 

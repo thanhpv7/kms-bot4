@@ -180,11 +180,11 @@ public class PrescriptionHeaderEntity extends AbstractEntity {
 	//
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	// % protected region % [Modify attribute annotation for Prescription Number here] off begin
+	// % protected region % [Modify attribute annotation for Prescription Number here] on begin
 	@CsvBindByName(column = "PRESCRIPTION_NUMBER", required = true)
 	@NotNull(message = "Prescription Number must not be empty")
 	@Column(name = "prescription_number")
-	@Schema(description = "The Prescription Number of this entity.")
+	@Schema(description = "The Prescription Number of this entity. (unique field)") // this is a change to test codebots gen 4
 	@ToString.Include
 	// % protected region % [Modify attribute annotation for Prescription Number here] end
 	private String prescriptionNumber;
