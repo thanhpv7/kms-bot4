@@ -291,6 +291,10 @@ public class PrescriptionHeaderMutationResolver implements GraphQLMutationResolv
 	}
 
 
-	// % protected region % [Import any additional class methods here] off begin
+	// % protected region % [Import any additional class methods here] on begin
+	// add new method
+	public void updatePrescriptionHeader() {
+		System.out.println("updating...");
+	}
 	// % protected region % [Import any additional class methods here] end
 }
