@@ -59,6 +59,7 @@ public class PrescriptionHeaderSerializer extends AbstractSerializer<Prescriptio
 		writeIntegerField(gen, "copyNo", value.getCopyNo());
 		writeBooleanField(gen, "isInvoiced", value.getIsInvoiced());
 		writeBooleanField(gen, "externalWarehouse", value.getExternalWarehouse());
+		writeStringField(gen, "notes2", value.getNotes2());
 
 		// % protected region % [Modify the json before writing the object here] off begin
 		// % protected region % [Modify the json before writing the object here] end

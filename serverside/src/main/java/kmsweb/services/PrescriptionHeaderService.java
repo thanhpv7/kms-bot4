@@ -536,6 +536,29 @@ public class PrescriptionHeaderService extends AbstractService<PrescriptionHeade
 		return entities;
 	}
 
+	/**
+	 * Return an entity or a list of entities that have the given attribute Notes2.
+	 *
+	 * @param notes2 the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Notes2
+	 */
+	@PreAuthorize("hasPermission('PrescriptionHeaderEntity', 'read')")
+	@Transactional(readOnly = true)
+	public List<PrescriptionHeaderEntity> findByNotes2(String notes2)
+	// % protected region % [Add any throwables, implementations, or extensions for findByNotes2 here] off begin
+	// % protected region % [Add any throwables, implementations, or extensions for findByNotes2 here] end
+	{
+		// % protected region % [Add any additional logic for findByNotes2 before the main body here] off begin
+		// % protected region % [Add any additional logic for findByNotes2 before the main body here] end
+
+		List<PrescriptionHeaderEntity> entities = Lists.newArrayList(repository.findByNotes2(notes2));
+
+		// % protected region % [Add any additional logic for findByNotes2 before returning the entities here] off begin
+		// % protected region % [Add any additional logic for findByNotes2 before returning the entities here] end
+
+		return entities;
+	}
+
 	@Override
 	@PreAuthorize("hasPermission('PrescriptionHeaderEntity', 'read')")
 	@Transactional(readOnly = true)

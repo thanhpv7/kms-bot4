@@ -94,6 +94,7 @@ export class PrescriptionHeaderService extends AbstractHttpService<PrescriptionH
 				copyNo
 				isInvoiced
 				externalWarehouse
+				notes2
 			}
 			# % protected region % [Modify the PrescriptionHeaderProperties classFragment here] end
 			${super.fragments('PrescriptionHeader').properties}

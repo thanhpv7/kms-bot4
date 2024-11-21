@@ -142,6 +142,10 @@ public class PrescriptionHeaderEntity extends AbstractEntity {
 			this.setExternalWarehouse(prescriptionHeaderEntityDto.getExternalWarehouse());
 		}
 
+		if (prescriptionHeaderEntityDto.getNotes2() != null) {
+			this.setNotes2(prescriptionHeaderEntityDto.getNotes2());
+		}
+
 		if (prescriptionHeaderEntityDto.getInvoiceItems() != null) {
 			this.setInvoiceItems(prescriptionHeaderEntityDto.getInvoiceItems());
 		}
@@ -315,6 +319,15 @@ public class PrescriptionHeaderEntity extends AbstractEntity {
 	@ToString.Include
 	// % protected region % [Modify attribute annotation for External Warehouse here] end
 	private Boolean externalWarehouse = false ;
+
+	// % protected region % [Modify attribute annotation for Notes2 here] off begin
+	@CsvBindByName(column = "NOTES2", required = false)
+	@Nullable
+	@Column(name = "notes2")
+	@Schema(description = "The Notes2 of this entity.")
+	@ToString.Include
+	// % protected region % [Modify attribute annotation for Notes2 here] end
+	private String notes2;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
@@ -1057,7 +1070,7 @@ public class PrescriptionHeaderEntity extends AbstractEntity {
 	public static String getExampleCsvHeader() {
 
 		// % protected region % [Modify the headers in the CSV file here] off begin
-		return "PRESCRIPTION_NUMBER,PRESCRIPTION_TYPE,QUEUE_NO,ORIGINAL_PRESCRIPTION_NUMBER,PRESCRIPTION_DATE,IS_COMPOUND,IS_ITERATION,STATUS,IS_URGENT,RESTRICTED,NOTES,REVISION_NO,COPY_NO,IS_INVOICED,EXTERNAL_WAREHOUSE,INVOICE_ID,REGISTRATION_ID,REQUESTED_BY_ID,WAREHOUSE_ID,INVOICE_ITEMS_IDS,PRESCRIPTION_COMPOUNDS_IDS,PRESCRIPTION_ITEMS_IDS,ID";
+		return "PRESCRIPTION_NUMBER,PRESCRIPTION_TYPE,QUEUE_NO,ORIGINAL_PRESCRIPTION_NUMBER,PRESCRIPTION_DATE,IS_COMPOUND,IS_ITERATION,STATUS,IS_URGENT,RESTRICTED,NOTES,REVISION_NO,COPY_NO,IS_INVOICED,EXTERNAL_WAREHOUSE,NOTES2,INVOICE_ID,REGISTRATION_ID,REQUESTED_BY_ID,WAREHOUSE_ID,INVOICE_ITEMS_IDS,PRESCRIPTION_COMPOUNDS_IDS,PRESCRIPTION_ITEMS_IDS,ID";
 		// % protected region % [Modify the headers in the CSV file here] end
 	}
 
@@ -1131,6 +1144,7 @@ public class PrescriptionHeaderEntity extends AbstractEntity {
 			Objects.equals(this.copyNo, that.copyNo) &&
 			Objects.equals(this.isInvoiced, that.isInvoiced) &&
 			Objects.equals(this.externalWarehouse, that.externalWarehouse) &&
+			Objects.equals(this.notes2, that.notes2) &&
 			Objects.equals(this.invoiceItemsIds, that.invoiceItemsIds) &&
 			Objects.equals(this.prescriptionCompoundsIds, that.prescriptionCompoundsIds) &&
 			Objects.equals(this.prescriptionItemsIds, that.prescriptionItemsIds) &&

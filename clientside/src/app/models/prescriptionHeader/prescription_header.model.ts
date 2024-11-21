@@ -157,6 +157,11 @@ export class PrescriptionHeaderModel extends AbstractModel {
 	 */
 	externalWarehouse: boolean = false;
 
+	/**
+	 * Notes2.
+	 */
+	notes2: string;
+
 	invoiceId: string;
 
 	invoice: InvoiceModel;
@@ -526,6 +531,28 @@ export class PrescriptionHeaderModel extends AbstractModel {
 				// % protected region % [Add any additional model attribute properties for External Warehouse here] off begin
 				// % protected region % [Add any additional model attribute properties for External Warehouse here] end
 			},
+			{
+				name: 'notes2',
+				// % protected region % [Set displayName for Notes2 here] off begin
+				displayName: 'Notes2',
+				// % protected region % [Set displayName for Notes2 here] end
+				type: ModelPropertyType.STRING,
+				// % protected region % [Set display element type for Notes2 here] off begin
+				elementType: ElementType.INPUT,
+				// % protected region % [Set display element type for Notes2 here] end
+				// % protected region % [Set isSensitive for Notes2 here] off begin
+				isSensitive: false,
+				// % protected region % [Set isSensitive for Notes2 here] end
+				// % protected region % [Set readonly for Notes2 here] off begin
+				readOnly: false,
+				// % protected region % [Set readonly for Notes2 here] end
+				validators: [
+					// % protected region % [Add other validators for Notes2 here] off begin
+					// % protected region % [Add other validators for Notes2 here] end
+				],
+				// % protected region % [Add any additional model attribute properties for Notes2 here] off begin
+				// % protected region % [Add any additional model attribute properties for Notes2 here] end
+			},
 			// % protected region % [Add any additional class field names here] off begin
 			// % protected region % [Add any additional class field names here] end
 		]);
@@ -821,6 +848,7 @@ export class PrescriptionHeaderModel extends AbstractModel {
 			this.copyNo = json.copyNo;
 			this.isInvoiced = json.isInvoiced;
 			this.externalWarehouse = json.externalWarehouse;
+			this.notes2 = json.notes2;
 			this.invoiceId = json.invoiceId;
 			this.invoice = json.invoice;
 			this.registrationId = json.registrationId;
@@ -861,6 +889,7 @@ export class PrescriptionHeaderModel extends AbstractModel {
 			copyNo: this.copyNo,
 			isInvoiced: this.isInvoiced,
 			externalWarehouse: this.externalWarehouse,
+			notes2: this.notes2,
 			invoiceId: this.invoiceId,
 			registrationId: this.registrationId,
 			requestedById: this.requestedById,
@@ -940,6 +969,10 @@ export class PrescriptionHeaderModel extends AbstractModel {
 
 		if (updates.externalWarehouse) {
 			newModelJson.externalWarehouse = updates.externalWarehouse;
+		}
+
+		if (updates.notes2) {
+			newModelJson.notes2 = updates.notes2;
 		}
 
 		if (updates.invoiceId) {

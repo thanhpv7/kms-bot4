@@ -139,6 +139,13 @@ public interface PrescriptionHeaderRepository extends AbstractRepository<Prescri
 	 * @return a list of entities that have the given attribute External Warehouse
 	 */
 	List<PrescriptionHeaderEntity> findByExternalWarehouse(@NotNull Boolean externalWarehouse);
+	/**
+	 * Return an entity or a list of entities that have the given attribute Notes2.
+	 *
+	 * @param notes2 the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Notes2
+	 */
+	List<PrescriptionHeaderEntity> findByNotes2(@NotNull String notes2);
 
 	@Transactional
 	void deleteAllByIdIn(@NotNull Iterable<UUID> ids);

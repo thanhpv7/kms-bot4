@@ -89,6 +89,7 @@ export class PrescriptionHeaderDataFactory extends AbstractDataFactory<Prescript
 		model.copyNo = faker.random.number();
 		model.isInvoiced = faker.random.boolean();
 		model.externalWarehouse = faker.random.boolean();
+		model.notes2 = faker.random.words();
 
 		// % protected region % [Add any additional populate logic after the main body here] off begin
 		// % protected region % [Add any additional populate logic after the main body here] end

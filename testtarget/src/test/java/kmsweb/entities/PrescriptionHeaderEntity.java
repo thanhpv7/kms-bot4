@@ -203,6 +203,12 @@ public class PrescriptionHeaderEntity extends AbstractEntity {
 	// % protected region % [Modify attribute annotation for External Warehouse here] end
 	private Boolean externalWarehouse;
 
+	// % protected region % [Modify attribute annotation for Notes2 here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Notes2 here] end
+	private String notes2;
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// Outgoing one-to-one
