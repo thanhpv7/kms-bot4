@@ -21,6 +21,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.validation.constraints.NotNull;
 import javax.transaction.Transactional;
+import kmsweb.entities.enums.*;
 import java.util.Optional;
 import java.util.List;
 import java.util.UUID;
@@ -68,6 +69,13 @@ public interface TariffPackageRepository extends AbstractRepository<TariffPackag
 	 * @return a list of entities that have the given attribute Tariff Package Description
 	 */
 	List<TariffPackageEntity> findByTariffPackageDescription(@NotNull String tariffPackageDescription);
+	/**
+	 * Return an entity or a list of entities that have the given attribute Apply To.
+	 *
+	 * @param applyTo the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Apply To
+	 */
+	List<TariffPackageEntity> findByApplyTo(@NotNull ApplyToEnum applyTo);
 	/**
 	 * Return an entity or a list of entities that have the given attribute Apply To All Services.
 	 *

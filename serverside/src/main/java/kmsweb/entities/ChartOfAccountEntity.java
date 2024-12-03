@@ -390,6 +390,7 @@ public class ChartOfAccountEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		this.chartOfAccountMappingsIds = new HashSet<>();
 		for (ChartOfAccountMappingEntity chartOfAccountMappings: this.chartOfAccountMappings) {
 			this.chartOfAccountMappingsIds.add(chartOfAccountMappings.getId());

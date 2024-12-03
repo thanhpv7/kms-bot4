@@ -76,6 +76,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 	) throws IOException, ServletException {
 
 		// % protected region % [Override the onAuthenticationSuccess method here] off begin
+
 		authService.addAuthentication(response, authResult);
 
 		List<String> roles = userService.getRoleByUserName(authResult.getName());

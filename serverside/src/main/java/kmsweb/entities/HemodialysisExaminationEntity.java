@@ -265,6 +265,7 @@ public class HemodialysisExaminationEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for First Dialysis here] off begin
+
 	@CsvCustomBindByName(column = "FIRST_DIALYSIS", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "first_dialysis")
@@ -455,6 +456,7 @@ public class HemodialysisExaminationEntity extends AbstractEntity {
 	private Boolean antiHCV = false ;
 
 	// % protected region % [Modify attribute annotation for Hemodialysis Start Time here] off begin
+
 	@CsvCustomBindByName(column = "HEMODIALYSIS_START_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "hemodialysis_start_time")
@@ -465,6 +467,7 @@ public class HemodialysisExaminationEntity extends AbstractEntity {
 	private OffsetDateTime hemodialysisStartTime;
 
 	// % protected region % [Modify attribute annotation for Hemodialysis End Time here] off begin
+
 	@CsvCustomBindByName(column = "HEMODIALYSIS_END_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "hemodialysis_end_time")
@@ -897,6 +900,7 @@ public class HemodialysisExaminationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<MedicalExaminationRecordEntity> medicalExaminationRecordRelation = Optional.ofNullable(this.medicalExaminationRecord);
 		medicalExaminationRecordRelation.ifPresent(entity -> this.medicalExaminationRecordId = entity.getId());
 

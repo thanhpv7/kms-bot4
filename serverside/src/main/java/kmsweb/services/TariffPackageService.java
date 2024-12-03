@@ -45,6 +45,7 @@ import javax.validation.Validator;
 import com.google.common.collect.Sets;
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Predicate;
+import kmsweb.entities.enums.*;
 import kmsweb.entities.ServiceItemAssignmentEntity;
 import kmsweb.repositories.ServiceItemAssignmentRepository;
 import kmsweb.entities.TariffPackageItemEntity;
@@ -270,6 +271,29 @@ public class TariffPackageService extends AbstractService<TariffPackageEntity, T
 
 		// % protected region % [Add any additional logic for findByTariffPackageDescription before returning the entities here] off begin
 		// % protected region % [Add any additional logic for findByTariffPackageDescription before returning the entities here] end
+
+		return entities;
+	}
+
+	/**
+	 * Return an entity or a list of entities that have the given attribute Apply To.
+	 *
+	 * @param applyTo the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Apply To
+	 */
+	@PreAuthorize("hasPermission('TariffPackageEntity', 'read')")
+	@Transactional(readOnly = true)
+	public List<TariffPackageEntity> findByApplyTo(ApplyToEnum applyTo)
+	// % protected region % [Add any throwables, implementations, or extensions for findByApplyTo here] off begin
+	// % protected region % [Add any throwables, implementations, or extensions for findByApplyTo here] end
+	{
+		// % protected region % [Add any additional logic for findByApplyTo before the main body here] off begin
+		// % protected region % [Add any additional logic for findByApplyTo before the main body here] end
+
+		List<TariffPackageEntity> entities = Lists.newArrayList(repository.findByApplyTo(applyTo));
+
+		// % protected region % [Add any additional logic for findByApplyTo before returning the entities here] off begin
+		// % protected region % [Add any additional logic for findByApplyTo before returning the entities here] end
 
 		return entities;
 	}

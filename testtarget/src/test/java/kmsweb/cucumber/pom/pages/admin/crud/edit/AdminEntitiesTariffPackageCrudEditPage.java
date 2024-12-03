@@ -59,6 +59,8 @@ public class AdminEntitiesTariffPackageCrudEditPage extends CrudEdit {
 	private WebElement coaSellField;
 	@FindBy(how = How.XPATH, using = "//*[@id='tariffPackageDescription-field']")
 	private WebElement tariffPackageDescriptionField;
+	@FindBy(how = How.XPATH, using = "//*[@id='applyTo-field']")
+	private WebElement applyToField;
 	@FindBy(how = How.XPATH, using = "//*[@id='applyToAllServices-field']")
 	private WebElement applyToAllServicesField;
 	
@@ -114,6 +116,7 @@ public class AdminEntitiesTariffPackageCrudEditPage extends CrudEdit {
 		tariffPackageClassificationField.sendKeys(entity.getTariffPackageClassification());
 		coaSellField.sendKeys(entity.getCoaSell());
 		tariffPackageDescriptionField.sendKeys(entity.getTariffPackageDescription());
+		DropdownUtils.selectOptionByName(webDriver, applyToField, entity.getApplyTo().getLiteralValue());
 		if (entity.getApplyToAllServices()) {
 			applyToAllServicesField.click();
 		}

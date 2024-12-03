@@ -61,6 +61,9 @@ public class DoctorScheduleSerializer extends AbstractSerializer<DoctorScheduleE
 		writeOffsetDateTimeField(gen, "dismissalDate", value.getDismissalDate());
 		writeStringField(gen, "shift", value.getShift());
 		writeIntegerField(gen, "intervals", value.getIntervals());
+		writeBooleanField(gen, "repetition", value.getRepetition());
+		writeIntegerField(gen, "numberOfRepetition", value.getNumberOfRepetition());
+		writeOffsetDateTimeField(gen, "finalSchedule", value.getFinalSchedule());
 
 		// % protected region % [Modify the json before writing the object here] off begin
 		// % protected region % [Modify the json before writing the object here] end

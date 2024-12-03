@@ -19,6 +19,7 @@ type TariffPackage {
 	id: ID
 	created: String
 	modified: String
+	applyTo: String
 	applyToAllServices: Boolean
 	coaSell: String
 	tariffPackageClassification: String
@@ -46,6 +47,7 @@ input TariffPackageInput {
 	id: ID
 	created: String
 	modified: String
+	applyTo: String
 	applyToAllServices: Boolean
 	coaSell: String
 	tariffPackageClassification: String

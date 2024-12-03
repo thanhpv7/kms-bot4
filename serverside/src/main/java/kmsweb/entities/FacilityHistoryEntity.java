@@ -132,6 +132,7 @@ public class FacilityHistoryEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Change Date here] off begin
+
 	@CsvCustomBindByName(column = "CHANGE_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "change_date")
@@ -272,6 +273,7 @@ public class FacilityHistoryEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

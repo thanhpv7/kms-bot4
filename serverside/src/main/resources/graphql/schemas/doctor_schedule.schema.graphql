@@ -22,11 +22,14 @@ type DoctorSchedule {
 	dismissalDate: String
 	email: String
 	endDateTime: String
+	finalSchedule: String
 	friday: Boolean
 	intervalInMinutes: Int
 	intervals: Int
 	location: String
 	monday: Boolean
+	numberOfRepetition: Int
+	repetition: Boolean
 	saturday: Boolean
 	schedulerType: String
 	shift: String
@@ -58,11 +61,14 @@ input DoctorScheduleInput {
 	dismissalDate: String
 	email: String
 	endDateTime: String
+	finalSchedule: String
 	friday: Boolean
 	intervalInMinutes: Int
 	intervals: Int
 	location: String
 	monday: Boolean
+	numberOfRepetition: Int
+	repetition: Boolean
 	saturday: Boolean
 	schedulerType: String
 	shift: String

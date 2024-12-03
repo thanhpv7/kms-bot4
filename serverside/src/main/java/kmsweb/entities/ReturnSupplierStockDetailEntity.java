@@ -434,6 +434,7 @@ public class ReturnSupplierStockDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<ReturnSupplierEntity> returnSupplierRelation = Optional.ofNullable(this.returnSupplier);
 		returnSupplierRelation.ifPresent(entity -> this.returnSupplierId = entity.getId());
 

@@ -149,6 +149,18 @@ public class DoctorScheduleEntity extends AbstractEntity {
 			this.setIntervals(doctorScheduleEntityDto.getIntervals());
 		}
 
+		if (doctorScheduleEntityDto.getRepetition() != null) {
+			this.setRepetition(doctorScheduleEntityDto.getRepetition());
+		}
+
+		if (doctorScheduleEntityDto.getNumberOfRepetition() != null) {
+			this.setNumberOfRepetition(doctorScheduleEntityDto.getNumberOfRepetition());
+		}
+
+		if (doctorScheduleEntityDto.getFinalSchedule() != null) {
+			this.setFinalSchedule(doctorScheduleEntityDto.getFinalSchedule());
+		}
+
 		if (doctorScheduleEntityDto.getService() != null) {
 			this.setService(doctorScheduleEntityDto.getService());
 		}
@@ -168,6 +180,7 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Start Date Time here] off begin
+
 	@CsvCustomBindByName(column = "START_DATE_TIME", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Start Date Time must not be empty")
 	@Column(name = "start_date_time")
@@ -178,6 +191,7 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	private OffsetDateTime startDateTime;
 
 	// % protected region % [Modify attribute annotation for End Date Time here] off begin
+
 	@CsvCustomBindByName(column = "END_DATE_TIME", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "End Date Time must not be empty")
 	@Column(name = "end_date_time")
@@ -296,6 +310,7 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	private String training;
 
 	// % protected region % [Modify attribute annotation for Dismissal Date here] off begin
+
 	@CsvCustomBindByName(column = "DISMISSAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "dismissal_date")
@@ -322,6 +337,35 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	@ToString.Include
 	// % protected region % [Modify attribute annotation for Intervals here] end
 	private Integer intervals;
+
+	// % protected region % [Modify attribute annotation for Repetition here] off begin
+	@CsvBindByName(column = "REPETITION", required = false)
+	@Nullable
+	@Column(name = "repetition")
+	@Schema(description = "The Repetition of this entity.")
+	@ToString.Include
+	// % protected region % [Modify attribute annotation for Repetition here] end
+	private Boolean repetition = false ;
+
+	// % protected region % [Modify attribute annotation for Number Of Repetition here] off begin
+	@CsvBindByName(column = "NUMBER_OF_REPETITION", required = false)
+	@Nullable
+	@Column(name = "number_of_repetition")
+	@Schema(description = "The Number Of Repetition of this entity.")
+	@ToString.Include
+	// % protected region % [Modify attribute annotation for Number Of Repetition here] end
+	private Integer numberOfRepetition;
+
+	// % protected region % [Modify attribute annotation for Final Schedule here] off begin
+
+	@CsvCustomBindByName(column = "FINAL_SCHEDULE", converter = DateTimeConverter.class, required = false)
+	@Nullable
+	@Column(name = "final_schedule")
+	@JsonDeserialize(using = DateTimeDeserializer.class)
+	@Schema(description = "The Final Schedule of this entity.")
+	@ToString.Include
+	// % protected region % [Modify attribute annotation for Final Schedule here] end
+	private OffsetDateTime finalSchedule;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
@@ -496,7 +540,7 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	public static String getExampleCsvHeader() {
 
 		// % protected region % [Modify the headers in the CSV file here] off begin
-		return "START_DATE_TIME,END_DATE_TIME,INTERVAL_IN_MINUTES,LOCATION,SCHEDULER_TYPE,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY,EMAIL,TRAINING,DISMISSAL_DATE,SHIFT,INTERVALS,SERVICE_ID,STAFF_ID,ID";
+		return "START_DATE_TIME,END_DATE_TIME,INTERVAL_IN_MINUTES,LOCATION,SCHEDULER_TYPE,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY,EMAIL,TRAINING,DISMISSAL_DATE,SHIFT,INTERVALS,REPETITION,NUMBER_OF_REPETITION,FINAL_SCHEDULE,SERVICE_ID,STAFF_ID,ID";
 		// % protected region % [Modify the headers in the CSV file here] end
 	}
 
@@ -506,6 +550,7 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<ServiceEntity> serviceRelation = Optional.ofNullable(this.service);
 		serviceRelation.ifPresent(entity -> this.serviceId = entity.getId());
 
@@ -557,6 +602,12 @@ public class DoctorScheduleEntity extends AbstractEntity {
 			     ) &&
 			Objects.equals(this.shift, that.shift) &&
 			Objects.equals(this.intervals, that.intervals) &&
+			Objects.equals(this.repetition, that.repetition) &&
+			Objects.equals(this.numberOfRepetition, that.numberOfRepetition) &&
+			Objects.equals(
+			     this.finalSchedule != null ? this.finalSchedule.truncatedTo(ChronoUnit.MILLIS) : null,
+			     that.finalSchedule != null ? that.finalSchedule.truncatedTo(ChronoUnit.MILLIS) : null
+			     ) &&
 			Objects.equals(this.serviceId, that.serviceId) &&
 			Objects.equals(this.staffId, that.staffId);
 	}

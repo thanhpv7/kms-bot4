@@ -317,6 +317,7 @@ public class MedicalFeeItemComponentEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<MedicalFeeEntity> medicalFeeRelation = Optional.ofNullable(this.medicalFee);
 		medicalFeeRelation.ifPresent(entity -> this.medicalFeeId = entity.getId());
 

@@ -352,6 +352,7 @@ public class PrivilegeEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		this.rolesIds = new HashSet<>();
 		for (RoleEntity roles: this.roles) {
 			this.rolesIds.add(roles.getId());

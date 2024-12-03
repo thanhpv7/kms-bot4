@@ -212,6 +212,7 @@ public class PatientVitalInformationEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Record Date Time here] off begin
+
 	@CsvCustomBindByName(column = "RECORD_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "record_date_time")
@@ -647,6 +648,7 @@ public class PatientVitalInformationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<RegistrationEntity> registrationRelation = Optional.ofNullable(this.registration);
 		registrationRelation.ifPresent(entity -> this.registrationId = entity.getId());
 

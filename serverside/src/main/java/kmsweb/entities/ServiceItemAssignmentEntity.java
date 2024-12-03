@@ -291,6 +291,7 @@ public class ServiceItemAssignmentEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<ServiceItemEntity> serviceItemRelation = Optional.ofNullable(this.serviceItem);
 		serviceItemRelation.ifPresent(entity -> this.serviceItemId = entity.getId());
 

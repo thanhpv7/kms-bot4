@@ -125,6 +125,8 @@ public class TariffPackageCsvTest {
 
 		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getTariffPackageDescription())));
 
+		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getApplyTo()).toString()));
+
 		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getApplyToAllServices()).toString()));
 	}
 

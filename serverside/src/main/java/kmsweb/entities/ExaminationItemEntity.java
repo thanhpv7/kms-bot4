@@ -937,6 +937,7 @@ public class ExaminationItemEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<ExaminationGroupEntity> examinationGroupRelation = Optional.ofNullable(this.examinationGroup);
 		examinationGroupRelation.ifPresent(entity -> this.examinationGroupId = entity.getId());
 

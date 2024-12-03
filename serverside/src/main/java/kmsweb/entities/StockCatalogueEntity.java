@@ -482,6 +482,7 @@ public class StockCatalogueEntity extends AbstractEntity {
 	private String approvedBy;
 
 	// % protected region % [Modify attribute annotation for Approval Date here] off begin
+
 	@CsvCustomBindByName(column = "APPROVAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "approval_date")
@@ -672,6 +673,7 @@ public class StockCatalogueEntity extends AbstractEntity {
 	private Double lupItemPrice;
 
 	// % protected region % [Modify attribute annotation for Lup Last Purchase Date here] off begin
+
 	@CsvCustomBindByName(column = "LUP_LAST_PURCHASE_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "lup_last_purchase_date")
@@ -718,6 +720,7 @@ public class StockCatalogueEntity extends AbstractEntity {
 	private Double lppItemPrice;
 
 	// % protected region % [Modify attribute annotation for Lpp Last Purchase Date here] off begin
+
 	@CsvCustomBindByName(column = "LPP_LAST_PURCHASE_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "lpp_last_purchase_date")
@@ -4887,6 +4890,7 @@ public class StockCatalogueEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<BpjsDrugGenericPRBEntity> bpjsDrugGenericPRBRelation = Optional.ofNullable(this.bpjsDrugGenericPRB);
 		bpjsDrugGenericPRBRelation.ifPresent(entity -> this.bpjsDrugGenericPRBId = entity.getId());
 

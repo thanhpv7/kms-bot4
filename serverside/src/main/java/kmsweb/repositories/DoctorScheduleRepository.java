@@ -153,6 +153,27 @@ public interface DoctorScheduleRepository extends AbstractRepository<DoctorSched
 	 * @return a list of entities that have the given attribute Intervals
 	 */
 	List<DoctorScheduleEntity> findByIntervals(@NotNull Integer intervals);
+	/**
+	 * Return an entity or a list of entities that have the given attribute Repetition.
+	 *
+	 * @param repetition the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Repetition
+	 */
+	List<DoctorScheduleEntity> findByRepetition(@NotNull Boolean repetition);
+	/**
+	 * Return an entity or a list of entities that have the given attribute Number Of Repetition.
+	 *
+	 * @param numberOfRepetition the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Number Of Repetition
+	 */
+	List<DoctorScheduleEntity> findByNumberOfRepetition(@NotNull Integer numberOfRepetition);
+	/**
+	 * Return an entity or a list of entities that have the given attribute Final Schedule.
+	 *
+	 * @param finalSchedule the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Final Schedule
+	 */
+	List<DoctorScheduleEntity> findByFinalSchedule(@NotNull OffsetDateTime finalSchedule);
 
 	@Transactional
 	void deleteAllByIdIn(@NotNull Iterable<UUID> ids);

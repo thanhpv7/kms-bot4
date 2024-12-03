@@ -647,6 +647,7 @@ public class CoTreatingDoctorEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<PreoperativeRecordsEntity> additionalAnesthesiologistRelation = Optional.ofNullable(this.additionalAnesthesiologist);
 		additionalAnesthesiologistRelation.ifPresent(entity -> this.additionalAnesthesiologistId = entity.getId());
 

@@ -139,8 +139,6 @@ public class AdminEntitiesRegistrationCrudEditPage extends CrudEdit {
 	private WebElement otherReferredFacilityField;
 	@FindBy(how = How.XPATH, using = "//*[@id='otherReferredStaff-field']")
 	private WebElement otherReferredStaffField;
-	@FindBy(how = How.XPATH, using = "//*[@id='doctorScheduleDetailId-field']")
-	private WebElement doctorScheduleDetailIdField;
 	
 
 	// Outgoing one-to-one
@@ -333,7 +331,6 @@ public class AdminEntitiesRegistrationCrudEditPage extends CrudEdit {
 		}
 		otherReferredFacilityField.sendKeys(entity.getOtherReferredFacility());
 		otherReferredStaffField.sendKeys(entity.getOtherReferredStaff());
-		doctorScheduleDetailIdField.sendKeys(entity.getDoctorScheduleDetailId());
 
 		saveButton.click();
 	}

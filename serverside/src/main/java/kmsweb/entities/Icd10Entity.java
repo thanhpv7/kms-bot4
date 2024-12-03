@@ -191,6 +191,7 @@ public class Icd10Entity extends AbstractEntity {
 	private Boolean classificationAcute = false ;
 
 	// % protected region % [Modify attribute annotation for Dismissal Date here] off begin
+
 	@CsvCustomBindByName(column = "DISMISSAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "dismissal_date")
@@ -317,6 +318,7 @@ public class Icd10Entity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<DiagnosesAndProceduresEntity> diagnosesAndProceduresRelation = Optional.ofNullable(this.diagnosesAndProcedures);
 		diagnosesAndProceduresRelation.ifPresent(entity -> this.diagnosesAndProceduresId = entity.getId());
 

@@ -210,6 +210,7 @@ public class DailyCareCPPTEntity extends AbstractEntity {
 	private String instruction;
 
 	// % protected region % [Modify attribute annotation for Verified Date here] off begin
+
 	@CsvCustomBindByName(column = "VERIFIED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "verified_date")
@@ -229,6 +230,7 @@ public class DailyCareCPPTEntity extends AbstractEntity {
 	private String verifiedBy;
 
 	// % protected region % [Modify attribute annotation for Canceled Date here] off begin
+
 	@CsvCustomBindByName(column = "CANCELED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "canceled_date")
@@ -257,6 +259,7 @@ public class DailyCareCPPTEntity extends AbstractEntity {
 	private String status;
 
 	// % protected region % [Modify attribute annotation for CPPT Date Time here] off begin
+
 	@CsvCustomBindByName(column = "CPPT_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "cppt_date_time")
@@ -717,6 +720,7 @@ public class DailyCareCPPTEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<DiagnosesAndProceduresEntity> icd10Relation = Optional.ofNullable(this.icd10);
 		icd10Relation.ifPresent(entity -> this.icd10Id = entity.getId());
 

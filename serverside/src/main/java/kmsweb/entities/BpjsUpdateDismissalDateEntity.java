@@ -143,6 +143,7 @@ public class BpjsUpdateDismissalDateEntity extends AbstractEntity {
 	private String deathCertificateLetterNo;
 
 	// % protected region % [Modify attribute annotation for Time Of Death here] off begin
+
 	@CsvCustomBindByName(column = "TIME_OF_DEATH", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "time_of_death")
@@ -153,6 +154,7 @@ public class BpjsUpdateDismissalDateEntity extends AbstractEntity {
 	private OffsetDateTime timeOfDeath;
 
 	// % protected region % [Modify attribute annotation for Dismissal Date here] off begin
+
 	@CsvCustomBindByName(column = "DISMISSAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "dismissal_date")
@@ -221,6 +223,7 @@ public class BpjsUpdateDismissalDateEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

@@ -112,6 +112,7 @@ public class AmendmentDetailEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Date here] off begin
+
 	@CsvCustomBindByName(column = "DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date")
@@ -322,6 +323,7 @@ public class AmendmentDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<MedicalExaminationRecordEntity> medicalExaminationRecordRelation = Optional.ofNullable(this.medicalExaminationRecord);
 		medicalExaminationRecordRelation.ifPresent(entity -> this.medicalExaminationRecordId = entity.getId());
 

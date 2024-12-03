@@ -344,6 +344,7 @@ public class PcareExaminationEntity extends AbstractEntity {
 	private String internalReferralPolyclinic;
 
 	// % protected region % [Modify attribute annotation for Referring Date here] off begin
+
 	@CsvCustomBindByName(column = "REFERRING_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "referring_date")
@@ -1104,6 +1105,7 @@ public class PcareExaminationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<RegistrationEntity> registrationRelation = Optional.ofNullable(this.registration);
 		registrationRelation.ifPresent(entity -> this.registrationId = entity.getId());
 

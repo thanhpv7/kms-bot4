@@ -2713,6 +2713,7 @@ public class DiagnosesAndProceduresEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<BpjsDiagnoseEntity> bpjsDiagnoseRelation = Optional.ofNullable(this.bpjsDiagnose);
 		bpjsDiagnoseRelation.ifPresent(entity -> this.bpjsDiagnoseId = entity.getId());
 

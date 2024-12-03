@@ -453,6 +453,7 @@ public class StockControlEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<LocationEntity> locationRelation = Optional.ofNullable(this.location);
 		locationRelation.ifPresent(entity -> this.locationId = entity.getId());
 

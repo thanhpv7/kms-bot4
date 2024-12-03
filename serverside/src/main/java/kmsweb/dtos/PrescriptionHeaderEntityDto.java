@@ -66,8 +66,6 @@ public class PrescriptionHeaderEntityDto extends AbstractEntityDto {
 
 	private Boolean externalWarehouse;
 
-	private String notes2;
-
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// Outgoing references

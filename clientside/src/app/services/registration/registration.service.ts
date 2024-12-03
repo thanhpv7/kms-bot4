@@ -169,7 +169,6 @@ export class RegistrationService extends AbstractHttpService<RegistrationModel, 
 				isUnknownPatient
 				otherReferredFacility
 				otherReferredStaff
-				doctorScheduleDetailId
 			}
 			# % protected region % [Modify the RegistrationProperties classFragment here] end
 			${super.fragments('Registration').properties}

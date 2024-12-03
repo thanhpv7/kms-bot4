@@ -259,6 +259,7 @@ public class PcareCompoundDrugItemEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<PcareCompoundDrugEntity> pcareCompoundDrugRelation = Optional.ofNullable(this.pcareCompoundDrug);
 		pcareCompoundDrugRelation.ifPresent(entity -> this.pcareCompoundDrugId = entity.getId());
 

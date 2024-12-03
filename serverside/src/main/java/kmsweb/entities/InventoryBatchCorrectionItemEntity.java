@@ -158,6 +158,7 @@ public class InventoryBatchCorrectionItemEntity extends AbstractEntity {
 	private String batchNumber;
 
 	// % protected region % [Modify attribute annotation for Expiration Date here] off begin
+
 	@CsvCustomBindByName(column = "EXPIRATION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "expiration_date")
@@ -413,6 +414,7 @@ public class InventoryBatchCorrectionItemEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<InventoryBatchCorrectionEntity> inventoryBatchCorrectionRelation = Optional.ofNullable(this.inventoryBatchCorrection);
 		inventoryBatchCorrectionRelation.ifPresent(entity -> this.inventoryBatchCorrectionId = entity.getId());
 

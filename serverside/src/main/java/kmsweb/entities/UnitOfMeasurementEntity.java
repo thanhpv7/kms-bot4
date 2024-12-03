@@ -1166,6 +1166,7 @@ public class UnitOfMeasurementEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<CatalogueUOMEntity> catalogueUOMRelation = Optional.ofNullable(this.catalogueUOM);
 		catalogueUOMRelation.ifPresent(entity -> this.catalogueUOMId = entity.getId());
 

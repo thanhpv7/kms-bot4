@@ -215,6 +215,7 @@ public class InformedConsentEntity extends AbstractEntity {
 	private String consentOnProcedure;
 
 	// % protected region % [Modify attribute annotation for Consent Date Time here] off begin
+
 	@CsvCustomBindByName(column = "CONSENT_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "consent_date_time")
@@ -626,6 +627,7 @@ public class InformedConsentEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<StaffEntity> accompanyingStaffRelation = Optional.ofNullable(this.accompanyingStaff);
 		accompanyingStaffRelation.ifPresent(entity -> this.accompanyingStaffId = entity.getId());
 

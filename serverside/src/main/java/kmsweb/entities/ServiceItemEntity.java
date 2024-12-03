@@ -676,6 +676,7 @@ public class ServiceItemEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		this.servicesIds = new HashSet<>();
 		for (ServiceEntity services: this.services) {
 			this.servicesIds.add(services.getId());

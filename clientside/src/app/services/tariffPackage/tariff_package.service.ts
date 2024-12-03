@@ -80,6 +80,7 @@ export class TariffPackageService extends AbstractHttpService<TariffPackageModel
 				tariffPackageClassification
 				coaSell
 				tariffPackageDescription
+				applyTo
 				applyToAllServices
 			}
 			# % protected region % [Modify the TariffPackageProperties classFragment here] end

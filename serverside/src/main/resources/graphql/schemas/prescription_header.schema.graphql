@@ -26,7 +26,6 @@ type PrescriptionHeader {
 	isIteration: Boolean
 	isUrgent: Boolean
 	notes: String
-	notes2: String
 	originalPrescriptionNumber: String
 	prescriptionDate: String
 	prescriptionNumber: String
@@ -67,7 +66,6 @@ input PrescriptionHeaderInput {
 	isIteration: Boolean
 	isUrgent: Boolean
 	notes: String
-	notes2: String
 	originalPrescriptionNumber: String
 	prescriptionDate: String
 	prescriptionNumber: String

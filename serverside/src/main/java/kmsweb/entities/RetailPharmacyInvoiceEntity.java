@@ -196,6 +196,7 @@ public class RetailPharmacyInvoiceEntity extends AbstractEntity {
 	private String invoiceStatus;
 
 	// % protected region % [Modify attribute annotation for Invoice Date here] off begin
+
 	@CsvCustomBindByName(column = "INVOICE_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "invoice_date")
@@ -206,6 +207,7 @@ public class RetailPharmacyInvoiceEntity extends AbstractEntity {
 	private OffsetDateTime invoiceDate;
 
 	// % protected region % [Modify attribute annotation for Cancel Date here] off begin
+
 	@CsvCustomBindByName(column = "CANCEL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "cancel_date")
@@ -243,6 +245,7 @@ public class RetailPharmacyInvoiceEntity extends AbstractEntity {
 	private String patientPaymentType;
 
 	// % protected region % [Modify attribute annotation for Verification Date here] off begin
+
 	@CsvCustomBindByName(column = "VERIFICATION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "verification_date")
@@ -780,6 +783,7 @@ public class RetailPharmacyInvoiceEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<RetailPharmacyEntity> retailPharmacyRelation = Optional.ofNullable(this.retailPharmacy);
 		retailPharmacyRelation.ifPresent(entity -> this.retailPharmacyId = entity.getId());
 

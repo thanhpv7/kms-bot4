@@ -231,10 +231,6 @@ public class RegistrationEntity extends AbstractEntity {
 			this.setOtherReferredStaff(registrationEntityDto.getOtherReferredStaff());
 		}
 
-		if (registrationEntityDto.getDoctorScheduleDetailId() != null) {
-			this.setDoctorScheduleDetailId(registrationEntityDto.getDoctorScheduleDetailId());
-		}
-
 		if (registrationEntityDto.getBpjsPRBDetail() != null) {
 			this.setBpjsPRBDetail(registrationEntityDto.getBpjsPRBDetail());
 		}
@@ -407,6 +403,7 @@ public class RegistrationEntity extends AbstractEntity {
 	private String registrationNumber;
 
 	// % protected region % [Modify attribute annotation for Scheduled Date here] off begin
+
 	@CsvCustomBindByName(column = "SCHEDULED_DATE", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Scheduled Date must not be empty")
 	@Column(name = "scheduled_date")
@@ -417,6 +414,7 @@ public class RegistrationEntity extends AbstractEntity {
 	private OffsetDateTime scheduledDate;
 
 	// % protected region % [Modify attribute annotation for Actual In Date here] off begin
+
 	@CsvCustomBindByName(column = "ACTUAL_IN_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "actual_in_date")
@@ -427,6 +425,7 @@ public class RegistrationEntity extends AbstractEntity {
 	private OffsetDateTime actualInDate;
 
 	// % protected region % [Modify attribute annotation for Dismissal Date here] off begin
+
 	@CsvCustomBindByName(column = "DISMISSAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "dismissal_date")
@@ -563,6 +562,7 @@ public class RegistrationEntity extends AbstractEntity {
 	private String admissionDiagnosis;
 
 	// % protected region % [Modify attribute annotation for Uploaded Date Time here] off begin
+
 	@CsvCustomBindByName(column = "UPLOADED_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "uploaded_date_time")
@@ -636,6 +636,7 @@ public class RegistrationEntity extends AbstractEntity {
 	private String deathCertificateNo;
 
 	// % protected region % [Modify attribute annotation for Time Of Death here] off begin
+
 	@CsvCustomBindByName(column = "TIME_OF_DEATH", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "time_of_death")
@@ -734,15 +735,6 @@ public class RegistrationEntity extends AbstractEntity {
 	@ToString.Include
 	// % protected region % [Modify attribute annotation for Other Referred Staff here] end
 	private String otherReferredStaff;
-
-	// % protected region % [Modify attribute annotation for Doctor Schedule Detail Id here] off begin
-	@CsvBindByName(column = "DOCTOR_SCHEDULE_DETAIL_ID", required = false)
-	@Nullable
-	@Column(name = "doctor_schedule_detail_id")
-	@Schema(description = "The Doctor Schedule Detail Id of this entity.")
-	@ToString.Include
-	// % protected region % [Modify attribute annotation for Doctor Schedule Detail Id here] end
-	private String doctorScheduleDetailId;
 
 	@CsvIgnore
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
@@ -4365,7 +4357,7 @@ public class RegistrationEntity extends AbstractEntity {
 	public static String getExampleCsvHeader() {
 
 		// % protected region % [Modify the headers in the CSV file here] off begin
-		return "REGISTRATION_NUMBER,SCHEDULED_DATE,ACTUAL_IN_DATE,DISMISSAL_DATE,DISMISSAL_TYPE,QUEUE_NO,DURATION,TREATMENT_CLASS,BOOKED_TREATMENT_CLASS,SHIFT,CITO,ONE_DAY_CARE,REFERRAL,REGISTRATION_STATUS,REFERRAL_TYPE,PURPOSE,REFERRAL_NOTES,ADMISSION_DIAGNOSIS,UPLOADED_DATE_TIME,VISIT_STATUS,INSTRUCTION,IS_AN_APPOINTMENT,REFERRAL_NUMBER,NOTES,KODEPOLI,DEATH_CERTIFICATE_NO,TIME_OF_DEATH,DISMISSAL_REFERRAL,DISMISSAL_REFERRAL_DETAIL,DISMISSAL_REFERRAL_TYPE,DISMISSAL_REFERRING_NOTES,PATIENT_IS_REFERRED_BACK,MCU_PACKAGE,PARENT_REGISTRATION_NUMBER,IS_UNKNOWN_PATIENT,OTHER_REFERRED_FACILITY,OTHER_REFERRED_STAFF,DOCTOR_SCHEDULE_DETAIL_ID,ADMISSION_ICD_10_ID,ADMISSION_ICD_9_CM_ID,DISMISSAL_REFERRING_FACILITY_ID,DISMISSAL_REFERRING_STAFF_ID,REFERRING_UNIT_ID,REFERRING_FACILITY_ID,DIAGNOSTIC_STAFF_EXAMINATION_SUMMARY_ID,BED_FACILITY_ID,EXAMINATION_ITEMS_IDS,PATIENT_VISIT_ID,SERVICE_ID,STAFF_ID,REQUESTED_BY_ID,BPJS_PRB_DETAIL_ID,BPJS_PCARE_REGISTRATIONS_ID,BPJS_SEP_ID,BED_RESERVES_IDS,DIAGNOSTIC_EXAMINATION_RESULTS_IDS,FLUID_BALANCE_DETAILS_IDS,INFORMED_CONSENTS_IDS,INVOICE_ITEMS_IDS,MEDICAL_CERTIFICATE_DISCHARGE_RESUME_ID,MEDICAL_CERTIFICATE_BIRTH_ID,MEDICAL_CERTIFICATE_HOSPITALIZATION_ID,MEDICAL_CERTIFICATE_MEDICAL_ATTENDANCE_ID,MEDICAL_CERTIFICATE_MENTAL_HEALTH_ID,MEDICAL_CERTIFICATE_PHYSICAL_HEALTH_ID,MEDICAL_CERTIFICATE_RESTRICTED_WORK_ID,MEDICAL_CERTIFICATE_SICK_LEAVE_ID,MEDICAL_EXAMINATION_RECORD_ID,MEDICAL_FEES_IDS,MEDICATION_HEADERS_IDS,PCARE_EXAMINATION_ID,PATIENT_VITAL_INFORMATIONS_IDS,PRESCRIPTION_HEADERS_IDS,SEP_ID,SAMPLE_COLLECTION_INFORMATIONS_IDS,VACCINATION_ORDERS_IDS,ID";
+		return "REGISTRATION_NUMBER,SCHEDULED_DATE,ACTUAL_IN_DATE,DISMISSAL_DATE,DISMISSAL_TYPE,QUEUE_NO,DURATION,TREATMENT_CLASS,BOOKED_TREATMENT_CLASS,SHIFT,CITO,ONE_DAY_CARE,REFERRAL,REGISTRATION_STATUS,REFERRAL_TYPE,PURPOSE,REFERRAL_NOTES,ADMISSION_DIAGNOSIS,UPLOADED_DATE_TIME,VISIT_STATUS,INSTRUCTION,IS_AN_APPOINTMENT,REFERRAL_NUMBER,NOTES,KODEPOLI,DEATH_CERTIFICATE_NO,TIME_OF_DEATH,DISMISSAL_REFERRAL,DISMISSAL_REFERRAL_DETAIL,DISMISSAL_REFERRAL_TYPE,DISMISSAL_REFERRING_NOTES,PATIENT_IS_REFERRED_BACK,MCU_PACKAGE,PARENT_REGISTRATION_NUMBER,IS_UNKNOWN_PATIENT,OTHER_REFERRED_FACILITY,OTHER_REFERRED_STAFF,ADMISSION_ICD_10_ID,ADMISSION_ICD_9_CM_ID,DISMISSAL_REFERRING_FACILITY_ID,DISMISSAL_REFERRING_STAFF_ID,REFERRING_UNIT_ID,REFERRING_FACILITY_ID,DIAGNOSTIC_STAFF_EXAMINATION_SUMMARY_ID,BED_FACILITY_ID,EXAMINATION_ITEMS_IDS,PATIENT_VISIT_ID,SERVICE_ID,STAFF_ID,REQUESTED_BY_ID,BPJS_PRB_DETAIL_ID,BPJS_PCARE_REGISTRATIONS_ID,BPJS_SEP_ID,BED_RESERVES_IDS,DIAGNOSTIC_EXAMINATION_RESULTS_IDS,FLUID_BALANCE_DETAILS_IDS,INFORMED_CONSENTS_IDS,INVOICE_ITEMS_IDS,MEDICAL_CERTIFICATE_DISCHARGE_RESUME_ID,MEDICAL_CERTIFICATE_BIRTH_ID,MEDICAL_CERTIFICATE_HOSPITALIZATION_ID,MEDICAL_CERTIFICATE_MEDICAL_ATTENDANCE_ID,MEDICAL_CERTIFICATE_MENTAL_HEALTH_ID,MEDICAL_CERTIFICATE_PHYSICAL_HEALTH_ID,MEDICAL_CERTIFICATE_RESTRICTED_WORK_ID,MEDICAL_CERTIFICATE_SICK_LEAVE_ID,MEDICAL_EXAMINATION_RECORD_ID,MEDICAL_FEES_IDS,MEDICATION_HEADERS_IDS,PCARE_EXAMINATION_ID,PATIENT_VITAL_INFORMATIONS_IDS,PRESCRIPTION_HEADERS_IDS,SEP_ID,SAMPLE_COLLECTION_INFORMATIONS_IDS,VACCINATION_ORDERS_IDS,ID";
 		// % protected region % [Modify the headers in the CSV file here] end
 	}
 
@@ -4375,6 +4367,7 @@ public class RegistrationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<DiagnosesAndProceduresEntity> admissionICD10Relation = Optional.ofNullable(this.admissionICD10);
 		admissionICD10Relation.ifPresent(entity -> this.admissionICD10Id = entity.getId());
 
@@ -4584,7 +4577,6 @@ public class RegistrationEntity extends AbstractEntity {
 			Objects.equals(this.isUnknownPatient, that.isUnknownPatient) &&
 			Objects.equals(this.otherReferredFacility, that.otherReferredFacility) &&
 			Objects.equals(this.otherReferredStaff, that.otherReferredStaff) &&
-			Objects.equals(this.doctorScheduleDetailId, that.doctorScheduleDetailId) &&
 			Objects.equals(this.bpjsPRBDetailId, that.bpjsPRBDetailId) &&
 			Objects.equals(this.bpjsPcareRegistrationsId, that.bpjsPcareRegistrationsId) &&
 			Objects.equals(this.bpjsSEPId, that.bpjsSEPId) &&

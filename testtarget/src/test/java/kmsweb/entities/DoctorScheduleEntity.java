@@ -164,6 +164,24 @@ public class DoctorScheduleEntity extends AbstractEntity {
 	// % protected region % [Modify attribute annotation for Intervals here] end
 	private Integer intervals;
 
+	// % protected region % [Modify attribute annotation for Repetition here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Repetition here] end
+	private Boolean repetition;
+
+	// % protected region % [Modify attribute annotation for Number Of Repetition here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Number Of Repetition here] end
+	private Integer numberOfRepetition;
+
+	// % protected region % [Modify attribute annotation for Final Schedule here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Final Schedule here] end
+	private OffsetDateTime finalSchedule;
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// Outgoing one-to-one

@@ -731,6 +731,7 @@ public class GoodsReceiveNoteItemEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<GoodsReceiveNoteEntity> goodsReceiveNoteRelation = Optional.ofNullable(this.goodsReceiveNote);
 		goodsReceiveNoteRelation.ifPresent(entity -> this.goodsReceiveNoteId = entity.getId());
 

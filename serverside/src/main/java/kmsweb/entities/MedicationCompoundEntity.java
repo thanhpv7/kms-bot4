@@ -887,6 +887,7 @@ public class MedicationCompoundEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<MedicationHeaderEntity> medicationHeaderRelation = Optional.ofNullable(this.medicationHeader);
 		medicationHeaderRelation.ifPresent(entity -> this.medicationHeaderId = entity.getId());
 

@@ -385,6 +385,7 @@ public class BpjsDrugGenericPRBEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		this.bpjsPRBDetailsIds = new HashSet<>();
 		for (BpjsPRBDetailEntity bpjsPRBDetails: this.bpjsPRBDetails) {
 			this.bpjsPRBDetailsIds.add(bpjsPRBDetails.getId());

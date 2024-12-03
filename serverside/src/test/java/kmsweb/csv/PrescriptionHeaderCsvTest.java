@@ -144,8 +144,6 @@ public class PrescriptionHeaderCsvTest {
 		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getIsInvoiced()).toString()));
 
 		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getExternalWarehouse()).toString()));
-
-		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getNotes2())));
 	}
 
 	@Test

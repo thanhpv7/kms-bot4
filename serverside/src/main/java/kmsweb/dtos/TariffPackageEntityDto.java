@@ -18,6 +18,7 @@
 package kmsweb.dtos;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import kmsweb.entities.enums.*;
 import kmsweb.entities.*;
 import lombok.*;
 import java.util.*;
@@ -44,6 +45,8 @@ public class TariffPackageEntityDto extends AbstractEntityDto {
 	private String coaSell;
 
 	private String tariffPackageDescription;
+
+	private ApplyToEnum applyTo;
 
 	private Boolean applyToAllServices;
 

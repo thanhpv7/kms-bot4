@@ -80,8 +80,6 @@ public class AdminEntitiesPrescriptionHeaderCrudViewPage extends CrudView {
 	private WebElement isInvoicedField;
 	@FindBy(how = How.XPATH, using = "//*[@id='externalWarehouse-field']")
 	private WebElement externalWarehouseField;
-	@FindBy(how = How.XPATH, using = "//*[@id='notes2-field']")
-	private WebElement notes2Field;
 	
 
 	// Outgoing one-to-one

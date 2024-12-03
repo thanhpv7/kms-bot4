@@ -145,6 +145,7 @@ public class CashRefundEntity extends AbstractEntity {
 	private String refundNumber;
 
 	// % protected region % [Modify attribute annotation for Refund Date here] off begin
+
 	@CsvCustomBindByName(column = "REFUND_DATE", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Refund Date must not be empty")
 	@Column(name = "refund_date")
@@ -183,6 +184,7 @@ public class CashRefundEntity extends AbstractEntity {
 	private Boolean isvoid = false ;
 
 	// % protected region % [Modify attribute annotation for Void Date Time here] off begin
+
 	@CsvCustomBindByName(column = "VOID_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "void_date_time")
@@ -345,6 +347,7 @@ public class CashRefundEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<PatientGeneralInfoEntity> patientGeneralInfoRelation = Optional.ofNullable(this.patientGeneralInfo);
 		patientGeneralInfoRelation.ifPresent(entity -> this.patientGeneralInfoId = entity.getId());
 

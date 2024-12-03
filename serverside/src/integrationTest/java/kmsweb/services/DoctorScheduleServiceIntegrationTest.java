@@ -140,6 +140,9 @@ public class DoctorScheduleServiceIntegrationTest {
 		doctorScheduleEntity.setSunday(null);
 		Assertions.assertNull(doctorScheduleEntity.getSunday());
 
+		doctorScheduleEntity.setRepetition(null);
+		Assertions.assertNull(doctorScheduleEntity.getRepetition());
+
 
 		DoctorScheduleEntity updatedEntity = doctorScheduleService.updateOldData(doctorScheduleEntity);
 
@@ -164,6 +167,9 @@ public class DoctorScheduleServiceIntegrationTest {
 
 		Assertions.assertNotNull(updatedEntity.getSunday());
 		Assertions.assertFalse(updatedEntity.getSunday());
+
+		Assertions.assertNotNull(updatedEntity.getRepetition());
+		Assertions.assertFalse(updatedEntity.getRepetition());
 
 	}
 

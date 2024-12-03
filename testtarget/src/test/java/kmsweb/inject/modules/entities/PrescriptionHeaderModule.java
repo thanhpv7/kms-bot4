@@ -168,12 +168,6 @@ public class PrescriptionHeaderModule extends AbstractModule {
 		// % protected region % [Add customisation for External Warehouse here] off begin
 		newEntity.setExternalWarehouse(mock.bools().get());
 		// % protected region % [Add customisation for External Warehouse here] end
-		// % protected region % [Add customisation for Notes2 here] off begin
-		String randomStringforNotes2 = mock
-				.strings()
-				.get();
-		newEntity.setNotes2(randomStringforNotes2);
-		// % protected region % [Add customisation for Notes2 here] end
 
 		// % protected region % [Apply any additional logic for prescriptionHeaderWithNoRef after the main body here] off begin
 		// % protected region % [Apply any additional logic for prescriptionHeaderWithNoRef after the main body here] end

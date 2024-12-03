@@ -705,6 +705,7 @@ public class LocationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<WarehouseEntity> warehouseRelation = Optional.ofNullable(this.warehouse);
 		warehouseRelation.ifPresent(entity -> this.warehouseId = entity.getId());
 

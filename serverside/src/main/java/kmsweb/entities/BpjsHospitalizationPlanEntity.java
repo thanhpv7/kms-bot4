@@ -129,6 +129,7 @@ public class BpjsHospitalizationPlanEntity extends AbstractEntity {
 	private String nokartu;
 
 	// % protected region % [Modify attribute annotation for tglRencanaKontrol here] off begin
+
 	@CsvCustomBindByName(column = "TGLRENCANAKONTROL", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "tglrencanakontrol")
@@ -406,6 +407,7 @@ public class BpjsHospitalizationPlanEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<PatientPaymentBPJSEntity> patientPaymentBPJSRelation = Optional.ofNullable(this.patientPaymentBPJS);
 		patientPaymentBPJSRelation.ifPresent(entity -> this.patientPaymentBPJSId = entity.getId());
 

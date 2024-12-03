@@ -1264,29 +1264,6 @@ public class RegistrationService extends AbstractService<RegistrationEntity, Reg
 		return entities;
 	}
 
-	/**
-	 * Return an entity or a list of entities that have the given attribute Doctor Schedule Detail Id.
-	 *
-	 * @param doctorScheduleDetailId the attribute against which the entities will be retrieved
-	 * @return a list of entities that have the given attribute Doctor Schedule Detail Id
-	 */
-	@PreAuthorize("hasPermission('RegistrationEntity', 'read')")
-	@Transactional(readOnly = true)
-	public List<RegistrationEntity> findByDoctorScheduleDetailId(String doctorScheduleDetailId)
-	// % protected region % [Add any throwables, implementations, or extensions for findByDoctorScheduleDetailId here] off begin
-	// % protected region % [Add any throwables, implementations, or extensions for findByDoctorScheduleDetailId here] end
-	{
-		// % protected region % [Add any additional logic for findByDoctorScheduleDetailId before the main body here] off begin
-		// % protected region % [Add any additional logic for findByDoctorScheduleDetailId before the main body here] end
-
-		List<RegistrationEntity> entities = Lists.newArrayList(repository.findByDoctorScheduleDetailId(doctorScheduleDetailId));
-
-		// % protected region % [Add any additional logic for findByDoctorScheduleDetailId before returning the entities here] off begin
-		// % protected region % [Add any additional logic for findByDoctorScheduleDetailId before returning the entities here] end
-
-		return entities;
-	}
-
 	@Override
 	@PreAuthorize("hasPermission('RegistrationEntity', 'read')")
 	@Transactional(readOnly = true)

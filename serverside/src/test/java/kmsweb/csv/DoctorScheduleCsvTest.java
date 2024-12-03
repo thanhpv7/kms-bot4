@@ -148,6 +148,12 @@ public class DoctorScheduleCsvTest {
 		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getShift())));
 
 		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getIntervals()).toString()));
+
+		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getRepetition()).toString()));
+
+		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getNumberOfRepetition()).toString()));
+
+		Assertions.assertTrue(exportedEntityCsv.contains(Objects.requireNonNull(entitiesToExport.get(0).getFinalSchedule()).toString()));
 	}
 
 	@Test

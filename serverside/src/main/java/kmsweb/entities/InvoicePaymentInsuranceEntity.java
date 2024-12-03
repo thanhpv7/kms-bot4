@@ -159,6 +159,7 @@ public class InvoicePaymentInsuranceEntity extends AbstractEntity {
 	private String eligilityVerification;
 
 	// % protected region % [Modify attribute annotation for Verification Date here] off begin
+
 	@CsvCustomBindByName(column = "VERIFICATION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "verification_date")
@@ -387,6 +388,7 @@ public class InvoicePaymentInsuranceEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<InsuranceBenefitPlanEntity> insuranceBenefitPlanRelation = Optional.ofNullable(this.insuranceBenefitPlan);
 		insuranceBenefitPlanRelation.ifPresent(entity -> this.insuranceBenefitPlanId = entity.getId());
 

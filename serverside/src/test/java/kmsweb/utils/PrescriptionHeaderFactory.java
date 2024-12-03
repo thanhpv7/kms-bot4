@@ -131,12 +131,6 @@ public class PrescriptionHeaderFactory implements FactoryBean<PrescriptionHeader
 		// % protected region % [Add customisation for External Warehouse here] off begin
 		newEntity.setExternalWarehouse(mockNeat.bools().get());
 		// % protected region % [Add customisation for External Warehouse here] end
-		// % protected region % [Add customisation for Notes2 here] off begin
-		String randomStringForNotes2 = mockNeat
-				.strings()
-				.get();
-		newEntity.setNotes2(randomStringForNotes2);
-		// % protected region % [Add customisation for Notes2 here] end
 
 		// % protected region % [Apply any additional logic for prescriptionHeaderWithNoRef after the main body here] off begin
 		// % protected region % [Apply any additional logic for prescriptionHeaderWithNoRef after the main body here] end

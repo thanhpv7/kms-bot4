@@ -91,6 +91,9 @@ export class DoctorScheduleDataFactory extends AbstractDataFactory<DoctorSchedul
 		model.dismissalDate = new Date();
 		model.shift = faker.random.words();
 		model.intervals = faker.random.number();
+		model.repetition = faker.random.boolean();
+		model.numberOfRepetition = faker.random.number();
+		model.finalSchedule = new Date();
 
 		// % protected region % [Add any additional populate logic after the main body here] off begin
 		// % protected region % [Add any additional populate logic after the main body here] end

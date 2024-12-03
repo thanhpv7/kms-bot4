@@ -16,6 +16,7 @@
  */
 import {FormGroup, Validators} from '@angular/forms';
 import {Group, AbstractModel, ModelProperty, ModelPropertyType, ModelRelation, ModelRelationType} from '../../lib/models/abstract.model';
+import {ApplyToEnum, applyToEnumArray} from '../../enums/apply-to.enum';
 import {ServiceItemAssignmentModel} from '../serviceItemAssignment/service_item_assignment.model';
 import {TariffPackageItemModel} from '../tariffPackageItem/tariff_package_item.model';
 import {TariffPackageServiceAssignmentModel} from '../tariffPackageServiceAssignment/tariff_package_service_assignment.model';
@@ -97,6 +98,11 @@ export class TariffPackageModel extends AbstractModel {
 	 * .
 	 */
 	applyToAllServices: boolean = false;
+
+	/**
+	 * EolMap {docoDescription=TODO: Get doco description, springFoxDataTypeProperty=, position=7, example=Sally}.
+	 */
+	applyTo: ApplyToEnum;
 
 	serviceItemAssignmentsIds: string[] = [];
 
@@ -226,6 +232,29 @@ export class TariffPackageModel extends AbstractModel {
 				],
 				// % protected region % [Add any additional model attribute properties for Tariff Package Description here] off begin
 				// % protected region % [Add any additional model attribute properties for Tariff Package Description here] end
+			},
+			{
+				name: 'applyTo',
+				// % protected region % [Set displayName for Apply To here] off begin
+				displayName: 'Apply To',
+				// % protected region % [Set displayName for Apply To here] end
+				type: ModelPropertyType.ENUM,
+				enumLiterals: applyToEnumArray,
+				// % protected region % [Set display element type for Apply To here] off begin
+				elementType: ElementType.ENUM,
+				// % protected region % [Set display element type for Apply To here] end
+				// % protected region % [Set isSensitive for Apply To here] off begin
+				isSensitive: false,
+				// % protected region % [Set isSensitive for Apply To here] end
+				// % protected region % [Set readonly for Apply To here] off begin
+				readOnly: false,
+				// % protected region % [Set readonly for Apply To here] end
+				validators: [
+					// % protected region % [Add other validators for Apply To here] off begin
+					// % protected region % [Add other validators for Apply To here] end
+				],
+				// % protected region % [Add any additional model attribute properties for Apply To here] off begin
+				// % protected region % [Add any additional model attribute properties for Apply To here] end
 			},
 			{
 				name: 'applyToAllServices',
@@ -408,7 +437,9 @@ export class TariffPackageModel extends AbstractModel {
 			this.tariffPackageClassification = json.tariffPackageClassification;
 			this.coaSell = json.coaSell;
 			this.tariffPackageDescription = json.tariffPackageDescription;
+			this.applyTo = json.applyTo;
 			this.applyToAllServices = json.applyToAllServices;
+			this.applyTo = json.applyTo;
 			this.serviceItemAssignmentsIds = json.serviceItemAssignmentsIds;
 			this.serviceItemAssignments = json.serviceItemAssignments;
 			this.tariffPackageItemsIds = json.tariffPackageItemsIds;
@@ -431,6 +462,7 @@ export class TariffPackageModel extends AbstractModel {
 			tariffPackageClassification: this.tariffPackageClassification,
 			coaSell: this.coaSell,
 			tariffPackageDescription: this.tariffPackageDescription,
+			applyTo: this.applyTo,
 			applyToAllServices: this.applyToAllServices,
 			serviceItemAssignmentsIds: this.serviceItemAssignmentsIds,
 			tariffPackageItemsIds: this.tariffPackageItemsIds,
@@ -469,8 +501,16 @@ export class TariffPackageModel extends AbstractModel {
 			newModelJson.tariffPackageDescription = updates.tariffPackageDescription;
 		}
 
+		if (updates.applyTo) {
+			newModelJson.applyTo = updates.applyTo;
+		}
+
 		if (updates.applyToAllServices) {
 			newModelJson.applyToAllServices = updates.applyToAllServices;
+		}
+
+		if (updates.applyTo) {
+			newModelJson.applyTo = updates.applyTo;
 		}
 
 		if (updates.serviceItemAssignmentsIds) {

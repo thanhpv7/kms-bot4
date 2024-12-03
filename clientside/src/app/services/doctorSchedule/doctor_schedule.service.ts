@@ -91,6 +91,9 @@ export class DoctorScheduleService extends AbstractHttpService<DoctorScheduleMod
 				dismissalDate
 				shift
 				intervals
+				repetition
+				numberOfRepetition
+				finalSchedule
 			}
 			# % protected region % [Modify the DoctorScheduleProperties classFragment here] end
 			${super.fragments('DoctorSchedule').properties}

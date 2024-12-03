@@ -134,6 +134,15 @@ public class DoctorScheduleFactory implements FactoryBean<DoctorScheduleEntity> 
 		// % protected region % [Add customisation for Intervals here] off begin
 		newEntity.setIntervals(mockNeat.ints().get());
 		// % protected region % [Add customisation for Intervals here] end
+		// % protected region % [Add customisation for Repetition here] off begin
+		newEntity.setRepetition(mockNeat.bools().get());
+		// % protected region % [Add customisation for Repetition here] end
+		// % protected region % [Add customisation for Number Of Repetition here] off begin
+		newEntity.setNumberOfRepetition(mockNeat.ints().get());
+		// % protected region % [Add customisation for Number Of Repetition here] end
+		// % protected region % [Add customisation for Final Schedule here] off begin
+		newEntity.setFinalSchedule(OffsetDateTime.now());
+		// % protected region % [Add customisation for Final Schedule here] end
 
 		// % protected region % [Apply any additional logic for doctorScheduleWithNoRef after the main body here] off begin
 		// % protected region % [Apply any additional logic for doctorScheduleWithNoRef after the main body here] end

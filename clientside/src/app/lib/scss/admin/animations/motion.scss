@@ -31,6 +31,7 @@ addition to your desired animation. IE:
 @import 'animatelibrary.scss';
 
 // % protected region % [Change animations mixins here] off begin
+
 @mixin heightScaleIn($duration: linear) {
 	transition: transform $duration ease-out;
 	transform: scaleY(1);

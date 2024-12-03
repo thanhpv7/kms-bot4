@@ -171,6 +171,7 @@ public class PatientVisitEntity extends AbstractEntity {
 	private String registrationType;
 
 	// % protected region % [Modify attribute annotation for Visit Date here] off begin
+
 	@CsvCustomBindByName(column = "VISIT_DATE", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Visit Date must not be empty")
 	@Column(name = "visit_date")
@@ -1181,6 +1182,7 @@ public class PatientVisitEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<PatientGeneralInfoEntity> patientRelation = Optional.ofNullable(this.patient);
 		patientRelation.ifPresent(entity -> this.patientId = entity.getId());
 

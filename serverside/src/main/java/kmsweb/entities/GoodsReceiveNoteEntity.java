@@ -184,6 +184,7 @@ public class GoodsReceiveNoteEntity extends AbstractEntity {
 	private String sourceDocumentNumber;
 
 	// % protected region % [Modify attribute annotation for Receive Date here] off begin
+
 	@CsvCustomBindByName(column = "RECEIVE_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "receive_date")
@@ -194,6 +195,7 @@ public class GoodsReceiveNoteEntity extends AbstractEntity {
 	private OffsetDateTime receiveDate;
 
 	// % protected region % [Modify attribute annotation for Void Date here] off begin
+
 	@CsvCustomBindByName(column = "VOID_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "void_date")
@@ -249,6 +251,7 @@ public class GoodsReceiveNoteEntity extends AbstractEntity {
 	private String shippingNumber;
 
 	// % protected region % [Modify attribute annotation for Shipping Date here] off begin
+
 	@CsvCustomBindByName(column = "SHIPPING_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "shipping_date")
@@ -729,6 +732,7 @@ public class GoodsReceiveNoteEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<SupplierEntity> supplierRelation = Optional.ofNullable(this.supplier);
 		supplierRelation.ifPresent(entity -> this.supplierId = entity.getId());
 

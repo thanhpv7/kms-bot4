@@ -180,6 +180,7 @@ public class DeliveryProgressEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Progress Date Time here] off begin
+
 	@CsvCustomBindByName(column = "PROGRESS_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "progress_date_time")
@@ -545,6 +546,7 @@ public class DeliveryProgressEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<DeliveryMedicalExaminationRecordEntity> deliveryMedicalExaminationRecordRelation = Optional.ofNullable(this.deliveryMedicalExaminationRecord);
 		deliveryMedicalExaminationRecordRelation.ifPresent(entity -> this.deliveryMedicalExaminationRecordId = entity.getId());
 

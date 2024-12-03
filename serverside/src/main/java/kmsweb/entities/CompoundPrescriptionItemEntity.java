@@ -388,6 +388,7 @@ public class CompoundPrescriptionItemEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<CompoundPrescriptionDetailEntity> compoundPrescriptionDetailRelation = Optional.ofNullable(this.compoundPrescriptionDetail);
 		compoundPrescriptionDetailRelation.ifPresent(entity -> this.compoundPrescriptionDetailId = entity.getId());
 

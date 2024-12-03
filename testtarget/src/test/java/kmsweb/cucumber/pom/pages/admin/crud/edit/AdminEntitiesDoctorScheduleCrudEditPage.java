@@ -88,6 +88,14 @@ public class AdminEntitiesDoctorScheduleCrudEditPage extends CrudEdit {
 	// TODO default handling dataAttribute intervalsField;
 	@FindBy(how = How.XPATH, using = "//*[@id='intervals-field']")
 	private WebElement intervalsField;
+	@FindBy(how = How.XPATH, using = "//*[@id='repetition-field']")
+	private WebElement repetitionField;
+	// TODO default handling dataAttribute numberOfRepetitionField;
+	@FindBy(how = How.XPATH, using = "//*[@id='numberOfRepetition-field']")
+	private WebElement numberOfRepetitionField;
+	// TODO default handling dataAttribute finalScheduleField;
+	@FindBy(how = How.XPATH, using = "//*[@id='finalSchedule-field']")
+	private WebElement finalScheduleField;
 	
 
 	// Outgoing one-to-one
@@ -174,6 +182,15 @@ public class AdminEntitiesDoctorScheduleCrudEditPage extends CrudEdit {
 		shiftField.sendKeys(entity.getShift());
 		// TODO default handling for dataAttribute intervalsField
 		intervalsField.sendKeys(entity.getIntervals().toString());
+
+		if (entity.getRepetition()) {
+			repetitionField.click();
+		}
+		// TODO default handling for dataAttribute numberOfRepetitionField
+		numberOfRepetitionField.sendKeys(entity.getNumberOfRepetition().toString());
+
+		// TODO default handling for dataAttribute finalScheduleField
+		finalScheduleField.sendKeys(entity.getFinalSchedule().toString());
 
 
 		saveButton.click();

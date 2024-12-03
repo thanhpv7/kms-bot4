@@ -19,6 +19,8 @@ package kmsweb.entities;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import kmsweb.dtos.TariffPackageEntityDto;
+import kmsweb.entities.enums.*;
+import kmsweb.services.utils.converters.enums.*;
 import kmsweb.entities.listeners.TariffPackageEntityListener;
 import kmsweb.serializers.TariffPackageSerializer;
 import kmsweb.lib.validators.ValidatorPatterns;
@@ -99,6 +101,10 @@ public class TariffPackageEntity extends AbstractEntity {
 			this.setTariffPackageDescription(tariffPackageEntityDto.getTariffPackageDescription());
 		}
 
+		if (tariffPackageEntityDto.getApplyTo() != null) {
+			this.setApplyTo(tariffPackageEntityDto.getApplyTo());
+		}
+
 		if (tariffPackageEntityDto.getApplyToAllServices() != null) {
 			this.setApplyToAllServices(tariffPackageEntityDto.getApplyToAllServices());
 		}
@@ -169,6 +175,16 @@ public class TariffPackageEntity extends AbstractEntity {
 	@ToString.Include
 	// % protected region % [Modify attribute annotation for Tariff Package Description here] end
 	private String tariffPackageDescription;
+
+	// % protected region % [Modify attribute annotation for Apply To here] off begin
+	@CsvCustomBindByName(column = "APPLY_TO", required = false, converter = ApplyToEnumConverter.class)
+	@Nullable
+	@Column(name = "apply_to")
+	@Schema(description = "The Apply To of this entity.")
+	@ToString.Include
+	@Enumerated
+	// % protected region % [Modify attribute annotation for Apply To here] end
+	private ApplyToEnum applyTo;
 
 	// % protected region % [Modify attribute annotation for Apply To All Services here] off begin
 	@CsvBindByName(column = "APPLY_TO_ALL_SERVICES", required = false)
@@ -652,7 +668,7 @@ public class TariffPackageEntity extends AbstractEntity {
 	public static String getExampleCsvHeader() {
 
 		// % protected region % [Modify the headers in the CSV file here] off begin
-		return "TARIFF_PACKAGE_CODE,TARIFF_PACKAGE_NAME,TARIFF_PACKAGE_CLASSIFICATION,COA_SELL,TARIFF_PACKAGE_DESCRIPTION,APPLY_TO_ALL_SERVICES,SERVICE_ITEM_ASSIGNMENTS_IDS,TARIFF_PACKAGE_ITEMS_IDS,TARIFF_PACKAGE_SERVICE_ASSIGNMENTS_IDS,ID";
+		return "TARIFF_PACKAGE_CODE,TARIFF_PACKAGE_NAME,TARIFF_PACKAGE_CLASSIFICATION,COA_SELL,TARIFF_PACKAGE_DESCRIPTION,APPLY_TO,APPLY_TO_ALL_SERVICES,SERVICE_ITEM_ASSIGNMENTS_IDS,TARIFF_PACKAGE_ITEMS_IDS,TARIFF_PACKAGE_SERVICE_ASSIGNMENTS_IDS,ID";
 		// % protected region % [Modify the headers in the CSV file here] end
 	}
 
@@ -662,6 +678,7 @@ public class TariffPackageEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		this.serviceItemAssignmentsIds = new HashSet<>();
 		for (ServiceItemAssignmentEntity serviceItemAssignments: this.serviceItemAssignments) {
 			this.serviceItemAssignmentsIds.add(serviceItemAssignments.getId());
@@ -701,6 +718,7 @@ public class TariffPackageEntity extends AbstractEntity {
 			Objects.equals(this.tariffPackageClassification, that.tariffPackageClassification) &&
 			Objects.equals(this.coaSell, that.coaSell) &&
 			Objects.equals(this.tariffPackageDescription, that.tariffPackageDescription) &&
+			Objects.equals(this.applyTo, that.applyTo) &&
 			Objects.equals(this.applyToAllServices, that.applyToAllServices) &&
 			Objects.equals(this.serviceItemAssignmentsIds, that.serviceItemAssignmentsIds) &&
 			Objects.equals(this.tariffPackageItemsIds, that.tariffPackageItemsIds) &&

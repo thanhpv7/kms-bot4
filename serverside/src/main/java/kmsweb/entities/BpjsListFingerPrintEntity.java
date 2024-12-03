@@ -113,6 +113,7 @@ public class BpjsListFingerPrintEntity extends AbstractEntity {
 	private String bpjsCardNo;
 
 	// % protected region % [Modify attribute annotation for Visit Date here] off begin
+
 	@CsvCustomBindByName(column = "VISIT_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "visit_date")
@@ -181,6 +182,7 @@ public class BpjsListFingerPrintEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

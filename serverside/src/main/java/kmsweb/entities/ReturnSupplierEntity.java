@@ -211,6 +211,7 @@ public class ReturnSupplierEntity extends AbstractEntity {
 	private String approvalStatus;
 
 	// % protected region % [Modify attribute annotation for Return Date here] off begin
+
 	@CsvCustomBindByName(column = "RETURN_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "return_date")
@@ -221,6 +222,7 @@ public class ReturnSupplierEntity extends AbstractEntity {
 	private OffsetDateTime returnDate;
 
 	// % protected region % [Modify attribute annotation for Order Date here] off begin
+
 	@CsvCustomBindByName(column = "ORDER_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "order_date")
@@ -267,6 +269,7 @@ public class ReturnSupplierEntity extends AbstractEntity {
 	private Boolean priceVATIncluded = false ;
 
 	// % protected region % [Modify attribute annotation for Void Date here] off begin
+
 	@CsvCustomBindByName(column = "VOID_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "void_date")
@@ -777,6 +780,7 @@ public class ReturnSupplierEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<PurchaseOrderEntity> purchaseOrderRelation = Optional.ofNullable(this.purchaseOrder);
 		purchaseOrderRelation.ifPresent(entity -> this.purchaseOrderId = entity.getId());
 

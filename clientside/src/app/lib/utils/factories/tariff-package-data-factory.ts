@@ -17,6 +17,7 @@
 
 import {AbstractDataFactory} from './abstract-data-factory';
 import {TariffPackageModel} from '../../../models/tariffPackage/tariff_package.model';
+import {ApplyToEnum, applyToEnumArray} from '../../../enums/apply-to.enum';
 import * as faker from 'faker';
 
 export class TariffPackageDataFactory extends AbstractDataFactory<TariffPackageModel> {
@@ -79,6 +80,11 @@ export class TariffPackageDataFactory extends AbstractDataFactory<TariffPackageM
 		model.tariffPackageClassification = faker.random.words();
 		model.coaSell = faker.random.words();
 		model.tariffPackageDescription = faker.random.words();
+		// % protected region % [Add Apply Tocustom enum randomisation here] off begin
+		// Always initialise to the first enum literal. Turn on the protected region and put in your own custom enum
+		// initialisation logic.
+		model.applyTo = ApplyToEnum.SECTION;
+		// % protected region % [Add Apply Tocustom enum randomisation here] end
 		model.applyToAllServices = faker.random.boolean();
 
 		// % protected region % [Add any additional populate logic after the main body here] off begin

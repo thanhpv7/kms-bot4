@@ -209,6 +209,7 @@ public class NumberingSetupEntity extends AbstractEntity {
 	private Integer counterLength;
 
 	// % protected region % [Modify attribute annotation for Last Updated here] off begin
+
 	@CsvCustomBindByName(column = "LAST_UPDATED", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "last_updated")
@@ -277,6 +278,7 @@ public class NumberingSetupEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

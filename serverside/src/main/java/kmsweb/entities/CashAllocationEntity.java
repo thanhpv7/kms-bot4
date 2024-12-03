@@ -140,6 +140,7 @@ public class CashAllocationEntity extends AbstractEntity {
 	private CashTypeEnum cashType;
 
 	// % protected region % [Modify attribute annotation for Allocated Date here] off begin
+
 	@CsvCustomBindByName(column = "ALLOCATED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "allocated_date")
@@ -150,6 +151,7 @@ public class CashAllocationEntity extends AbstractEntity {
 	private OffsetDateTime allocatedDate;
 
 	// % protected region % [Modify attribute annotation for Source Date here] off begin
+
 	@CsvCustomBindByName(column = "SOURCE_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "source_date")
@@ -264,6 +266,7 @@ public class CashAllocationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

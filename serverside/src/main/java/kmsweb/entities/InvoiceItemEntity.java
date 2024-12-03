@@ -187,6 +187,7 @@ public class InvoiceItemEntity extends AbstractEntity {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// % protected region % [Modify attribute annotation for Transaction Date here] off begin
+
 	@CsvCustomBindByName(column = "TRANSACTION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "transaction_date")
@@ -985,6 +986,7 @@ public class InvoiceItemEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<InvoiceEntity> invoiceRelation = Optional.ofNullable(this.invoice);
 		invoiceRelation.ifPresent(entity -> this.invoiceId = entity.getId());
 

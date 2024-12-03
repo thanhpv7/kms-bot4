@@ -174,6 +174,7 @@ public class InsuranceBenefitPlanEntity extends AbstractEntity {
 	private Double maximumCoveragePerYear;
 
 	// % protected region % [Modify attribute annotation for Created Date here] off begin
+
 	@CsvCustomBindByName(column = "CREATED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "created_date")
@@ -184,6 +185,7 @@ public class InsuranceBenefitPlanEntity extends AbstractEntity {
 	private OffsetDateTime createdDate;
 
 	// % protected region % [Modify attribute annotation for Updated Date here] off begin
+
 	@CsvCustomBindByName(column = "UPDATED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "updated_date")
@@ -751,6 +753,7 @@ public class InsuranceBenefitPlanEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<InsuranceProviderEntity> insuranceProviderRelation = Optional.ofNullable(this.insuranceProvider);
 		insuranceProviderRelation.ifPresent(entity -> this.insuranceProviderId = entity.getId());
 

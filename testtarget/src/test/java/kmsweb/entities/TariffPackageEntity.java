@@ -16,6 +16,7 @@
  */
 package kmsweb.entities;
 
+import kmsweb.entities.enums.*;
 import lombok.*;
 import javax.validation.constraints.NotNull;
 
@@ -101,6 +102,12 @@ public class TariffPackageEntity extends AbstractEntity {
 	@Setter
 	// % protected region % [Modify attribute annotation for Tariff Package Description here] end
 	private String tariffPackageDescription;
+
+	// % protected region % [Modify attribute annotation for Apply To here] off begin
+	@ToString.Include
+	@Setter
+	// % protected region % [Modify attribute annotation for Apply To here] end
+	private ApplyToEnum applyTo;
 
 	// % protected region % [Modify attribute annotation for Apply To All Services here] off begin
 	@ToString.Include

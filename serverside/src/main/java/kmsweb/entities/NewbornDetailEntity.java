@@ -267,6 +267,7 @@ public class NewbornDetailEntity extends AbstractEntity {
 	private String newbornLastName;
 
 	// % protected region % [Modify attribute annotation for Date Time Of Birth here] off begin
+
 	@CsvCustomBindByName(column = "DATE_TIME_OF_BIRTH", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date_time_of_birth")
@@ -899,6 +900,7 @@ public class NewbornDetailEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<DeliveryMedicalExaminationRecordEntity> deliveryMedicalExaminationRecordRelation = Optional.ofNullable(this.deliveryMedicalExaminationRecord);
 		deliveryMedicalExaminationRecordRelation.ifPresent(entity -> this.deliveryMedicalExaminationRecordId = entity.getId());
 

@@ -231,6 +231,7 @@ public class InsuranceProviderEntity extends AbstractEntity {
 	private String email;
 
 	// % protected region % [Modify attribute annotation for Expiry Date here] off begin
+
 	@CsvCustomBindByName(column = "EXPIRY_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "expiry_date")
@@ -241,6 +242,7 @@ public class InsuranceProviderEntity extends AbstractEntity {
 	private OffsetDateTime expiryDate;
 
 	// % protected region % [Modify attribute annotation for Expiring Date here] off begin
+
 	@CsvCustomBindByName(column = "EXPIRING_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "expiring_date")
@@ -251,6 +253,7 @@ public class InsuranceProviderEntity extends AbstractEntity {
 	private OffsetDateTime expiringDate;
 
 	// % protected region % [Modify attribute annotation for Created Date here] off begin
+
 	@CsvCustomBindByName(column = "CREATED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "created_date")
@@ -462,6 +465,7 @@ public class InsuranceProviderEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		this.insuranceBenefitPlansIds = new HashSet<>();
 		for (InsuranceBenefitPlanEntity insuranceBenefitPlans: this.insuranceBenefitPlans) {
 			this.insuranceBenefitPlansIds.add(insuranceBenefitPlans.getId());

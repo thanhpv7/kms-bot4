@@ -84,6 +84,12 @@ public class AdminEntitiesDoctorScheduleCrudViewPage extends CrudView {
 	private WebElement shiftField;
 	@FindBy(how = How.XPATH, using = "//*[@id='intervals-field']")
 	private WebElement intervalsField;
+	@FindBy(how = How.XPATH, using = "//*[@id='repetition-field']")
+	private WebElement repetitionField;
+	@FindBy(how = How.XPATH, using = "//*[@id='numberOfRepetition-field']")
+	private WebElement numberOfRepetitionField;
+	@FindBy(how = How.XPATH, using = "//*[@id='finalSchedule-field']")
+	private WebElement finalScheduleField;
 	
 
 	// Outgoing one-to-one

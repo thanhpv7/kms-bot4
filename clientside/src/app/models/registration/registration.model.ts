@@ -302,11 +302,6 @@ export class RegistrationModel extends AbstractModel {
 	 */
 	otherReferredStaff: string;
 
-	/**
-	 * Doctor Schedule Detail Id.
-	 */
-	doctorScheduleDetailId: string;
-
 	bpjsPRBDetailId: string;
 
 	bpjsPRBDetail: BpjsPRBDetailModel;
@@ -1348,28 +1343,6 @@ export class RegistrationModel extends AbstractModel {
 				],
 				// % protected region % [Add any additional model attribute properties for Other Referred Staff here] off begin
 				// % protected region % [Add any additional model attribute properties for Other Referred Staff here] end
-			},
-			{
-				name: 'doctorScheduleDetailId',
-				// % protected region % [Set displayName for Doctor Schedule Detail Id here] off begin
-				displayName: 'Doctor Schedule Detail Id',
-				// % protected region % [Set displayName for Doctor Schedule Detail Id here] end
-				type: ModelPropertyType.STRING,
-				// % protected region % [Set display element type for Doctor Schedule Detail Id here] off begin
-				elementType: ElementType.INPUT,
-				// % protected region % [Set display element type for Doctor Schedule Detail Id here] end
-				// % protected region % [Set isSensitive for Doctor Schedule Detail Id here] off begin
-				isSensitive: false,
-				// % protected region % [Set isSensitive for Doctor Schedule Detail Id here] end
-				// % protected region % [Set readonly for Doctor Schedule Detail Id here] off begin
-				readOnly: false,
-				// % protected region % [Set readonly for Doctor Schedule Detail Id here] end
-				validators: [
-					// % protected region % [Add other validators for Doctor Schedule Detail Id here] off begin
-					// % protected region % [Add other validators for Doctor Schedule Detail Id here] end
-				],
-				// % protected region % [Add any additional model attribute properties for Doctor Schedule Detail Id here] off begin
-				// % protected region % [Add any additional model attribute properties for Doctor Schedule Detail Id here] end
 			},
 			// % protected region % [Add any additional class field names here] off begin
 			// % protected region % [Add any additional class field names here] end
@@ -2445,7 +2418,6 @@ export class RegistrationModel extends AbstractModel {
 			this.isUnknownPatient = json.isUnknownPatient;
 			this.otherReferredFacility = json.otherReferredFacility;
 			this.otherReferredStaff = json.otherReferredStaff;
-			this.doctorScheduleDetailId = json.doctorScheduleDetailId;
 			this.bpjsPRBDetailId = json.bpjsPRBDetailId;
 			this.bpjsPRBDetail = json.bpjsPRBDetail;
 			this.bpjsPcareRegistrationsId = json.bpjsPcareRegistrationsId;
@@ -2573,7 +2545,6 @@ export class RegistrationModel extends AbstractModel {
 			isUnknownPatient: this.isUnknownPatient,
 			otherReferredFacility: this.otherReferredFacility,
 			otherReferredStaff: this.otherReferredStaff,
-			doctorScheduleDetailId: this.doctorScheduleDetailId,
 			bpjsPRBDetailId: this.bpjsPRBDetailId,
 			bpjsPcareRegistrationsId: this.bpjsPcareRegistrationsId,
 			bpjsSEPId: this.bpjsSEPId,
@@ -2784,10 +2755,6 @@ export class RegistrationModel extends AbstractModel {
 
 		if (updates.otherReferredStaff) {
 			newModelJson.otherReferredStaff = updates.otherReferredStaff;
-		}
-
-		if (updates.doctorScheduleDetailId) {
-			newModelJson.doctorScheduleDetailId = updates.doctorScheduleDetailId;
 		}
 
 		if (updates.bpjsPRBDetailId) {

@@ -235,6 +235,7 @@ public class MedicalFeeEntity extends AbstractEntity {
 	private String medicationTransactionNumber;
 
 	// % protected region % [Modify attribute annotation for Transaction Date here] off begin
+
 	@CsvCustomBindByName(column = "TRANSACTION_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "transaction_date")
@@ -806,6 +807,7 @@ public class MedicalFeeEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<RegistrationEntity> registrationRelation = Optional.ofNullable(this.registration);
 		registrationRelation.ifPresent(entity -> this.registrationId = entity.getId());
 

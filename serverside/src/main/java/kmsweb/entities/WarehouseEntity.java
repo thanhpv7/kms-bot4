@@ -4296,6 +4296,7 @@ public class WarehouseEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		this.batchStockBalancesWarehouseIds = new HashSet<>();
 		for (BatchStockBalanceEntity batchStockBalancesWarehouse: this.batchStockBalancesWarehouse) {
 			this.batchStockBalancesWarehouseIds.add(batchStockBalancesWarehouse.getId());

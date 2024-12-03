@@ -433,6 +433,7 @@ public class RoleEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		this.usersIds = new HashSet<>();
 		for (UserEntity users: this.users) {
 			this.usersIds.add(users.getId());

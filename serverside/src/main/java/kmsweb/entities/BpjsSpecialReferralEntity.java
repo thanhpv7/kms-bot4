@@ -511,6 +511,7 @@ public class BpjsSpecialReferralEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<BpjsDiagnoseEntity> additionalDiagnoseRelation = Optional.ofNullable(this.additionalDiagnose);
 		additionalDiagnoseRelation.ifPresent(entity -> this.additionalDiagnoseId = entity.getId());
 

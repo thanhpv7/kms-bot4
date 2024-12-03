@@ -30,7 +30,6 @@ type Registration {
 	dismissalReferralType: String
 	dismissalReferringNotes: String
 	dismissalType: String
-	doctorScheduleDetailId: String
 	duration: Int
 	instruction: String
 	isUnknownPatient: Boolean
@@ -126,7 +125,6 @@ input RegistrationInput {
 	dismissalReferralType: String
 	dismissalReferringNotes: String
 	dismissalType: String
-	doctorScheduleDetailId: String
 	duration: Int
 	instruction: String
 	isUnknownPatient: Boolean

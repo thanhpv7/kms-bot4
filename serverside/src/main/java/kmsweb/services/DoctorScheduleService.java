@@ -542,6 +542,75 @@ public class DoctorScheduleService extends AbstractService<DoctorScheduleEntity,
 		return entities;
 	}
 
+	/**
+	 * Return an entity or a list of entities that have the given attribute Repetition.
+	 *
+	 * @param repetition the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Repetition
+	 */
+	@PreAuthorize("hasPermission('DoctorScheduleEntity', 'read')")
+	@Transactional(readOnly = true)
+	public List<DoctorScheduleEntity> findByRepetition(Boolean repetition)
+	// % protected region % [Add any throwables, implementations, or extensions for findByRepetition here] off begin
+	// % protected region % [Add any throwables, implementations, or extensions for findByRepetition here] end
+	{
+		// % protected region % [Add any additional logic for findByRepetition before the main body here] off begin
+		// % protected region % [Add any additional logic for findByRepetition before the main body here] end
+
+		List<DoctorScheduleEntity> entities = Lists.newArrayList(repository.findByRepetition(repetition));
+
+		// % protected region % [Add any additional logic for findByRepetition before returning the entities here] off begin
+		// % protected region % [Add any additional logic for findByRepetition before returning the entities here] end
+
+		return entities;
+	}
+
+	/**
+	 * Return an entity or a list of entities that have the given attribute Number Of Repetition.
+	 *
+	 * @param numberOfRepetition the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Number Of Repetition
+	 */
+	@PreAuthorize("hasPermission('DoctorScheduleEntity', 'read')")
+	@Transactional(readOnly = true)
+	public List<DoctorScheduleEntity> findByNumberOfRepetition(Integer numberOfRepetition)
+	// % protected region % [Add any throwables, implementations, or extensions for findByNumberOfRepetition here] off begin
+	// % protected region % [Add any throwables, implementations, or extensions for findByNumberOfRepetition here] end
+	{
+		// % protected region % [Add any additional logic for findByNumberOfRepetition before the main body here] off begin
+		// % protected region % [Add any additional logic for findByNumberOfRepetition before the main body here] end
+
+		List<DoctorScheduleEntity> entities = Lists.newArrayList(repository.findByNumberOfRepetition(numberOfRepetition));
+
+		// % protected region % [Add any additional logic for findByNumberOfRepetition before returning the entities here] off begin
+		// % protected region % [Add any additional logic for findByNumberOfRepetition before returning the entities here] end
+
+		return entities;
+	}
+
+	/**
+	 * Return an entity or a list of entities that have the given attribute Final Schedule.
+	 *
+	 * @param finalSchedule the attribute against which the entities will be retrieved
+	 * @return a list of entities that have the given attribute Final Schedule
+	 */
+	@PreAuthorize("hasPermission('DoctorScheduleEntity', 'read')")
+	@Transactional(readOnly = true)
+	public List<DoctorScheduleEntity> findByFinalSchedule(OffsetDateTime finalSchedule)
+	// % protected region % [Add any throwables, implementations, or extensions for findByFinalSchedule here] off begin
+	// % protected region % [Add any throwables, implementations, or extensions for findByFinalSchedule here] end
+	{
+		// % protected region % [Add any additional logic for findByFinalSchedule before the main body here] off begin
+		// % protected region % [Add any additional logic for findByFinalSchedule before the main body here] end
+
+		List<DoctorScheduleEntity> entities = Lists.newArrayList(repository.findByFinalSchedule(finalSchedule));
+
+		// % protected region % [Add any additional logic for findByFinalSchedule before returning the entities here] off begin
+		// % protected region % [Add any additional logic for findByFinalSchedule before returning the entities here] end
+
+		return entities;
+	}
+
 	@Override
 	@PreAuthorize("hasPermission('DoctorScheduleEntity', 'read')")
 	@Transactional(readOnly = true)
@@ -1069,6 +1138,16 @@ public class DoctorScheduleService extends AbstractService<DoctorScheduleEntity,
 				// % protected region % [Add any additional logic after the query parameters of shift here] end
 
 				break;
+			case "repetition":
+				// % protected region % [Add any additional logic before the query parameters of repetition here] off begin
+				// % protected region % [Add any additional logic before the query parameters of repetition here] end
+
+				predicate = QuerydslUtils.getDefaultPredicate(entity.repetition, condition.getOperation(), condition.getValue());
+
+				// % protected region % [Add any additional logic after the query parameters of repetition here] off begin
+				// % protected region % [Add any additional logic after the query parameters of repetition here] end
+
+				break;
 			// % protected region % [Add any additional cases for the custom query parameters here] off begin
 			// % protected region % [Add any additional cases for the custom query parameters here] end
 		}
@@ -1196,6 +1275,11 @@ public class DoctorScheduleService extends AbstractService<DoctorScheduleEntity,
 		// Null booleans should default to false when adding them to the database
 		if (entityToUpdate.getSunday() == null) {
 			entityToUpdate.setSunday(false);
+		}
+
+		// Null booleans should default to false when adding them to the database
+		if (entityToUpdate.getRepetition() == null) {
+			entityToUpdate.setRepetition(false);
 		}
 
 		// Incoming One to Many reference

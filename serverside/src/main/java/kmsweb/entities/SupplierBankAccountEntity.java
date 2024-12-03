@@ -288,6 +288,7 @@ public class SupplierBankAccountEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<SupplierEntity> supplierRelation = Optional.ofNullable(this.supplier);
 		supplierRelation.ifPresent(entity -> this.supplierId = entity.getId());
 

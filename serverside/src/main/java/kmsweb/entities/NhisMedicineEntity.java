@@ -213,6 +213,7 @@ public class NhisMedicineEntity extends AbstractEntity {
 	private Double totalCost;
 
 	// % protected region % [Modify attribute annotation for Service Date here] off begin
+
 	@CsvCustomBindByName(column = "SERVICE_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "service_date")
@@ -272,6 +273,7 @@ public class NhisMedicineEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

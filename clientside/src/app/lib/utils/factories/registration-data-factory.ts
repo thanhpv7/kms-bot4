@@ -111,7 +111,6 @@ export class RegistrationDataFactory extends AbstractDataFactory<RegistrationMod
 		model.isUnknownPatient = faker.random.boolean();
 		model.otherReferredFacility = faker.random.words();
 		model.otherReferredStaff = faker.random.words();
-		model.doctorScheduleDetailId = faker.random.words();
 
 		// % protected region % [Add any additional populate logic after the main body here] off begin
 		// % protected region % [Add any additional populate logic after the main body here] end

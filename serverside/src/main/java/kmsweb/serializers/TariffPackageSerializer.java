@@ -49,6 +49,9 @@ public class TariffPackageSerializer extends AbstractSerializer<TariffPackageEnt
 		writeStringField(gen, "tariffPackageClassification", value.getTariffPackageClassification());
 		writeStringField(gen, "coaSell", value.getCoaSell());
 		writeStringField(gen, "tariffPackageDescription", value.getTariffPackageDescription());
+		if (value.getApplyTo() != null) {
+			writeStringField(gen, "applyTo", value.getApplyTo().toString());
+		}
 		writeBooleanField(gen, "applyToAllServices", value.getApplyToAllServices());
 
 		// % protected region % [Modify the json before writing the object here] off begin

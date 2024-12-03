@@ -38,6 +38,7 @@ export class DoctorScheduleModel extends AbstractModel {
 	 */
 	static searchFields: string[] = [
 		'shift',
+		'repetition',
 		// % protected region % [Add any additional searchable field names here] off begin
 		// % protected region % [Add any additional searchable field names here] end
 	];
@@ -151,6 +152,21 @@ export class DoctorScheduleModel extends AbstractModel {
 	 * .
 	 */
 	intervals: number;
+
+	/**
+	 * Define whether the schedule should be repeated or not.
+	 */
+	repetition: boolean = false;
+
+	/**
+	 * .
+	 */
+	numberOfRepetition: number;
+
+	/**
+	 * Date and time of the last repetition.
+	 */
+	finalSchedule: Date;
 
 	serviceId: string;
 
@@ -545,6 +561,72 @@ export class DoctorScheduleModel extends AbstractModel {
 				// % protected region % [Add any additional model attribute properties for Intervals here] off begin
 				// % protected region % [Add any additional model attribute properties for Intervals here] end
 			},
+			{
+				name: 'repetition',
+				// % protected region % [Set displayName for Repetition here] off begin
+				displayName: 'Repetition',
+				// % protected region % [Set displayName for Repetition here] end
+				type: ModelPropertyType.BOOLEAN,
+				// % protected region % [Set display element type for Repetition here] off begin
+				elementType: ElementType.CHECKBOX,
+				// % protected region % [Set display element type for Repetition here] end
+				// % protected region % [Set isSensitive for Repetition here] off begin
+				isSensitive: false,
+				// % protected region % [Set isSensitive for Repetition here] end
+				// % protected region % [Set readonly for Repetition here] off begin
+				readOnly: false,
+				// % protected region % [Set readonly for Repetition here] end
+				validators: [
+					// % protected region % [Add other validators for Repetition here] off begin
+					// % protected region % [Add other validators for Repetition here] end
+				],
+				// % protected region % [Add any additional model attribute properties for Repetition here] off begin
+				// % protected region % [Add any additional model attribute properties for Repetition here] end
+			},
+			{
+				name: 'numberOfRepetition',
+				// % protected region % [Set displayName for Number Of Repetition here] off begin
+				displayName: 'Number Of Repetition',
+				// % protected region % [Set displayName for Number Of Repetition here] end
+				type: ModelPropertyType.NUMBER,
+				// % protected region % [Set display element type for Number Of Repetition here] off begin
+				elementType: ElementType.NUMBER,
+				// % protected region % [Set display element type for Number Of Repetition here] end
+				// % protected region % [Set isSensitive for Number Of Repetition here] off begin
+				isSensitive: false,
+				// % protected region % [Set isSensitive for Number Of Repetition here] end
+				// % protected region % [Set readonly for Number Of Repetition here] off begin
+				readOnly: false,
+				// % protected region % [Set readonly for Number Of Repetition here] end
+				validators: [
+					// % protected region % [Add other validators for Number Of Repetition here] off begin
+					// % protected region % [Add other validators for Number Of Repetition here] end
+				],
+				// % protected region % [Add any additional model attribute properties for Number Of Repetition here] off begin
+				// % protected region % [Add any additional model attribute properties for Number Of Repetition here] end
+			},
+			{
+				name: 'finalSchedule',
+				// % protected region % [Set displayName for Final Schedule here] off begin
+				displayName: 'Final Schedule',
+				// % protected region % [Set displayName for Final Schedule here] end
+				type: ModelPropertyType.DATE,
+				// % protected region % [Set display element type for Final Schedule here] off begin
+				elementType: ElementType.DATETIME,
+				// % protected region % [Set display element type for Final Schedule here] end
+				// % protected region % [Set isSensitive for Final Schedule here] off begin
+				isSensitive: false,
+				// % protected region % [Set isSensitive for Final Schedule here] end
+				// % protected region % [Set readonly for Final Schedule here] off begin
+				readOnly: false,
+				// % protected region % [Set readonly for Final Schedule here] end
+				validators: [
+					// % protected region % [Add other validators for Final Schedule here] off begin
+					// % protected region % [Add other validators for Final Schedule here] end
+				],
+				// % protected region % [Add any additional model attribute properties for Final Schedule here] off begin
+				// % protected region % [Add any additional model attribute properties for Final Schedule here] end
+			},
 			// % protected region % [Add any additional class field names here] off begin
 			// % protected region % [Add any additional class field names here] end
 		]);
@@ -606,6 +688,8 @@ export class DoctorScheduleModel extends AbstractModel {
 		Object.keys(formGroup.value).forEach((key) => {
 			switch (key) {
 				case 'shift':
+					break;
+				case 'repetition':
 					break;
 				case 'created':
 					const created = formGroup.value[key];
@@ -715,6 +799,15 @@ export class DoctorScheduleModel extends AbstractModel {
 			}
 			this.shift = json.shift;
 			this.intervals = json.intervals;
+			this.repetition = json.repetition;
+			this.numberOfRepetition = json.numberOfRepetition;
+			if (json.finalSchedule) {
+				this.finalSchedule = new Date(json.finalSchedule);
+			} else {
+				// If no value is present, it can both be partial model or empty value. Regardless simply reassigned it
+				// with the original empty value (null) or lack thereof (undefined).
+				this.finalSchedule = json.finalSchedule;
+			}
 			this.serviceId = json.serviceId;
 			this.service = json.service;
 			this.staffId = json.staffId;
@@ -747,6 +840,9 @@ export class DoctorScheduleModel extends AbstractModel {
 			dismissalDate: this.dismissalDate,
 			shift: this.shift,
 			intervals: this.intervals,
+			repetition: this.repetition,
+			numberOfRepetition: this.numberOfRepetition,
+			finalSchedule: this.finalSchedule,
 			serviceId: this.serviceId,
 			staffId: this.staffId,
 			// % protected region % [Add any additional logic here to json] off begin
@@ -829,6 +925,18 @@ export class DoctorScheduleModel extends AbstractModel {
 
 		if (updates.intervals) {
 			newModelJson.intervals = updates.intervals;
+		}
+
+		if (updates.repetition) {
+			newModelJson.repetition = updates.repetition;
+		}
+
+		if (updates.numberOfRepetition) {
+			newModelJson.numberOfRepetition = updates.numberOfRepetition;
+		}
+
+		if (updates.finalSchedule) {
+			newModelJson.finalSchedule = updates.finalSchedule;
 		}
 
 		if (updates.serviceId) {

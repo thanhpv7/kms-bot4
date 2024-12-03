@@ -98,6 +98,9 @@ public class TariffPackageFactory implements FactoryBean<TariffPackageEntity> {
 				.get();
 		newEntity.setTariffPackageDescription(randomStringForTariffPackageDescription);
 		// % protected region % [Add customisation for Tariff Package Description here] end
+		// % protected region % [Add customisation for Apply To here] off begin
+		newEntity.setApplyTo(ApplyToEnum.SECTION);
+		// % protected region % [Add customisation for Apply To here] end
 		// % protected region % [Add customisation for Apply To All Services here] off begin
 		newEntity.setApplyToAllServices(mockNeat.bools().get());
 		// % protected region % [Add customisation for Apply To All Services here] end

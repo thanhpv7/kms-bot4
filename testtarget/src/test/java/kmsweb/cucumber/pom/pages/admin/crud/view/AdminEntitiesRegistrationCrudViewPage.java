@@ -130,8 +130,6 @@ public class AdminEntitiesRegistrationCrudViewPage extends CrudView {
 	private WebElement otherReferredFacilityField;
 	@FindBy(how = How.XPATH, using = "//*[@id='otherReferredStaff-field']")
 	private WebElement otherReferredStaffField;
-	@FindBy(how = How.XPATH, using = "//*[@id='doctorScheduleDetailId-field']")
-	private WebElement doctorScheduleDetailIdField;
 	
 
 	// Outgoing one-to-one

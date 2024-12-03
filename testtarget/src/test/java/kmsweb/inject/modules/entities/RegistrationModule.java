@@ -291,12 +291,6 @@ public class RegistrationModule extends AbstractModule {
 				.get();
 		newEntity.setOtherReferredStaff(randomStringforOtherReferredStaff);
 		// % protected region % [Add customisation for Other Referred Staff here] end
-		// % protected region % [Add customisation for Doctor Schedule Detail Id here] off begin
-		String randomStringforDoctorScheduleDetailId = mock
-				.strings()
-				.get();
-		newEntity.setDoctorScheduleDetailId(randomStringforDoctorScheduleDetailId);
-		// % protected region % [Add customisation for Doctor Schedule Detail Id here] end
 
 		// % protected region % [Apply any additional logic for registrationWithNoRef after the main body here] off begin
 		// % protected region % [Apply any additional logic for registrationWithNoRef after the main body here] end

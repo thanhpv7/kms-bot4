@@ -646,12 +646,6 @@ public class RegistrationEntity extends AbstractEntity {
 	// % protected region % [Modify attribute annotation for Other Referred Staff here] end
 	private String otherReferredStaff;
 
-	// % protected region % [Modify attribute annotation for Doctor Schedule Detail Id here] off begin
-	@ToString.Include
-	@Setter
-	// % protected region % [Modify attribute annotation for Doctor Schedule Detail Id here] end
-	private String doctorScheduleDetailId;
-
 	private Set<FileEntity> supportingDocument = new HashSet<>();
 
 	private Set<FileEntity> printWristband = new HashSet<>();

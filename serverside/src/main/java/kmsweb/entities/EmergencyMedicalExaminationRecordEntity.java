@@ -181,6 +181,7 @@ public class EmergencyMedicalExaminationRecordEntity extends AbstractEntity {
 	private String emergencyLevel;
 
 	// % protected region % [Modify attribute annotation for Date Time of Instructions here] off begin
+
 	@CsvCustomBindByName(column = "DATE_TIME_OF_INSTRUCTIONS", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date_time_of_instructions")
@@ -200,6 +201,7 @@ public class EmergencyMedicalExaminationRecordEntity extends AbstractEntity {
 	private Boolean isDoctorTakingOver = false ;
 
 	// % protected region % [Modify attribute annotation for Date Time of Drug Administration here] off begin
+
 	@CsvCustomBindByName(column = "DATE_TIME_OF_DRUG_ADMINISTRATION", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date_time_of_drug_administration")
@@ -344,6 +346,7 @@ public class EmergencyMedicalExaminationRecordEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<MedicalExaminationRecordEntity> medicalExaminationRecordRelation = Optional.ofNullable(this.medicalExaminationRecord);
 		medicalExaminationRecordRelation.ifPresent(entity -> this.medicalExaminationRecordId = entity.getId());
 

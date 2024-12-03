@@ -325,6 +325,7 @@ public class DeliveryMedicalExaminationRecordEntity extends AbstractEntity {
 	private String pregnancyHistoryNotes;
 
 	// % protected region % [Modify attribute annotation for LNMP Start Date here] off begin
+
 	@CsvCustomBindByName(column = "LNMP_START_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "lnmp_start_date")
@@ -335,6 +336,7 @@ public class DeliveryMedicalExaminationRecordEntity extends AbstractEntity {
 	private OffsetDateTime lnmpStartDate;
 
 	// % protected region % [Modify attribute annotation for LNMP End Date here] off begin
+
 	@CsvCustomBindByName(column = "LNMP_END_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "lnmp_end_date")
@@ -345,6 +347,7 @@ public class DeliveryMedicalExaminationRecordEntity extends AbstractEntity {
 	private OffsetDateTime lnmpEndDate;
 
 	// % protected region % [Modify attribute annotation for Approximate Birth Date here] off begin
+
 	@CsvCustomBindByName(column = "APPROXIMATE_BIRTH_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "approximate_birth_date")
@@ -1304,6 +1307,7 @@ public class DeliveryMedicalExaminationRecordEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<MedicalExaminationRecordEntity> medicalExaminationRecordRelation = Optional.ofNullable(this.medicalExaminationRecord);
 		medicalExaminationRecordRelation.ifPresent(entity -> this.medicalExaminationRecordId = entity.getId());
 

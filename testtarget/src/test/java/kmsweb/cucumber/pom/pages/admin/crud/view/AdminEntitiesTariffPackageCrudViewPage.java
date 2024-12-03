@@ -60,6 +60,8 @@ public class AdminEntitiesTariffPackageCrudViewPage extends CrudView {
 	private WebElement coaSellField;
 	@FindBy(how = How.XPATH, using = "//*[@id='tariffPackageDescription-field']")
 	private WebElement tariffPackageDescriptionField;
+	@FindBy(how = How.XPATH, using = "//*[@id='applyTo-field']")
+	private WebElement applyToField;
 	@FindBy(how = How.XPATH, using = "//*[@id='applyToAllServices-field']")
 	private WebElement applyToAllServicesField;
 	

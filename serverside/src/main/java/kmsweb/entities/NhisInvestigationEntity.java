@@ -149,6 +149,7 @@ public class NhisInvestigationEntity extends AbstractEntity {
 	private Double price;
 
 	// % protected region % [Modify attribute annotation for Date here] off begin
+
 	@CsvCustomBindByName(column = "DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "date")
@@ -208,6 +209,7 @@ public class NhisInvestigationEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 

@@ -285,6 +285,7 @@ public class VitalSignsEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<NewbornDetailEntity> newbornDetailRelation = Optional.ofNullable(this.newbornDetail);
 		newbornDetailRelation.ifPresent(entity -> this.newbornDetailId = entity.getId());
 

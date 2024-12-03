@@ -151,6 +151,7 @@ public class PatientCaseHistoryEntity extends AbstractEntity {
 	private String historyOfDisease;
 
 	// % protected region % [Modify attribute annotation for Case History Date Time here] off begin
+
 	@CsvCustomBindByName(column = "CASE_HISTORY_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "case_history_date_time")
@@ -303,6 +304,7 @@ public class PatientCaseHistoryEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<PatientGeneralInfoEntity> patientGeneralInformationRelation = Optional.ofNullable(this.patientGeneralInformation);
 		patientGeneralInformationRelation.ifPresent(entity -> this.patientGeneralInformationId = entity.getId());
 

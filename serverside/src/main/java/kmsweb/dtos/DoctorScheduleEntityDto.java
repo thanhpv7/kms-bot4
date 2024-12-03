@@ -69,6 +69,12 @@ public class DoctorScheduleEntityDto extends AbstractEntityDto {
 
 	private Integer intervals;
 
+	private Boolean repetition;
+
+	private Integer numberOfRepetition;
+
+	private OffsetDateTime finalSchedule;
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// Outgoing references

@@ -82,8 +82,6 @@ public class AdminEntitiesPrescriptionHeaderCrudEditPage extends CrudEdit {
 	private WebElement isInvoicedField;
 	@FindBy(how = How.XPATH, using = "//*[@id='externalWarehouse-field']")
 	private WebElement externalWarehouseField;
-	@FindBy(how = How.XPATH, using = "//*[@id='notes2-field']")
-	private WebElement notes2Field;
 	
 
 	// Outgoing one-to-one
@@ -173,7 +171,6 @@ public class AdminEntitiesPrescriptionHeaderCrudEditPage extends CrudEdit {
 		if (entity.getExternalWarehouse()) {
 			externalWarehouseField.click();
 		}
-		notes2Field.sendKeys(entity.getNotes2());
 
 		saveButton.click();
 	}

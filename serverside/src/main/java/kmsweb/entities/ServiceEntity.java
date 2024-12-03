@@ -1625,6 +1625,7 @@ public class ServiceEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<StaffEntity> defaultMedicalStaffRelation = Optional.ofNullable(this.defaultMedicalStaff);
 		defaultMedicalStaffRelation.ifPresent(entity -> this.defaultMedicalStaffId = entity.getId());
 

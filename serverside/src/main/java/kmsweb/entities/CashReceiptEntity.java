@@ -225,6 +225,7 @@ public class CashReceiptEntity extends AbstractEntity {
 	private String receiptNumber;
 
 	// % protected region % [Modify attribute annotation for Payment Date here] off begin
+
 	@CsvCustomBindByName(column = "PAYMENT_DATE", converter = DateTimeConverter.class, required = true)
 	@NotNull(message = "Payment Date must not be empty")
 	@Column(name = "payment_date")
@@ -281,6 +282,7 @@ public class CashReceiptEntity extends AbstractEntity {
 	private String cashierLocation;
 
 	// % protected region % [Modify attribute annotation for Void Date Time here] off begin
+
 	@CsvCustomBindByName(column = "VOID_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "void_date_time")
@@ -743,6 +745,7 @@ public class CashReceiptEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<MerchantEntity> merchantRelation = Optional.ofNullable(this.merchant);
 		merchantRelation.ifPresent(entity -> this.merchantId = entity.getId());
 

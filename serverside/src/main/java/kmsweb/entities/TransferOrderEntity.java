@@ -180,6 +180,7 @@ public class TransferOrderEntity extends AbstractEntity {
 	private String approvalStatus;
 
 	// % protected region % [Modify attribute annotation for Order Date here] off begin
+
 	@CsvCustomBindByName(column = "ORDER_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "order_date")
@@ -190,6 +191,7 @@ public class TransferOrderEntity extends AbstractEntity {
 	private OffsetDateTime orderDate;
 
 	// % protected region % [Modify attribute annotation for Expected Date here] off begin
+
 	@CsvCustomBindByName(column = "EXPECTED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "expected_date")
@@ -218,6 +220,7 @@ public class TransferOrderEntity extends AbstractEntity {
 	private String notes;
 
 	// % protected region % [Modify attribute annotation for Void Date here] off begin
+
 	@CsvCustomBindByName(column = "VOID_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "void_date")
@@ -237,6 +240,7 @@ public class TransferOrderEntity extends AbstractEntity {
 	private String referenceDocument;
 
 	// % protected region % [Modify attribute annotation for Required Date here] off begin
+
 	@CsvCustomBindByName(column = "REQUIRED_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "required_date")
@@ -247,6 +251,7 @@ public class TransferOrderEntity extends AbstractEntity {
 	private OffsetDateTime requiredDate;
 
 	// % protected region % [Modify attribute annotation for Issued Date Time here] off begin
+
 	@CsvCustomBindByName(column = "ISSUED_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "issued_date_time")
@@ -257,6 +262,7 @@ public class TransferOrderEntity extends AbstractEntity {
 	private OffsetDateTime issuedDateTime;
 
 	// % protected region % [Modify attribute annotation for Received Date Time here] off begin
+
 	@CsvCustomBindByName(column = "RECEIVED_DATE_TIME", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "received_date_time")
@@ -592,6 +598,7 @@ public class TransferOrderEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		Optional<WarehouseEntity> destinationWarehouseRelation = Optional.ofNullable(this.destinationWarehouse);
 		destinationWarehouseRelation.ifPresent(entity -> this.destinationWarehouseId = entity.getId());
 

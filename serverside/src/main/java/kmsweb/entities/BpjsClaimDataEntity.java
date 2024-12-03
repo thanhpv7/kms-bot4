@@ -295,6 +295,7 @@ public class BpjsClaimDataEntity extends AbstractEntity {
 	private String status;
 
 	// % protected region % [Modify attribute annotation for Dismissal Date here] off begin
+
 	@CsvCustomBindByName(column = "DISMISSAL_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "dismissal_date")
@@ -305,6 +306,7 @@ public class BpjsClaimDataEntity extends AbstractEntity {
 	private OffsetDateTime dismissalDate;
 
 	// % protected region % [Modify attribute annotation for SEP Date here] off begin
+
 	@CsvCustomBindByName(column = "SEP_DATE", converter = DateTimeConverter.class, required = false)
 	@Nullable
 	@Column(name = "sep_date")
@@ -364,6 +366,7 @@ public class BpjsClaimDataEntity extends AbstractEntity {
 	 */
 	public void addRelationEntitiesToIdSet() {
 		// % protected region % [Add any additional logic for entity relations here] off begin
+
 		// % protected region % [Add any additional logic for entity relations here] end
 	}
 
